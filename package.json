@@ -1,8 +1,8 @@
 {
-  "name": "SELFBOT",
-  "version": "4.0.0",
+  "name": "NyanBot",
+  "version": "2.0.0",
   "description": "Termux only",
-  "main": "vanz.js",
+  "main": "samu.js",
   "directories": {
     "lib": "lib"
   },
@@ -33,8 +33,8 @@
     "brainly-scraper": "^1.0.3"
   },
   "scripts": {
-    "start": "node vanz.js"
+    "start": "node samu.js"
   },
-  "author": "Ivan Maulana",
-  "homepage": "https://github.com/Ivan-MLN/SELFBOT/readme"
+  "author": "Sam y Perry",
+  "homepage": "https://github.com/Samu330/NyanBot/readme"
 }
