@@ -1,122 +1,82 @@
+<p align="center">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzXebuBoCOavnyRt8kbHlOah1nsI0DY3aqQ&usqp=CAUrevision/latest/top-crop/width/300/height/300?cb=20190417164406" width="128" height="128"/>
+</p>
+<p align="center">
+<a href="#"><img title="NyanBot" src="https://img.shields.io/badge/Termux Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+</p>
+<p align="center">
+<a href="https://github.com/Samu330"><img title="Author" src="https://img.shields.io/badge/author-Samu330-red.svg?style=for-the-badge&logo=github"></a>
+</p>
+<p align="center">
+<a href="#"><img title="MAINTENED" src="https://img.shields.io/badge/MAINTENED-YES-blue.svg"</a>
+</p>
+<p align="center">
+<img src="https://www.crackingpro.com/uploads/team_VIP.gif" width="200" height="80"/>
+</p>
+<img src="https://i.imgur.com/n1zo2wL.gif" width="30" height="30"/> NyanBot🐬
 
-<p align="center">
-<a href="#"><img title="SELF - BOT" src="https://img.shields.io/badge/ SELFBOT-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
-</p>
-<p align="center">
-<a href="https://github.com/Ivan-MLN"><img title="Author" src="https://img.shields.io/badge/Author-Ivan MLN-red.svg?style=for-the-badge&logo=github"></a>
-</p>
-<p align="center">
-</p>
-</div>
-    
-## ⏳ Cara Install :
+## Clone this project
+
 ```bash
-> git clone https://github.com/Ivan-MLN/SELFBOT
-> cd SELFBOT
+> git clone https://github.com/Samu330/NyanBot
+```
+
+## Install the dependencies:
+Before running the below command, make sure you're in the project directory that
+you've just cloned!!
+
+```bash
+> cd NyanBot
 > bash install.sh
 ```
-## ✅ Cara aktifin :
+
+### Usage
 ```bash
-> cd SELFBOT
 > npm start
 ```
-##  ❌ Cara matiin :
-```
-CTRL + C
-atau
-CTRL + Z
-```
-## 🤔 Bot Tidak Mau Respon?
-```bash
-npm i @adiwajshing/baileys@3.3.0
-```
-## 💵 Price
-```
-Jika Anda Mengingin Kan Script Ori / Full,
-Silah Kan Hubungi Saya Melalui Contact Me .
-```
-# 🔥🔑 Apikey?
-* [`Imgbb-Uploader`](https://api.imgbb.com)
-* [`LoL Human`](https://api.lolhuman.xyz/pricing)
-* [`Zeks`](https://api.zeks.xyz)‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎
-## ✍️ Editing the file
-Edit the required value in [`setting.json`](https://github.com/Ivan-MLN/SELFBOT/blob/main/setting.json)
+
+### Settings
 ```json
 {
-    "name": "@Ivanzz", 
-    "prefix": "z",
-    "lol": "apikey",
-    "zeks": "apikey",
-    "imgbb_key":  "apikey",
-    "fake": "SELFBOT",
-    "harga_toko": "999999999",
-    "ucapan_welcome": "Welcome",
-    "ucapan_leave": "Good Bye",
-    "author": "@Ivanzz_",
-    "package_name": "Mastah"
+	"prefix": ".",
+	"ownerNumber": "529984xxxxx",
+	"apiKey": "Your ApiKey here"
 }
 ```
 
-## 😍 Feature
+## Features
 
-| FEATURE |✅|
-| ------------- | ------------- |
-| GC Buka/Tutup|✅|
-| Fitnah|✅|
-| Setting Desk/Name HC|✅|
-| Tagall|✅|
-| Leave|✅|
-| Hidetag|✅|
-| Getpic|✅|
-| Ytmp3|✅|
-| Ytmp4|✅|
-| Playmp3|✅|
-| Tiktok|✅|
-| Ig|✅|
-| Igtv|✅|
-| Ssweb|✅|
-| Brainly|✅|
-| Tahta|✅|
-| Toimg|✅|
-| Tomp3|✅|
-| Tovn|✅|
-| Sticker|✅|
-| Sticker WM|✅|
-| Ocr|✅|
-| Addvn|✅|
-| Listvn|✅|
-| Getvn|✅|
-| Kick|✅|
-| Add|✅|
-| Antidelete|✅|
-| ThumbReply|✅|
-| ThumbMenu|✅|
-| FakeThumb|✅|
-| Speed|✅|
-| Ping|✅|
-| Block|✅|
-| ChatList|✅|
-| UnBlock|✅|
-| BlockList|✅|
-| Bass|✅|
-| Tempo|✅|
-| Volume|✅|
-| Hode|✅|
-| Imut|✅|
-| Return|✅|
-| Eval|✅|
-| Run|✅|
-| Term|✅|
+| Sticker Creator |                Feature           |
+| :-----------: | :--------------------------------: |
+|       ✅       | Send Photo with Caption          |
+|       ✅       | Reply A Photo                    |
+|       ✅       | Reply A Video or GIF             |
+|       ✅       | Send Video or GIF with Caption   |
+|       ✅       | Reply A Sticker ( sticker to image ) |
 
-## Special Thanks to
-* <a href="https://github.com/adiwajshing/Baileys"><img alt="GitHub" src="https://img.shields.io/badge/adiwajshing/Baileys%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
-* <a href="https://github.com/Arya-was"><img alt="GitHub" src="https://img.shields.io/badge/Arya%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=blue"/></a>
-* <a href="https://github.com/MrG3P5"><img alt="GitHub" src="https://img.shields.io/badge/MrG3P5%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=red"/></a>
-### contact me
-<a href="https://wa.me/628812904283"><img alt="WhatsApp" src="https://img.shields.io/badge/Contact%20Me-25D366?style=for-the-badge&logo=whatsapp&logoColor=blue"/></a>
+| Other  |                     Feature                     |
+| :------------: | :---------------------------------------------: |
+|       ✅        |   Get a random meme             |
+|       ✅        |   Text to speech                |
+|       ✅        |   Writing feature 				|
+|       ✅        |   What Anime Is This 			|
+|       ✅        |   Url2Img ( Screeenshot Web )   |
+|       ✅        |   Simsimi		                |
 
-## Group
-<a href="https://chat.whatsapp.com/Hol7SQwX5A99GJ1ltstdWe"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=red"/></a>
+| Group  |                     Feature               |
+| :-----------: | :--------------------------------: |
+|       ✅        |   Tagall/Mentionall member       |
+|       ✅        |   Tagall2/Mentionall member       |
+|       ✅        |   Tagall3/Mentionall member       |
+|       ✅        |   Kick Member Group	             |
+|       ✅        |   Add Member Group	             |
+|       ✅        |   Get List Admins Group          |
+|       ✅        |   Get Group Invite Link          |
+|       ✅        |   Bot leave the group            |
 
-### Donate
-<a href="https://saweria.co/donate/VannSGaming01"><img alt="Saweria" src="https://img.shields.io/badge/Saweria-F16061?style=for-the-badge&logo=ko-fi&logoColor=yellow"/></a>
+| Owner Bot  |                     Feature           |
+| :-----------: | :--------------------------------: |
+|       ✅        |   Set Prefix                     |
+|       ✅        |   Broadcast                      |
+|       ✅        |   Clear All Chats                |
+
