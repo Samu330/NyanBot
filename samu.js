@@ -1,44 +1,28 @@
-/*
-HAI GW IVANZZ
-JAN DI BULLY YA
-BARU PERTAMA UP GITHUB SOAL NYA
-MEHEHEHWHEHE
-DAH SONO LANJUTIN RECODE NYA
-MAKASIH YG UDAH PAKE
-KLO ADA BUG LAPOR KE GW YA
-THANKS KAWAN
-*/
 const
 	{
-		WAConnection,
-		MessageType,
-		Presence,
-		MessageOptions,
-		Mimetype,
-		WAimageMessage,
-		WA_MESSAGE_STUB_TYPES,
-		ReconnectMode,
-		ProxyAgent,
-		GroupSettingChange,
-		waChatKey,
-		mentionedJid,
-		processTime,
-} = require("@adiwajshing/baileys")
+  WAConnection,
+  MessageType,
+  Presence,
+  Mimetype,
+  GroupSettingChange,
+  MessageOptions,
+  WALocationMessage,
+  WA_MESSAGE_STUB_TYPES,
+  ReconnectMode,
+  ProxyAgent,
+  waChatKey,
+  mentionedJid,
+  processTime,
+  ChatModification,
+} = require('@adiwajshing/baileys');
 
 const qrcode = require("qrcode-terminal");
-
 const moment = require("moment-timezone");
-
 const fs = require("fs");
-
 const brainly = require("brainly-scraper");
-
 const { color, bgcolor } = require('./lib/color');
-
 const { fetchJson } = require('./lib/fetcher');
-
 const { recognize } = require('./lib/ocr');
-
 const
  { 
   wait,
@@ -55,51 +39,39 @@ const
 } = require('./lib/functions');
 
 const axios = require("axios");
-
 const os = require('os');
-
 const util = require('util');
-
 const ffmpeg = require('fluent-ffmpeg');
-
-
 const imgbb = require('imgbb-uploader');
-
 const imageToBase64 = require('image-to-base64');
-
 const { Utils_1 } = require('./node_modules/@adiwajshing/baileys/lib/WAConnection/Utils')
-
 const { removeBackgroundFromImageFile } = require('remove.bg');
-
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
-;
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'));
+const antimedia = JSON.parse(fs.readFileSync('./src/antimedia.json'));
+const bad = JSON.parse(fs.readFileSync('./src/bad.json'));
+const badword = JSON.parse(fs.readFileSync('./src/badword.json'));
+const autostick = JSON.parse(fs.readFileSync('./src/autostick.json'));
+const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'));
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'));
-
 const setiker = JSON.parse(fs.readFileSync('./src/stik.json'))
-
 const videonye = JSON.parse(fs.readFileSync('./src/video.json'))
-
 const audionye = JSON.parse(fs.readFileSync('./src/audio.json'))
-
 const imagenye = JSON.parse(fs.readFileSync('./src/image.json'))
-
-const setting = JSON.parse(fs.readFileSync('./setting.json'))
-
+const samu = JSON.parse(fs.readFileSync('./setting.json'))
 const { spawn, exec, execSync } = require("child_process")
-
 const speed = require('performance-now')
 
 //Settings
 publik = false
-prefix = setting.prefix
-fake = setting.fake
+prefix = samu.prefix
+fake = samu.fake
 targetprivate = ''
 blocked = []
 
 //apikey
-lol = setting.lol
-zeks = setting.zeks
-imgbb_key = setting.imgbb_key
+lol = samu.lol
+zeks = samu.zeks
+imgbb_key = samu.imgbb_key
 
 //finction
 function kyun(seconds) {
@@ -129,25 +101,26 @@ let d = new Date
 				let localev = 'id'
 					var hari= hri.toLocaleDateString(localev, { weekday: 'long' })
 }
+
 const vanz = new WAConnection()
 
 vanz.logger.level = 'warn'
 console.log(banner.string)
    vanz.on('qr', qr => {
    qrcode.generate(qr, { small: true })
-	console.log(color('[','white'), color('!','red'), color(']','white'), color('SELFBOT @Ivanzz_  SCAN BROO'))
+	console.log(color('[','white'), color('!','red'), color(']','white'), color('ESCANEA EL CODIGO'))
 })
 
 	vanz.on('credentials-updated', () => {
-		fs.writeFileSync('./IvanzzConnect.json', JSON.stringify(vanz.base64EncodedAuthInfo(), null, '\t'))
+		fs.writeFileSync('./Samu330.json', JSON.stringify(vanz.base64EncodedAuthInfo(), null, '\t'))
 		info('2', 'Loading')
 	})
-	fs.existsSync('./IvanzzConnect.json') && vanz.loadAuthInfo('./IvanzzConnect.json')
+	fs.existsSync('./IvanzzConnect.json') && vanz.loadAuthInfo('./Samu330.json')
 	vanz.on('connecting', () => {
 		start('2', 'Connecting')
 	})
 	vanz.on('open', () => {
-		success('2', 'Connected ')
+		success('2', 'Connected🗽 ')
 	})
 	vanz.connect({timeoutMs: 30*1000})
 
@@ -157,7 +130,7 @@ vanz.on('group-participants-update', async (anu) => {
 	try {
 		const mdata = await vanz.groupMetadata(anu.jid)
 		console.log(anu)
-		if (anu.action == 'add') {
+		if (anu.action == 'NUEVO PARTICIPANTE') {
 			num = anu.participants[0]
 			const moment = require('moment-timezone')
 const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
@@ -181,37 +154,18 @@ pushnem = vanz.contacts[num] != undefined ? vanz.contacts[num].notify = undefine
 			} catch {
 				ppimg = './src/image/pp.jpeg'
 			}
-				exec(`magick './src/wel.jpg' -gravity west -fill '#ff2fa2' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Welcome To ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
+				exec(`magick './src/wel.jpg' -gravity west -fill '#00FFFF' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Welcome To ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
 				.on('error', () => reply('error'))
 				.on('exit', () => {
-			vanz.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `${setting.ucapan_welcome} 👋@${num.split('@')[0]}`, contextInfo: { mentionedJid: [num] }})
+			vanz.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\nSon a las *${jm}* del *${calender}*\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
 			})
 			//leave
-		} else if (anu.action == 'remove') {
+		} else if (anu.action == '1 Menos') {
 		num = anu.participants[0]
-		const moment = require('moment-timezone')
-const jamny = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-			let d = new Date
-				let locale = 'id'
-					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-					let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
-					let week = d.toLocaleDateString(locale, { weekday: 'long' })
-					let calender = d.toLocaleDateString(locale, {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric'
-				})
-pushnem = vanz.contacts[num] != undefined ? vanz.contacts[num].notify = undefined ? PhoneNumber('+' + num.replace('@s.whatsapp.net', '')).getNumber('international') : vanz.contacts[num].notify || vanz.contacts[num].vname : PhoneNumber('+' + num.replace('@s.whatsapp.net', '')).getNumber('international')
-			try {
-				ppimg = await vanz.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
-			} catch {
-				ppimg = './src/image/pp.jpeg'
-			}
-				exec(`magick './src/lev.jpg' -gravity west -fill '#ff2fa2' -font './src/font-gue.ttf' -size 1280x710 -pointsize 70 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jamny} ${calender}' -pointsize 50 -annotate +460+200 'Leaving from ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
-				.on('error', () => reply('error'))
-				.on('exit', () => {
-			vanz.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `${setting.ucapan_leave}👋@${num.split('@')[0]}\n`, contextInfo: { mentionedJid: [num] }})
-			})
+				teks = `_Weno ps.... amm😪...  @${num.split('@')[0]} se nos fue, ni llorar es bueno:)_
+_*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
+*No se awiten gente, esten seguros que nadie lo extrañara:D*`
+				samu330.sendMessage(mdata.id, teks, MessageType.text,{ contextInfo: {"mentionedJid": [num]}})
 		}
 	} catch (e) {
 		console.log(e)
@@ -246,7 +200,7 @@ vanz.on('message-update', async (hurtz) => {
 		const isCtRevoke = hurtz.key.remoteJid.endsWith('@g.us') ? true : dataCtRevoke.data ? true : false
 		const isBanCtRevoke = hurtz.key.remoteJid.endsWith('@g.us') ? true : !dataBanCtRevoke.includes(sender) ? true : false
 		if (messageStubType == 'REVOKE') {
-			console.log(`Status untuk grup : ${!isRevoke}\nStatus semua kontak : ${!isCtRevoke}\nStatus kontak dikecualikan : ${!isBanCtRevoke}`)
+			console.log(`Estado del grupo : ${!isRevoke}\nEstado de todos los contactos : ${!isCtRevoke}\nEl estado del contacto está excluido: ${!isBanCtRevoke}`)
 			if (!isRevoke) return
 			if (!isCtRevoke) return
 			if (!isBanCtRevoke) return
@@ -279,14 +233,14 @@ vanz.on('message-update', async (hurtz) => {
 			if (int.type == 'conversation' || int.type == 'extendedTextMessage') {
 				const strConversation = `		 「 *ANTI-DELETE* 」
 
-*• Nama :* ${pushname}
-*• Nomer :* wa.me/${sender.split('@')[0]}
-*• Tipe :* Text
-*• Waktu :* ${moment.unix(int.timestamp).format('HH:mm:ss')}
-*• Tanggal :* ${moment.unix(int.timestamp).format('DD/MM/YYYY')}
-*• Pesan :* ${body ? body : '-'}`
+*∘ 🙍🏻‍♂️Nombre :* ${pushname}
+*∘ 📲Numero :* wa.me/${sender.split('@')[0]}
+*∘ ✏Tipo :* Text
+*∘ 🕐Hora :* ${moment.unix(int.timestamp).format('HH:mm:ss')}
+*∘ 📆Fecha :* ${moment.unix(int.timestamp).format('DD/MM/YYYY')}
+*∘ 📡Mensaje :* ${body ? body : '-'}`
 				vanz.sendMessage(from, strConversation, MessageType.text)
-//MORE RAKIT SENDIRI :V
+
 			}
 		}
 } catch (e) {
@@ -332,39 +286,39 @@ vanz.on('message-new', async (vnz) => {
 		const type = Object.keys(vnz.message)[0]
 		var tipe = 'Teks'
 			if (type == 'imageMessage') {
-				tipe = 'Gambar'
+				tipe = 'Imagen'
 			} else if (type == 'stickerMessage') {
 				tipe = 'Stiker'
 			} else if (type === 'extendedTextMessage' && content.includes('imageMessage')) {
-				tipe = 'Reply Gambar'
+				tipe = 'etiqueta Imagen'
 			} else if (type === 'extendedTextMessage' && content.includes('stickerMessage')) {
-				tipe = 'Reply Stiker'
+				tipe = 'etiqueta Stiker'
 			} else if (type === 'extendedTextMessage' && content.includes('audioMessage')) {
-				tipe = 'Reply Audio'
+				tipe = 'etiqueta Audio'
 			} else if (type === 'extendedTextMessage' && content.includes('videoMessage')) {
-				tipe = 'Reply Video'
+				tipe = 'etiqueta Video'
 			} else if (type === 'extendedTextMessage' && content.includes('conversation')) {
-				tipe = 'Reply Teks'
+				tipe = 'etiqueta Texto'
 			} else if (type === 'extendedTextMessage' && content.includes('productMessage')) {
-				tipe = 'Reply Produk'
+				tipe = 'etiqueta Produvto'
 			} else if (type === 'extendedTextMessage' && content.includes('documentMessage')) {
-				tipe = 'Reply Dokumen'
+				tipe = 'etiqueta Documento'
 			} else if (type === 'extendedTextMessage' && content.includes('orderMessage')) {
-				tipe = 'Reply Orderan'
+				tipe = 'etiqueta Pedido'
 			} else if (type === 'extendedTextMessage' && content.includes('contactMessage')) {
-				tipe = 'Reply Kontak'
+				tipe = 'etiqueta Contacto'
 			} else if (type === 'extendedTextMessage' && content.includes('imageMessage')) {
-				tipe = 'Reply Lokasi'
+				tipe = 'etiqueta Locasion'
 			} else if (type === 'extendedTextMessage' && content.includes('mentionedJid')) {
-				tipe = 'Menyebut Orang'
+				tipe = 'Mencionar personas'
 			} else if (type === 'extendedTextMessage' && content.includes('matchedText')) {
 				tipe = 'Link'
 			} else if (type == 'videoMessage') {
 				tipe = 'Video'
 			} else if (type == 'conversation') {
-				tipe = 'Teks'
+				tipe = 'Texto'
 			} else {
-				tipe = 'Belum Diketahui'
+				tipe = 'Aún no conocido'
 			}
 		const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 		const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
@@ -376,22 +330,25 @@ vanz.on('message-new', async (vnz) => {
 		
 
 		mess = {
-			success: 'Berhasil!',
+			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
+			success: '✔️ 𝙎𝙐𝙎𝙎𝙀𝙎 ✔️',
 			error: {
-				stick: 'Itu video gblk!',
-				Iv: 'Linknya mokad:v'
+				stick: '[❗] 𝙀𝙍𝙍𝙊𝙍 intentalo de nuevo, da error a la primera:D  ❌',
+				Iv: '❌ Link invalido ❌'
 			},
-			mess: {
-				ownerB: 'Grup only bruh...',
-				ownerB: 'Owner grup only bruh...',
-				ownerB: 'Lu siapa?',
-				admin: 'Mimin grup only bruh...',
-				Badmin: 'Jadiin gw admin dlu su!'
-			}
+			only: {
+    group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
+    ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
+    ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌',
+    admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
+    Badmin: '[❗] ¡Este comando solo se puede usar cuando el bot es administrador! ❌',
+    daftarB: `Hola, usa *${prefix}reg* para poder usar el bot`
+  }
 		}
 
 		const botNumber = vanz.user.jid
-		const ownerNumber = ["628812904283@s.whatsapp.net"] // ganti nomer lu yo
+		const samu = '```'
+		const ownerNumber = ["52144447000377@s.whatsapp.net"] // ganti nomer lu yo
 		const isGroup = from.endsWith('@g.us')
 		const sender = isGroup ? vnz.participant : vnz.key.remoteJid
 		const totalchat = await vanz.chats.all()
@@ -403,6 +360,11 @@ vanz.on('message-new', async (vnz) => {
 		const groupOwner = isGroup ? groupMetadata.owner : ''
 		const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 		const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+		const isBadWord = isGroup ? badword.includes(from) : false
+		const isAntiMedia = isGroup ? antimedia.includes(from) : false
+		const isAutoSt = isGroup ? autostick.includes(from) : false
+		const isSimi = isGroup ? simi.includes(from) : false
+		const isNsfw = isGroup ? nsfw.includes(from) : false
 		const isAntiLink = isGroup ? antilink.includes(from) : false
 		const isGroupAdmins = groupAdmins.includes(sender) || false
 		const isWelkom = isGroup ? welkom.includes(from) : false
@@ -442,7 +404,7 @@ const fileurl = async(link, type) => {
 	 { remoteJid: "status@broadcast" } : {}) },
 	 message: { "locationMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
 	}
-const fliveLoc = {
+	const fliveLoc = {
 	 key:
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
@@ -456,7 +418,7 @@ const fliveLoc = {
 	 { remoteJid: "status@broadcast" } : {}) },
 	 message: { "videoMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
 	}
-   const ftoko = {
+   	const ftoko = {
 		key: {
 			fromMe: false,
 			participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
