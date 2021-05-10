@@ -64,7 +64,7 @@ const speed = require('performance-now')
 //Settings
 publik = false
 prefix = samu.prefix
-fake = samu.fake
+bodyM = samu.samuM
 targetprivate = ''
 blocked = []
 
@@ -73,7 +73,39 @@ lol = samu.lol
 zeks = samu.zeks
 imgbb_key = samu.imgbb_key
 
-//finction
+
+const getRegisteredRandomId = () => {
+  return _registered[Math.floor(Math.random() * _registered.length)].id
+}
+
+const addRegisteredUser = (userid, sender, age, time, serials) => {
+  const obj = {
+id: userid,
+name: sender,
+age: age,
+time: time,
+serial: serials
+  }
+  _registered.push(obj)
+  fs.writeFileSync('./src/registered.json', JSON.stringify(_registered))
+}
+
+const createSerial = (size) => {
+  return crypto.randomBytes(size).toString('hex').slice(0, size)
+}
+
+const checkRegisteredUser = (sender) => {
+  let status = false
+  Object.keys(_registered).forEach((i) => {
+if (_registered[i].id === sender) {
+  status = true
+}
+  })
+  return status
+}
+
+
+//function
 function kyun(seconds) {
 	function pad(s) {
 		return (s < 10 ? '0' : '') + s;
@@ -369,11 +401,12 @@ vanz.on('message-new', async (vnz) => {
 		const isGroupAdmins = groupAdmins.includes(sender) || false
 		const isWelkom = isGroup ? welkom.includes(from) : false
 		const isOwner = ownerNumber.includes(sender)
+		const isRegister = checkRegisteredUser(sender)
 		const isUrl = (url) => {
 			return (new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
 		}
 		const reply = (teks) => {
-			vanz.sendMessage(from, teks, text, { quoted: ftoko })
+			vanz.sendMessage(from, teks, text, { quoted: fimg, timestamp: 0, contextInfo: {"forwardingScore": 9999, "isForwarded": true, caption: '__', thumbnailJpg: './src/help.jpg'}})
 		}
 		const math = (teks) => {
 				return Math.floor(teks)
@@ -388,35 +421,35 @@ const fileurl = async(link, type) => {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "imageMessage": { "mimetype": "image/jpeg","caption": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
+	 message: { "imageMessage": { "mimetype": "image/jpeg","caption": '💓𝑆𝐴𝑀 𝑌 𝑃𝐸𝑅𝑅𝑌🔥\🐬NyanBot', 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}
 	}
 	const fdoc = {
 	 key:
 	 { fromMe: false,
-	 participant: `0@s.whatsapp.net`, ...(from ? 
+	 participant: `5219984907794@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "documentMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
+	 message: { "documentMessage": { "title":"❣️𝓢𝓪𝓶 𝔂 𝓟𝓮𝓻𝓻𝔂,🔥", "caption":  "NyanBot,🐬" , 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}
 	}
 	const floc = {
 	 key:
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "locationMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
+	 message: { "locationMessage": { "title":"🔐Samu330⚡", "caption": "Adios😴" , 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
 	}
 	const fliveLoc = {
 	 key:
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "liveLocationMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
+	 message: { "liveLocationMessage": { "title":"NyanBot","caption": '🔥❣️Sᥲm ყ Pᥱrrყ | NყᥲᥒBot🐬', 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}
 	}	
 	const fvid = {
 	 key:
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "videoMessage": { "title":"SELEP BOT","h": `${setting.fake}`, 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}
+	 message: { "videoMessage": { "title": "NyanBot","caption": '⚡🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎 | 𝒩𝓎𝒶𝓃ℬ𝑜𝓉💓', 'jpegThumbnail': fs.readFileSync('./src/fake.jpg')}}
 	}
    	const ftoko = {
 		key: {
@@ -428,13 +461,13 @@ const fileurl = async(link, type) => {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./src/Ivan.jpg`)
+						"jpegThumbnail": fs.readFileSync(`./src/fake.jpg`)
 					},
-					"title": `${setting.fake}`,
+					"title": "➫𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🔥❣️" ,
 					"description": "",
-					"currencyCode": "IDR",
-					"priceAmount1000": `${setting.harga_toko}`,
-					"retailerId": "Self Bot",
+					"currencyCode": "SYP",
+					"priceAmount1000": "-99",
+					"retailerId": "NyanBot",
 					"productImageCount": 999
 				},
 				"businessOwnerJid": `0@s.whatsapp.net`
@@ -443,8 +476,8 @@ const fileurl = async(link, type) => {
 }
 
 		const sendMess = (hehe, teks) => {
-			vanz.sendMessage(hehe, teks, text)
-		}
+			vanz.sendMessage(hehe, teks, text, {contextInfo: {"forwardingScore": 9999, "isForwarded": true}}, {quoted: ftoko
+})
 		const mentions = (teks, memberr, id) => {
 			(id == null || id == undefined || id == false) ? vanz.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : vanz.sendMessage(from, teks.trim(), extendedText, { quoted: ftoko, contextInfo: { "mentionedJid": memberr } })
 		}
@@ -459,9 +492,123 @@ const fileurl = async(link, type) => {
 		if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
 		if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 		if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+		
+			
+			
 		switch (command) {
+				
+				
+				
+case 'help':
+case 'menu':
+				runtime = process.uptime()
+				teks = `${kyun(runtime)}`
+const moment = require('moment-timezone')
+
+const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+
+let d = new Date
+				let locale = 'id'
+					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
+					let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
+					let week = d.toLocaleDateString(locale, { weekday: 'long' })
+					let calender = d.toLocaleDateString(locale, {
+				day: 'numeric',
+				month: 'long',
+				year: 'numeric'
+				})
+				
+				var num = vnz.participant
+				gambar = fs.readFileSync('./src/help.jpg')
+				fakee = fs.readFileSync('./src/fake.jpg')
+			
+				isi = `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
+🔐Hola *${pushname}* 
+Hora: ${jmn}
+Fecha: ${calender}
+ٌ؞${samu} [ ${prefix} ]  Prefijo:${samu}✏️
+ٌ؞${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
+ٌ؞${samu} Modo:${samu} *ON*✅
+ٌ؞${samu} Grupo:${samu} *${groupName}*👥
+ٌ؞${samu} Número de grupos:${samu} *${_registered.length}*⚡
+ٌ؞${samu} Número de chats:${samu} *${totalchat.length}*🔥
+ٌ؞${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
+⍣ *BOT INFO* ⍣
+${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
+${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
+${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
+${samu}◦ 🚄Velocidad :${samu} *${process.uptime()}*
+${samu}◦ 📲Sistema operativo :${samu} *${samu330.user.phone.device_manufacturer}*
+${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
+_Lista de MENUs_
+${bodyM} ${prefix}menu1 *(Menu de Media*
+${bodyM} ${prefix}menu2 *(Menu de Sticker)*
+${bodyM} ${prefix}menu3 *(Menu de Grupos)*
+${bodyM} ${prefix}menu4 *(Menu de descargas)*
+${bodyM} ${prefix}menu5 *(Otros comandos)*
+${bodyM} ${prefix}menu6 *(Comandos +18)* 
+ᴸᵃ ᵐᵃʸᵒʳᶦ́ᵃ ᵈᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᶠᵘⁿᶜᶦᵒⁿᵃⁿ ᵃˡ ¹⁰⁰
+ᴱˢᶜʳᶦᵇᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᵉⁿ ˢᵘ ᶠᵒʳᵐᵃᵗᵒ ᶜᵒʳʳᵉᶜᵗᵒ ᵖᵃʳᵃ ᑫᵘᵉ ⁿᵒ ᵈᵉ ᵉʳʳᵒʳᵉˢ
+ˢᶦ ᵗᶦᵉⁿᵉˢ ᵃˡᵍᵘ́ⁿ ᵖʳᵒᵇˡᵉᵐᵃ ᵒ ᵃˡᵍᵘⁿᵃ ᶠᵘⁿᶜᶦᵒ́ⁿ ᵈᵉˡ ᵇᵒᵗ ᵈᵉʲᵒ ᵈᵉ ᶠᵘⁿᶜᶦᵒⁿᵃʳ ʰᵃ́ᶻᵐᵉˡᵒ ˢᵃᵇᵉʳ ᵃ ᵐᶦ̣.ᵂʰᵃᵗˢᴬᵖᵖ.li
+     -----------------------------------------------
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::                                                
+¦:
+¦:         . : 🐬𝐍𝐲𝐚𝐧𝐁𝐨𝐭🐬 : .
+¦:     🔥❣️𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆❣️🔥
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
+		     🌸 SamịPerry.li 🌸
+	 ********************************
+`
+vanz.sendMessage(from, gambar, image, { quoted: ftoko, caption: isi, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+break
+				
+				
+				
+				
+				
+case 'reg':
+if (isRegister) return reply('Tu cuenta ya estaba verificada')
+const namaUser = `${pushname}`
+const umurUser = `${sender}`
+const serialUser = createSerial(20)
+veri = sender
+if (isGroup) {
+  addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+  hasil = `〘  *Vericación* 〙
+Código : *${serialUser}*
+◦ *Nombre* : *${namaUser}*
+◦ *Número* : *${sender.split("@")[0]}*
+`
+reply(hasil)
+  console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
+} else {
+  addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+  hasil = `〘  *Verificación* 〙
+Código : *${serialUser}*
+◦ *Nombre* : *${namaUser}*
+◦ *Número* : *${sender.split("@")[0]}*
+`
+reply(hasil)
+  console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
+}
+tm = `verificación completa usa ${prefix}Menu para ver los comandos`
+reply(tm)
+break
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			case 'hidetag1':
 			case 'hidetag':
+				if (!isGroup) return reply(mess.only.group)
 					members_id = []
 					teks = (args.length > 1) ? args.join(' ').trim() : `${args.join(' ')}`
 					for (let mem of groupMembers) {
@@ -469,18 +616,7 @@ const fileurl = async(link, type) => {
 					}
 					mentions(teks, members_id, true, MessageType.text)
 				break
-			case 'group':
-			case 'grup':
-			   case 'gc':
-				if (!isGroup) return reply(mess.only.group)
-				if (args[0] === 'buka') {
-					vanz.sendMessage(from, `*「 SUCKSES MEMBUKA GRUP 」*`, MessageType.text, ftoko)
-					vanz.groupSettingChange(from, GroupSettingChange.messageSend, false)
-				} else if (args[0] === 'tutup') {
-					await vanz.groupSettingChange(from, GroupSettingChange.messageSend, true)
-					vanz.sendMessage(from, `*「 SUKSES MENUTUP GRUP 」*`, MessageType.text, groupp)
-				}
-				break
+			
 			case 'gcname':
 				await vanz.groupUpdateSubject(from, `${args.join(' ')}`)
 				vanz.sendMessage(from, `*「 CHANGE TO ${args.join(' ')} 」*`, MessageType.text)
@@ -600,114 +736,7 @@ json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Succes Bergabung Dalam Group')
 break
-case 'help':
-case 'menu':
-   case 'h':
-				runtime = process.uptime()
-				teks = `${kyun(runtime)}`
-const moment = require('moment-timezone')
-
-const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-
-			let d = new Date
-				let locale = 'id'
-					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-					let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
-					let week = d.toLocaleDateString(locale, { weekday: 'long' })
-					let calender = d.toLocaleDateString(locale, {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric'
-				})
 				
-				var num = vnz.participant
-				gambar = fs.readFileSync('./src/help.jpg')
-				fakee = fs.readFileSync('./src/fake.jpg')
-			
-				isi = ` *SELF - BOT*
-				
-*• Bot Type :* NodeJS
-*• Lib :* Baileys
-*• Prefix :* [ ${prefix} ] 
-*• Creator :* ${setting.name}
-*• Jam :* ${jmn}
-*• Hari :* ${week} ${weton}
-*• Tanggal :* ${calender}
-*• Runtime :* ${teks}
-
-*• ${prefix}gc* [ buka | tutup ]
-*• ${prefix}gcname* [ nama ]
-*• ${prefix}gcdesk* [ teks ]
-*• ${prefix}tagall* [ tagall mem]
-*• ${prefix}leave* [ keluar grup ]
-*• ${prefix}hidetag* [teks]
-*• ${prefix}getpic* [@tag]
-*• ${prefix}fitnah* [ @tag teks|teks ]
-*• ${prefix}fitnahpc* [ pribchat ]
-
-*• ${prefix}lirik* [ judul ]
-*• ${prefix}ytmp3* [ link yt ]
-*• ${prefix}ytmp4* [ link yt ]
-*• ${prefix}playmp3* [ judul ]
-*• ${prefix}tiktok* [ link tt ]
-*• ${prefix}ig* [ link ig]
-*• ${prefix}igtv* [ lnk ugtv ]
-*• ${prefix}ssweb* [ ss web ]
-*• ${prefix}brainly* [ soal ]
-
-*• ${prefix}tahta* [ teks ]
-*• ${prefix}toimg* [ reply img ]
-*• ${prefix}tomp3* [ reply video | vn]
-*• ${prefix}tovn* [ reply vid | audio]
-*• ${prefix}s* [ reply img ]
-*• ${prefix}swm* [ srick with wm ]
-*• ${prefix}ocr* [ reply img ]
-
-*• ${prefix}addsticker* [nama ]
-*• ${prefix}getsticker* [nama ]
-*• ${prefix}liststicker* [ jumlah stik ]
-*• ${prefix}addvn* [ nama ]
-*• ${prefix}getvn* [ nama ]
-*• ${prefix}listvn* [ jumlah vn ]
-*• ${prefix}addvideo* [ nama ]
-*• ${prefix}getvideo* [ nama ]
-*• ${prefix}listvideo* [ jumlah video]
-*• ${prefix}addimage* [ nama ]
-*• ${prefix}getimage* [ nama ]
-*• ${prefix}listimage* [ jumlah img ]
-
-*• ${prefix}antidelete* [ aktif|mati ]
-*• ${prefix}antidelete* [ ctaktif | ctmati ]
-*• ${prefix}antidelete* [ banct ]
-*• ${prefix}setthumbreply* [ thumbreply ]
-*• ${prefix}setthumbmenu* [ thumbmenu ]
-*• ${prefix}settfakethumb* [ thumb palsu ]
-*• ${prefix}setprefix* [ simbol ]
-*• ${prefix}setreply* [ teks ]
-*• ${prefix}speed* [ ping ]
-*• ${prefix}settarget* [ target fitnahpc ]
-*• ${prefix}block* [ @tag ]
-*• ${prefix}unblock* [ @tag ]
-*• ${prefix}blocklist* [ jumlah block ]
-*• ${prefix}cekchat* [ jumlah chat ]
-*• ${prefix}forward* [ teruskan teks ]
-*• ${prefix}donasi* [ bagi yang mau donasi ]
-
-*• ${prefix}bass* [ option ]
-*• ${prefix}tempo* [ option ]
-*• ${prefix}volume* [ option ]
-*• ${prefix}hode* [ reply audio ]
-*• ${prefix}imut* [ reply audio ]
-
-*• ${prefix}return* [ javascript ]
-*• ${prefix}>* [ eval ]
-*• ${prefix}run* [ run javascript]
-*• ${prefix}$* [ exec termux ]
-
-MORE? RAKIT SENDIRI :V
-`
-vanz.sendMessage(from, gambar, image, { quoted: ftoko, caption: isi, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-break
 case 'playmp3':   
                var teks = encodeURIComponent(args.join(' '))
                  anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-play?q=${args.join(' ')}`)
