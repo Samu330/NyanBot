@@ -473,6 +473,7 @@ const fileurl = async(link, type) => {
 		const sendMess = (hehe, teks) => {
 			samu330.sendMessage(hehe, teks, text, {contextInfo: {"forwardingScore": 9999, "isForwarded": true}}, {quoted: ftoko
 })
+}
 		const mentions = (teks, memberr, id) => {
 			(id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : samu330.sendMessage(from, teks.trim(), extendedText, { quoted: ftoko, contextInfo: { "mentionedJid": memberr } })
 		}
