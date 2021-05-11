@@ -134,27 +134,22 @@ let d = new Date
 					var hari= hri.toLocaleDateString(localev, { weekday: 'long' })
 }
 
-const samu330 = new WAConnection()
-
-samu330.logger.level = 'warn'
-console.log(banner.string)
-   samu330.on('qr', qr => {
-   qrcode.generate(qr, { small: true })
-	console.log(color('[','white'), color('!','red'), color(']','white'), color('ESCANEA EL CODIGO'))
-})
-
-	samu330.on('credentials-updated', () => {
-		fs.writeFileSync('./Samu330.json', JSON.stringify(samu330.base64EncodedAuthInfo(), null, '\t'))
-		info('2', 'Loading')
+async function starts() {
+	const samu330 = new WAConnection()
+	samu330.logger.level = 'warn'
+	samu330.on('qr', () => {
+		console.log(color('[','white'), color('!','red'), color(']','white'), color(' ESCANEA EL COGIGO WE🥀'))
 	})
-	fs.existsSync('./Isamu330zConnect.json') && samu330.loadAuthInfo('./Samu330.json')
+
+	fs.existsSync('./Samu.json') && samu330.loadAuthInfo('./Samu.json')
 	samu330.on('connecting', () => {
-		start('2', 'Connecting')
+		start('2', 'Connecting...')
 	})
 	samu330.on('open', () => {
-		success('2', 'Connected🗽 ')
+		success('2', 'Conectado🗽')
 	})
-	samu330.connect({timeoutMs: 30*1000})
+	await samu330.connect({timeoutMs: 30*1000})
+        fs.writeFileSync('./Samu.json', JSON.stringify(samu330.base64EncodedAuthInfo(), null, '\t'))
 
 //welcome
 samu330.on('group-participants-update', async (anu) => {
