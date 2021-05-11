@@ -60,6 +60,7 @@ const imagenye = JSON.parse(fs.readFileSync('./src/image.json'))
 const samu = JSON.parse(fs.readFileSync('./setting.json'))
 const { spawn, exec, execSync } = require("child_process")
 const speed = require('performance-now')
+const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 
 //Settings
 publik = false
@@ -2706,19 +2707,5 @@ case 'getvn':
 		// console.log(e)
 	}
 })
-
-/*
-INI SC GW
-PANGGIL AJA Isamu33Z
-GW GAK JAGO BANGET TAPI SETIDAK NYA
-UDAH PAKE BASE SENDIRI
-YANG BILANG GW PAKE BASE MBB,
-SAMA AJA LU KAGA NGEHARGAIN GW
-INI CASE SAYA BUAT DENGAN PENUH KE IKHLASAN
-UDAH SEGITU AJA, INI TQTO JAN DI HAPUS
-
-
-THANKS TO :
-- ANU TEAM
-- DAN ORANG² BAIK YG UDAH KASIH GW SC+CODE
-*/
+}
+starts()
