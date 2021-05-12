@@ -60,10 +60,12 @@ const imagenye = JSON.parse(fs.readFileSync('./src/image.json'))
 const samu = JSON.parse(fs.readFileSync('./setting.json'))
 const { spawn, exec, execSync } = require("child_process")
 const speed = require('performance-now')
+const crypto = require('crypto')
+const simi = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 
 //Settings
-publik = false
+publik = true
 prefix = samu.prefix
 bodyM = samu.samuM
 targetprivate = ''
@@ -257,6 +259,7 @@ samu330.on('message-update', async (hurtz) => {
 			}
 			const index = Number(int.no)
 			const body = int.type == 'conversation' ? infoMSG[index].message.conversation : int.type == 'extendedTextMessage' ? infoMSG[index].message.extendedTextMessage.text : int.type == 'imageMessage' ? infoMSG[index].message.imageMessage.caption : int.type == 'stickerMessage' ? 'Sticker' : int.type == 'audioMessage' ? 'Audio' : int.type == 'videoMessage' ? infoMSG[index].videoMessage.caption : infoMSG[index]
+			budy = (type === 'conversation') ? hurtz.message.conversation : (type === 'extendedTextMessage') ? hurtz.message.extendedTextMessage.text : ''
 			const mediaData = int.type === 'extendedTextMessage' ? JSON.parse(JSON.stringify(int.data).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : int.data
 			if (int.type == 'conversation' || int.type == 'extendedTextMessage') {
 				const strConversation = `		 「 *ANTI-DELETE* 」
@@ -398,6 +401,7 @@ samu330.on('message-new', async (sam) => {
 		const isWelkom = isGroup ? welkom.includes(from) : false
 		const isOwner = ownerNumber.includes(sender)
 		const isRegister = checkRegisteredUser(sender)
+		let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 		const isUrl = (url) => {
 			return (new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
 		}
@@ -491,6 +495,23 @@ const fileurl = async(link, type) => {
 		if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 		
 			
+		
+		
+if(budy.match('bot')){
+rm = [
+result = fs.readFileSync(`./temp/stick/Samu.webp`),
+result1 = fs.readFileSync(`./temp/stick/Samu1.webp`),
+result2 = fs.readFileSync(`./temp/stick/Samu2.webp`),
+result3 = fs.readFileSync(`./temp/stick/Samu3.webp`),
+result4 = fs.readFileSync(`./temp/stick/Samu4.webp`)
+]
+nk = rm[Math.floor(Math.random() * rm.length)]
+  samu330.sendMessage(from, nk, sticker, {
+quoted: mek, "forwardingScore": 9999, "isForwarded": true
+  })
+}
+		
+		
 			
 		switch (command) {
 				
@@ -498,8 +519,7 @@ const fileurl = async(link, type) => {
 				
 case 'help':
 case 'menu':
-				runtime = process.uptime()
-				teks = `${kyun(runtime)}`
+
 const moment = require('moment-timezone')
 
 const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
@@ -516,10 +536,13 @@ let d = new Date
 				})
 				
 				var num = sam.participant
-				gambar = fs.readFileSync('./src/help.jpg')
+				foto = fs.readFileSync('./src/help.jpg')
 				fakee = fs.readFileSync('./src/fake.jpg')
+  samu330.updatePresence(from, Presence.recording)
+  if (!isRegister) return reply(mess.only.daftarB)
+  uptime = process.uptime()
 			
-				isi = `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
+				menu = `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
 🔐Hola *${pushname}* 
 Hora: ${jmn}
 Fecha: ${calender}
@@ -558,7 +581,7 @@ ${bodyM} ${prefix}menu6 *(Comandos +18)*
 		     🌸 SamịPerry.li 🌸
 	 ********************************
 `
-samu330.sendMessage(from, gambar, image, { quoted: ftoko, caption: isi, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+samu330.sendMessage(from, foto, image, { quoted: ftoko, caption: menu, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 break
 				
 				
@@ -2045,7 +2068,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://videfikri.com/api/textmaker/pencildrawing/?urlgbr=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2083,7 +2105,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://videfikri.com/api/textmaker/pencil/?urlgbr=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2098,7 +2119,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://api-rull.herokuapp.com/api/photofunia/burning-fire?url=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2112,7 +2132,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://videfikri.com/api/textmaker/gtavposter/?urlgbr=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2139,7 +2158,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/invert?url=${anu.display_url}&apikey=freeKeY`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2154,7 +2172,6 @@ if ((isMedia && !sam.message.StickerMessage || isQuotedSticker) && args.length =
   ted = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await fetchJson(`https://api.lolhuman.xyz/api/convert/webptomp4?apikey=${lol}&img=`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2167,7 +2184,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/greyscale?url=${anu.display_url}&apikey=freeKeY`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2183,7 +2199,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   hedhe = await getBuffer(`http://api.lolhuman.xyz/api/convert/towebp?apikey=${lol}&img=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, sticker, {quoted: fdoc, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2255,7 +2270,6 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
   owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  tels = args.join(' ')
   anu = await imgbb(`${imgbb_key}`, owgi)
   satu = await getBuffer(`http://api.lolhuman.xyz/api/removebg?apikey=${lol}&img=${anu.display_url}`)
  samu330.sendMessage(from, satu, image, {quoted: fdoc, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2694,13 +2708,17 @@ case 'getvn':
 				samu330.sendMessage(from, buffer, audio, { mimetype: 'audio/mp4', quoted: ftoko, ptt: true, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
  break
 			default:
-					samu330.on('CB:action,,battery', json => {
-		const batteryLevelStr = json[2][0][1].value
-		const batterylevel = parseInt(batteryLevelStr)
-		console.log('battrey ' + batterylevel)
-					})
-					console.log(color('@Isamu330z_', 'yellow'), color(sender.split('@')[0]))
-		}
+					if (body.startsWith(`${prefix}${command}`)) {
+  reply(`        ────────────────\nHola *${pushname}* !!!\nEse comando no esta en mi lista : *${prefix}${command}*\nUsa esto para ver el menu: *${prefix}Menu*\n        ────────────────`)
+				}
+					if (isGroup && isSimi && budy != undefined) {
+						console.log(budy)
+						muehe = await simih(budy)
+						console.log(muehe)
+						reply(muehe)
+					} else {
+						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+					}
 		
 	} catch (e) {
 		console.log('%s', color(e, 'red'))
