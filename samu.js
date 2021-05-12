@@ -356,8 +356,8 @@ samu330.on('message-new', async (sam) => {
 		body = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 		budy = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
 		const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
-		var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
-		const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
+		//var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
+		//const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
 		const args = body.trim().split(/ +/).slice(1)
 		const isCmd = body.startsWith(prefix)
 		
@@ -405,7 +405,7 @@ samu330.on('message-new', async (sam) => {
 		const isWelkom = isGroup ? welkom.includes(from) : false
 		const isOwner = ownerNumber.includes(sender)
 		const isRegister = checkRegisteredUser(sender)
-		const soyYoxd = sender === botNumber ? true : false
+		//const soyYoxd = sender === botNumber ? true : false
 		let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 		const isUrl = (url) => {
 			return (new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
@@ -492,7 +492,7 @@ const fileurl = async(link, type) => {
 		
 		
 		
-		//autoStiker By Samu330
+		/*//autoStiker By Samu330
 if (isGroup && isAutoSt && !soyYoxd) {
 if (isMedia && !sam.message.videoMessage || isQuotedImage) {           
 	if (!soyYoxd) {
@@ -659,19 +659,19 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 			        reply("5 segundos")
 		        }, 0)
 	        }
+		*/
 		
+		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
+		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+		const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+		const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+		if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+		if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+		if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+		if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 		
-		
-		
-		colors = ['red','white','black','blue','yellow','green']
-
-//*********Console log chats
-			if (!isGroup && isCmd) console.log('\x1b[1;32m>', time, color(command), 'from', color(pushname), 'args :', (args.length))
-			
-//*********Console log grupos
-			if (isCmd && isGroup) console.log('\x1b[1;32m>', time, color(command), 'from', (groupName), 'args :', color(args.length))
-
-//*********-Metadata stiker
 			
 			function addMetadata(packname) {	
 				if (!packname) packname = 'WABot';	
@@ -713,7 +713,7 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 			}
 			
 		
-if(!soyYoxd)
+
 if(budy.match('bot')){
 rm = [
 result = fs.readFileSync(`./temp/Samu.webp`)
@@ -734,9 +734,6 @@ samu330.sendMessage(from, buf, audio, {
 })
 }
 
-//********
-//auto respuesta creada 100% por samu*
-
 switch(is) {
   case 'test':
 buf = fs.readFileSync(`./temp/audio/oni.mp3`)
@@ -746,7 +743,7 @@ samu330.sendMessage(from, buf, audio, {
   mimetype: 'audio/mp4', quoted: fliveLoc, duration :9999999999999999999999999, ptt: true
 }) 
 break
-		
+}		
 			
 		switch (command) {
 				
