@@ -713,14 +713,10 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 			}
 			
 		
-		
+if(!soyYoxd)
 if(budy.match('bot')){
 rm = [
-result = fs.readFileSync(`./temp/stick/Samu.webp`),
-result1 = fs.readFileSync(`./temp/stick/Samu1.webp`),
-result2 = fs.readFileSync(`./temp/stick/Samu2.webp`),
-result3 = fs.readFileSync(`./temp/stick/Samu3.webp`),
-result4 = fs.readFileSync(`./temp/stick/Samu4.webp`)
+result = fs.readFileSync(`./temp/Samu.webp`)
 ]
 nk = rm[Math.floor(Math.random() * rm.length)]
   samu330.sendMessage(from, nk, sticker, {
