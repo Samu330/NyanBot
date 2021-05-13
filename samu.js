@@ -67,6 +67,7 @@ const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 //Settings
 publik = true
 prefix = samu.prefix
+dueño = samu.samyperry
 bodyM = samu.samuM
 targetprivate = ''
 blocked = []
@@ -375,7 +376,7 @@ samu330.on('message-new', async (sam) => {
 			only: {
     group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
     ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
-    ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌',
+    ownerB: `[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: @5219984907794.split('@')[0], Habla con el para que pueda cambiar el numero del owner`,
     admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
     Badmin: '[❗] ¡Este comando solo se puede usar cuando el bot es administrador! ❌',
     daftarB: `Hola, usa *${prefix}reg* para poder usar el bot`
@@ -384,7 +385,7 @@ samu330.on('message-new', async (sam) => {
 
 		const botNumber = samu330.user.jid
 		const samu = '```'
-		const ownerNumber = ["52144447000377@s.whatsapp.net"] // ganti nomer lu yo
+		const ownerNumber = [`${samyperry}@s.whatsapp.net`]
 		const isGroup = from.endsWith('@g.us')
 		const sender = isGroup ? sam.participant : sam.key.remoteJid
 		const totalchat = await samu330.chats.all()
@@ -494,9 +495,9 @@ const fileurl = async(link, type) => {
 		
 		
 		//autoStiker By Samu330
-if (isGroup && isAutoSt && !soyYoxd) {
+if (isGroup && isAutoSt && !botNumber) {
 if (isMedia && !sam.message.videoMessage || isQuotedImage) {           
-	if (!soyYoxd) {
+	if (!botNumber) {
 	const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam       
 	const media = await samu330.downloadAndSaveMediaMessage(encmedia) 
 	ran = getRandom('.webp')           
@@ -568,7 +569,7 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 				}
 			}
 		}
-			if (isGroup && isBotGroupAdmins && isAntiMedia && !soyYoxd) {         
+			if (isGroup && isBotGroupAdmins && isAntiMedia && !botNumber) {         
 				if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 					if (!isGroupAdmins) {
                                         samu330.updatePresence(from, Presence.composing)
@@ -578,7 +579,7 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 					}        
 				}      
 			}
-			if (isGroup && isBotGroupAdmins && isAntiMedia && !soyYoxd) {
+			if (isGroup && isBotGroupAdmins && isAntiMedia && !botNumber) {
 				if (isMedia && sam.message.videoMessage) {
                                         if (!isGroupAdmins) {
                                         samu330.updatePresence(from, Presence.composing)
@@ -775,7 +776,7 @@ let d = new Date
 				var num = sam.participant
 				foto = fs.readFileSync('./src/help.jpg')
 				fakee = fs.readFileSync('./src/fake.jpg')
-				let bateryNow = global.batrei[global.batrei.length - 1]
+				batreiNow = global.batrei[global.batrei.length - 1]
   samu330.updatePresence(from, Presence.recording)
   if (!isRegister) return reply(mess.only.daftarB)
   uptime = process.uptime()
@@ -793,7 +794,7 @@ Fecha: ${calender}
 ٌ؞${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
 𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
 ⍣ *BOT INFO* ⍣
-${samu}◦ 🔋Nivel de bateria:${samu} *${bateryNow}*
+${samu}◦ 🔋Nivel de bateria:${samu} *${batreiNow}%*
 ${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
 ${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
 ${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
@@ -839,14 +840,18 @@ Para saber y verificar si el bot esta activo.
  ********************************
 ${bodyM} ${prefix}imagen *(Busca imagenes de pinterest)*
 ${bodyM} ${prefix}anime
+${bodyM} ${prefix}google
+${bodyM} ${prefix}donaldtrump
 ${bodyM} ${prefix}queanime
 ${bodyM} ${prefix}url2img
 ${bodyM} ${prefix}tourl *(Etiqueta una imagen)*
 ${bodyM} ${prefix}getpic @participante
 ${bodyM} ${prefix}ss _(Link)_ *(Captura de pantalla de un link)*
 ${bodyM} ${prefix}wp
+${bodyM} ${prefix}wpsearch _(Busca fondos de pantalla)_
 ${bodyM} ${prefix}loli
 ${bodyM} ${prefix}neko
+${bodyM} ${prefix}dorking
 ${bodyM} ${prefix}twit
 ${bodyM} ${prefix}cyberpunk
 ${bodyM} ${prefix}letra *(Letra de una cancion)*
@@ -857,7 +862,7 @@ ${bodyM} ${prefix}acordes *(Acordes de una cancion)*
 }
   }
   samu330.sendMessage(from, Menum, text, {
-	  quoted: fakeProduct})              
+	  quoted: ftoko})              
   break
 
 case 'menu2':
@@ -873,9 +878,12 @@ text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li
 ${bodyM} ${prefix}sticker *(Imagen, video o gif)*
 ${bodyM} ${prefix}sticker nobg *(Etiqueta una foto para crear un sticker sin fondo)*
 ${bodyM} ${prefix}autostick
+${bodyM} ${prefix}circle
 ${bodyM} ${prefix}toimg
 ${bodyM} ${prefix}attp
 ${bodyM} ${prefix}ttp 
+${bodyM} ${prefix}emoji
+${bodyM} ${prefix}takestick
 `,
 	contextInfo: {
   mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
@@ -904,11 +912,16 @@ ${bodyM} ${samu}${prefix}antibad${samu}
 ${bodyM} ${samu}${prefix}autost${samu}
 ${bodyM} ${samu}${prefix}antidelete${samu}
 ${bodyM} ${prefix}+18 1/0
+
 *Para que el bot entre a tu grupo, usa el siguiente comando:*
 	${prefix}entrabot *(Link del grupo)*
+
 ${bodyM} ${prefix}abrir
 ${bodyM} ${prefix}cerrar
 ${bodyM} ${prefix}leave
+${bodyM} ${prefix}tagstick
+${bodyM} ${prefix}hidetag
+${bodyM} ${prefix}all
 ${bodyM} ${prefix}setdesc
 ${bodyM} ${prefix}setname
 ${bodyM} ${prefix}adminlist
@@ -971,6 +984,7 @@ text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li
  ********************************
 ${bodyM} ${prefix}voz *(Codigo de idioma)* *(Texto)* _Para ver idiomas compatibles, usa el comando_ *idiomas*
 ${bodyM} ${prefix}block
+${bodyM} ${prefix}translate *(idioma a traducir = es, en, id...)*
 ${bodyM} ${prefix}setimg
 ${bodyM} ${prefix}setimgmenu
 ${bodyM} ${prefix}tiktokstalk @usuario
@@ -981,10 +995,13 @@ ${bodyM} ${prefix}$ *(Ejecuta comandos en la terminal)*
 ${bodyM} ${prefix}cambiar *(Cambia el cuerpo del menú)*
 ${bodyM} ${prefix}trigger *(Etiqueta un audio)*
 ${bodyM} ${prefix}slow *(Etiqueta un audio)*
+${bodyM} ${prefix}imut *(Etiqueta un audio)*
+${bodyM} ${prefix}hode *(Etiqueta un audio)*
 ${bodyM} ${prefix}bass *(Etiqueta un audio)*
 ${bodyM} ${prefix}ardilla *(Etiqueta un audio)*
 ${bodyM} ${prefix}grave *(Etiqueta un audio)*
 ${bodyM} ${prefix}arti
+${bodyM} ${prefix}shortlink _(Acortador de links)
 ${bodyM} ${prefix}quote
 ${bodyM} ${prefix}pastebin *(genera link hacia el texto o link que escribas)*
 ${bodyM} ${prefix}abinario *(texto a codigo binario)* 010010
@@ -1030,6 +1047,8 @@ ${bodyM} ${prefix}lesbian
 ${bodyM} ${prefix}tetas
 ${bodyM} ${prefix}ass
 ${bodyM} ${prefix}pussy
+${bodyM} ${prefix}xnxx
+${bodyM} ${prefix}xnxxsearch
 `,
 	contextInfo: {
   mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
@@ -1062,7 +1081,6 @@ ${bodyM} ${prefix}sombra *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}pubg *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}madera *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}neon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}sombra *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}drawing *(Etiqueta una imagen)*
 ${bodyM} ${prefix}candy *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}rw *(Escribe un texto para crear logo)*
@@ -1071,15 +1089,12 @@ ${bodyM} ${prefix}madera *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}gr *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}ga *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}romance *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}madera *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}paperglass *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}narutobanner *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}mugflower *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}lovemss *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}candlemug *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}burnpaper *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}madera *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}madera *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}cg *(Etiqueta una imagen)*
 
 `,
@@ -1092,7 +1107,139 @@ quoted: fvid})
   break
 				
 				
+case 'loli':
+if (!isRegister) return reply(mess.only.daftarB)
+
+samu330.updatePresence(from, Presence.composing)
+uk = ["anime loli"]
+nk = uk[Math.floor(Math.random() * uk.length)]
+try {
+data = await fetchJson(`https://api.fdci.se/sosmed/rep.php?gambar=${nk}`, {
+  method: 'get'
+})
+reply(mess.wait)
+n = JSON.parse(JSON.stringify(data));
+nimek = n[Math.floor(Math.random() * n.length)];
+pok = await getBuffer(nimek)
+samu330.sendMessage(from, pok, image, {
+  quoted: sam, caption: `☕`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+})
+
+} catch {
+  reply(mess.ferr)
+}
+break	
+	
+case 'meme':
+  samu330.updatePresence(from, Presence.composing)
+  if (!isRegister) return reply(mess.only.daftarB)
+
+try {
+  beh = await fetchJson(`https://meme-api.herokuapp.com/gimme/memesmexico`)
+  pint = await getBuffer(`${beh.url}`)
+  reply(mess.wait)
+  samu330.sendMessage(from, pint, image, {
+	  quoted: fdoc, caption: `${beh.title}`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+  })
+  
+} catch {
+  reply(mess.ferr)
+}
+  break
 				
+				
+case 'mapa':
+  if (!isRegister) return reply(mess.only.daftarB)
+  
+  if (args.length < 1) return reply('Ingresa el nombre del área')
+  daerah = body.slice(5)
+  try {
+  data = await fetchJson(`https://mnazria.herokuapp.com/api/maps?search=${daerah}`)
+  reply(mess.wait)
+  hasil = await getBuffer(data.gambar)
+  samu330.sendMessage(from, hasil, image, {
+quoted: sam, caption: `Resultado *${daerah}i*`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+  })
+  
+  } catch {
+    reply(mess.ferr)
+  }
+  break
+			
+			
+case 'wa.me':
+case 'wame':
+  samu330.updatePresence(from, Presence.composing)
+  options = {
+text: `Link WhatsApp: *wa.me/${sender.split("@s.whatsapp.net")[0]}*\n*Or ( / )*\n*api.whatsapp.com/send?phone=${sender.split("@")[0]}*`,
+contextInfo: {
+  mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
+}
+  }
+  samu330.sendMessage(from, options, text, {
+quoted: sam
+  })
+  break
+				
+case 'verdad':
+const ttrth = trut[Math.floor(Math.random() * trut.length)]
+samu330.sendMessage(from, `‣ *Verdad*\n${ttrth}`, text, {
+  quoted: sam
+})
+break
+
+
+//*********
+  case 'notif':
+
+if (!isGroupAdmins) return reply(mess.only.admin)
+samu330.updatePresence(from, Presence.composing)
+if (!isRegister) return reply(mess.only.daftarB)
+if (!isGroup) return reply(mess.only.group)
+teks = `Notificación dada por @${sender.split("@")[0]}\n*Mensaje : ${body.slice(7)}*`
+group = await samu330.groupMetadata(from);
+member = group['participants']
+jids = [];
+member.map(async adm => {
+  jids.push(adm.id.replace('c.us', 's.whatsapp.net'));
+})
+options = {
+  text: teks,
+  contextInfo: {
+mentionedJid: jids, "forwardingScore": 9999, "isForwarded": true
+  },
+  quoted: sam
+}
+await samu330.sendMessage(from, options, text)
+break
+		
+case 'readmore':
+samu330.updatePresence(from, Presence.composing)
+if (!isRegister) return reply(mess.only.daftarB)
+
+if (args.length < 1) return reply(`Escribe el texto\nEjemplo : ${prefix}readmore te amo/rdido un perro?`)
+tels = body.slice(9)
+var teks1 = tels.split("/")[0];
+var teks2 = tels.split("/")[1];
+hasil = `${teks1}͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏${teks2}`
+samu330.sendMessage(from, hasil, text, {
+  quoted: sam
+})
+break
+				
+case 'setpic':
+
+if (!isGroup) return reply(mess.only.group)
+if (!isRegister) return reply(mess.only.daftarB)
+if (!isGroupAdmins) return reply(mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
+reply(mess.wait)
+const media = await samu330.downloadAndSaveMediaMessage(encmedia)
+await samu330.updateProfilePicture (from, media)
+reply('Se cambio la foto del grupo')
+break
+	
 				
 case 'reg':
 if (isRegister) return reply('Tu cuenta ya estaba verificada')
@@ -1122,7 +1269,20 @@ reply(hasil)
 tm = `verificación completa usa ${prefix}Menu para ver los comandos`
 reply(tm)
 break
+		
 				
+case 'tourl':
+ if (!isRegister) return reply(mess.only.userB)
+            var imgbb = require('imgbb-uploader')
+           if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
+           ger = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
+           reply(mess.wait)
+         owgi = await samu330.downloadAndSaveMediaMessage(ger)
+           anu = await imgbb('20a14861e4f7591f3dc52649cb07ae02', owgi)
+        teks = `${anu.display_url}`
+reply(teks)
+}
+break
 				
 				
 				case 'porno':
@@ -1137,7 +1297,30 @@ buffer = await getBuffer(`${porn.url}`)
 		quoted: fimg                                                       
 	})
   break
-			
+	
+case 'neko':
+if (!isRegister) return reply(mess.only.daftarB)
+
+samu330.updatePresence(from, Presence.composing)
+uk = ["anime neko"]
+nk = uk[Math.floor(Math.random() * uk.length)]
+try {
+data = await fetchJson(`https://api.fdci.se/sosmed/rep.php?gambar=${nk}`, {
+  method: 'get'
+})
+reply(mess.wait)
+n = JSON.parse(JSON.stringify(data));
+nimek = n[Math.floor(Math.random() * n.length)];
+pok = await getBuffer(nimek)
+samu330.sendMessage(from, pok, image, {
+  quoted: sam, caption: `☕`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+})
+
+} catch {
+  reply(mess.ferr)
+}
+break
+				
 case 'lesbian':
 if (!isGroup) return reply(mess.only.group)               
 if (!isNsfw) return reply(mess.nsfw)
@@ -1488,7 +1671,7 @@ case 'antidelete':
 					} else if (!isGroup) {
 						samu330.sendMessage(from, `Para utilizar en Priv: *${prefix}antidelete 0*`, MessageType.text)
 					}
-				} else if (argz[1] == 'ctmati') {
+				} else if (argz[1] == '0') {
 					if (!isGroup) {
 						dataCtRevoke.data = false
 						fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke, null, 2))
@@ -1503,6 +1686,223 @@ case 'antidelete':
 				const linkgc = await samu330.groupInviteCode(from)
 				samu330.sendMessage(from, `https://chat.whatsapp.com/${linkgc}`, text, {quoted:fdoc})
 				break
+				
+				
+				
+		case 'shortlink':
+		    if (!isRegister) return reply(mess.only.daftarB)
+		    if (!isUrl) return reply('Porfavor envia especificamente un link')
+                    if (args.length <0) return reply(`Ejemplo: ${prefix}shortlink https://bongo.cat`)
+                    ini_link = args.join(' ')
+                    ini_buffer = await fetchJson(`https://api.lolhuman.xyz/api/shortlink?apikey=BandNao71&url=${ini_link}`)
+                    reply(ini_buffer.result)
+                    break
+				
+			
+		case 'stalkig':
+                    if (args.length == 0) return reply(`Ejemplo: ${prefix + command} samu.330`)
+                    username = args.join(' ')
+                    ini_result = await fetchJson(`https://api.lolhuman.xyz/api/stalkig/${username}?apikey=BandNao71`)
+                    ini_result = ini_result.result
+                    ini_buffer = await getBuffer(ini_result.photo_profile)
+                    ini_txt = `Username : ${ini_result.username}\n`
+                    ini_txt += `Full Name : ${ini_result.fullname}\n`
+                    ini_txt += `Posts : ${ini_result.posts}\n`
+                    ini_txt += `Followers : ${ini_result.followers}\n`
+                    ini_txt += `Following : ${ini_result.following}\n`
+                    ini_txt += `Bio : ${ini_result.bio}`
+                    samu330.sendMessage(from, ini_buffer, image, { caption: ini_txt })
+                    break
+				
+		case 'donaldtrump':
+                    if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Samu330 y Perry`)
+                    ini_txt = args.join(' ')
+                    ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/tweettrump?apikey=BandNao71&text=${ini_txt}`)
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko })
+                    break
+				
+		case 'emoji':
+                    if (args.length == 0) return reply(`Ejemplo: ${prefix + command} 😭`)
+                    emoji = args[0]
+                    try {
+                        emoji = encodeURIComponent(emoji[0])
+                    } catch {
+                        emoji = encodeURIComponent(emoji)
+                    }
+                    ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/smoji/${emoji}?apikey=BandNao71`)
+                    await samu330.sendMessage(from, ini_buffer, sticker, { quoted: ftoko })
+                    break
+				
+		case 'takestick':
+                    if ((isMedia && !sam.message.videoMessage || isQuotedSticker)) {
+                        if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
+                        const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+                        filePath = await samu330.downloadAndSaveMediaMessage(encmedia, filename = getRandom());
+                        file_name = getRandom(".webp")
+                        ini_txt = args.join(" ").split("|")
+                        request({
+                            url: `https://api.lolhuman.xyz/api/convert/towebpauthor?apikey=BandNao71`,
+                            method: 'POST',
+                            formData: {
+                                "img": fs.createReadStream(filePath),
+                                "package": ini_txt[0],
+                                "author": ini_txt[1]
+                            },
+                            encoding: "binary"
+                        }, function(error, response, body) {
+                            fs.unlinkSync(filePath)
+                            fs.writeFileSync(file_name, body, "binary")
+                            ini_buff = fs.readFileSync(file_name)
+                            samu330.sendMessage(from, ini_buff, sticker, { quoted: sam }).then(() => {
+                                fs.unlinkSync(file_name)
+                            })
+                        });
+                    } else {
+                        reply(`Etiqueta un stiker con el comando`)
+                    }
+                    break
+				
+		case 's':
+                    if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
+                        const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+                        filePath = await samu330.downloadAndSaveMediaMessage(encmedia)
+                        file_name = getRandom('.webp')
+                        request({
+                            url: `https://api.lolhuman.xyz/api/convert/towebp?apikey=BandNao71`,
+                            method: 'POST',
+                            formData: {
+                                "img": fs.createReadStream(filePath),
+				"package": 'Samu330',
+                                "author": 'Sam y perry'
+                            },
+                            encoding: "binary"
+                        }, function(error, response, body) {
+                            fs.unlinkSync(filePath)
+                            fs.writeFileSync(file_name, body, "binary")
+                            ini_buff = fs.readFileSync(file_name)
+                            samu330.sendMessage(from, ini_buff, sticker, { quoted: ftoko }).then(() => {
+                                fs.unlinkSync(file_name)
+                            })
+                        });
+                    } else {
+                        reply(`Envía una foto con el comando: ${prefix}sticker o etiqueta una imagen, video o gif ya enviados`)
+                    }
+                    break
+				
+		case 'google':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Gatitos`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/gsearch?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    ini_txt = 'Google Search : \n'
+                    for (var x of get_result) {
+                        ini_txt += `Title : ${x.title}\n`
+                        ini_txt += `Link : ${x.link}\n`
+                        ini_txt += `Desc : ${x.desc}\n\n`
+                    }
+                    reply(ini_txt)
+                    break
+				
+		case 'wpsearch':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} gatos`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/wallpaper?apikey=BandNao71&query=${query}`)
+                    ini_buffer = await getBuffer(get_result.result)
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko })
+                    break
+				
+		case 'translate':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} es Hi bro`)
+                    idioma = args[0]
+                    args.shift()
+                    ini_txt = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/translate/auto/${idioma}?apikey=BandNao71&text=${ini_txt}`)
+                    get_result = get_result.result
+                    init_txt = `From : ${get_result.from}\n`
+                    init_txt += `To : ${get_result.to}\n`
+                    init_txt += `Original : ${get_result.original}\n`
+                    init_txt += `Translated : ${get_result.translated}\n`
+                    init_txt += `Pronunciation : ${get_result.pronunciation}\n`
+                    reply(init_txt)
+                    break
+			
+		case 'acordes':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Circulo de amor`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/chord?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    ini_txt = `Title : ${get_result.title}\n`
+                    ini_txt += `Chord : \n${get_result.chord}`
+                    reply(ini_txt)
+                    break
+				
+		case 'xnxx':
+				  if (!isNsfw) return reply(mess.nsfw)
+                    if (args.length == 0) return reply(`Example: ${prefix + command} https://www.xnxx.com/video-uy5a73b/mom_is_horny_-_brooklyn`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/xnxx?apikey=BandNao71&url=${query}`)
+                    get_result = get_result.result
+                    ini_txt = `Title : ${get_result.title}\n`
+                    ini_txt += `Duration : ${get_result.duration}\n`
+                    ini_txt += `View : ${get_result.view}\n`
+                    ini_txt += `Rating : ${get_result.rating}\n`
+                    ini_txt += `Like : ${get_result.like}\n`
+                    ini_txt += `Dislike : ${get_result.dislike}\n`
+                    ini_txt += `Comment : ${get_result.comment}\n`
+                    ini_txt += `Tag : ${get_result.tag.join(", ")}\n`
+                    ini_txt += `Description : ${get_result.description}\n`
+                    ini_txt += "Link : \n"
+                    ini_link = get_result.link
+                    for (var x of ini_link) {
+                        ini_txt += `${x.type} - ${x.link}\n\n`
+                    }
+                    thumbnail = await getBuffer(get_result.thumbnail)
+                    await samu330.sendMessage(from, thumbnail, image, { quoted: ftoko, caption: ini_txt })
+                    break	
+			
+		 case 'xnxxsearch':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Japanese`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/xnxxsearch?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    ini_txt = ""
+                    for (var x of get_result) {
+                        ini_txt += `Title : ${x.title}\n`
+                        ini_txt += `Views : ${x.views}\n`
+                        ini_txt += `Duration : ${x.duration}\n`
+                        ini_txt += `Uploader : ${x.uploader}\n`
+                        ini_txt += `Link : ${x.link}\n`
+                        ini_txt += `Thumbnail : ${x.thumbnail}\n\n`
+                    }
+                    reply(ini_txt)
+                    break
+				
+		case 'tagstick':
+                    if ((isMedia && !sam.message.videoMessage || isQuotedSticker) && args.length == 0) {
+                        const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(lol).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+                        filePath = await lolhuman.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+                        var value = args.join(" ")
+                        var group = await lolhuman.groupMetadata(from)
+                        var member = group['participants']
+                        var mem = []
+                        member.map(async adm => {
+                            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+                        })
+                        var options = {
+                            contextInfo: { mentionedJid: mem },
+                            quoted: sam
+                        }
+                        ini_buffer = fs.readFileSync(filePath)
+                        await samu330.sendMessage(from, ini_buffer, sticker, options)
+                        fs.unlinkSync(filePath)
+                    } else {
+                        reply(`Etiqueta un sticker con el comando`)
+                    }
+                    break
+				
+				
+				
+				
 	case 'entrabot':
 samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
@@ -1535,7 +1935,49 @@ mimetype: 'audio/mp4', ptt : true, duration :-999999999999999, filename: `${anu.
     reply(mess.ferr)
   }
   break
-			
+	
+				
+case 'play2':
+  if (!isRegister) return reply(mess.only.daftarB)
+  if (args.length < 1) return reply('Escribe el nombre')
+  reply(mess.wait)
+  play = body.slice(7)
+  try {
+  anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
+	  if (anu.error) return reply(anu.error)
+	  infomp3 = `*Audio*\n‣ *Nombre* : ${anu.result.title}\n‣ *Fuente* : ${anu.result.source}\n‣ *Tamaño* : ${anu.result.size}\n\n_El audio se esta mandando, si no llega descargue por el link_\n‣ *Link* : ${anu.result.url_audio}                                                                                                `
+  buffer = await getBuffer(anu.result.thumbnail)
+  lagu = await getBuffer(anu.result.url_audio)
+  samu330.sendMessage(from, buffer, image, {
+quoted: fvid, caption: infomp3, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+  })
+  samu330.sendMessage(from, lagu, audio, {
+mimetype: 'audio/mp4', duration :-999999999999999, filename: `${anu.result.title}.mp3`, quoted: fvid  
+  })                                                                                                                                                                                                                  } catch {                                                                                                   reply(mess.ferr)
+  }                                                        
+break
+				
+				
+case 'playvid':
+  if (!isRegister) return reply(mess.only.daftarB)
+  if (args.length < 1) return reply('Escribe el nombre')
+  reply(mess.wait)
+  play = body.slice(8)
+  try {
+  sam330 = await fetchJson(`https://videfikri.com/api/playmp4/?query=${play}`)
+	  if (sam330.error) return reply(sam330.error)
+	  infomp3 = `*Audio*\n◦ *Nombre* : ${sam330.result.judul}\n◦ *Fuente* : ${sam330.result.source}\n◦ *Tamaño* : ${sam330.result.size}\n\n_El video se esta mandando, si no llega descargue por el link_\n◦ *Link* : ${sam330.result.urlVideo}                                                                                                `
+  buffer = await getBuffer(sam330.result.imgUrl)
+  perry = await getBuffer(sam330.result.urlVideo)
+  samu330.sendMessage(from, buffer, image, {
+quoted: fvid, caption: infomp3, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+  })
+  samu330.sendMessage(from, perry, video, {
+mimetype: 'video/mp4', duration :-999999999999999, filename: `${sam330.result.judul}.mp4`, quoted: fvid  
+  })                                                                                                                                                                                                                  } catch {                                                                                                   reply(mess.ferr)
+  }                                                        
+break
+				
 
 case 'tiktok2':
  reply('wait')
@@ -1566,7 +2008,7 @@ case 'letras':
   if (!isRegister) return reply(mess.only.daftarB)
   
   samu330.updatePresence(from, Presence.composing)
-  tels = body.slice(7)
+  tels = args.join(' ')
   try {
   anu = await fetchJson(`http://scrap.terhambar.com/lirik?word=${tels}`, {
 method: 'get'
@@ -1928,9 +2370,21 @@ break
 					break
 				
 			case 'setprefix':
-				prefix = args.join(' ')
-				samu330.sendMessage(from, `El prefijo a cambiado a : ${prefix}`, text, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-				break
+					if (args.length < 1) return
+					if (!isOwner) return reply(mess.only.ownerB)
+				  prefix = args[0]
+					samu.prefix = prefix
+					fs.writeFileSync('./data/settings.json', JSON.stringify(up, null, '\t'))
+					reply(`Prefijo cambiado : ${prefix}`)
+					break
+			case 'setown':
+					if (args.length < 1) return
+					if (!isOwner) return reply(mess.only.ownerB)
+				  own = args[0]
+					samu.prefix = own
+					fs.writeFileSync('./data/settings.json', JSON.stringify(up, null, '\t'))
+					reply(`El owner del bot ahora es : ${own}`)
+					break
 			case 'settarget':
 				if (args.length < 1) return
 				targetprivate = args[0]
@@ -1992,7 +2446,7 @@ break
 						reply('Anuncio dado')
 					}
 					break
-			case 'add':
+			case 'añadir':
 				if (!isGroup) return reply(mess.only.group)
 				if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 				if (args.length < 1) return reply('Y el numero?')
@@ -2005,6 +2459,26 @@ break
 					return samu330.sendMessage(from, 'Modo privado dice:v', MessageType.text)
 				}
 				break
+				
+				case 'kick':
+				case 'eliminar':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply('Tag target')
+					mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						teks = 'Orden recibida :\n'
+						for (let _ of mentioned) {
+							teks += `@${_.split('@')[0]}\n`
+						}
+						mentions(teks, mentioned, true)
+						samu330.groupRemove(from, mentioned)
+					} else {
+						mentions(`Se elimino a : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						samu330.groupRemove(from, mentioned)
+					}
+					break
 			case 'promote':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -2633,8 +3107,33 @@ break
 					break
 					
 				
+case 'ger':
+ if (!isRegister) return reply(mess.only.userB)
+            var imgbb = require('imgbb-uploader')
+           if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
+           ger = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
+           reply(mess.wait)
+         owgi = await samu330.downloadAndSaveMediaMessage(ger)
+           anu = await imgbb('20a14861e4f7591f3dc52649cb07ae02', owgi)
+        teks = `${anu.display_url}`
+         ranp = getRandom('.gif')
+        rano = getRandom('.webp')
+        anu1 = `https://some-random-api.ml/canvas/triggered?avatar=${teks}`
+       exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                                                fs.unlinkSync(ranp)
+                                                if (err) return reply(mess.error.stick)
+                                                nobg = fs.readFileSync(rano)
+                                                samu330.sendMessage(from, nobg, sticker, {quoted: ftoko})
+                                                fs.unlinkSync(rano)
+                                        })
+                                    
+                                             } else {
+                                                 reply('Se nececita una foto!')
+                                          }
+                                             break
 				
-				case 'wanted':
+				
+case 'wanted':
 var imgbb = require('imgbb-uploader')
 if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
@@ -2644,6 +3143,7 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   hehe = await getBuffer(`https://videfikri.com/api/textmaker/wanted/?urlgbr=${anu.display_url}&text1=Di Cari Orang Gila&text2=Hub : 08812904283`)
  samu330.sendMessage(from, hehe, image, {quoted: fimg, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 } else {
+	reply('Manda la foto!');
 }
 break
 case 'draw':
@@ -2656,7 +3156,7 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   hedhe = await getBuffer(`https://videfikri.com/api/textmaker/pencildrawing/?urlgbr=${anu.display_url}`)
  samu330.sendMessage(from, hedhe, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 } else {
-  reply('reply imagenya kak!')
+  reply('Etiqueta una imagen!')
 }
 break
 case 'ocean':
@@ -2690,7 +3190,7 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
 }
 break
 
-case 'togif':
+				case 'togif':
 					ger = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
 					var imgbb = require('imgbb-uploader')
 					reply(mess.wait)
@@ -2716,8 +3216,7 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
 break
 
 case 'circle':
-  
-var imgbb = require('imgbb-uploader')
+  var imgbb = require('imgbb-uploader')
 if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
   reply(mess.wait)
@@ -2730,6 +3229,16 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
 }
 break
  
+				case 'lluvia':
+
+if (args.length < 1) return reply(`ejemplo: ${prefix}lluvia (link de imagen)`)
+sdow = args.join(' ')
+reply(mess.wait)
+shan = await getBuffer(`https://videfikri.com/api/textmaker/raindrop/?urlgbr=${sdow}`)
+samu330.sendMessage(from, shan, image, {quoted: fdoc, contextInfo: {"forwardingScore": 999, "isForwarded"
+: true}})
+				break
+				
 case 'burnpaper':
 if (args.length < 1) return reply(`Ejemplo: ${prefix}burnpaper samu330`)
 todi = args.join(' ')
@@ -2739,7 +3248,7 @@ samu330.sendMessage(from, pper, image, {quoted: ftoko, contextInfo: {"forwarding
 //
 break
 case 'neon':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}glowneon samu330`)
+if (args.length < 1) return reply(`Ejemplo: ${prefix}neon samu330`)
 tekas = args.join(' ')
 reply(mess.wait)
 glown = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tekas}`)
@@ -2835,7 +3344,8 @@ shan = await getBuffer(`https://api-rull.herokuapp.com/api/Photooxy/glowrainbow?
 samu330.sendMessage(from, shan, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 //
 break
-
+				
+case 'glitch':
 if (args.length < 1) return reply(`Ejemplo: ${prefix}glitch samu330|bot`)
 gl = `${args.join(' ')}`
 gel1 = gl.split("|")[0];
@@ -2853,6 +3363,9 @@ gl = `${args.join(' ')}`
 gel1 = gl.split("|")[0];
 gel2 = gl.split("|")[1];
 gel3 = gl.split("|")[2];
+if (!gel1) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
+if (!gel2) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
+if (!gel3) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
 reply(mess.wait)
 litsh = await getBuffer(`https://api-rull.herokuapp.com/api/photofunia/retro-wave?text1=${gel1}&text2=${gel2}&text3=${gel3}&font=2`, {method: 'get'})
 samu330.sendMessage(from, litsh, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2883,7 +3396,7 @@ case 'candy':
 if (args.length < 1) return reply(`Ejemplo: ${prefix}candy samu330`)
 teks = args.join(' ')
 reply(mess.wait)
-prmen = await getBuffer(`https://videfikri.com/api/textmaker/paperonglass/?text=${teks}`)
+prmen = await getBuffer(`https://videfikri.com/api/textmaker/sweetcandy/?text=${teks}`)
 samu330.sendMessage(from, prmen, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 //
 break
@@ -2927,6 +3440,7 @@ case 'readallchat':
 break
                                       
 				       case 'getpic':
+					if (!isGroup) return reply(mess.only.group)
 					if (args.length < 1) return 
 					if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply('NyanBot')
 					mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
