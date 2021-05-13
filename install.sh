@@ -21,9 +21,10 @@ echo -e '\e[1;33m
                                     \/__/ 
 \e[1;36AJUSTA LA PANTALLA PARA QUE LAS LETRAS DE ARRIBA SE PUEDAN VER. PELLIZCA PARA MIMINIZAR:v\e[0m
 \e[0m'
-echo -e  '\e[1;36mBuscame en \e[4;34mG\e[0m\e[4;31mo\e[0m\e[4;33mo\e[0m\e[4;34mg\e[0m\e[4;32ml\e[0m\e[4;31me\e[0m\e[1;36m Como \e[4;32;41mSamu330\033[0m'
-sleep 10.0
-
+sleep 5.0
+echo -e  '\e[1;36mBuscame en \e[4;34mG\e[0m\e[4;31mo\e[0m\e[4;33mo\e[0m\e[4;34mg\e[0m\e[4;32ml\e[0m\e[4;31me\e[0m\e[1;36m y en \e[1;30;47mY\e[0m\e[1;30;47mo\e[0m\e[1;30;47mu\e[0m\e[1;37;41mT\e[0m\e[0m\e[1;37;41mu\e[0m\e[0m\e[1;37;41mb\e[0m\e[0m\e[1;37;41me\e[0m
+\e[1;36mComo: \e[4;32;41mSamu330\033[0m'
+sleep 5.0
 echo -e '\033[0m\033[1;32m
      _             _                     _   _                             _         
     / \      ___  | |_   _   _    __ _  | | (_)  ____   __ _   _ __     __| |   ___  
