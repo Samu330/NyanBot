@@ -64,6 +64,8 @@ const speed = require('performance-now')
 const crypto = require('crypto')
 const simi = JSON.parse(fs.readFileSync('./src/simi.json'))
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
+const ban = JSON.parse(fs.readFileSync('./src/banned.json'))
+const premium = JSON.parse(fs.readFileSync('./src/premium.json'))
 
 //Settings
 publik = true
@@ -370,6 +372,8 @@ samu330.on('message-new', async (sam) => {
 			success: '✔️ 𝙎𝙐𝙎𝙎𝙀𝙎 ✔️',
 			nsfw: '𝗟𝗼 𝘀𝗶𝗲𝗻𝘁𝗼 𝗽𝗲𝗿𝗼 𝗻𝗼 𝗽𝘂𝗲𝗱𝗼 𝗲𝗷𝗲𝗰𝘂𝘁𝗮𝗿 𝗲𝘀𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼, 𝗲𝘀𝘁𝗲 𝗴𝗿𝘂𝗽𝗼 𝗻𝗼 𝗽𝗲𝗿𝗺𝗶𝘁𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 +𝟭𝟴\n*PARA ACTIVAR LOS COMANDOS +18, USA:* .+18 1', 
 			ferr: 'Intentalo de nuevo mas tarde',
+			ban: '⚠ *USTED ES UN USUARIO BANEADO, ESO QUIERE DECIR QUE NO PUEDE USAR EL BOT* ⚠',
+			prem: '🤴🏻 _*LO SIENTO, ESTE COMANDO SOLO PUEDE SER UTILIZADO POR USUARIOS*_ ```PREMIUM``` 🐱‍💻',
 			error: {
 				stick: '[❗] 𝙀𝙍𝙍𝙊𝙍 intentalo de nuevo, da error a la primera:D  ❌',
 				Iv: '❌ Link invalido ❌'
@@ -377,7 +381,7 @@ samu330.on('message-new', async (sam) => {
 			only: {
     group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
     ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
-    ownerB: `[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: wa.me/+529984907794, Habla con el para que pueda cambiar el numero del owner`,
+    ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: wa.me/+529984907794, Habla con el para que pueda cambiar el numero del owner en este bot',
     admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
     Badmin: '[❗] ¡Este comando solo se puede usar cuando el bot es administrador! ❌',
     daftarB: `Hola, usa *${prefix}reg* para poder usar el bot`
@@ -408,6 +412,8 @@ samu330.on('message-new', async (sam) => {
 		const isWelkom = isGroup ? welkom.includes(from) : false
 		const isOwner = ownerNumber.includes(sender)
 		const isRegister = checkRegisteredUser(sender)
+		const isBanned = ban.includes(sender)
+		const isPrem = premium.includes(sender)
 		const conts = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
 		const pushname = sam.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
 		const isUrl = (url) => {
@@ -501,7 +507,7 @@ const fileurl = async(link, type) => {
                         "imageMessage": {
                             "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
                             "mimetype": "image/jpeg",
-                            "caption": `🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎\n${args[0]}`,
+                            "caption": `🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎\n${args.join(' ')}`,
                             "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
                             "fileLength": "28777",
                             "height": 1080,
@@ -526,6 +532,14 @@ const fileurl = async(link, type) => {
 		const mentions = (teks, memberr, id) => {
 			(id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : samu330.sendMessage(from, teks.trim(), extendedText, { quoted: ftoko, contextInfo: { "mentionedJid": memberr } })
 		}
+
+		const sendSticker = (from, filename, sam) => {
+	samu330.sendMessage(from, filename, MessageType.sticker, {quoted: sam})
+}
+		const sendKontak = (from, nomor, nama) => {
+	const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
+	samu330.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
+}
 
 		
 		
@@ -1446,6 +1460,37 @@ samu330.sendMessage(from, buffer, image, {
 				
 				
 				
+			case 'robar':
+				if (!isPrem) return reply(mess.prem)
+				if (!isQuotedSticker) return reply(from, `Etiqueta un sticker con el comando *${prefix}robar nomre|autor*`, sam)
+				const pembawm = body.slice(11)
+				if (!pembawm.includes('|')) return reply(from, `Etiqueta un sticker con el comando *${prefix}robar nomre|autorr*`, sam)
+				const encmedia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+				const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
+				const packname = pembawm.split('|')[0]
+				const author = pembawm.split('|')[1]
+				exif.create(packname, author, `takestick_${sender}`)
+				exec(`webpmux -set exif ./sticker/takestick_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
+					if (error) return reply('Intenta de nuevo')
+					samu330.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)
+					fs.unlinkSync(media)
+					fs.unlinkSync(`./sticker/takestick_${sender}.exif`)
+				})
+				break
+				
+				
+				case 'contacto':
+				argz = args.split('|')
+				if (!argz) return aqul.reply(from, `Forma de uso ${prefix}contacto @tag _*(Para uso en grupos)*_ o...\nnumero|nombre `, sam)
+				if (sam.message.extendedTextMessage != undefined){
+                    mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
+					samu330.sendKontak(from, mentioned[0].split('@')[0], argz[1])
+				} else {
+					samu330.sendKontak(from, argz[0], argz[1])
+				}
+				break
+				
+				
 				
 				
 				
@@ -1799,31 +1844,143 @@ case 'antidelete':
                     }
                     break
 				
-		case 's':
-                    if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
-                        const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-                        filePath = await samu330.downloadAndSaveMediaMessage(encmedia)
-                        file_name = getRandom('.webp')
-                        request({
-                            url: `https://api.lolhuman.xyz/api/convert/towebp?apikey=BandNao71`,
-                            method: 'POST',
-                            formData: {
-                                "img": fs.createReadStream(filePath),
-				"package": 'Samu330',
-                                "author": 'Sam y perry'
-                            },
-                            encoding: "binary"
-                        }, function(error, response, body) {
-                            fs.unlinkSync(filePath)
-                            fs.writeFileSync(file_name, body, "binary")
-                            ini_buff = fs.readFileSync(file_name)
-                            samu330.sendMessage(from, ini_buff, sticker, { quoted: ftoko }).then(() => {
-                                fs.unlinkSync(file_name)
-                            })
-                        });
-                    } else {
-                        reply(`Envía una foto con el comando: ${prefix}sticker o etiqueta una imagen, video o gif ya enviados`)
-                    }
+		case 'blackpink':
+                case 'neon':
+                case 'greenneon':
+                case 'advanceglow':
+                case 'futureneon':
+                case 'sandwriting':
+                case 'sandsummer':
+                case 'sandengraved':
+                case 'metaldark':
+                case 'neonlight':
+                case 'holographic':
+                case 'text1917':
+                case 'minion':
+                case 'deluxesilver':
+                case 'newyearcard':
+                case 'bloodfrosted':
+                case 'halloween':
+                case 'jokerlogo':
+                case 'fireworksparkle':
+                case 'natureleaves':
+                case 'bokeh':
+                case 'toxic':
+                case 'strawberry':
+                case 'box3d':
+                case 'roadwarning':
+                case 'breakwall':
+                case 'icecold':
+                case 'luxury':
+                case 'cloud':
+                case 'summersand':
+                case 'horrorblood':
+                case 'thunder':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
+                    ini_txt = args.join(" ")
+                    getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
+                        samu330.sendMessage(from, gambar, image, { quoted: fgc })
+                    })
+                    break
+                case 'pornhub':
+                case 'glitch':
+                case 'avenger':
+                case 'space':
+                case 'ninjalogo':
+                case 'marvelstudio':
+                case 'lionlogo':
+                case 'wolflogo':
+                case 'steel3d':
+                case 'wallgravity':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
+                    a = args.join(' ')
+                    txt1 = a.split("|")[0];
+                    txt2 = a.split("|")[1];
+                    getBuffer(`https://api.lolhuman.xyz/api/textprome2/${command}?apikey=BandNao71&text1=${txt1}&text2=${txt2}`).then((gambar) => {
+                        samu330.sendMessage(from, gambar, image, { quoted: lol })
+                    })
+                    break
+
+                    // Photo Oxy //
+                case 'sombra':
+                case 'cup':
+                case 'cup1':
+                case 'romance':
+                case 'smoke':
+                case 'burnpaper':
+                case 'lovemessage':
+                case 'undergrass':
+                case 'love':
+                case 'cafe':
+                case 'woodheart':
+                case 'woodenboard':
+                case 'summer3d':
+                case 'wolfmetal':
+                case 'nature3d':
+                case 'underwater':
+                case 'golderrose':
+                case 'summernature':
+                case 'letterleaves':
+                case 'glowingneon':
+                case 'fallleaves':
+                case 'flamming':
+                case 'hp':
+                case 'carvedwood':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
+                    ini_txt = args.join(' ')
+                    getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
+                        samu330.sendMessage(from, gambar, image, { quoted: fgc })
+                    })
+                    break
+                case 'tiktok':
+                case 'arcade8bit':
+                case 'battlefield4':
+                case 'pubg':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
+		    a = args.join(' ')
+                    txt1 = a.split("|")[0];
+                    txt2 = a.split("|")[1];
+                    getBuffer(`https://api.lolhuman.xyz/api/photooxy2/${command}?apikey=BandNao71&text1=${txt1}&text2=${txt2}`).then((gambar) => {
+                        samu330.sendMessage(from, gambar, image, { quoted: fgc })
+                    })
+                    break
+
+                    // Ephoto 360 //
+                case 'wetglass':
+                case 'multicolor3d':
+                case 'watercolor':
+                case 'luxurygold':
+                case 'galaxywallpaper':
+                case 'lighttext':
+                case 'beautifulflower':
+                case 'puppycute':
+                case 'royaltext':
+                case 'heartshaped':
+                case 'birthdaycake':
+                case 'galaxystyle':
+                case 'hologram3d':
+                case 'greenneon':
+                case 'glossychrome':
+                case 'greenbush':
+                case 'metallogo':
+                case 'noeltext':
+                case 'glittergold':
+                case 'textcake':
+                case 'starsnight':
+                case 'wooden3d':
+                case 'textbyname':
+                case 'writegalacy':
+                case 'galaxybat':
+                case 'snow3d':
+                case 'birthdayday':
+                case 'goldplaybutton':
+                case 'silverplaybutton':
+                case 'freefire':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Sam y Perry`)
+                    ini_txt = args.join(' ')
+                    getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
+                        samu330.sendMessage(from, gambar, image, { quoted: fgc })
+                    })
                     break
 				
 		case 'google':
@@ -2451,15 +2608,51 @@ break
 				reply('TODOS LOS CHATS LIMPIOS')
 				break
 				case 'block':
-					samu330.updatePresence(from, Presence.composing) 
-				    samu330.blockUser (`${args.join(' ')}@c.us`, "add")
-					samu330.sendMessage(from, `Bloqueado por pto`, text)
-				break
+  samu330.updatePresence(from, Presence.composing)
+  if (!isGroup) return reply(mess.only.group)
+  if (!isOwner) return reply(mess.only.ownerB)
+  samu330.blockUser (`${body.slice(8)}@c.us`, "add")
+  samu330.sendMessage(from, `Usuario bloqueado`, text, {
+quoted: sam
+  })
+  break
 				case 'unblock':
-					samu330.updatePresence(from, Presence.composing) 
-					samu330.blockUser (`${args.join(' ')}@c.us`, "remove")
-					samu330.sendMessage(from, `desloqueado para que deje de llorar`, text)
-				break 
+  if (!isGroup) return reply(mess.only.group)
+  if (!isOwner) return reply(mess.only.ownerB)
+  samu330.blockUser (`${body.slice(9)}@c.us`, "remove")
+  samu330.sendMessage(from, `Usuario desbloqueado`, text)
+  break
+				
+				case 'ban':
+					if (!isOwner) return reply(mess.only.ownerB)
+					bnnd = body.slice(6)
+					ban.push(`${bnnd}@s.whatsapp.net`)
+					fs.writeFileSync('./src/banned.json', JSON.stringify(ban))
+					reply(`El usuario wa.me/${bnnd} a sido baneado !`)
+					break
+				case 'unban':
+					if (!isOwner) return reply(mess.only.ownerB)
+					bnnd = body.slice(8)
+					ban.splice(`${bnnd}@s.whatsapp.net`, 1)
+					fs.writeFileSync('./src/banned.json', JSON.stringify(ban))
+					reply(`El usuario *wa.me/${bnnd}* a sido desbaneado!`)
+					break
+				
+				case 'addprem':
+					if (!isOwner) return reply(mess.only.ownerB)
+					addp = body.slice(10)
+					premium.push(`${addp}@s.whatsapp.net`)
+					fs.writeFileSync('./src/premium.json', JSON.stringify(premium))
+					reply(`El usuario *wa.me/${addp}* ahora es _*premium*_`)
+					break
+				case 'dellprem':
+					if (!isOwner) return reply(mess.only.ownerB)
+					delp = body.slice(11)
+					premium.splice(`${delp}@s.whatsapp.net`, 1)
+					fs.writeFileSync('./src/premium.json', JSON.stringify(premium))
+					reply(`El usuario *wa.me/${delp}* ya no es premium _*premium*_`)
+					break	
+				
 			case 'leave':
 				if (!isGroup) return reply(mess.only.group)
 				samu330.samu330.leaveGroup(from, 'Nos vemos, de lugares mejores me an corrido🥱', MessageType.text)
