@@ -2,7 +2,7 @@
 clear
 echo -e '\e[1;33m
  ____                                         
-/\  _`\      \e[1;36mNyanBot By\e[0m                                 
+/\  _`\      \e[0m\e[1;36mNyanBot By\e[0m\e[1;33m                                 
 \ \,\L\_\      __       ___ ___     __  __    
  \/_\__ \    /`__`\   /` __` __`\  /\ \/\ \   
    /\ \L\ \ /\ \L\.\_ /\ \/\ \/\ \ \ \ \_\ \  
@@ -18,9 +18,8 @@ echo -e '\e[1;33m
    \ \_\ \ \____\ \ \_\  \ \_\  \/`____ \ 
     \/_/  \/____/  \/_/   \/_/   `/___/> \
                                     /\___/
-                                    \/__/ 
-\e[1;36AJUSTA LA PANTALLA PARA QUE LAS LETRAS DE ARRIBA SE PUEDAN VER. PELLIZCA PARA MIMINIZAR:v\e[0m
-\e[0m'
+                                    \/__/ \e[0m
+\e[1;36AJUSTA LA PANTALLA PARA QUE LAS LETRAS DE ARRIBA SE PUEDAN VER. PELLIZCA PARA MIMINIZAR:v\e[0m'
 sleep 5.0
 echo -e  '\e[1;36mBuscame en \e[4;34mG\e[0m\e[4;31mo\e[0m\e[4;33mo\e[0m\e[4;34mg\e[0m\e[4;32ml\e[0m\e[4;31me\e[0m\e[1;36m y en \e[1;30;47mY\e[0m\e[1;30;47mo\e[0m\e[1;30;47mu\e[0m\e[1;37;41mT\e[0m\e[0m\e[1;37;41mu\e[0m\e[0m\e[1;37;41mb\e[0m\e[0m\e[1;37;41me\e[0m
 \e[1;36mComo: \e[4;32;41mSamu330\033[0m'
@@ -55,11 +54,15 @@ echo -e '\033[0m\033[1;36m
                                              
                                                                                                                      
 \033[0m'
-apt-get install nodejs
-apt-get install libwebp
-apt-get install wget
+apt-get install nodejs -y
+apt-get install ffmpeg libwebp -y
+apt-get install wget -y
+apt-get install imagemagick -y
+apt-get install tesseract -y
+npm i node-tesseract-ocr
 npm i cheerio
-npm i imgbb-uploader
+npm i
+npm i @adiwajshing/baileys@3.4.1
 echo -e '\033[0m\033[1;31m
   ___                 _             _                       _         
  |_ _|  _ __    ___  | |_    __ _  | |   __ _   _ __     __| |   ___  
@@ -74,8 +77,6 @@ echo -e '\033[0m\033[1;31m
  |_|   |_|   |_| |_| |_| | .__/   \___|  \__, |
                          |_|             |___/ 
 \033[0m'
-apt-get install ffmpeg
-npm install fluent-ffmpeg
 pkg install pulseaudio
 pkg install sox
 pulse audio -D
@@ -89,10 +90,6 @@ echo -e '\033[0m\033[1;35m
  | |_| | | |_| | | |_| | | |_| |    >  <  | |_| |
   \___/   \___/   \___/   \___/    /_/\_\ |____/ 
 \033[0m'
-apt-get install tesseract
-wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
-npm install
-npm i lolcatjs
 pkg install neofetch
 neofetch
 echo -e '\033[0m\033[1;31m
