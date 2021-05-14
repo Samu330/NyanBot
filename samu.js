@@ -451,7 +451,7 @@ const fileurl = async(link, type) => {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(from ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "locationMessage": { "title":"🔐Samu330⚡", "caption": "Adios😴" , 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
+	 message: { "locationMessage": { "title":"🔐Samu330⚡", "caption": "Adios😴" , 'jpegThumbnail': fs.readFileSync('./src/samyperry.png')}}
 	}
 		contextInfo: {
   mentionedJid: [sender]}
@@ -501,7 +501,7 @@ const fileurl = async(link, type) => {
 	const fgc = {
                     key: {
                         fromMe: false,
-                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289523258649-1604595598@g.us" } : {})
+                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "5214447000377-1620049965@g.us" } : {})
                     },
                     message: {
                         "imageMessage": {
@@ -537,12 +537,23 @@ const fileurl = async(link, type) => {
 	samu330.sendMessage(from, filename, MessageType.sticker, {quoted: sam})
 }
 		const sendKontak = (from, nomor, nama) => {
-	const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
-	samu330.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
+	const vcard = 'BEGIN:VCARD\n'
++ 'VERSION:3.0\n'
++ `FN:${nama}\n`
++ 'ORG:🐬NyanBot;\n'
++ `TEL;type=CELL;type=VOICE;waid=${nomor}:+${nomor}\n`
++ 'END:VCARD' 
+	samu330.sendMessage(from, {displayname: nama, vcard: vcard
+}, MessageType.contact
 }
 
 		
-		
+		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
+		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+		const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+		const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
 		
 		
 		//autoStiker By Samu330
@@ -714,12 +725,7 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 	        }
 		
 		
-		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
-		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-		const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-		const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
-		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+		
 		colors = ['red','white','black','blue','yellow','green']
 
 //*********Console log chats
@@ -771,7 +777,7 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 			
 		
 
-if(budy.match('bot')){
+if(budy.match('bot') && !botNumber){
 rm = [
 result = fs.readFileSync(`./temp/Samu.webp`)
 ]
@@ -827,7 +833,7 @@ let d = new Date
 				var num = sam.participant
 				foto = fs.readFileSync('./src/help.jpg')
 				fakee = fs.readFileSync('./src/fake.jpg')
-				batrei = global.batrei[global.batrei.length - 1]
+				
   samu330.updatePresence(from, Presence.recording)
   if (!isRegister) return reply(mess.only.daftarB)
   uptime = process.uptime()
@@ -843,9 +849,11 @@ Fecha: ${calender}
 ٌ؞${samu} Número de grupos:${samu} *${_registered.length}*⚡
 ٌ؞${samu} Número de chats:${samu} *${totalchat.length}*🔥
 ٌ؞${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+
 𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
+
 ⍣ *BOT INFO* ⍣
-${samu}◦ 🔋Nivel de bateria:${samu} *${batrei}%*
+
 ${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
 ${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
 ${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
@@ -1957,6 +1965,7 @@ case 'antidelete':
                 case 'horrorblood':
                 case 'thunder':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
+		    reply(mess.wait)
                     ini_txt = args.join(" ")
                     getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
@@ -1973,6 +1982,7 @@ case 'antidelete':
                 case 'steel3d':
                 case 'wallgravity':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
+				reply(mess.wait)
                     a = args.join(' ')
                     txt1 = a.split("|")[0];
                     txt2 = a.split("|")[1];
@@ -2007,6 +2017,7 @@ case 'antidelete':
                 case 'hp':
                 case 'carvedwood':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
+				reply(mess.wait)
                     ini_txt = args.join(' ')
                     getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
@@ -2015,8 +2026,9 @@ case 'antidelete':
                 case 'tiktok':
                 case 'arcade8bit':
                 case 'battlefield4':
-                case 'pubg':
+                case 'pubg':				
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
+		    reply(mess.wai)
 		    a = args.join(' ')
                     txt1 = a.split("|")[0];
                     txt2 = a.split("|")[1];
@@ -2057,6 +2069,7 @@ case 'antidelete':
                 case 'silverplaybutton':
                 case 'freefire':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Sam y Perry`)
+				reply(mess.wait)
                     ini_txt = args.join(' ')
                     getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=BandNao71&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
@@ -2092,11 +2105,11 @@ case 'antidelete':
                     ini_txt = args.join(' ')
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/translate/auto/${idioma}?apikey=BandNao71&text=${ini_txt}`)
                     get_result = get_result.result
-                    init_txt = `From : ${get_result.from}\n`
-                    init_txt += `To : ${get_result.to}\n`
+                    init_txt = `Traduccion de : ${get_result.from}\n`
+                    init_txt += `a : ${get_result.to}\n`
                     init_txt += `Original : ${get_result.original}\n`
-                    init_txt += `Translated : ${get_result.translated}\n`
-                    init_txt += `Pronunciation : ${get_result.pronunciation}\n`
+                    init_txt += `Traducido : ${get_result.translated}\n`
+                    init_txt += `Pronunciacion : ${get_result.pronunciation}\n`
                     reply(init_txt)
                     break
 			
@@ -2153,8 +2166,8 @@ case 'antidelete':
 				
 		case 'tagstick':
                     if ((isMedia && !sam.message.videoMessage || isQuotedSticker) && args.length == 0) {
-                        const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(lol).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-                        filePath = await lolhuman.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+                        const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+                        filePath = await samu330.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
                         var value = args.join(" ")
                 	group = await samu330.groupMetadata(from)
                         member = group['participants']
@@ -2186,72 +2199,91 @@ break
 				
 case 'play':
   if (!isRegister) return reply(mess.only.daftarB)
-  
-  if (args.length < 1) return reply('Escribe el nombre de la cancion')
-  reply(mess.wait)
-  play = body.slice(6)
-  try {
-  anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
-  if (anu.error) return reply(anu.error)
-  infomp3 = `*Audio*\n‣ *Nombre* : ${anu.result.title}\n‣ *Fuente* : ${anu.result.source}\n‣ *Tamaño* : ${anu.result.size}\n\n_El audio se esta mandando, si no llega descargue por el link_\n‣ *Link* : ${anu.result.url_audio}
-  `
-  fakee = fs.readFileSync('./src/img.jpg')
-  buffer = await getBuffer(anu.result.thumbnail)
-  lagu = await getBuffer(anu.result.url_audio)
-  samu330.sendMessage(from, buffer, image, {
-quoted: fliveLoc, caption: infomp3, thumbnail: fakee
-  })
-  samu330.sendMessage(from, lagu, audio, {
-mimetype: 'audio/mp4', ptt : true, duration :-999999999999999, filename: `${anu.result.title}.mp3`, quoted: fvid
-  })
-  
-  } catch {
-    reply(mess.ferr)
-  }
-  break
+  if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+                    query = args.join(' ')
+		    fakee = fs.readFileSync('./src/img.jpg')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytplay?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    get_info = get_result.info
+                    ini_txt = `🧊Titulo : ${get_info.title}\n`
+                    ini_txt += `🕵🏻‍♀️️Publicador : ${get_info.uploader}\n`
+                    ini_txt += `🕐Duracion : ${get_info.duration}\n`
+                    ini_txt += `👀Vistas : ${get_info.view}\n`
+                    ini_txt += `👍🏻Like : ${get_info.like}\n`
+                    ini_txt += `👎🏻Dislike : ${get_info.dislike}\n`
+                    ini_txt += `📋Descripcion :\n ${get_info.description}\n\n`
+		    ini_txt += `Si el audio no llega, puede descargar por aqui: :\n ${get_result.audio[3].link}\n\n`
+		    ini_txt += `Puede descargar tambien el video aqui: :\n ${get_result.video[0].link}\n`
+                    ini_buffer = await getBuffer(get_info.thumbnail)
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+                    get_audio = await getBuffer(get_result.audio[3].link)
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: fvid })
+                    break
 	
 				
 case 'play2':
-  if (!isRegister) return reply(mess.only.daftarB)
-  if (args.length < 1) return reply('Escribe el nombre')
-  reply(mess.wait)
-  play = body.slice(7)
-  try {
-  anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
-	  if (anu.error) return reply(anu.error)
-	  infomp3 = `*Audio*\n‣ *Nombre* : ${anu.result.title}\n‣ *Fuente* : ${anu.result.source}\n‣ *Tamaño* : ${anu.result.size}\n\n_El audio se esta mandando, si no llega descargue por el link_\n‣ *Link* : ${anu.result.url_audio}                                                                                                `
-  buffer = await getBuffer(anu.result.thumbnail)
-  lagu = await getBuffer(anu.result.url_audio)
-  samu330.sendMessage(from, buffer, image, {
-quoted: fvid, caption: infomp3, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
-  })
-  samu330.sendMessage(from, lagu, audio, {
-mimetype: 'audio/mp4', duration :-999999999999999, filename: `${anu.result.title}.mp3`, quoted: fvid  
-  })                                                                                                                                                                                                                  } catch {                                                                                                   reply(mess.ferr)
-  }                                                        
-break
+    if (!isRegister) return reply(mess.only.daftarB)
+  if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+                    query = args.join(' ')
+		    fakee = fs.readFileSync('./src/img.jpg')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytplay?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    get_info = get_result.info
+                    ini_txt = `🧊Titulo : ${get_info.title}\n`
+                    ini_txt += `🕵🏻‍♀️️Publicador : ${get_info.uploader}\n`
+                    ini_txt += `🕐Duracion : ${get_info.duration}\n`
+                    ini_txt += `👀Vistas : ${get_info.view}\n`
+                    ini_txt += `👍🏻Like : ${get_info.like}\n`
+                    ini_txt += `👎🏻Dislike : ${get_info.dislike}\n`
+                    ini_txt += `📋Descripcion :\n ${get_info.description}\n\n`
+		    ini_txt += `Si el audio no llega, puede descargar por aqui: :\n ${get_result.audio[3].link}\n\n`
+		    ini_txt += `Puede descargar tambien el video aqui: :\n ${get_result.video[0].link}\n`
+                    ini_buffer = await getBuffer(get_info.thumbnail)
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+                    get_audio = await getBuffer(get_result.audio[3].link)
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', ptt : true, duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: fvid })
+                    break
 				
 				
 case 'playvid':
   if (!isRegister) return reply(mess.only.daftarB)
-  if (args.length < 1) return reply('Escribe el nombre')
-  reply(mess.wait)
-  play = body.slice(8)
-  try {
-  sam330 = await fetchJson(`https://videfikri.com/api/playmp4/?query=${play}`)
-	  if (sam330.error) return reply(sam330.error)
-	  infomp3 = `*Audio*\n◦ *Nombre* : ${sam330.result.judul}\n◦ *Fuente* : ${sam330.result.source}\n◦ *Tamaño* : ${sam330.result.size}\n\n_El video se esta mandando, si no llega descargue por el link_\n◦ *Link* : ${sam330.result.urlVideo}                                                                                                `
-  buffer = await getBuffer(sam330.result.imgUrl)
-  perry = await getBuffer(sam330.result.urlVideo)
-  samu330.sendMessage(from, buffer, image, {
-quoted: fvid, caption: infomp3, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
-  })
-  samu330.sendMessage(from, perry, video, {
-mimetype: 'video/mp4', duration :-999999999999999, filename: `${sam330.result.judul}.mp4`, quoted: fvid  
-  })                                                                                                                                                                                                                  } catch {                                                                                                   reply(mess.ferr)
-  }                                                        
-break
+  if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+                    query = args.join(' ')
+		    fakee = fs.readFileSync('./src/img.jpg')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytplay?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    get_info = get_result.info
+                    ini_txt = `🧊Titulo : ${get_info.title}\n`
+                    ini_txt += `🕵🏻‍♀️️Publicador : ${get_info.uploader}\n`
+                    ini_txt += `🕐Duracion : ${get_info.duration}\n`
+                    ini_txt += `👀Vistas : ${get_info.view}\n`
+                    ini_txt += `👍🏻Like : ${get_info.like}\n`
+                    ini_txt += `👎🏻Dislike : ${get_info.dislike}\n`
+                    ini_txt += `📋Descripcion :\n ${get_info.description}\n\n`
+		    ini_txt += `_Si el vide0 no llega, puede descargar por aqui_ :\n ${get_result.video[0].link}\n\n`
+		    ini_txt += `Puede descargar tambien el audio aqui: :\n ${get_result.audio[3].link}\n`
+                    ini_buffer = await getBuffer(get_info.thumbnail)
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+                    get_video = await getBuffer(get_result.video[0].link)
+                    await samu330.sendMessage(from, get_video, video, { mimetype: 'video/mp4', filename: `${get_info.title}.mp4`, quoted: fvid })
+                    break
 				
+				
+		case 'ytsearch':
+                    if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+                    query = args.join(' ')
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytsearch?apikey=BandNao71&query=${query}`)
+                    get_result = get_result.result
+                    ini_txt = ""
+                    for (var x of get_result) {
+                        ini_txt += `🧊Titulo : ${x.title}\n`
+                        ini_txt += `👀Vistas : ${x.views}\n`
+                        ini_txt += `🕵🏻‍♀️️Publicador : ${x.published}\n`
+                        ini_txt += `📸Thumbnail : ${x.thumbnail}\n`
+                        ini_txt += `📲Link : https://www.youtube.com/watch?v=${x.videoId}\n\n`
+                    }
+                    reply(ini_txt)
+                    break
 
 case 'tiktok2':
  reply('wait')
@@ -3469,6 +3501,22 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
   reply('Etiqueta una imagen!')
 }
 break
+				
+case 'nobg':
+  
+var imgbb = require('imgbb-uploader')
+if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
+  ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
+  reply(mess.wait)
+  owgi = await samu330.downloadAndSaveMediaMessage(ted)
+  anu = await imgbb('20a14861e4f7591f3dc52649cb07ae02', owgi)
+  satu = await getBuffer(`http://api.lolhuman.xyz/api/removebg?apikey=BandNao71&img=${anu.display_url}`)
+ samu330.sendMessage(from, satu, image, {quoted: fgc, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+} else {
+  reply('etiqueta una imagen!')
+}
+break
+				
 case 'ocean':
 
 var imgbb = require('imgbb-uploader')
@@ -3549,190 +3597,7 @@ samu330.sendMessage(from, shan, image, {quoted: fdoc, contextInfo: {"forwardingS
 : true}})
 				break
 				
-case 'burnpaper':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}burnpaper samu330`)
-todi = args.join(' ')
-reply(mess.wait)
-pper = await getBuffer(`https://videfikri.com/api/textmaker/burnpaper/?text=${todi}`)
-samu330.sendMessage(from, pper, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'neon':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}neon samu330`)
-tekas = args.join(' ')
-reply(mess.wait)
-glown = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tekas}`)
-samu330.sendMessage(from, glown, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'gsuggest':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}gsuggest samu330/nyan/bot`)
-du = `${args.join(' ')}`
-ted1 = du.split("|")[0];
-ted2 = du.split("|")[1];
-ted3 = du.split("|")[2];
-reply(mess.wait)
-sugetg = await getBuffer(`https://videfikri.com/api/textmaker/gsuggest/?text1=${ted1}&text2=${ted2}&text3=${ted3}`, {method: 'get'})
-samu330.sendMessage(from, sugetg, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'candlemug':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}candlemug samu330`)
-ddu = args.join(' ')
-reply(mess.wait)
-clmug = await getBuffer(`https://videfikri.com/api/textmaker/candlemug/?text=${ddu}`)
-samu330.sendMessage(from, clmug, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-
-case 'lovemss':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}lovemss samu330`)
-lop = args.join(' ')
-reply(mess.wait)
-lepms = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${lop}`)
-samu330.sendMessage(from, lepms, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'mugflower':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}mugflower samu330`)
-mug = args.join(' ')
-reply(mess.wait)
-mflowg = await getBuffer(`https://videfikri.com/api/textmaker/mugflower/?text=${mug}`)
-samu330.sendMessage(from, mflowg, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'narutobanner':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}narutobanner samu330`)
-nar = args.join(' ')
-reply(mess.wait)
-narba = await getBuffer(`https://videfikri.com/api/textmaker/narutobanner/?text=${nar}`)
-samu330.sendMessage(from, narba, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'paperglass':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}paperglass samu330`)
-papg = args.join(' ')
-reply(mess.wait)
-gelas = await getBuffer(`https://videfikri.com/api/textmaker/paperonglass/?text=${papg}`)
-samu330.sendMessage(from, gelas, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'romance':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}romance samu330`)
-roce = args.join(' ')
-reply(mess.wait)
-roma = await getBuffer(`https://videfikri.com/api/textmaker/romancetext/?text=${roce}`)
-samu330.sendMessage(from, roma, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'sombra':
-
-if (args.length < 1) return reply(`Ejemplo: ${prefix}sombra samu330`)
-sdow = args.join(' ')
-reply(mess.wait)
-shan = await getBuffer(`https://videfikri.com/api/textmaker/shadowtext/?text=${sdow}`)
-samu330.sendMessage(from, shan, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-
-case 'ga':
-
-if (args.length < 1) return reply(`Ejemplo: ${prefix}ga samu330`)
-sdow = args.join(' ')
-reply(mess.wait)
-shan = await getBuffer(`https://api-rull.herokuapp.com/api/Photooxy/gradientavatar?text=${sdow}`)
-samu330.sendMessage(from, shan, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-
-case 'gr':
-
-if (args.length < 1) return reply(`Ejemplo: ${prefix}gr Sam y Perry`)
-sdow = args.join(' ')
-reply(mess.wait)
-shan = await getBuffer(`https://api-rull.herokuapp.com/api/Photooxy/glowrainbow?text=${sdow}`)
-samu330.sendMessage(from, shan, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-				
-case 'glitch':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}glitch samu330|bot`)
-gl = `${args.join(' ')}`
-gel1 = gl.split("|")[0];
-gel2 = gl.split("|")[1];
-reply(mess.wait)
-litsh = await getBuffer(`https://videfikri.com/api/textmaker/tiktokeffect/?text1=${gel1}&text2=${gel2}`, {method: 'get'})
-samu330.sendMessage(from, litsh, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'rw':
-//
-//
-if (args.length < 1) return reply(`Ejemplo: ${prefix}rw Sam|Y|Perry`)
-gl = `${args.join(' ')}`
-gel1 = gl.split("|")[0];
-gel2 = gl.split("|")[1];
-gel3 = gl.split("|")[2];
-if (!gel1) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
-if (!gel2) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
-if (!gel3) return reply(`Porfavor escribe de forma correcta el comando: *${prefix}rw samu330|sam y|perry*`)
-reply(mess.wait)
-litsh = await getBuffer(`https://api-rull.herokuapp.com/api/photofunia/retro-wave?text1=${gel1}&text2=${gel2}&text3=${gel3}&font=2`, {method: 'get'})
-samu330.sendMessage(from, litsh, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-			
-case 'cafe':
-if (args.length < 1) return reply(`Ejemplo: ${prefix}cafe samu330`)
-kop = args.join(' ')
-reply(mess.wait)
-ppi = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup/?text=${kop}`)
-samu330.sendMessage(from, ppi, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'cafe2':
-
-if (args.length < 1) return reply(`ejemplo: ${prefix}cafe2 sam y perry`)
-sdow = args.join(' ')
-reply(mess.wait)
-shan = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup2/?text=${sdow}`)
-samu330.sendMessage(from, shan, image, {quoted: fimg, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-
-case 'candy':
-//
-//
-if (args.length < 1) return reply(`Ejemplo: ${prefix}candy samu330`)
-teks = args.join(' ')
-reply(mess.wait)
-prmen = await getBuffer(`https://videfikri.com/api/textmaker/sweetcandy/?text=${teks}`)
-samu330.sendMessage(from, prmen, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-
-case 'hp':
-//
-//
-if (args.length < 1) return reply(`Ejemplo: ${prefix}hp samu330`)
-hpter = args.join(' ')
-reply(mess.wait)
-helpter = await getBuffer(`https://videfikri.com/api/textmaker/hpotter/?text=${hpter}`)
-samu330.sendMessage(from, helpter, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-case 'madera':
-//
-//
-if (args.length < 1) return reply(`Ejemplo: ${prefix}madera samu330`)
-woblk = args.join(' ')
-reply(mess.wait)
-gblok = await getBuffer(`https://videfikri.com/api/textmaker/woodblock/?text=${woblk}`)
-samu330.sendMessage(from, gblok, image, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-//
-break
-                    break
-                    case 'upstatus':
+			case 'upstatus':
                      q = args.join(' ')
 				samu330.sendMessage('status@broadcast', `${q}`, extendedText)
 				samu330.sendMessage(from, `Sukses!`, text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "Sucess!", 'jpegThumbnail': fs.readFileSync('./src/Ivan.jpg')}}}})
