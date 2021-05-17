@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@adiwajshing/baileys": "^3.4.1",
-    "crypto-js", "^4.0.0",
+    "crypto-js": "^4.0.0",
     "async": "^2.4.1",
     "axios": "^0.21.1",
     "cfonts": "^2.9.0",
