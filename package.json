@@ -1,8 +1,8 @@
 {
   "name": "NyanBot",
-  "version": "2.0.0",
+  "version": "99999.9.9",
   "description": "Termux only",
-  "main": "SamYperry.js",
+  "main": "samu.js",
   "directories": {
     "lib": "lib"
   },
@@ -34,7 +34,7 @@
     "brainly-scraper": "^1.0.3"
   },
   "scripts": {
-    "start": "node SamYperry.js"
+    "start": "node samu.js"
   },
   "author": "Sam y Perry",
   "homepage": "https://github.com/Samu330/NyanBot/readme"
