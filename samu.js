@@ -157,7 +157,7 @@ async function starts() {
 		start('2', 'Connecting...')
 	})
 	samu330.on('open', () => {
-		success('2', 'Conectado🗽')
+		success('2', `Conectado🗽\n\n==============================\n\n+ NyanBot\n+ Samu330\n==============================\n\n┌╾┃ RECIVER ┃╾`)
 	})
 	await samu330.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./Samu.json', JSON.stringify(samu330.base64EncodedAuthInfo(), null, '\t'))
