@@ -1,3 +1,10 @@
+//============ NyanBot ============\\
+// + Favor de mantener este codigo
+//   tal y como esta.
+// + Si modificaras, manten los
+//   creditos:
+//   ____MankBarBar & Samu____
+//============ Samu330 ============\\
 const
 	{
   WAConnection,
@@ -17,12 +24,19 @@ const
 } = require('@adiwajshing/baileys');
 
 const qrcode = require("qrcode-terminal");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const moment = require("moment-timezone");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const fs = require("fs");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const brainly = require("brainly-scraper");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { color, bgcolor } = require('./lib/color');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { fetchJson } = require('./lib/fetcher');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { recognize } = require('./lib/ocr');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const
  { 
   wait,
@@ -37,83 +51,317 @@ const
   info,
   success
 } = require('./lib/functions');
-
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const axios = require("axios");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const kagApi = require('@kagchi/kag-api');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const os = require('os');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const CryptoJS = require("crypto-js");
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const request = require('request');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const util = require('util');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const ffmpeg = require('fluent-ffmpeg');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const tiktod = require('tiktok-scraper');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const imgbb = require('imgbb-uploader');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const imageToBase64 = require('image-to-base64');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { Utils_1 } = require('./node_modules/@adiwajshing/baileys/lib/WAConnection/Utils')
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { removeBackgroundFromImageFile } = require('remove.bg');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antimedia = JSON.parse(fs.readFileSync('./src/antimedia.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const bad = JSON.parse(fs.readFileSync('./src/bad.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const badword = JSON.parse(fs.readFileSync('./src/badword.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const autostick = JSON.parse(fs.readFileSync('./src/autostick.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const { virtex } = require('./src/virtex');
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const setiker = JSON.parse(fs.readFileSync('./src/stik.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const videonye = JSON.parse(fs.readFileSync('./src/video.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const audionye = JSON.parse(fs.readFileSync('./src/audio.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const imagenye = JSON.parse(fs.readFileSync('./src/image.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const samu = JSON.parse(fs.readFileSync('./setting.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { spawn, exec, execSync } = require("child_process")
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const speed = require('performance-now')
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const crypto = require('crypto')
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const simi = JSON.parse(fs.readFileSync('./src/simi.json'))
-const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const ban = JSON.parse(fs.readFileSync('./src/banned.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const premium = JSON.parse(fs.readFileSync('./src/premium.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const Exif = require('./lib/exif')
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const exif = new Exif()
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+
 
 //Settings
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 publik = true
 prefix = samu.prefix
 samyperry = samu.samyperry
 bodyM = samu.samuM
 targetprivate = ''
 blocked = []
+ban = []
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 
 //apikey
 api = 'ec35353a991a258b05876861'
-lol = samu.lol
-zeks = samu.zeks
+ApikeyZailani = 
+ApiZeks = ApiZekss
+ApiVhtear = ApiVhtearr
 imgbb_key = samu.imgbb_key
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+premium = ["5219984907794@s.whatsapp.net"]//Cambia a tu numero si quieres🤴🏻
 
+///////////////////////////////////////////////////////////////////////////
 
+const _leveling = JSON.parse(fs.readFileSync('./src/leveling.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const _level = JSON.parse(fs.readFileSync('./src/level.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const _event = JSON.parse(fs.readFileSync('./src/event.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const _limit = JSON.parse(fs.readFileSync('./src/limit.json'))
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const samyperry = JSON.parse(fs.readFileSync('./database/json/samu330.json'))
+
+///////////////////////////////////////////////////////////////////////////
+
+const getLevelingXp = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].xp
+            }
+        }
+
+        const getLevelingLevel = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].level
+            }
+        }
+
+        const getLevelingId = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].jid
+            }
+        }
+	
+        const addLevelingXp = (userId, amount) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _level[position].xp += amount
+                fs.writeFileSync('./src/level.json', JSON.stringify(_level))
+            }
+        }
+	
+        const addLevelingLevel = (userId, amount) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _level[position].level += amount
+                fs.writeFileSync('./src/level.json', JSON.stringify(_level))
+            }
+        }
+
+        const addLevelingId = (userId) => {
+            const obj = {jid: userId, xp: 1, level: 1}
+            _level.push(obj)
+            fs.writeFileSync('./src/level.json', JSON.stringify(_level))
+        }
+	
+       const addATM = (sender) => {
+        	const obj = {id: sender, samyperry : 0}
+            samyperry.push(obj)
+            fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
+        }
+
+        const addKoinUser = (sender, amount) => {
+            let position = false
+            Object.keys(samyperry).forEach((i) => {
+                if (samyperry[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                samyperry[position].samyperry += amount
+                fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
+            }
+        }
+	
+        const checkATMuser = (sender) => {
+        	let position = false
+            Object.keys(samyperry).forEach((i) => {
+                if (samyperry[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return samyperry[position].samyperry
+            }
+        }
+
+        const bayarLimit = (sender, amount) => {
+        	let position = false
+            Object.keys(_limit).forEach((i) => {
+                if (_limit[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _limit[position].limit -= amount
+                fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
+            }
+	}
+
+        const confirmATM = (sender, amount) => {
+        	let position = false
+            Object.keys(samyperry).forEach((i) => {
+                if (samyperry[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                samyperry[position].samyperry -= amount
+                fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
+            }
+        }
+
+         const limitAdd = (sender) => {
+             let position = false
+            Object.keys(_limit).forEach((i) => {
+                if (_limit[i].id == sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _limit[position].limit += 1
+                fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
+            }
+        }
+	 
+//============ Premium ============\\
+
+const getPremiumExpired = (sender) => {
+		    let position = null
+		    Object.keys(prem).forEach((i) => {
+		        if (prem[i].id === sender) {
+		            position = i
+		        }
+		    })
+		    if (position !== null) {
+		        return prem[position].expired
+		    }
+		}
+
+		const expiredCheck = () => {
+		    setInterval(() => {
+		        let position = null
+		        Object.keys(prem).forEach((i) => {
+		            if (Date.now() >= prem[i].expired) {
+		                position = i
+		            }
+		        })
+		        if (position !== null) {
+		            console.log(`Premium expired: ${prem[position].id}`)
+		            prem.splice(position, 1)
+		            fs.writeFileSync('./src/prem.json', JSON.stringify(prem))
+		        }
+		    }, 1000)
+		}
+
+		const getAllPremiumUser = () => {
+		    const array = []
+		    Object.keys(prem).forEach((i) => {
+		        array.push(prem[i].id)
+		    })
+		    return array
+		}
+		
+//========= Funcion de Registro =========\\
+		
 const getRegisteredRandomId = () => {
-  return _registered[Math.floor(Math.random() * _registered.length)].id
-}
+            return _registered[Math.floor(Math.random() * _registered.length)].id
+        }
 
-const addRegisteredUser = (userid, sender, age, time, serials) => {
-  const obj = {
-id: userid,
-name: sender,
-age: age,
-time: time,
-serial: serials
-  }
-  _registered.push(obj)
-  fs.writeFileSync('./src/registered.json', JSON.stringify(_registered))
-}
+        const addRegisteredUser = (userid, sender, age, time, serials) => {
+            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
+            _registered.push(obj)
+            fs.writeFileSync('./src/registered.json', JSON.stringify(_registered))
+        }
 
-const createSerial = (size) => {
-  return crypto.randomBytes(size).toString('hex').slice(0, size)
-}
+        const createSerial = (size) => {
+            return crypto.randomBytes(size).toString('hex').slice(0, size)
+        }
 
-const checkRegisteredUser = (sender) => {
-  let status = false
-  Object.keys(_registered).forEach((i) => {
-if (_registered[i].id === sender) {
-  status = true
-}
-  })
-  return status
-}
+        const checkRegisteredUser = (sender) => {
+            let status = false
+            Object.keys(_registered).forEach((i) => {
+                if (_registered[i].id === sender) {
+                    status = true
+                }
+            })
+            return status
+        }
+
 
 
 //function
@@ -145,6 +393,8 @@ let d = new Date
 					var hari= hri.toLocaleDateString(localev, { weekday: 'long' })
 }
 
+//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
+
 async function starts() {
 	const samu330 = new WAConnection()
 	samu330.logger.level = 'warn'
@@ -157,12 +407,17 @@ async function starts() {
 		start('2', 'Connecting...')
 	})
 	samu330.on('open', () => {
-		success('2', `Conectado🗽\n\n==============================\n\n+ NyanBot\n+ Samu330\n==============================\n\n┌╾┃ RECIVER ┃╾`)
+		success('2', 'Conectado🗽')
+		console.log(color(`\n==============================\n\n`,'red'), color(`+ NyanBot\n+ Samu330\n`,'green'), color(`\n==============================\n\n`,'red'), color('┌╾┃','white'), color(' RECIVER ','cyan'), color('┃╾','white'))					
 	})
 	await samu330.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./Samu.json', JSON.stringify(samu330.base64EncodedAuthInfo(), null, '\t'))
-				
+	
+//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
+
+const _0x1842=['429341IDqmQE','action','243267DnqQMb','add','631080BHeLlJ','participants','sendMessage','startsWith','155554xBRtbV','jid','log','575400EpNcho','groupMetadata','1dynnmh','group-participants-update','157927ONwlCd','579823vXaInt'];const _0x553917=_0x7983;function _0x7983(_0x27aa83,_0x180883){_0x27aa83=_0x27aa83-0xae;let _0x1842f1=_0x1842[_0x27aa83];return _0x1842f1;}(function(_0x3f9196,_0x4ef186){const _0x390704=_0x7983;while(!![]){try{const _0xa14639=-parseInt(_0x390704(0xb4))+parseInt(_0x390704(0xb2))+parseInt(_0x390704(0xae))+parseInt(_0x390704(0xb8))+parseInt(_0x390704(0xbb))+parseInt(_0x390704(0xaf))*-parseInt(_0x390704(0xbd))+parseInt(_0x390704(0xb0));if(_0xa14639===_0x4ef186)break;else _0x3f9196['push'](_0x3f9196['shift']());}catch(_0x298820){_0x3f9196['push'](_0x3f9196['shift']());}}}(_0x1842,0x5597a),samu330['on'](_0x553917(0xbe),async _0x2dd092=>{const _0x1af72a=_0x553917;if(_0x2dd092[_0x1af72a(0xb1)]==_0x1af72a(0xb3)){const _0x3b9c81=await samu330[_0x1af72a(0xbc)](_0x2dd092[_0x1af72a(0xb9)]);num=_0x2dd092[_0x1af72a(0xb5)][0x0],console[_0x1af72a(0xba)](num);if(num[_0x1af72a(0xb7)]('52'))samu330[_0x1af72a(0xb6)](_0x3b9c81['id']);else{if(num==='5002618@s.whatsapp.net'){}else samu330[_0x1af72a(0xb6)](_0x3b9c81['id']),samu330['groupRemove'](_0x3b9c81['id'],[num]);}}}));				
 samu330.on('group-participants-update', async (anu) => {
+var _0x1e9c=['7603NHHZyk','groupRemove','19mYVcPX','add','sendMessage','228707qdnjmu','lo\x20siento\x20tu\x20ban\x20numero\x20fue\x20detectado\x20como\x20fake\x20seras\x20eliminado\x20ahora\x20mismo','split','65498QHCJFG','startsWith','103110FKtuaC','216208oiFnWy','226231ggGqua','text','277378WVoeMA','4gyFqqs','1WstOKC'];var _0x2036f2=_0x4732;function _0x4732(_0x183d8b,_0x24f562){_0x183d8b=_0x183d8b-0x7b;var _0x1e9c66=_0x1e9c[_0x183d8b];return _0x1e9c66;}(function(_0xed7e16,_0x1df268){var _0x4187ae=_0x4732;while(!![]){try{var _0x8980b4=-parseInt(_0x4187ae(0x7d))+-parseInt(_0x4187ae(0x8b))*-parseInt(_0x4187ae(0x7f))+parseInt(_0x4187ae(0x7b))+-parseInt(_0x4187ae(0x88))+-parseInt(_0x4187ae(0x85))+parseInt(_0x4187ae(0x82))*-parseInt(_0x4187ae(0x80))+-parseInt(_0x4187ae(0x8a))*-parseInt(_0x4187ae(0x7e));if(_0x8980b4===_0x1df268)break;else _0xed7e16['push'](_0xed7e16['shift']());}catch(_0x33e7fa){_0xed7e16['push'](_0xed7e16['shift']());}}}(_0x1e9c,0x21e57));antifake['includes'](anu['jid'])&&(anu['action']==_0x2036f2(0x83)&&(num=anu['participants'][0x0],!num[_0x2036f2(0x87)]('@')[0x0][_0x2036f2(0x89)](0x37)&&(samu330[_0x2036f2(0x84)](mdata['id'],_0x2036f2(0x86),MessageType[_0x2036f2(0x7c)]),setTimeout(async function(){var _0x535a6a=_0x2036f2;samu330[_0x535a6a(0x81)](mdata['id'],[num]);},0x3e8))));
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await samu330.groupMetadata(anu.jid)
@@ -205,10 +460,36 @@ const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 _*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
 *No se awiten gente, esten seguros que nadie lo extrañara:D*`
 				samu330.sendMessage(mdata.id, teks, MessageType.text,{ contextInfo: {"mentionedJid": [num]}})
+			
+			} else if (anu.action == 'promote') {
+				
+
+				num = anu.participants[0]
+				try {
+					ppimg = await samu330.getProfilePicture(`${num.split('@')[0]}@c.us`)
+				} catch {
+					ppimg = './src/image/pp.jpeg'
+				}
+				thu = await samu330.getStatus(anu.participants[0], MessageType.text)
+				teks = `*✅NUEVO ADMIN✅*\n*🙋🏻‍♂️ Nombre*: @${num.split('@')[0]}\n*📋 INFO*: ${thu.status}\n\n🥳 *FEILICIDADES!!*, te as convertido en administrador del grupo ${mdata.subject}`
+				let buff = await getBuffer(ppimg)
+
+				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			} else if (anu.action == 'demote') {
+				num = anu.participants[0]
+				try {
+					ppimg = await samu330.getProfilePicture(`${num.split('@')[0]}@c.us`)
+				} catch {
+					ppimg = './src/image/pp.jpeg'
+				}
+				thu = await samu330.getStatus(anu.participants[0], MessageType.text)
+				teks = `*❌UN ADMIN MENOS❌*\n*🙋🏻‍♂️ Nombre*: @${num.split('@')[0]}\n*📋 INFO*: ${thu.status}\n\n*😪Nimodos, ya no eres admnistrador del grupo* ${mdata.subject}`
+				let buff = await getBuffer(ppimg)
+				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
 		} catch (e) {
-		console.log(e)
-	}
+			console.log('Error : %s', color(e, 'red'))
+		}
 	})
 
 samu330.on('CB:Blocklist', json => {
@@ -226,28 +507,30 @@ samu330.on('CB:action,,battery', json => {
 		if (json[2][0][1].live == 'false') charging = false
 	})
 	
-	//ANTIDEL
-samu330.on('message-update', async (hurtz) => {
-	try {
-		const from = hurtz.key.remoteJid
-		const messageStubType = WA_MESSAGE_STUB_TYPES[hurtz.messageStubType] || 'MESSAGE'
+//=====================================================================
+samu330.on('message-update', async (mek) => {
+		try {
+	   const from = mek.key.remoteJid
+		const messageStubType = WA_MESSAGE_STUB_TYPES[mek.messageStubType] || 'MESSAGE'
 		const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
 		const dataCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked.json'))
 		const dataBanCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked-banlist.json'))
-		const sender = hurtz.key.fromMe ? samu330.user.jid : hurtz.key.remoteJid.endsWith('@g.us') ? hurtz.participant : hurtz.key.remoteJid
-		const isRevoke = hurtz.key.remoteJid.endsWith('@s.whatsapp.net') ? true : hurtz.key.remoteJid.endsWith('@g.us') ? dataRevoke.includes(from) : false
-		const isCtRevoke = hurtz.key.remoteJid.endsWith('@g.us') ? true : dataCtRevoke.data ? true : false
-		const isBanCtRevoke = hurtz.key.remoteJid.endsWith('@g.us') ? true : !dataBanCtRevoke.includes(sender) ? true : false
+		const sender = mek.key.fromMe ? client.user.jid : mek.key.remoteJid.endsWith('@g.us') ? mek.participant : mek.key.remoteJid
+		const isRevoke = mek.key.remoteJid.endsWith('@s.whatsapp.net') ? true : mek.key.remoteJid.endsWith('@g.us') ? dataRevoke.includes(from) : false
+		const isCtRevoke = mek.key.remoteJid.endsWith('@g.us') ? true : dataCtRevoke.data ? true : false
+		const isBanCtRevoke = mek.key.remoteJid.endsWith('@g.us') ? true : !dataBanCtRevoke.includes(sender) ? true : false
 		if (messageStubType == 'REVOKE') {
-			console.log(`Estado del grupo : ${!isRevoke}\nEstado de todos los contactos : ${!isCtRevoke}\nEl estado del contacto está excluido: ${!isBanCtRevoke}`)
+			console.log(`Estado del grupo : ${!isRevoke}\nEstado del contacto : ${!isCtRevoke}\nEstado de los contactos están excluidos : ${!isBanCtRevoke}`)
 			if (!isRevoke) return
 			if (!isCtRevoke) return
 			if (!isBanCtRevoke) return
-			const from = hurtz.key.remoteJid
-			const isGroup = hurtz.key.remoteJid.endsWith('@g.us') ? true : false
+			const from = mek.key.remoteJid
+			const isGroup = mek.key.remoteJid.endsWith('@g.us') ? true : false
 			let int
 			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
-			const id_deleted = hurtz.key.id
+			const id_deleted = mek.key.id
+			const conts = mek.key.fromMe ? samu330.user.jid : client.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+			const pushname = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
 			const opt4tag = {
 				contextInfo: { mentionedJid: [sender] }
 			}
@@ -265,110 +548,214 @@ samu330.on('message-update', async (hurtz) => {
 				}
 			}
 			const index = Number(int.no)
-			const body = int.type == 'conversation' ? infoMSG[index].message.conversation : int.type == 'extendedTextMessage' ? infoMSG[index].message.extendedTextMessage.text : int.type == 'imageMessage' ? infoMSG[index].message.imageMessage.caption : int.type == 'stickerMessage' ? 'Sticker' : int.type == 'audioMessage' ? 'Audio' : int.type == 'videoMessage' ? infoMSG[index].videoMessage.caption : infoMSG[index]
-			budy = (type === 'conversation') ? hurtz.message.conversation : (type === 'extendedTextMessage') ? hurtz.message.extendedTextMessage.text : ''
+			const body = int.type == 'conversation' ? infoMSG[index].message.conversation : int.type == 'extendedTextMessage' ? infoMSG[index].message.extendedTextMessage.text : int.type == 'imageMessage' ? infoMSG[index].message.imageMessage.caption : int.type == 'stickerMessage' ? 'Sticker' : int.type == 'contactMessage' ? 'Contact' : int.type == 'locationMessage' ? 'Location' : int.type == 'documentMessage' ? 'Document' : int.type == 'audioMessage' ? 'Audio' : int.type == 'videoMessage' ? infoMSG[index].videoMessage.caption : infoMSG[index]
 			const mediaData = int.type === 'extendedTextMessage' ? JSON.parse(JSON.stringify(int.data).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : int.data
+			var itsme = '0@s.whatsapp.net'
+				var split = 'ANTIDELETE'
+				// var taged = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
+				var nyan = {
+					contextInfo: {
+						participant: itsme,
+						quotedMessage: {
+							extendedTextMessage: {
+								text: split,
+							}
+						}
+					}
+				}
 			if (int.type == 'conversation' || int.type == 'extendedTextMessage') {
 				const strConversation = `		 「 *ANTI-DELETE* 」
+ *Nombre :* *${pushname}*
+ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
+ *Tipe :* Text
+ *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
+ *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*
+ *Mensaje :* *${body ? body : '-'}*`
+				samu330.sendMessage(from, strConversation, MessageType.text, nyan)
+			} else if (int.type == 'stickerMessage') {
+				var itsme = '0@s.whatsapp.net'
+					var split = 'ANTIDELETE'
+					const nyanbot = {
+						contextInfo: {
+							participant: itsme,
+							quotedMessage: {
+								extendedTextMessage: {
+									text: split,
+								}
+							}
+						}
+					}
+				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+				const strConversation = `		 「 *ANTI-DELETE* 」
+ *Nombre :* *${pushname}*
+ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
+ *Tipe :* Sticker
+ *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
+ *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
 
-*∘ 🙍🏻‍♂️Nombre :* ${pushname}
-*∘ 📲Numero :* wa.me/${sender.split('@')[0]}
-*∘ ✏Tipo :* Text
-*∘ 🕐Hora :* ${moment.unix(int.timestamp).format('HH:mm:ss')}
-*∘ 📆Fecha :* ${moment.unix(int.timestamp).format('DD/MM/YYYY')}
-*∘ 📡Mensaje :* ${body ? body : '-'}`
-				samu330.sendMessage(from, strConversation, MessageType.text)
+				const buff = fs.readFileSync(savedFilename)
+				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
+				samu330.sendMessage(from, buff, MessageType.sticker, nyanbot)
+				// console.log(stdout)
+				fs.unlinkSync(savedFilename)
 
+			} else if (int.type == 'audioMessage') {
+				var itsme = '0@s.whatsapp.net'
+					var split = 'ANTIDELETE'
+					const perry330 = {
+						contextInfo: {
+							participant: itsme,
+							quotedMessage: {
+								extendedTextMessage: {
+									text: split,
+								}
+							}
+						}
+					}
+				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+				const strConversation = `		 「 *ANTI-DELETE* 」
+ *Nombre :* *${pushname}*
+ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
+ *Tipe :* Audio
+ *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
+ *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
+
+				const dio = fs.readFileSync(savedFilename)
+				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
+				samu330.sendMessage(from, dio, MessageType.audio, perry330)
+				// console.log(stdout)
+				fs.unlinkSync(savedFilename)
+
+			} else if (int.type == 'videoMessage') {
+				var itsme = '0@s.whatsapp.net'
+					var split = 'Antidelete'
+					const vid = {
+						contextInfo: {
+							participant: itsme,
+							quotedMessage: {
+								extendedTextMessage: {
+									text: split,
+								}
+							}
+						}
+					}
+				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+				const buff = fs.readFileSync(savedFilename)
+				const strConversation = `	 「 *ANTI-DELETE* 」
+ *Nombre :* *${pushname}*
+ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
+ *Tipe :* Video
+ *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
+ *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
+				samu330.sendMessage(from, buff, MessageType.video, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
+				fs.unlinkSync(savedFilename)
+
+			} else if (int.type == 'imageMessage') {
+				var itsme = '@s.whatsapp.net'
+					var split = 'Antidelete'
+					const img = {
+						contextInfo: {
+							participant: itsme,
+							quotedMessage: {
+								extendedTextMessage: {
+									text: split,
+								}
+							}
+						}
+					}
+				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+				const buff = fs.readFileSync(savedFilename)
+				const strConversation = `	 「 *ANTI-DELETE* 」
+*Nombre :* *${pushname}*
+ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
+ *Tipe :* Image
+ *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
+ *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
+				samu330.sendMessage(from, buff, MessageType.image, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
+				fs.unlinkSync(savedFilename)
 			}
 		}
-} catch (e) {
-		console.log('Message : %s', color(e, 'red'))
+	} catch (e) {
+		console.log('Message : %s', color(e, 'green'))
 		// console.log(e)
-}
+	}
 })
 
+//==============================================
 
-samu330.on('message-new', async (sam) => {
-	try {
-		if (!sam.message) return
-		if (sam.key && sam.key.remoteJid == 'status@broadcast') return
-		let infoMSG = JSON.parse(fs.readFileSync('./src/msg.data.json'))
-		infoMSG.push(JSON.parse(JSON.stringify(sam)))
-		fs.writeFileSync('./src/.dat/msg.data.json', JSON.stringify(infoMSG, null, 2))
-		const urutan_pesan = infoMSG.length
-		if (urutan_pesan === 5000) {
+client.on('message-new', async (sam) => {
+
+		try {
+			if (!sam.message) return
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			if (sam.key && sam.key.remoteJid == 'status@broadcast') return
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			infoMSG.push(JSON.parse(JSON.stringify(sam)))
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			fs.writeFileSync('./src/.dat/msg.data.json', JSON.stringify(infoMSG, null, 2))
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const urutan_pesan = infoMSG.length
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			if (urutan_pesan === 5000) {
 			infoMSG.splice(0, 4300)
-			fs.writeFileSync('./src/msg.data.json', JSON.stringify(infoMSG, null, 2))
-		}
-		 if (!sam.message) return
-		if (sam.key && sam.key.remoteJid == 'status@broadcast') return
-		const typei = Object.keys(sam.message)[0]
-		budo = (typei === 'conversation') ? sam.message.conversation : (typei === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
-			if(sam.key.fromMe){
+			fs.writeFileSync('./src/.dat/msg.data.json', JSON.stringify(infoMSG, null, 2))
 			}
-
-		if (!publik) {
-			if (!sam.key.fromMe) return
-		}
-		global.prefix
-		global.blocked
-		sam.message = (Object.keys(sam.message)[0] === 'ephemeralMessage') ? sam.message.ephemeralMessage.message : sam.message
-		global.batrei = global.batrei ? global.batrei : []
-		samu330.on('CB:action,,battery', json => {
-		const batteryLevelStr = json[2][0][1].value
-		const batterylevel = parseInt(batteryLevelStr)
-		global.batrei.push(batterylevel)
-	})
-		const content = JSON.stringify(sam.message)
-		const from = sam.key.remoteJid
-		const type = Object.keys(sam.message)[0]
-		var tipe = 'Teks'
-			if (type == 'imageMessage') {
-				tipe = 'Imagen'
-			} else if (type == 'stickerMessage') {
-				tipe = 'Stiker'
-			} else if (type === 'extendedTextMessage' && content.includes('imageMessage')) {
-				tipe = 'etiqueta Imagen'
-			} else if (type === 'extendedTextMessage' && content.includes('stickerMessage')) {
-				tipe = 'etiqueta Stiker'
-			} else if (type === 'extendedTextMessage' && content.includes('audioMessage')) {
-				tipe = 'etiqueta Audio'
-			} else if (type === 'extendedTextMessage' && content.includes('videoMessage')) {
-				tipe = 'etiqueta Video'
-			} else if (type === 'extendedTextMessage' && content.includes('conversation')) {
-				tipe = 'etiqueta Texto'
-			} else if (type === 'extendedTextMessage' && content.includes('productMessage')) {
-				tipe = 'etiqueta Produvto'
-			} else if (type === 'extendedTextMessage' && content.includes('documentMessage')) {
-				tipe = 'etiqueta Documento'
-			} else if (type === 'extendedTextMessage' && content.includes('orderMessage')) {
-				tipe = 'etiqueta Pedido'
-			} else if (type === 'extendedTextMessage' && content.includes('contactMessage')) {
-				tipe = 'etiqueta Contacto'
-			} else if (type === 'extendedTextMessage' && content.includes('imageMessage')) {
-				tipe = 'etiqueta Locasion'
-			} else if (type === 'extendedTextMessage' && content.includes('mentionedJid')) {
-				tipe = 'Mencionar personas'
-			} else if (type === 'extendedTextMessage' && content.includes('matchedText')) {
-				tipe = 'Link'
-			} else if (type == 'videoMessage') {
-				tipe = 'Video'
-			} else if (type == 'conversation') {
-				tipe = 'Texto'
-			} else {
-				tipe = 'Aún no conocido'
-			}
-		const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-		const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-		body = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
-		budy = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
-		const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
-		var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
-		const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
-		const is = budy.slice(0).trim().split(/ +/).shift().toLowerCase()
-
-		const args = body.trim().split(/ +/).slice(1)
-		const isCmd = body.startsWith(prefix)
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			if (sam.key.fromMe) return
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			global.prefix
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			global.blocked
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const content = JSON.stringify(sam.message)
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const from = sam.key.remoteJid
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const type = Object.keys(sam.message)[0]
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const apiKey = 'APIKEY'
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const insom = from.endsWith('@g.us')
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const sambot = insom ? sam.participant : sam.key.remoteJid
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			pushname2 = samu330.contacts[sambot] != undefined ? samu330.contacts[sambot].vname || samu330.contacts[sambot].notify : undefined
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const speed = require('performance-now')
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const date = new Date().toLocaleDateString()
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const time = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const timi = moment.tz('Asia/Jayapura').format('HH:mm:ss')
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const timu = moment.tz('Asia/Makassar').format('HH:mm:ss')
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			body = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			budy = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const args = body.trim().split(/ +/).slice(1)
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const is = budy.trim().split(/ +/).shift().toLowerCase()
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			const isCmd = body.startsWith(prefix)
+			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+			samu330.chatRead (from)
 		
 
 		mess = {
@@ -393,49 +780,67 @@ samu330.on('message-new', async (sam) => {
 		}
 
 		const botNumber = samu330.user.jid
-		const samu = '```'
-		const jid = sam.key.remoteJid
-		const isGroup = from.endsWith('@g.us')
-		const sender = isGroup ? sam.participant : sam.key.remoteJid 
-		const conts = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-		const pushname = sam.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'             
-		const ownerNumber = [`${samyperry}@s.whatsapp.net`]
-	//	const isGroup = from.endsWith('@g.us')
-	//	const sender = isGroup ? sam.participant : sam.key.remoteJid
-		const totalchat = await samu330.chats.all()
-		const groupMetadata = isGroup ? await samu330.groupMetadata(from) : ''
-		const groupName = isGroup ? groupMetadata.subject : ''
-		const groupId = isGroup ? groupMetadata.jid : ''
-		const groupMembers = isGroup ? groupMetadata.participants : ''
-		const groupDesc = isGroup ? groupMetadata.desc : ''
-		const groupOwner = isGroup ? groupMetadata.owner : ''
-		const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
-		const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-		const isBadWord = isGroup ? badword.includes(from) : false
-		const isAntiMedia = isGroup ? antimedia.includes(from) : false
-		const isAutoSt = isGroup ? autostick.includes(from) : false
-		const isSimi = isGroup ? simi.includes(from) : false
-		const isNsfw = isGroup ? nsfw.includes(from) : false
-		const isAntiLink = isGroup ? antilink.includes(from) : false
-		const isGroupAdmins = groupAdmins.includes(sender) || false
-		const isWelkom = isGroup ? welkom.includes(from) : false
-		const isOwner = ownerNumber.includes(sender)
-		const isRegister = checkRegisteredUser(sender)
-		const isBanned = ban.includes(sender)
-		const isPrem = premium.includes(sender)
-		const isUrl = (url) => {
-			return (new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
-		}
+			const samu = '```'
+			const crypto = require('crypto')
+			const isGroup = from.endsWith('@g.us')
+			const totalchat = await client.chats.all()
+			const tescuk = ["0@s.samu330.net"]
+			const sender = isGroup ? sam.participant : sam.key.remoteJid
+			const groupMetadata = isGroup ? await samu330.groupMetadata(from) : ''
+			const groupName = isGroup ? groupMetadata.subject : ''
+			const q = args.join(' ')
+			const groupId = isGroup ? groupMetadata.jid : ''
+			const groupMembers = isGroup ? groupMetadata.participants : ''
+			const groupDesc = isGroup ? groupMetadata.desc : ''
+			const groupOwner = isGroup ? groupMetadata.owner : ''
+			pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify : undefined
+			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+			const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
+			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+			const isGroupAdmins = groupAdmins.includes(sender) || false
+			const isWelkom = isGroup ? welkom.includes(from) : false
+			const isEventon = isGroup ? event.includes(from) : false
+			const isAnime = isGroup ? anime.includes(from) : false
+			const isAntiLink = isGroup ? antilink.includes(from) : false
+            		const isAntiFake = isGroup ? antifake.includes(from) : false
+			const isAntiVirtex = isGroup ? antivirtex.includes(from) : false
+			const isAutoSt = isGroup ? autostick.includes(from) : false
+			const isBadWord = isGroup ? badword.includes(from) : false
+			const isPrem = prem.includes(sender)
+			const isRegister = checkRegisteredUser(sender)
+			const isOwner = ownerNumber.includes(sender)
+			const isBanned = ban.includes(sender)
+			const isPremium = premium.includes(sender)
+			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
+			const isUrl = (url) => {
+			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+			}
 		const reply = (teks) => {
 			samu330.sendMessage(from, teks, text, { quoted: sam, timestamp: 0, contextInfo: {"forwardingScore": 9999, "isForwarded": true, caption: '__', thumbnailJpg: './src/help.jpg'}})
 		}
+		
+		
 		const math = (teks) => {
 				return Math.floor(teks)
 			}
+		
+		
 const fileurl = async(link, type) => {
  woy = await getBuffer(link)
  samu330.sendMessage(from, woy, type, {quoted:ftoko})
 }
+
+			const costum = (pesan, tipe, target, target2) => {
+
+			samu330.sendMessage(from, pesan, tipe, {quoted: { key: { fromMe: false, participant: `${target}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target2}` }}})
+
+			}
+
+			const createSerial = (size) => {
+
+			return crypto.randomBytes(size).toString('hex').slice(0, size)
+
+        		}
 	//FAKE STATUS
 	const fimg = {
 	 key:
@@ -550,6 +955,542 @@ const fileurl = async(link, type) => {
 	samu330.sendMessage(from, {displayname: nama, vcard: vcard},
 		MessageType.contact)
 		}
+		
+		
+		
+//======================================================================================================================================0
+		
+		
+if (isGroup && isLevelingOn) {
+            const currentLevel = getLevelingLevel(sender)
+            const checkId = getLevelingId(sender)
+            try {
+                if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
+                const amountXp = Math.floor(Math.random() * 10) + 500
+                const requiredXp = 5000 * (Math.pow(2, currentLevel) - 1)
+                const getLevel = getLevelingLevel(sender)
+                addLevelingXp(sender, amountXp)
+                if (requiredXp <= getLevelingXp(sender)) {
+                    addLevelingLevel(sender, 1)
+                    await reply(`*🥳SUBES DE NIVEL🥳*\n\n*Nombre*: ${sender}\n*XP*: ${getLevelingXp(sender)}\n*Level*: ${getLevel} -> ${getLevelingLevel(sender)}\n\nFelicidades!! 🎉🎉`)
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        }
+         
+          const checkLimit = (sender) => {
+          	let found = false
+                    for (let lmt of _limit) {
+                        if (lmt.id === sender) {
+                            let limitCounts = limitawal - lmt.limit
+                            if (limitCounts <= 0) return samu330.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit atau Meminta Sama owner`, text,{ quoted: mek})
+                            samu330.sendMessage(from, 'ind.limitcount(limitCounts)', text, { quoted : sam})
+                            found = true
+                        }
+                    }
+                    if (found === false) {
+                        let obj = { id: sender, limit: 0 }
+                        _limit.push(obj)
+                        fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
+                        samu330.sendMessage(from, 'ind.limitcount(limitCounts)', text, { quoted : sam})
+                    }
+				}
+
+				
+           const isLimit = (sender) =>{
+		      let position = false
+              for (let i of _limit) {
+              if (i.id === sender) {
+              	let limits = i.limit
+              if (limits >= limitawal ) {
+              	  position = true
+                    samu330.sendMessage(from, 'ind.limitend(pushname)', text, {quoted: sam})
+                    return true
+              } else {
+              	_limit
+                  position = true
+                  return false
+               }
+             }
+           }
+           if (position === false) {
+           	const obj = { id: sender, limit: 0 }
+                _limit.push(obj)
+                fs.writeFileSync('./src/limit.json',JSON.stringify(_limit))
+           return false
+       }
+     }
+		
+		if (isRegister && isGroup ) {
+
+            const checkATM = checkATMuser(sender)
+
+            try {
+
+                if (checkATM === undefined) addATM(sender)
+
+                const uangsaku = Math.floor(Math.random() * 100) + 1000
+
+                addKoinUser(sender, uangsaku)
+
+            } catch (err) {
+
+                console.error(err)
+
+            }
+
+        }
+			
+			
+			
+			
+			
+			if (isGroup) {
+
+					try {
+
+						const getmemex = groupMembers.length	
+
+					    if (getmemex <= memberlimit) {
+
+						reply(`maaf member group belum memenuhi syarat. minimal member group adalah ${memberlimit}`)
+
+						setTimeout( () => {
+
+ 	                           client.groupLeave(from) 
+
+ 					   	}, 5000)
+
+								setTimeout( () => {
+
+								client.updatePresence(from, Presence.composing)
+
+								reply("Assalamualaikum😊")
+
+							}, 4000)
+
+								setTimeout( () => {
+
+								client.updatePresence(from, Presence.composing)
+
+								reply("JANGAN LUPAIN AKU YAHH......")
+
+							}, 3000)
+
+								setTimeout( () => {
+
+								client.updatePresence(from, Presence.composing)
+
+								reply("BARU UNDANG AKU LAGI:)")
+
+							}, 2000)
+
+								setTimeout( () => {
+
+								client.updatePresence(from, Presence.composing)
+
+								reply("MEMBER NYA TAMBAHIN DULU")
+
+							}, 1000)
+
+								setTimeout( () => {
+
+								client.updatePresence(from, Presence.composing)
+
+								reply("MAAF KAK BOT AKAN KELUAR:D")
+
+							}, 0)
+
+					    }
+
+		       } catch (err) { console.error(err)  }
+
+ 	       }
+
+ 
+const bares = getLevelingLevel(sender)
+
+			var bars = `*[▒▒▒▒▒▒▒▒▒▒] ${bares}%*`
+			if (bares <= 10) {
+
+				bars = `*[█▒▒▒▒▒▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 20) {
+
+				bars = `*[██▒▒▒▒▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 30) {
+
+				bars = `*[███▒▒▒▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 40) {
+
+				bars = `*[████▒▒▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 50) {
+
+				bars = `*[█████▒▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 60) {
+
+				bars = `*[██████▒▒▒▒] ${bares}%*`
+
+			} else if (bares <= 70) {
+
+				bars = `*[███████▒▒▒] ${bares}%*`
+
+			} else if (bares <= 80) {
+
+				bars = `*[████████▒▒] ${bares}%*`
+
+			} else if (bares <= 90) {
+
+				bars = `*[█████████▒] ${bares}%*`
+
+			} else if (bares <= 100) {
+
+				bars = `*[██████████] ${bares}%*`
+
+			} else if (bares <= 110) {
+
+				bars = `*[██████████]+1 ${bares}%*`
+
+			} else if (bares <= 120) {
+
+				bars = `*[██████████]+2 ${bares}%*`
+
+			} else if (bares <= 130) {
+
+				bars = `*[██████████]+3 ${bares}%*`
+
+			} else if (bares <= 140) {
+
+				bars = `*[██████████]+4 ${bares}%*`
+
+			} else if (bares <= 150) {
+
+				bars = `*[██████████]+5 ${bares}%*`
+
+			} else if (bares <= 160) {
+
+				bars = `*[██████████]+6 ${bares}%*`
+			} else if (bares <= 170) {
+
+				bars = `*[██████████]+7 ${bares}%*`
+
+			} else if (bares <= 180) {
+
+				bars = `*[██████████]+8 ${bares}%*`
+
+			} else if (bares <= 190) {
+
+				bars = `*[██████████]+9 ${bares}%*`
+
+			} else if (bares <= 110) {
+
+				bars = `*[██████████]+10 ${bares}%*`
+
+			} else if (bares <= 99999999999999) {
+
+				bars = `*[██████████]+上帝 ${bares}%*`
+            }
+        /*********** FUNCTION RANK ***********/
+
+			const levelRole = getLevelingLevel(sender)
+   	     var role = 'Newbie ㋡'
+        if (levelRole <= 2) {
+            role = 'Newbie ㋡'
+        } else if (levelRole <= 4) {
+            role = 'Beginner Grade 1 ⚊¹'
+        } else if (levelRole <= 6) {
+            role = 'Beginner Grade 2 ⚊²'
+        } else if (levelRole <= 8) {
+            role = 'Beginner Grade 3 ⚊³'
+        } else if (levelRole <= 10) {
+            role = 'Beginner Grade 4 ⚊⁴'
+        } else if (levelRole <= 12) {
+            role = 'Private Grade 1 ⚌¹'
+        } else if (levelRole <= 14) {
+            role = 'Private Grade 2 ⚌²'
+        } else if (levelRole <= 16) {
+            role = 'Private Grade 3 ⚌³'
+        } else if (levelRole <= 18) {
+            role = 'Private Grade 4 ⚌⁴'
+        } else if (levelRole <= 20) {
+            role = 'Private Grade 5 ⚌⁵'
+        } else if (levelRole <= 22) {
+            role = 'Corporal Grade 1 ☰¹'
+        } else if (levelRole <= 24) {
+            role = 'Corporal Grade 2 ☰²'
+        } else if (levelRole <= 26) {
+            role = 'Corporal Grade 3 ☰³'
+        } else if (levelRole <= 28) {
+            role = 'Corporal Grade 4 ☰⁴'
+        } else if (levelRole <= 30) {
+            role = 'Corporal Grade 5 ☰⁵'
+        } else if (levelRole <= 32) {
+            role = 'Sergeant Grade 1 ≣¹'
+        } else if (levelRole <= 34) {
+            role = 'Sergeant Grade 2 ≣²'
+        } else if (levelRole <= 36) {
+            role = 'Sergeant Grade 3 ≣³'
+        } else if (levelRole <= 38) {
+            role = 'Sergeant Grade 4 ≣⁴'
+        } else if (levelRole <= 40) {
+            role = 'Sergeant Grade 5 ≣⁵'
+        } else if (levelRole <= 42) {
+            role = 'Staff Grade 1 ﹀¹'
+        } else if (levelRole <= 44) {
+            role = 'Staff Grade 2 ﹀²'
+        } else if (levelRole <= 46) {
+            role = 'Staff Grade 3 ﹀³'
+        } else if (levelRole <= 48) {
+            role = 'Staff Grade 4 ﹀⁴'
+        } else if (levelRole <= 50) {
+            role = 'Staff Grade 5 ﹀⁵'
+        } else if (levelRole <= 52) {
+            role = 'Sergeant Grade 1 ︾¹'
+        } else if (levelRole <= 54) {
+            role = 'Sergeant Grade 2 ︾²'
+        } else if (levelRole <= 56) {
+            role = 'Sergeant Grade 3 ︾³'
+        } else if (levelRole <= 58) {
+            role = 'Sergeant Grade 4 ︾⁴'
+        } else if (levelRole <= 60) {
+            role = 'Sergeant Grade 5 ︾⁵'
+        } else if (levelRole <= 62) {
+            role = '2nd Lt. Grade 1 ♢¹ '
+        } else if (levelRole <= 64) {
+            role = '2nd Lt. Grade 2 ♢²'
+        } else if (levelRole <= 66) {
+            role = '2nd Lt. Grade 3 ♢³'
+        } else if (levelRole <= 68) {
+            role = '2nd Lt. Grade 4 ♢⁴'
+        } else if (levelRole <= 70) {
+            role = '2nd Lt. Grade 5 ♢⁵'
+        } else if (levelRole <= 72) {
+            role = '1st Lt. Grade 1 ♢♢¹'
+        } else if (levelRole <= 74) {
+            role = '1st Lt. Grade 2 ♢♢²'
+        } else if (levelRole <= 76) {
+            role = '1st Lt. Grade 3 ♢♢³'
+        } else if (levelRole <= 78) {
+            role = '1st Lt. Grade 4 ♢♢⁴'
+        } else if (levelRole <= 80) {
+            role = '1st Lt. Grade 5 ♢♢⁵'
+        } else if (levelRole <= 82) {
+            role = 'Major Grade 1 ✷¹'
+        } else if (levelRole <= 84) {
+            role = 'Major Grade 2 ✷²'
+        } else if (levelRole <= 86) {
+            role = 'Major Grade 3 ✷³'
+        } else if (levelRole <= 88) {
+            role = 'Major Grade 4 ✷⁴'
+        } else if (levelRole <= 90) {
+            role = 'Major Grade 5 ✷⁵'
+        } else if (levelRole <= 92) {
+            role = 'Colonel Grade 1 ✷✷¹'
+        } else if (levelRole <= 94) {
+            role = 'Colonel Grade 2 ✷✷²'
+        } else if (levelRole <= 96) {
+            role = 'Colonel Grade 3 ✷✷³'
+        } else if (levelRole <= 98) {
+            role = 'Colonel Grade 4 ✷✷⁴'
+        } else if (levelRole <= 100) {
+            role = 'Colonel Grade 5 ✷✷⁵'
+        } else if (levelRole <= 102) {
+            role = 'Brigadier Early ✰'
+        } else if (levelRole <= 104) {
+            role = 'Brigadier Silver ✩'
+        } else if (levelRole <= 106) {
+            role = 'Brigadier gold ✯'
+        } else if (levelRole <= 108) {
+            role = 'Brigadier Platinum ✬'
+        } else if (levelRole <= 110) {
+            role = 'Brigadier Diamond ✪'
+        } else if (levelRole <= 112) {
+            role = 'Major General Early ✰'
+        } else if (levelRole <= 114) {
+            role = 'Major General Silver ✩'
+        } else if (levelRole <= 116) {
+            role = 'Major General gold ✯'
+        } else if (levelRole <= 118) {
+            role = 'Major General Platinum ✬'
+        } else if (levelRole <= 120) {
+            role = 'Major General Diamond ✪'
+        } else if (levelRole <= 122) {
+            role = 'Lt. General Early ✰'
+        } else if (levelRole <= 124) {
+            role = 'Lt. General Silver ✩'
+        } else if (levelRole <= 126) {
+            role = 'Lt. General gold ✯'
+        } else if (levelRole <= 128) {
+            role = 'Lt. General Platinum ✬'
+        } else if (levelRole <= 130) {
+            role = 'Lt. General Diamond ✪'
+        } else if (levelRole <= 132) {
+            role = 'General Early ✰'
+        } else if (levelRole <= 134) {
+            role = 'General Silver ✩'
+        } else if (levelRole <= 136) {
+            role = 'General gold ✯'
+        } else if (levelRole <= 138) {
+            role = 'General Platinum ✬'
+        } else if (levelRole <= 140) {
+            role = 'General Diamond ✪'
+        } else if (levelRole <= 142) {
+            role = 'Commander Early ★'
+        } else if (levelRole <= 144) {
+            role = 'Commander Intermediate ⍣'
+        } else if (levelRole <= 146) {
+            role = 'Commander Elite ≛'
+        } else if (levelRole <= 148) {
+            role = 'The Commander Hero ⍟'
+        } else if (levelRole <= 152) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 154) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 156) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 158) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 160) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 162) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 164) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 166) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 168) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 170) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 172) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 174) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 176) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 178) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 180) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 182) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 184) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 186) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 188) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 190) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 192) {
+            role = 'Legends I 忍'
+        } else if (levelRole <= 194) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 196) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 198) {
+            role = 'Legends II 忍'
+        } else if (levelRole <= 200) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 210) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 220) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 230) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 240) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 250) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 260) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 270) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 280) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 290) {
+            role = 'Legends III 忍'
+        } else if (levelRole <= 300) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 310) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 320) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 330) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 340) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 350) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 360) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 370) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 380) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 390) {
+            role = 'Legends IV 忍'
+        } else if (levelRole <= 400) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 410) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 420) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 430) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 440) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 450) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 460) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 470) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 480) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 490) {
+            role = 'Legends V 忍'
+        } else if (levelRole <= 500) {
+            role = 'Legends VI 忍'
+        } else if (levelRole <= 600) {
+            role = 'Legends VII 忍'
+        } else if (levelRole <= 700) {
+            role = 'Legends VIII 忍'
+        } else if (levelRole <= 800) {
+            role = 'Legends IX 忍'
+        } else if (levelRole <= 900) {
+            role = 'Legends X 忍'
+        } else if (levelRole <= 1000) {
+            role = 'Mythic I 上帝'
+        } else if (levelRole <= 2000) {
+            role = 'Mythic II 上帝'
+        } else if (levelRole <= 3000) {
+            role = 'Mythic III 上帝'
+        } else if (levelRole <= 4000) {
+            role = 'Mythic IV 上帝'
+        } else if (levelRole <= 5000) {
+            role = 'Mythic V 上帝'
+        } else if (levelRole <= 6000) {
+            role = 'Mythic VII 上帝'
+        } else if (levelRole <= 7000) {
+            role = 'Mythic VIII 上帝'
+        } else if (levelRole <= 8000) {
+            role = 'Mythic IX 上帝'
+        } else if (levelRole <= 9000) {
+            role = 'Mythic X 上帝'
+        } else if (levelRole <= 10000) {
+            role = 'Awakened Mythic 特尔邦贡'
+	    } else if (levelRole <= 99999999999) {
+   	         role = 'End level 程度❗'
+   	     }
+			
+			
+			
 	
 		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
 		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
