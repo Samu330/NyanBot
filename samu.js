@@ -54,8 +54,6 @@ const
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const axios = require("axios");
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const kagApi = require('@kagchi/kag-api');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const os = require('os');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const CryptoJS = require("crypto-js");
@@ -94,33 +92,33 @@ const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { virtex } = require('./src/virtex');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const setiker = JSON.parse(fs.readFileSync('./src/stik.json'))
+const setiker = JSON.parse(fs.readFileSync('./src/stik.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const videonye = JSON.parse(fs.readFileSync('./src/video.json'))
+const videonye = JSON.parse(fs.readFileSync('./src/video.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const audionye = JSON.parse(fs.readFileSync('./src/audio.json'))
+const audionye = JSON.parse(fs.readFileSync('./src/audio.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const imagenye = JSON.parse(fs.readFileSync('./src/image.json'))
+const imagenye = JSON.parse(fs.readFileSync('./src/image.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const samu = JSON.parse(fs.readFileSync('./setting.json'))
+const samu = JSON.parse(fs.readFileSync('./setting.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { spawn, exec, execSync } = require("child_process")
+const { spawn, exec, execSync } = require("child_process");
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const speed = require('performance-now')
+const speed = require('performance-now');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const crypto = require('crypto')
+const crypto = require('crypto');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const simi = JSON.parse(fs.readFileSync('./src/simi.json'))
+const simi = JSON.parse(fs.readFileSync('./src/simi.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const ban = JSON.parse(fs.readFileSync('./src/banned.json'))
+const ban = JSON.parse(fs.readFileSync('./src/banned.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const premium = JSON.parse(fs.readFileSync('./src/premium.json'))
+const premium = JSON.parse(fs.readFileSync('./src/premium.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const Exif = require('./lib/exif')
+const Exif = require('./lib/exif');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'))
+const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 
 
