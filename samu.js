@@ -156,7 +156,7 @@ const _event = JSON.parse(fs.readFileSync('./src/event.json'))
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const _limit = JSON.parse(fs.readFileSync('./src/limit.json'))
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const samyperry = JSON.parse(fs.readFileSync('./database/json/samu330.json'))
+const samyperry = JSON.parse(fs.readFileSync('./src/samu330.json'))
 
 ///////////////////////////////////////////////////////////////////////////
 
