@@ -110,13 +110,15 @@ const simi = JSON.parse(fs.readFileSync('./src/simi.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const ban = JSON.parse(fs.readFileSync('./src/banned.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const premium = JSON.parse(fs.readFileSync('./src/premium.json'));
+const premium = JSON.parse(fs.readFileSync('./src/prem.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const Exif = require('./lib/exif');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
+////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const anime = JSON.parse(fs.readFileSync('./src/anime.json'))
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 
 
@@ -2734,6 +2736,27 @@ samu330.sendMessage(from, pok, image, {
   reply(mess.ferr)
 }
 break
+				
+				
+			case 'modeanime':
+				if (isBanned) return reply(mess.only.benned)    
+				if (!isRegister) return reply(mess.only.daftarB)
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins && !isOwner) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Escriba *1* para activar, y *0* para desactivar')
+					if ((args[0]) === '1') {
+						if (isAnime) return reply('El modo Antiotakus esta activado deporsi')
+						anime.push(from)
+						fs.writeFileSync('./src/anime.json', JSON.stringify(anime))
+						reply(`\`\`\`✓Activado en el grupo\`\`\` *${groupMetadata.subject}*`)
+					} else if ((args[0]) === '0') {
+						anime.splice(from, 1)
+						fs.writeFileSync('./src/anime.json', JSON.stringify(anime))
+						reply(`\`\`\`✓Modo anime desactivado en el grupo\`\`\` *${groupMetadata.subject}*`)
+					} else {
+					reply('Escriba *1* para activar, y *0* para desactivar')
+					}
+					break
 			
 case 'antidelete':
 				const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
