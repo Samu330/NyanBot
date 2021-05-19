@@ -503,6 +503,13 @@ samu330.on('CB:action,,battery', json => {
 		if (json[2][0][1].live == 'false') charging = false
 	})
 	
+samu330.on('CB:action,,call', async json => {
+    const callerId = json[2][0][1].from;
+    console.log(json);
+    samu330.sendMessage(callerId, "Las llamadas estan prohibidas, porfavor lee las reglas🤨. Lo sieto pero seras bloqueado!", MessageType.text);
+    await samu330.blockUser(callerId, "add");
+	})
+	
 //=====================================================================
 samu330.on('message-update', async (mek) => {
 		try {
@@ -759,14 +766,14 @@ client.on('message-new', async (sam) => {
 			success: '✔️ 𝙎𝙐𝙎𝙎𝙀𝙎 ✔️',
 			nsfw: '𝗟𝗼 𝘀𝗶𝗲𝗻𝘁𝗼 𝗽𝗲𝗿𝗼 𝗻𝗼 𝗽𝘂𝗲𝗱𝗼 𝗲𝗷𝗲𝗰𝘂𝘁𝗮𝗿 𝗲𝘀𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼, 𝗲𝘀𝘁𝗲 𝗴𝗿𝘂𝗽𝗼 𝗻𝗼 𝗽𝗲𝗿𝗺𝗶𝘁𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 +𝟭𝟴\n*PARA ACTIVAR LOS COMANDOS +18, USA:* .+18 1', 
 			ferr: 'Intentalo de nuevo mas tarde',
-			ban: '⚠ *USTED ES UN USUARIO BANEADO, ESO QUIERE DECIR QUE NO PUEDE USAR EL BOT* ⚠',
-			prem: '🤴🏻 _*LO SIENTO, ESTE COMANDO SOLO PUEDE SER UTILIZADO POR USUARIOS*_ ```PREMIUM``` 🐱‍💻',
 			error: {
 				stick: '[❗] 𝙀𝙍𝙍𝙊𝙍 intentalo de nuevo, da error a la primera:D  ❌',
 				Iv: '❌ Link invalido ❌'
 			},
 			only: {
     group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
+    premium: '🤴🏻 _*LO SIENTO, ESTE COMANDO SOLO PUEDE SER UTILIZADO POR USUARIOS*_ ```PREMIUM``` 🐱‍💻',
+    benned: '⚠ *USTED ES UN USUARIO BANEADO, ESO QUIERE DECIR QUE NO PUEDE USAR EL BOT* ⚠',
     ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
     ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: wa.me/+529984907794, Habla con el para que pueda cambiar el numero del owner en este bot',
     admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
@@ -776,6 +783,7 @@ client.on('message-new', async (sam) => {
 		}
 
 		const botNumber = samu330.user.jid
+		const ownerNumber = [`${samyperry}@s.whatsapp.net`]
 			const samu = '```'
 			const crypto = require('crypto')
 			const isGroup = from.endsWith('@g.us')
@@ -2338,36 +2346,44 @@ const media = await samu330.downloadAndSaveMediaMessage(encmedia)
 await samu330.updateProfilePicture (from, media)
 reply('Se cambio la foto del grupo')
 break
-	
+					
+
+				case 'reg':
+
+                                        if (isRegister) return reply('*Tu cuenta ya estaba verificada*')
+                                        if (!q.includes('|')) return  reply(`*PORFAVOR ESCRIBE BIEN EL FORMATO DE REGISTRO:* ${prefix}reg *Samu|17*`)
+                                        const nombre = q.substring(0, q.indexOf('|') - 0)
+                                        const edad = q.substring(q.lastIndexOf('|') + 1)
+                                        const serialUser = createSerial(20)
+                                        if(isNaN(edad)) return await reply('*La edad es un numero🙄*!!')
+                                        if (nombre.length >= 10) return reply(`*Tu nombre es acaso un tren?*\nUn nombre no puede tener mas de *10* letras`)
+                                        if (edad > 30) return reply(`Uuuu, yastas viejito:c\n*Lo siento pero no puedo registrarte si eres mayor de 30 años*`)
+                                        if (edad < 13) return reply(`Eres menor de 13 años, no puedo hacer un registro tuyo lo siento.\n*Si quieres muestrame una autorizacion de tus padres diciendo que puedes pasar tiempo usando este bot para que pueda aceptarte:d*`)
+                                        try {
+		                          		ppimg = await samu330.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+		                        		} catch {
+							                        	
+								ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                           	}
 			
-case 'reg':
-if (isRegister) return reply('Tu cuenta ya estaba verificada')
-const namaUser = `${pushname}`
-const umurUser = `${sender}`
-const serialUser = createSerial(20)
-veri = sender
-if (isGroup) {
-  addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
-  hasil = `〘  *Vericación* 〙
-Código : *${serialUser}*
-◦ *Nombre* : *${namaUser}*
-◦ *Número* : *${sender.split("@")[0]}*
-`
-reply(hasil)
-  console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
-} else {
-  addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
-  hasil = `〘  *Verificación* 〙
-Código : *${serialUser}*
-◦ *Nombre* : *${namaUser}*
-◦ *Número* : *${sender.split("@")[0]}*
-`
-reply(hasil)
-  console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
-}
-tm = `verificación completa usa ${prefix}Menu para ver los comandos`
-reply(tm)
-break
+			                         	AdiGans = await getBuffer(ppimg)
+                                        veri = sender
+                                        if (isGroup) {
+                                                addRegisteredUser(sender, nombre, edad, time, serialUser)
+                                                samu330.sendMessage(from, AdiGans, image, { quoted: ftoko, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`(nombre, edad, serialUser, time, sender)})
+                                                addATM(sender)
+                                                addLevelingId(sender)
+                                                console.log(color('[REGISTRO]'), color(time, 'yellow'), 'Nombre:', color(nombre, 'cyan'), 'Edad:', color(edad, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
+                                        } else {
+                                                addRegisteredUser(sender, nombre, edad, time, serialUser)
+                                                samu330.sendMessage(from, AdiGans, image, { quoted: ftoko, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`(nombre, edad, serialUser, time, sender)})
+                                                addATM(sender)
+                                                addLevelingId(sender)
+                                                console.log(color('[REGISTRO]'), color(time, 'yellow'), 'Nombre:', color(nombre, 'cyan'), 'Edad:', color(edad, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
+                                        }
+				        break
+				
+				
 		
 				
 case 'tourl':
@@ -3681,12 +3697,15 @@ quoted: sam
 					break
 				
 				case 'addprem':
-					if (!isOwner) return reply(mess.only.ownerB)
-					addp = body.slice(10)
-					premium.push(`${addp}@s.whatsapp.net`)
-					fs.writeFileSync('./src/premium.json', JSON.stringify(premium))
-					reply(`El usuario *wa.me/${addp}* ahora es _*premium*_`)
-					break
+				samu330.updatePresence(from, Presence.composing)
+				if (!isOwner) return reply(mess.only.ownerB)
+				if (args.length < 1 ) return reply('Etiqueta a una persona')
+				mente = `${body.slice(9)}@s.whatsapp.net`
+				prem.push(mente)
+				fs.writeFileSync('./src/prem.json',JSON.stringify(prem))
+				reply(`*「 PREMIUM ADD 」*\n\n*Felicidades ${mente}, eres ahora un usuario Premium🥳*`)
+				break
+				
 				case 'dellprem':
 					if (!isOwner) return reply(mess.only.ownerB)
 					delp = body.slice(11)
@@ -3694,6 +3713,20 @@ quoted: sam
 					fs.writeFileSync('./src/premium.json', JSON.stringify(premium))
 					reply(`El usuario *wa.me/${delp}* ya no es premium _*premium*_`)
 					break	
+				
+		case 'listprem':
+	                if (!isRegister) return reply(mess.only.daftarB)
+	                let listPremi = '「 *PREMIUM USER LIST* 」\n\n'
+	                let nomorList = 0
+	                const deret = getAllPremiumUser()
+	                const arrayPremi = []
+	                for (let i = 0; i < deret.length; i++) {
+	                    arrayPremi.push(getAllPremiumUser()[i])
+	                    nomorList++
+	                    listPremi += `🤴🏻 ${nomorList}. wa.me/${getAllPremiumUser()[i].split("@")[0]}`
+	                }
+	                await reply(listPremi)
+	            break
 				
 			case 'leave':
 				if (!isGroup) return reply(mess.only.group)
