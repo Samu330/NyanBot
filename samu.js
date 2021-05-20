@@ -128,7 +128,7 @@ const deepai = require('deepai');
 //Settings
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 publik = true;
-const memberlimit = samu.memberlimit;
+const memberlimit = '10'
 prefix = samu.prefix;
 const samyperry : samu.samyperry;
 const bodyM = samu.samuM;
