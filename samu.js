@@ -120,8 +120,9 @@ const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const anime = JSON.parse(fs.readFileSync('./src/anime.json'))
+const atporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const deepai = require('deepai');
 
 
 //Settings
@@ -817,6 +818,7 @@ samu330.on('message-new', async (mek) => {
 			const isEventon = isGroup ? event.includes(from) : false
 			const isSimi = isGroup ? simi.includes(from) : false
 			const isAntiLink = isGroup ? antilink.includes(from) : false
+			const isAntiPorn = isGroupMsg ? atporn.includes(groupId) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isAntiMedia = isGroup ? antimedia.includes(from) : false
             		const isAntiFake = isGroup ? antifake.includes(from) : false
@@ -1547,6 +1549,19 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 
 
 
+			if (isGroup && !isGroupAdmins && isBotGroupAdmins && isAntiPorn && isMedia && !isOwner && !botNumber) {
+			try {
+				console.log(color('[IMAGEM]', 'red'), color('Verificando la imagem por pornografia...', 'yellow'))
+				const mediaData = await decryptMedia(message, uaOverride)
+				const getUrl = await upload(mediaData, false)
+				deepai.setApiKey(config.deepai)
+				const resp = await deepai.callStandardApi("nsfw-detector", { image: `${getUrl}` })
+				if (resp.output.nsfw_score > 0.85) {
+					await samu330.removeParticipant(groupId, sender).then(async () => { await samu330.sendTextWithMentions(from, 'Sera eliminado por enviar ' + 'Porno.') })
+					return console.log(color('[NSFW]', 'red'), color(`A imagem contém traços de contéudo adulto, removerei o → ${pushname} - [${pushname}]...`, 'yellow'))
+				} else { console.log(color('[SEM NSFW]', 'lime'), color(`→ A imagem não aparententa ser pornografica.`, 'gold')) }
+			} catch (error) { return }
+		}
 
 
 
@@ -4679,6 +4694,26 @@ if (args[0] === '1') {
 	var ini = antimedia.indexOf(from)
 	antimedia.splice(ini, 1)           
 	fs.writeFileSync('./src/antimedia.json', JSON.stringify(antimedia))       
+	reply(`Desactivado`)              
+} else {                                         
+	reply('1 para activar, 0 para desactivar')           
+}           
+break
+case 'antiporno':                
+if (!isGroup) return reply(mess.only.group)
+                                        if (!isGroupAdmins) return reply(mess.only.admin)     
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+if (args.length < 1) return reply('Escribe *1* para activar')          
+if (args[0] === '1') {                                    
+	if (isAntiPorn) return reply('*Ya está activo*')          
+	atporn.push(from)                          
+	fs.writeFileSync('./src/antiporn.json', JSON.stringify(atporn))      
+	reply(`*[ Activado ]*`)  
+	reply(`*La persona que envie fotos o videos sera eliminada*`)  
+} else if (args[0] === '0') {             
+	var ini = atporn.indexOf(from)
+	atporn.splice(ini, 1)           
+	fs.writeFileSync('./src/antiporn.json', JSON.stringify(atporn))       
 	reply(`Desactivado`)              
 } else {                                         
 	reply('1 para activar, 0 para desactivar')           
