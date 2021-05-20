@@ -2,7 +2,7 @@
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzXebuBoCOavnyRt8kbHlOah1nsI0DY3aqQ&usqp=CAUrevision/latest/top-crop/width/300/height/300?cb=20190417164406" width="128" height="128"/>
 </p>
 <p align="center">
-<a href="#"><img title="NyanBot" src="https://img.shields.io/badge/Termux Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+<a href="#"><img title="NyanBot" src="https://img.shields.io/badge/NyanBot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
 <p align="center">
 <a href="https://github.com/Samu330"><img title="Author" src="https://img.shields.io/badge/author-Samu330-red.svg?style=for-the-badge&logo=github"></a>
@@ -15,7 +15,7 @@
 </p>
 <img src="https://i.imgur.com/n1zo2wL.gif" width="30" height="30"/> NyanBot🐬
 
-## Clone this project
+## Clona este proyecto
 
 ```bash
 > git clone https://github.com/Samu330/NyanBot
