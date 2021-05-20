@@ -119,7 +119,7 @@ const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-
+const antiporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
 
 
 //Settings
@@ -140,7 +140,6 @@ const ApikeyZailani = 'ZailaniGans'
 const ApiZeks = 'apivinz'
 const ApiVhtear = 'AdiOfficial404'
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const prem = ["5219984907794@s.whatsapp.net"]//Cambia a tu numero si quieres🤴🏻
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -414,6 +413,18 @@ async function starts() {
 //=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
 		
 samu330.on('group-participants-update', async (anu) => {
+	
+		if(antifake.includes(anu.jid)) {
+			if (anu.action == 'fake'){
+				num = anu.participants[0]
+				if(num.split('@')[0].startsWith(500, 1, 994, 47, 92)) {
+					samu330.sendMessage(mdata.id, 'Su numero esta considerado como fake, sera eliminado!!', MessageType.text)
+					setTimeout(async function () {
+						samu330.groupRemove(mdata.id, [num])
+					}, 1000)
+				}
+			}
+		}
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await samu330.groupMetadata(anu.jid)
@@ -425,7 +436,7 @@ const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 			let d = new Date
 				let locale = 'id'
 					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-					let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
+					let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
 					let week = d.toLocaleDateString(locale, { weekday: 'long' })
 					let calender = d.toLocaleDateString(locale, {
 				day: 'numeric',
@@ -815,7 +826,7 @@ samu330.on('message-new', async (mek) => {
 			const isEventon = isGroup ? event.includes(from) : false
 			const isSimi = isGroup ? simi.includes(from) : false
 			const isAntiLink = isGroup ? antilink.includes(from) : false
-			const isAntiPorn = isGroupMsg ? atporn.includes(groupId) : false
+			const isAntiPorn = isGroupMsg ? antiporn.includes(groupId) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isAntiMedia = isGroup ? antimedia.includes(from) : false
             		const isAntiFake = isGroup ? antifake.includes(from) : false
@@ -1510,55 +1521,49 @@ const bares = getLevelingLevel(sender)
 		
 		
 		//autoStiker By Samu330
-if (isGroup && isAutoSt && !botNumber) {
-if (isMedia && !mek.message.videoMessage || isQuotedImage) {           
-	if (!botNumber) {
-	const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek       
-	const media = await samu330.downloadAndSaveMediaMessage(encmedia) 
-	ran = getRandom('.webp')           
-	await ffmpeg(`./${media}`)      
-		.input(media)       
-		.on('start', function (cmd) {      
-			console.log(`Started : ${cmd}`)     
-		})                    
-		.on('error', function (err) {           
-			console.log(`Error : ${err}`)        
-			fs.unlinkSync(media)                 
-			reply(mess.error.stick)                 
-		})                                           
-		.on('end', function () {                  
-			console.log('Finish')               
-			exec(`webpmux -set exif ${addMetadata('Auto-St-By-Samu330-Sam-y-Perry')} ${ran} -o ${ran}`, async (error) => {                                      
-				if (error) return reply(mess.error.stick)
-                                                                        samu330.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: fdoc, contextInfo: {"forwardingScore": 9999, "isForwarded": true}})    
-									reply(mess.success)       
-									fs.unlinkSync(media)       
-									fs.unlinkSync(ran)          
-									})                       
-							})
-                                                        .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-							.toFormat('webp')
-						  	.save(ran)
-                                        }
-}
-}
+if ((isAntiPorn && isBotGroupAdmins)) {
+				if(!mek.message) return
+				if (type === MessageType.image) {
+					savedFilename = await samu330.downloadAndSaveMediaMessage (mek)
+					imgbb('20a14861e4f7591f3dc52649cb07ae02', savedFilename).then(async function(response) {
+						anu = await fetchJson(`api${response.url}`)
+
+						if(anu[0].className === 'Porn' && isGroupAdmins)  {
+							await samu330.sendMessage(from,'', MessageType.text, {quoted: mek})
+							return
+							
+						} else if(anu[0].className === 'Porn' && !isGroupAdmins) {
+							await samu330.sendMessage(from,'', MessageType.text, {quoted: mek})
+							setTimeout(async function () {
+								samu330.groupRemove(from, [sender])
+							}, 2000)
+							return
+						}
+						
+						if(anu[0].className === 'Hentai' && isGroupAdmins) {
+							await samu330.sendMessage(from,'', MessageType.text, {quoted: mek})
+							return
+
+						}  else if(anu[0].className === 'Hentai' && !isGroupAdmins) {
+							await samu330.sendMessage(from,'', MessageType.text, {quoted: mek})
+							setTimeout(async function () {
+								samu330.groupRemove(from, [sender])
+							}, 2000)
+							return
+						}
+						
+						if(anu[0].className === 'Sexy') return samu330.sendMessage(from,'Cuidado com oq manda em amigo, to com antiporn ativado', MessageType.text, {quoted: mek})
+						
+						fs.unlinkSync(savedFilename)
+
+					}).catch((error) => console.error(error));
+				}
+			}
 
 
 
 
-			/*if (isGroup && !isGroupAdmins && isBotGroupAdmins && isAntiPorn && isMedia && !isOwner && !botNumber) {
-			try {
-				console.log(color('[IMAGEM]', 'red'), color('Verificando la imagem por pornografia...', 'yellow'))
-				const mediaData = await decryptMedia(message, uaOverride)
-				const getUrl = await upload(mediaData, false)
-				deepai.setApiKey(config.deepai)
-				const resp = await deepai.callStandardApi("nsfw-detector", { image: `${getUrl}` })
-				if (resp.output.nsfw_score > 0.85) {
-					await samu330.removeParticipant(groupId, sender).then(async () => { await samu330.sendTextWithMentions(from, 'Sera eliminado por enviar ' + 'Porno.') })
-					return console.log(color('[NSFW]', 'red'), color(`A imagem contém traços de contéudo adulto, removerei o → ${pushname} - [${pushname}]...`, 'yellow'))
-				} else { console.log(color('[SEM NSFW]', 'lime'), color(`→ A imagem não aparententa ser pornografica.`, 'gold')) }
-			} catch (error) { return }
-		}*/
+			
 
 
 
@@ -1689,6 +1694,47 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 			        reply("5 segundos")
 		        }, 0)
 	        }
+			
+			if (messagesC.includes("hola")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("*🤯Hola*")
+	}
+			if (messagesC.includes("que haces")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("Nada, aqui sentado esperando mensajes y comandos para ejecutar:D")
+	}
+			if (messagesC.includes("bot")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("Que ai🤡")
+	}
+			if (messagesC.includes("como estas")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("Uff, algo cansado y tu?")
+	}
+			if (messagesC.includes("bien")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("que bueno🤠")
+	}
+			if (messagesC.includes("free fire")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("Esa onda da asco, quien juega eso eh🤨🤮!!")
+	}
+			if (messagesC.includes("puto")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("eres")
+	}
+			if (messagesC.includes("jaja")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA🤣")
+	}
+			if (messagesC.includes(":c")){
+			samu330.updatePresence(from, Presence.composing)
+			reply("Chaaaa, tas trite?😥")
+	}
+			if (messagesC.includes(":D")){
+			samu330.updatePresence(from, Presence.composing)
+			reply(":0")
+	}
 		
 		
 		
@@ -4703,14 +4749,14 @@ if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 if (args.length < 1) return reply('Escribe *1* para activar')          
 if (args[0] === '1') {                                    
 	if (isAntiPorn) return reply('*Ya está activo*')          
-	atporn.push(from)                          
-	fs.writeFileSync('./src/antiporn.json', JSON.stringify(atporn))      
+	antiporn.push(from)                          
+	fs.writeFileSync('./src/antiporn.json', JSON.stringify(antiporn))      
 	reply(`*[ Activado ]*`)  
 	reply(`*La persona que envie fotos o videos sera eliminada*`)  
 } else if (args[0] === '0') {             
-	var ini = atporn.indexOf(from)
-	atporn.splice(ini, 1)           
-	fs.writeFileSync('./src/antiporn.json', JSON.stringify(atporn))       
+	var ini = antiporn.indexOf(from)
+	antiporn.splice(ini, 1)           
+	fs.writeFileSync('./src/antiporn.json', JSON.stringify(antiporn))       
 	reply(`Desactivado`)              
 } else {                                         
 	reply('1 para activar, 0 para desactivar')           
