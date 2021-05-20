@@ -54,8 +54,7 @@ const
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const axios = require("axios");
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const isPorn = require('is-porn')
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+
 const os = require('os');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const CryptoJS = require("crypto-js");
@@ -120,9 +119,7 @@ const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const atporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const deepai = require('deepai');
+
 
 
 //Settings
@@ -1549,7 +1546,7 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 
 
 
-			if (isGroup && !isGroupAdmins && isBotGroupAdmins && isAntiPorn && isMedia && !isOwner && !botNumber) {
+			/*if (isGroup && !isGroupAdmins && isBotGroupAdmins && isAntiPorn && isMedia && !isOwner && !botNumber) {
 			try {
 				console.log(color('[IMAGEM]', 'red'), color('Verificando la imagem por pornografia...', 'yellow'))
 				const mediaData = await decryptMedia(message, uaOverride)
@@ -1561,7 +1558,7 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 					return console.log(color('[NSFW]', 'red'), color(`A imagem contém traços de contéudo adulto, removerei o → ${pushname} - [${pushname}]...`, 'yellow'))
 				} else { console.log(color('[SEM NSFW]', 'lime'), color(`→ A imagem não aparententa ser pornografica.`, 'gold')) }
 			} catch (error) { return }
-		}
+		}*/
 
 
 
