@@ -117,7 +117,7 @@ const Exif = require('./lib/exif');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const exif = new Exif()
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antivirtex = JSON.parse(fs.readFileSync('./src/antivirtex.json'));
+const antilegion = JSON.parse(fs.readFileSync('./src/antilegion.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const antiporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
 
@@ -133,6 +133,14 @@ targetprivate = '';
 blocked = [];
 ban : [];
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const vcard = 'BEGIN:VCARD\n'
++ 'VERSION:3.0\n'
++ 'FN:-·👑Samu330🏆·-\n'
++ 'ORG:🐬NyanBot;\n'
++ 'TEL;type=CELL;type=VOICE;waid=5219984907794:+521 9984 907794\n' 
++ 'END:VCARD' 
+
+
 
 //apikey
 const api = 'ec35353a991a258b05876861'
@@ -517,7 +525,7 @@ samu330.on('CB:action,,battery', json => {
 samu330.on('CB:action,,call', json => {
     global.callerId = json[2][0][1].from;
     console.log(json);
-    samu330.sendMessage(callerId, "Las llamadas estan prohibidas, porfavor lee las reglas🤨. Lo sieto pero seras bloqueado!", MessageType.text, { quoted: { key:                                                                                                      { fromMe: false,                                                                                          participant: `0@s.whatsapp.net`},                  
+    samu330.sendMessage(callerId, "Las llamadas estan prohibidas, porfavor lee las reglas🤨. Lo siento pero seras bloqueado!", MessageType.text, { quoted: { key:                                                                                                      { fromMe: false,                                                                                          participant: `0@s.whatsapp.net`},                  
 	   					 message: { "documentMessage": { "title":"🚫𝐋𝐋𝐀𝐌𝐀𝐃𝐀𝐒 𝐍𝐎 𝐏𝐄𝐑𝐌𝐈𝐓𝐈𝐃𝐀𝐒🚫", 'jpegThumbnail': fs.readFileSync('./media/call.png')}
     }}})
     samu330.blockUser(callerId, "add");
@@ -546,7 +554,8 @@ samu330.on('message-update', async (mek) => {
 			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
 			const id_deleted = mek.key.id
 			const conts = mek.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-			const pushname = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
+			const pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
+			//const pushname = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
 			const opt4tag = {
 				contextInfo: { mentionedJid: [sender] }
 			}
@@ -723,15 +732,10 @@ samu330.on('message-new', async (mek) => {
 			fs.writeFileSync('./src/.dat/msg.data.json', JSON.stringify(infoMSG, null, 2))
 			}
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-			if (mek.key.fromMe) return
 			const typei = Object.keys(mek.message)[0]
 			budo = (typei === 'conversation') ? mek.message.conversation : (typei === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			if(mek.key.fromMe){
 			}
-
-		if (!publik) {
-			if (!mek.key.fromMe) return
-		}
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 			global.prefix
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -841,7 +845,6 @@ samu330.on('message-new', async (mek) => {
 			const isBanned = ban.includes(sender)
 			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
 			const soyYo = sender == botNumber ? true : false
-		//	let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1064,7 +1067,7 @@ if (isGroup && isLevelingOn) {
 
 					    if (getmemex <= memberlimit) {
 
-						reply(`lo siento, los miembros del grupo no han cumplido con los requisitos. miembro mínimo del grupo: ${memberlimit}`)
+						reply(`lo siento, los miembros del grupo no han cumplido con los requisitos. miembros mínimo del grupo: ${memberlimit}`)
 
 						setTimeout( () => {
 
@@ -1092,7 +1095,7 @@ if (isGroup && isLevelingOn) {
 
 								samu330.updatePresence(from, Presence.composing)
 
-								reply("PUEDES INVITARME OTRA VEZ:)")
+								reply(".....")
 
 							}, 2000)
 
@@ -1100,7 +1103,7 @@ if (isGroup && isLevelingOn) {
 
 								samu330.updatePresence(from, Presence.composing)
 
-								reply("PERO PRIMERO AGREGA A MAS MIENBROS")
+								reply("PARA QUE ME QUEDE AGREGA A MAS MIENBROS")
 
 							}, 1000)
 
@@ -1689,7 +1692,7 @@ if ((isAntiPorn && isBotGroupAdmins)) {
 			samu330.updatePresence(from, Presence.composing)
 			reply("*🤯Holis*")
 	}
-			if (messagesC.includes("que haces")){
+			if (messagesC.includes("haces")){
 			samu330.updatePresence(from, Presence.composing)
 			reply("Nada, aqui sentado esperando mensajes y comandos para ejecutar:D")
 	}
@@ -1697,7 +1700,7 @@ if ((isAntiPorn && isBotGroupAdmins)) {
 			samu330.updatePresence(from, Presence.composing)
 			reply("Que ai🤡")
 	}
-			if (messagesC.includes("como estas")){
+			if (messagesC.includes("como%20estas")){
 			samu330.updatePresence(from, Presence.composing)
 			reply("Uff, algo cansado y tu?")
 	}
@@ -1705,7 +1708,7 @@ if ((isAntiPorn && isBotGroupAdmins)) {
 			samu330.updatePresence(from, Presence.composing)
 			reply("que bueno🤠")
 	}
-			if (messagesC.includes("free fire")){
+			if (messagesC.includes("free%20fire")){
 			samu330.updatePresence(from, Presence.composing)
 			reply("Esa onda da asco, quien juega eso eh🤨🤮!!")
 	}
@@ -1725,19 +1728,15 @@ if ((isAntiPorn && isBotGroupAdmins)) {
 			samu330.updatePresence(from, Presence.composing)
 			reply(":0")
 	}
-			if (messagesC.includes("ve a dormir botcito")){               
-				if(!isOwner) return reply(`ora tu que te crees!!?🤨\nacaso quieres q te obedezca??🤔\nSolo obedezco a mi dueño y a mi creador samu😒\n\n*Asi q ushcale, vayase por ai*🙂`)
-				samu330.updatePresence(from, Presence.recording)
-				                   npm = `^c`
-				                   reply('*Weno ps..... me tengo q ir:) adios:D')       
-					               exec(npm, (err, stdout) => {
-							       		           if(err) return samu330.sendMessage(from, "uuuujale, no quiero dormir ahorita:D", text, {quoted: mek})
-
-							       		           if (stdout) {
-											   			       samu330.sendMessage(from, stdout, text, {quoted: nay})
-										   } 
-							                          })
-        }
+			if (messagesC.includes("samu")){
+			samu330.updatePresence(from, Presence.composing)
+				samu330.sendMessage(from, {
+  displayname: "Samu330", vcard: vcard
+}, MessageType.contact, {
+  quoted: mek, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
+})
+			reply("🤯")
+	}
 		
 		
 		
@@ -1758,7 +1757,7 @@ if ((isAntiPorn && isBotGroupAdmins)) {
 				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
 				const json = {	
 					"sticker-pack-name": packname,
-          				"android-app-store-link": playstore,
+          				"android-app-store-link": playstore
 				}
 				const littleEndian = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])	
 				const bytes = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]	
@@ -1862,13 +1861,13 @@ let d = new Date
 🔐Hola *${pushname}* 
 Hora: ${jmn}
 Fecha: ${calender}
-ٌ؞${samu} [ ${prefix} ]  Prefijo:${samu}✏️
-ٌ؞${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
-ٌ؞${samu} Modo:${samu} *ON*✅
-ٌ؞${samu} Grupo:${samu} *${groupName}*👥
-ٌ؞${samu} Número de grupos:${samu} *${_registered.length}*⚡
-ٌ؞${samu} Número de chats:${samu} *${totalchat.length}*🔥
-ٌ؞${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+ٌ${samu} [ ${prefix} ]  Prefijo:${samu}✏️
+ٌ${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
+ٌ${samu} Modo:${samu} *ON*✅
+ٌ${samu} Grupo:${samu} *${groupName}*👥
+ٌ${samu} Número de grupos:${samu} *${_registered.length}*⚡
+ٌ${samu} Número de chats:${samu} *${totalchat.length}*🔥
+ٌ${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
 
 *SI AI ALGUN ERROR, PORFAVOR AGANMELO SABER PARA SOLUCIONARLO.*
 _Para eso usa el comando:_
@@ -1895,7 +1894,9 @@ ${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
 ${samu}◦ 🚄Velocidad :${samu} *${process.uptime()}*
 ${samu}◦ 📲Sistema operativo :${samu} *${samu330.user.phone.device_manufacturer}*
 ${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
+
 _Lista de MENUs_
+
 ${bodyM} ${prefix}menu1 *(Menu de Media*
 ${bodyM} ${prefix}menu2 *(Menu de Sticker)*
 ${bodyM} ${prefix}menu3 *(Menu de Grupos)*
@@ -1904,6 +1905,7 @@ ${bodyM} ${prefix}menu5 *(Otros comandos)*
 ${bodyM} ${prefix}menu6 *(Comandos +18)* 
 ${bodyM} ${prefix}menu7 *(Comandos de logos)*
 ${bodyM} ${prefix}menu8 *(Comandos de xp)*
+
 ᴸᵃ ᵐᵃʸᵒʳᶦ́ᵃ ᵈᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᶠᵘⁿᶜᶦᵒⁿᵃⁿ ᵃˡ ¹⁰⁰
 ᴱˢᶜʳᶦᵇᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᵉⁿ ˢᵘ ᶠᵒʳᵐᵃᵗᵒ ᶜᵒʳʳᵉᶜᵗᵒ ᵖᵃʳᵃ ᑫᵘᵉ ⁿᵒ ᵈᵉ ᵉʳʳᵒʳᵉˢ
 ˢᶦ ᵗᶦᵉⁿᵉˢ ᵃˡᵍᵘ́ⁿ ᵖʳᵒᵇˡᵉᵐᵃ ᵒ ᵃˡᵍᵘⁿᵃ ᶠᵘⁿᶜᶦᵒ́ⁿ ᵈᵉˡ ᵇᵒᵗ ᵈᵉʲᵒ ᵈᵉ ᶠᵘⁿᶜᶦᵒⁿᵃʳ ʰᵃ́ᶻᵐᵉˡᵒ ˢᵃᵇᵉʳ ᵃ ᵐᶦ̣.ᵂʰᵃᵗˢᴬᵖᵖ.li
@@ -2353,7 +2355,7 @@ quoted: fgc})
 
 				const kantong = checkATMuser(sender)
 
-				reply(`*┏⎆ 「 ATM 」⊰━┓*\n┣⎆ *Nombre* : ${pushname}\n┣⎆ *Numero* : ${sender.split("@")[0]}\n┣⎆ *Dinero* : ${uangkau}\n┗━━━━━━━━━━`)
+				reply(`*┏⎆ 「 ATM 」⊰━┓*\n┣⎆ *Nombre* : ${pushname}\n┣⎆ *Numero* : ${sender.split("@")[0]}\n┣⎆ *Dinero* : ${kantong}\n┗━━━━━━━━━━`)
 
 				break
 
@@ -2447,7 +2449,7 @@ case 'top5':
                                         break
 
                                         case 'mining':
-
+					if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                                         if (!isRegister) return reply(mess.only.daftarB)
 
                                         if (isLimit(sender)) return reply('Uuuuu lo sieto pero no tienes limites disponibles')
@@ -2482,6 +2484,10 @@ case 'top5':
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         checkLimit(sender)
                                         break
+				
+				
+				
+				
 
                                         case 'level':
 
@@ -2620,6 +2626,7 @@ var parsedStr = parseWordArray.toString(CryptoJS.enc.Utf8);
 
 
 case 'loli':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isRegister) return reply(mess.only.daftarB)
 
 samu330.updatePresence(from, Presence.composing)
@@ -2643,6 +2650,7 @@ samu330.sendMessage(from, pok, image, {
 break	
 	
 case 'meme':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
   samu330.updatePresence(from, Presence.composing)
   if (!isRegister) return reply(mess.only.daftarB)
 
@@ -2678,6 +2686,7 @@ try {
 				
 				
 				case 'otagall':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 	        		if (isBanned) return reply(mess.only.benned)    
 			    	if (!isRegister) return reply(mess.only.daftarB)		
 					if (!isGroup) return reply(mess.only.group)
@@ -2775,7 +2784,7 @@ samu330.sendMessage(from, hasil, text, {
 break
 				
 case 'setpic':
-
+if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)
 if (!isRegister) return reply(mess.only.daftarB)
 if (!isGroupAdmins) return reply(mess.only.admin)
@@ -2841,6 +2850,7 @@ break
 				
 				
 				case 'porno':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)          
 if (!isNsfw) return reply(mess.nsfw)
 porn = await fetchJson('https://meme-api.herokuapp.com/gimme/porn', {
@@ -2854,6 +2864,7 @@ buffer = await getBuffer(`${porn.url}`)
   break
 	
 case 'neko':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isRegister) return reply(mess.only.daftarB)
 
 samu330.updatePresence(from, Presence.composing)
@@ -2877,6 +2888,7 @@ samu330.sendMessage(from, pok, image, {
 break
 				
 case 'lesbian':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)               
 if (!isNsfw) return reply(mess.nsfw)
 porn = await fetchJson('https://meme-api.herokuapp.com/gimme/lesbians', {
@@ -2888,7 +2900,8 @@ samu330.sendMessage(from, buffer, image, {
 fimg})
   break
 				
-case 'tetas':                            
+case 'tetas':     
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)              
 if (!isNsfw) return reply(mess.nsfw)
 pw = ["https://meme-api.herokuapp.com/gimme/tits",                                                        
@@ -2908,6 +2921,7 @@ samu330.sendMessage(from, buffer, image, {
   break
 	
 case 'ass':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)                         
 if (!isNsfw) return reply(mess.nsfw)
 pw = ["https://meme-api.herokuapp.com/gimme/CuteLittleButts",
@@ -2926,6 +2940,7 @@ samu330.sendMessage(from, buffer, image, {
   break
 				
 case 'pussy':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isGroup) return reply(mess.only.group)                     
 if (!isNsfw) return reply(mess.nsfw)
 pw = ["https://meme-api.herokuapp.com/gimme/pussy",
@@ -2956,6 +2971,7 @@ samu330.sendMessage(from, buffer, image, {
 				
 				
 				case 'nuevogrupo':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				const nombregc = args.join(' ')
 				const group = await samu330.groupCreate(`${nombregc}`, ["5219984907794@s.whatsapp.net"])
 				reply(`*EL GRUPO FUE CREADO CORRECTAMENTE*\nid del grupo: ${group.gid}`)
@@ -2971,6 +2987,7 @@ samu330.sendMessage(from, buffer, image, {
 				case 'sticker':
 			case 'stiker':
 			case 's':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 					if (!isAutoSt) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -3084,6 +3101,7 @@ samu330.sendMessage(from, buffer, image, {
 					} else {
 						reply(`Envía una foto con el comando: ${prefix}sticker o etiqueta una imagen, video o gif ya enviados`)
 					}
+				await limitAdd(sender)
 					break
 				
 				
@@ -3094,6 +3112,7 @@ samu330.sendMessage(from, buffer, image, {
 				
 				
 				case 'simi':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 samu330.updatePresence(from, Presence.composing)
 texto = body.slice(5)                    
 sim = await fetchJson(`https://api.simsimi.net/v1/?text=${texto}&lang=es`)
@@ -3121,12 +3140,14 @@ samu330.sendMessage(from, smuu, text, {quoted: { key: {
                                                         }                                                               
 					       }                                                                                                         
 				      })
+				await limitAdd(sender)
 				break
 				
 				
 				
 			case 'hidetag1':
 			case 'hidetag':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				if (!isGroup) return reply(mess.only.group)
 					members_id = []
 					teks = (args.length > 1) ? args.join(' ').trim() : `${args.join(' ')}`
@@ -3137,14 +3158,17 @@ samu330.sendMessage(from, smuu, text, {quoted: { key: {
 				break
 			
 			case 'setname':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				await samu330.groupUpdateSubject(from, `${args.join(' ')}`)
 				samu330.sendMessage(from, `*「 NOMBRE DEL GRUPO CAMBIADO A:」\n${args.join(' ')}*`, MessageType.text)
 				break
 			case 'setdesc':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				await samu330.groupUpdateDescription(from, `${args.join(' ')}`)
 				samu330.sendMessage(from, `*「 DESCRIPCION DEL GRUPO CAMBIADA A:」\n${args.join(' ')}*`, MessageType.text)
 				break
 			case 'uptime':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				runtime = process.uptime()
 				teks = `${kyun(runtime)}`
 				
@@ -3152,6 +3176,7 @@ samu330.sendMessage(from, smuu, text, {quoted: { key: {
 				break
 			
 			case 'imagen':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 if (!isRegister) return reply(mess.only.daftarB)
 
 if (args.length < 1) return reply('Ingresa algo para buscar en imágenes🔐')
@@ -3177,6 +3202,7 @@ break
 				
 				
 			case 'modeanime':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				if (isBanned) return reply(mess.only.benned)    
 				if (!isRegister) return reply(mess.only.daftarB)
 					if (!isGroup) return reply(mess.only.group)
@@ -3286,9 +3312,11 @@ case 'antidelete':
                     ini_txt = args.join(' ')
                     ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/tweettrump?apikey=${api}&text=${ini_txt}`)
                     await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko })
+				await limitAdd(sender)
                     break
 				
 		case 'emoji':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Ejemplo: ${prefix + command} 😭`)
                     emoji = args[0]
                     try {
@@ -3298,6 +3326,7 @@ case 'antidelete':
                     }
                     ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/smoji/${emoji}?apikey=${api}`)
                     await samu330.sendMessage(from, ini_buffer, sticker, { quoted: ftoko })
+				await limitAdd(sender)
                     break
 				
 		case 'takestick':
@@ -3327,6 +3356,7 @@ case 'antidelete':
                     } else {
                         reply(`Etiqueta un stiker con el comando`)
                     }
+				await limitAdd(sender)
                     break
 				
 		case 'blackpink':
@@ -3361,12 +3391,14 @@ case 'antidelete':
                 case 'summersand':
                 case 'horrorblood':
                 case 'thunder':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
 		    reply(mess.wait)
                     ini_txt = args.join(" ")
                     getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=${api}&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
                     })
+				await limitAdd(sender)
                     break
                 case 'pornhub':
                 case 'glitch':
@@ -3378,6 +3410,7 @@ case 'antidelete':
                 case 'wolflogo':
                 case 'steel3d':
                 case 'wallgravity':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
 				reply(mess.wait)
                     a = args.join(' ')
@@ -3386,6 +3419,7 @@ case 'antidelete':
                     getBuffer(`https://api.lolhuman.xyz/api/textprome2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
                     })
+				await limitAdd(sender)
                     break
 
                     // Photo Oxy //
@@ -3413,17 +3447,20 @@ case 'antidelete':
                 case 'flamming':
                 case 'hp':
                 case 'carvedwood':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
 				reply(mess.wait)
                     ini_txt = args.join(' ')
                     getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${command}?apikey=${api}&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
                     })
+				await limitAdd(sender)
                     break
                 case 'tiktok':
                 case 'arcade8bit':
                 case 'battlefield4':
-                case 'pubg':				
+                case 'pubg':	
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
 		    reply(mess.wai)
 		    a = args.join(' ')
@@ -3432,6 +3469,7 @@ case 'antidelete':
                     getBuffer(`https://api.lolhuman.xyz/api/photooxy2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
                     })
+				await limitAdd(sender)
                     break
 
                     // Ephoto 360 //
@@ -3465,15 +3503,18 @@ case 'antidelete':
                 case 'goldplaybutton':
                 case 'silverplaybutton':
                 case 'freefire':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Sam y Perry`)
 				reply(mess.wait)
                     ini_txt = args.join(' ')
                     getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=${api}&text=${ini_txt}`).then((gambar) => {
                         samu330.sendMessage(from, gambar, image, { quoted: fgc })
                     })
+				await limitAdd(sender)
                     break
 				
 		case 'google':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Gatitos`)
                     query = args.join(' ')
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/gsearch?apikey=${api}&query=${query}`)
@@ -3485,17 +3526,21 @@ case 'antidelete':
                         ini_txt += `💬Desc : ${x.desc}\n\n`
                     }
                     reply(ini_txt)
+				await limitAdd(sender)
                     break
 				
 		case 'wpsearch':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} gatos`)
                     query = args.join(' ')
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/wallpaper?apikey=${api}&query=${query}`)
                     ini_buffer = await getBuffer(get_result.result)
                     await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko })
+				await limitAdd(sender)
                     break
 				
 		case 'translate':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} es Hi bro`)
                     idioma = args[0]
                     args.shift()
@@ -3508,6 +3553,7 @@ case 'antidelete':
                     init_txt += `Traducido : ${get_result.translated}\n`
                     init_txt += `Pronunciacion : ${get_result.pronunciation}\n`
                     reply(init_txt)
+				await limitAdd(sender)
                     break
 			
 		case 'acordes':
@@ -3518,9 +3564,11 @@ case 'antidelete':
                     ini_txt = `Title : ${get_result.title}\n`
                     ini_txt += `Chord : \n${get_result.chord}`
                     reply(ini_txt)
+				await limitAdd(sender)
                     break
 				
 		case 'xnxx':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 				  if (!isNsfw) return reply(mess.nsfw)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.xnxx.com/video-uy5a73b/mom_is_horny_-_brooklyn`)
                     query = args.join(' ')
@@ -3542,9 +3590,11 @@ case 'antidelete':
                     }
                     thumbnail = await getBuffer(get_result.thumbnail)
                     await samu330.sendMessage(from, thumbnail, image, { quoted: ftoko, caption: ini_txt })
+				await limitAdd(sender)
                     break	
 			
 		 case 'xnxxsearch':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Example: ${prefix + command} Japanese`)
                     query = args.join(' ')
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/xnxxsearch?apikey=${api}&query=${query}`)
@@ -3559,9 +3609,11 @@ case 'antidelete':
                         ini_txt += `Thumbnail : ${x.thumbnail}\n\n`
                     }
                     reply(ini_txt)
+				await limitAdd(sender)
                     break
 				
 		case 'tagstick':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
                         const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
                         filePath = await samu330.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
@@ -3601,7 +3653,7 @@ break
 
 
 case 'lucky':
-
+if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
 a = '🍇'
 b = '🍎'
 c = '🍓'
@@ -3654,6 +3706,7 @@ ${m}
 ╿ └──────────┘ ╿
 ╰─┨⃞🔮𝉃𝜄𝜐𝉃𝜍𝜅𝉃𝛾🔮⃞ ┠─╯`
 reply(`${aaaa}`)
+				await limitAdd(sender)
 break
 
 
@@ -3672,6 +3725,7 @@ break
 
 
 case 'playfree':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
   if (!isRegister) return reply(mess.only.daftarB)
   if (args.length < 1) return reply('Escribe el nombre')
   reply(mess.wait)
@@ -3702,6 +3756,7 @@ break
 
 
 case 'play':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
   if (!isRegister) return reply(mess.only.daftarB)
   if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
                     query = args.join(' ')
@@ -3724,6 +3779,23 @@ case 'play':
                     get_audio = await getBuffer(get_result.audio[4].link)
                     await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: fvid })
 				} catch {
+					try {
+			reply('Ocurrio un problema con el servidor *1*, Porfavor espera mientras pruebo en el servidor *2*')
+		    w = await fetchJson(`https://videfikri.com/api/ytplay/?query=${query}`)
+			e = w.result
+		    ini_txt = `*Titulo* : ${e.title}\n`
+                    ini_txt += `🕵🏻‍♀️️Publicador : ${e.channel}\n`
+                    ini_txt += `🕐Duracion : ${e.duration}\n`
+                    ini_txt += `👀Vistas : ${e.views}\n`
+                    ini_txt += `👍Publicado hace ${e.published_on}\n`
+                    ini_txt += `📋Descripcion :\n ${e.description}\n\n`
+		    ini_txt += `Tamaño : ${e.size}\n`
+		    pp = await getBuffer(e.thumbnail)
+		    await samu330.sendMessage(from, pp, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+                    get_audio = await getBuffer(e.url)
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${e.title}.mp3`, quoted: fvid })
+		    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', ttp: true, duration :-999999999999999, filename: `${e.title}.mp3`, quoted: fvid })
+				} catch {	
 					reply('*Lo siento, ocurrio un error, esta funcion es de paga, si quieres descargar musica gratis usa el comando .playfree*')
 				}
 				await limitAdd(sender)
@@ -3731,6 +3803,7 @@ case 'play':
 	
 				
 case 'play2':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
     if (!isRegister) return reply(mess.only.daftarB)
   if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
                     query = args.join(' ')
@@ -3760,6 +3833,7 @@ case 'play2':
 				
 				
 case 'playvid':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
   if (!isRegister) return reply(mess.only.daftarB)
   if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
                     query = args.join(' ')
@@ -3785,6 +3859,7 @@ case 'playvid':
 				
 				
 		case 'ytsearch':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
                     if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
                     query = args.join(' ')
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytsearch?apikey=${api}&query=${query}`)
