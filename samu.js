@@ -1804,7 +1804,28 @@ quoted: fimg, "forwardingScore": 9999, "isForwarded": true
 }
 		
 		
-		
+if(budy.match('rosas') && !botNumber){
+rm = [
+result = fs.readFileSync(`./media/rosas.mp3`)
+]
+nk = rm[Math.floor(Math.random() * rm.length)]
+  samu330.sendMessage(from, nk, audio, {
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999999999999, ptt: true
+  })
+}
+			
+			
+if(budy.match('luna') && !botNumber){
+rm = [
+result = fs.readFileSync(`./media/luna.mp3`)
+]
+nk = rm[Math.floor(Math.random() * rm.length)]
+  samu330.sendMessage(from, nk, audio, {
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999999999999, ptt: true
+  })
+}
+
+			
 switch(is) {
   case 'buenos':
 buf = fs.readFileSync(`./temp/audio/wenas.mp3`)
@@ -1858,35 +1879,42 @@ let d = new Date
   const uangku = checkATMuser(sender)
 			
 				menu = `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
+·͙*̩̩͙✧˚̩̥̩̥*̩̩̥͙·̩̩̥͙*̩̩̥͙☆˚̩̥̩̥*̩̩͙‧͙·͙♩　　ꈤꌩꍏꈤ　　♬·͙*̩̩͙˚̩̥̩̥*̩̩̥͙·̩̩̥͙☆*̩̩̥͙˚̩̥̩̥*̩̩͙✧‧͙
+
 🔐Hola *${pushname}* 
 Hora: ${jmn}
 Fecha: ${calender}
-ٌ${samu} [ ${prefix} ]  Prefijo:${samu}✏️
-ٌ${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
-ٌ${samu} Modo:${samu} *ON*✅
-ٌ${samu} Grupo:${samu} *${groupName}*👥
-ٌ${samu} Número de grupos:${samu} *${_registered.length}*⚡
-ٌ${samu} Número de chats:${samu} *${totalchat.length}*🔥
-ٌ${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
-
+╔══════════════════════════════════════════════════════════╗
+ٌ‖${samu} [ ${prefix} ]  Prefijo:${samu}✏️
+ٌ‖${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
+ٌ‖${samu} Modo:${samu} *ON*✅
+ٌ‖${samu} Grupo:${samu} *${groupName}*👥
+ٌ‖${samu} Número de grupos:${samu} *${_registered.length}*⚡
+ٌ‖${samu} Número de chats:${samu} *${totalchat.length}*🔥
+ٌ‖${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+╚══════════════════════════════════════════════════════════╝
+︵‿︵‿︵‿︵‿︵　　‿︵‿︵‿︵‿︵‿︵‿︵
 *SI AI ALGUN ERROR, PORFAVOR AGANMELO SABER PARA SOLUCIONARLO.*
 _Para eso usa el comando:_
 ${prefix}bug
+︵‿︵‿︵‿︵‿︵　　‿︵‿︵‿︵‿︵‿︵‿︵
 
 *Informacion del usuario*
 
+☆ ҉ ◢▅◣Ξ◥▅◤Ξ◢▅◣Ξ◥▅◤ ҉ ★
 ◦ NÚMERO : wa.me/${sender.split("@")[0]}*
-◦ Xp : ${getLevelingXp(sender)}*
-◦ Nível : ${getLevelingLevel(sender)}*
+◦ Xp : *${getLevelingXp(sender)}*
+◦ Nível : *${getLevelingLevel(sender)}*
 ◦ Clasificación : *${role}*
 ◦ 💵Cash : Rp *${uangku}*
+☆ ҉ ◢▅◣Ξ◥▅◤Ξ◢▅◣Ξ◥▅◤ ҉ ★
 
 ${samu}Total de usuarios Premium${samu} : *${prem.length}*
 
 
 𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
 
-⍣ *BOT INFO* ⍣
+▁ ▂ ▃ ▄ ▅ ▆ ▇ ▌　❝ 𝐚𝐛𝐨𝐮𝐭 𝐦𝐞 ❞　 ▌ ▇ ▆ ▅ ▄ ▃ ▂ ▁
 
 ${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
 ${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
@@ -1894,6 +1922,7 @@ ${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
 ${samu}◦ 🚄Velocidad :${samu} *${process.uptime()}*
 ${samu}◦ 📲Sistema operativo :${samu} *${samu330.user.phone.device_manufacturer}*
 ${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
+	       █║▌│║│║█║█║▌│█║▌│║│║█
 
 _Lista de MENUs_
 
@@ -1929,7 +1958,7 @@ case 'menu1':
 const Menum = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 🔐Hola *${pushname}* 
-⍣ *BOT INFO* ⍣
+
 *USA: ${prefix}ping* o *test*
 Para saber y verificar si el bot esta activo.
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
@@ -2011,7 +2040,7 @@ ${bodyM} ${samu}${prefix}event${samu}
 ${bodyM} +${prefix}+18 1/0
 ================================
 
-_Modo simsimi ilimitado_
+/̵͇̿̿/'̿̿ ̿̿ ̿̿  _Modo simsimi ilimitado_
 *${prefix}simsimi 1*
 
 
@@ -2053,13 +2082,9 @@ case 'menu4':
 const Menud = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                            
 🔐Hola *${pushname}*
-⍣ *BOT INFO* ⍣
-${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
-${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
-${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
-${samu}◦ 🚄Velocidad :${samu} *${process.uptime()}*
-${samu}◦ 📲Sistema operativo :${samu} *${samu330.user.phone.device_manufacturer}*
-${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
+
+♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪
+
 ${bodyM} ${prefix}play *(Descarga de audios en nota de voz)*
 ${bodyM} ${prefix}play2 *(Descarga de audios en mp3)*
 ${bodyM} ${prefix}playvid *(Descarga de videos por nombre)*
@@ -3681,20 +3706,18 @@ luck7 = pw7[Math.floor(Math.random() * pw7.length)]
 s = `┃ │  ${luck} │  ${luck1} │ ${luck2}`
 a = `┃ │  ${luck3} │  ${luck4} │ ${luck5}`
 m = `┃ │  ${luck6} │  ${luck7} │ ${luck7}`
-/*if (a) = `┃ │  ${a} │  ${a} │ ${a} │ ┃` addLevelingLevel(sender, 99)
+if (a === `┃ │  ${a} │  ${a} │ ${a}`) addLevelingLevel(sender, 99)
 await reply(`*FELICIDADES!!*\nAs obtenido *99* de XP`)
-if (a) = `┃ │  ${b} │  ${b} │ ${b} │ ┃` addLevelingLevel(sender, 50)
+if (a === `┃ │  ${b} │  ${b} │ ${b}` addLevelingLevel(sender, 50)
 await reply(`*FELICIDADES!!*\nAs obtenido *50* de XP`)
-if (a) = `┃ │  ${c} │  ${c} │ ${c} │ ┃` addLevelingLevel(sender, 30)
+if (a === `┃ │  ${c} │  ${c} │ ${c}` addLevelingLevel(sender, 30)
 await reply(`*FELICIDADES!!*\nAs obtenido *30* de XP`)
-if (a) = `┃ │  ${d} │  ${d} │ ${d} │ ┃` addLevelingLevel(sender, 10)
-await reply(`*FELICIDADES!!*\nAs obtenido *10* de XP`)
-if (a) = `┃ │  ${e} │  ${e} │ ${e} │ ┃` addLevelingLevel(sender, 999)
+if (a === `┃ │  ${e} │  ${e} │ ${e}` addLevelingLevel(sender, 999)
 await reply(`*😵ENHORABUENA!!*\nAs obtenido *999* de XP!😯👏🏻`)
-if (a) = `┃ │  ${f} │  ${f} │ ${f} │ ┃` addLevelingLevel(sender, 9999)
+if (a === `┃ │  ${f} │  ${f} │ ${f}` addLevelingLevel(sender, 9999)
 await reply(`*🤑🥳🥳FELICIDADES!!*\nAs obtenido el premio mayor, que es de: *9999* de XP`)
-if (a) = `┃ │  ${g} │  ${g} │ ${g} │ ┃` addLevelingLevel(sender, 0)
-await reply(`*vaya, suerte tienes, pero no as ganado xp*😪`)*/
+if (a === `┃ │  ${g} │  ${g} │ ${g}` addLevelingLevel(sender, 0)
+await reply(`*vaya, suerte tienes, pero no as ganado xp*😪`)
 aaaa = `┌ ﹍﹍𝈺﹉﹉﹉𝈻﹍﹍ ┐ 
 ╭──╼┥𝈸𖾗ᷤ𖾕꯭ͣ𖾔꯭𖾔ͫ𖽙ͧ𝈹┝╾──╮
 ╽ ┌──────────┐ ┃
@@ -5309,21 +5332,79 @@ if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0)
 }
 break
 
-case 'circle':
-  var imgbb = require('imgbb-uploader')
-if ((isMedia && !sam.message.videoMessage || isQuotedImage) && args.length == 0) {
-  ted = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: sam
-  reply(mess.wait)
-  owgi = await samu330.downloadAndSaveMediaMessage(ted)
-  anu = await imgbb('20a14861e4f7591f3dc52649cb07ae02', owgi)
-  hedhe = await getBuffer(`http://api.lolhuman.xyz/api/convert/towebpwround?apikey=BandMao71&img=${anu.display_url}`)
- samu330.sendMessage(from, hedhe, sticker, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-} else {
-  reply('reply imagenya kak!')
-}
-				await limitAdd(sender)
-break
+case 'circ':
+    const pack = arg.split('|')[0]
+    const author = arg.split('|')[1]
+    if (isMedia && mimetype == 'image/jpeg') {
+      await createExif(pack,author)
+      await sleep(5000)
+      decryptMedia(message).then(mediaData => {
+        sharp(mediaData).resize({
+          width: 512,
+          height: 512,
+          fit: sharp.fit.contain,
+          background: {
+            r: 0,
+            g: 0,
+            b: 0,
+            alpha: 0
+          }
+        }).webp().toBuffer().then(buffer => {
+          modifExif(buffer, id, (res) => {
+            mediaData = res.toString('base64')
+            samu330.sendMessage(from, mediaData, sticker, {quoted: ftoko})
+          })
+        })
+      })
+    } else if (quotedMsg && quotedMsgObj.mimetype == 'image/jpeg') {
+      await createExif(pack, author)
+      await sleep(5000)
+      decryptMedia(quotedMsg).then(mediaData => {
+        sharp(mediaData).resize({
+          width: 512,
+          height: 512,
+          fit: sharp.fit.contain,
+          background: {
+            r: 0,
+            g: 0,
+            b: 0,
+            alpha: 0
+          }
+        }).webp().toBuffer().then(buffer => {
+          modifExif(buffer, id, (res) => {
+            mediaData = res.toString('base64')
+            samu330.sendMessage(from, mediaData, sticker, {quoted: ftoko})
+          })
+        })
+      })
+    } else if (isMedia && mimetype == 'image/gif') {
+      const shape = "circle"
+      const type = "gif"
+      const mediaData = await decryptMedia(message);
+      await convertSticker(shape, author, pack, mediaData, type, from).then((res) => samu330.sendMessage(from, res.toString("base64"), sticker, {quoted: ftoko}))
+    } else if (quotedMsg && quotedMsgObj.mimetype == 'image/gif') {
+      const shape = "circle"
+      const type = "gif"
+      const mediaData = await decryptMedia(quotedMsg);
+      await convertSticker(shape, author, pack, mediaData, type, from).then((res) => samu330.sendMessage(from, res.toString("base64"), sticker, {quoted: ftoko}))
+    } else if (isMedia && mimetype == 'video/mp4') {
+      const shape = "circle"
+      const type = "mp4"
+      const mediaData = await decryptMedia(message);
+      await convertSticker(shape, author, pack, mediaData, type, from).then((res) => samu330.sendMessage(from, res.toString("base64"), sticker, {quoted: ftoko}))
+    } else if (quotedMsg && quotedMsgObj.mimetype == 'video/mp4') {
+      const shape = "circle"
+      const type = "mp4"
+      const mediaData = await decryptMedia(quotedMsg);
+      await convertSticker(shape, author, pack, mediaData, type, from).then((res) => samu330.sendMessage(from, res.toString("base64"), sticker, {quoted: ftoko}))
+    }
+    break
  
+				
+				
+				
+				
+				
 				case 'lluvia':
 
 if (args.length < 1) return reply(`ejemplo: ${prefix}lluvia (link de imagen)`)
