@@ -3779,7 +3779,7 @@ case 'play':
                     get_audio = await getBuffer(get_result.audio[4].link)
                     await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: fvid })
 				} catch {
-					try {
+
 			reply('Ocurrio un problema con el servidor *1*, Porfavor espera mientras pruebo en el servidor *2*')
 		    w = await fetchJson(`https://videfikri.com/api/ytplay/?query=${query}`)
 			e = w.result
@@ -3795,8 +3795,8 @@ case 'play':
                     get_audio = await getBuffer(e.url)
                     await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${e.title}.mp3`, quoted: fvid })
 		    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', ttp: true, duration :-999999999999999, filename: `${e.title}.mp3`, quoted: fvid })
-				} catch {	
-					reply('*Lo siento, ocurrio un error, esta funcion es de paga, si quieres descargar musica gratis usa el comando .playfree*')
+
+					//reply('*Lo siento, ocurrio un error, esta funcion es de paga, si quieres descargar musica gratis usa el comando .playfree*')
 				}
 				await limitAdd(sender)
                     break
