@@ -137,7 +137,7 @@ ban : [];
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const vcard = 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
-+ 'FN:-·S̸̢̡̨̨̧̡̧̢̨̨̢̧̧̛̛͖̯̞͚͖͇̫͔̫̘̯̫͓̮̼̝͇͇̮͈̥̙̪̫̣̼̣̺̙̹͓͍̪̹̹̯̣͕̘͔̻͙̠̦̪̥͓̟̤̻̫̮̦̹̥̯͈̦̝̺̮͈̖͍̗̩̺̻̟͔̤̬͕̖͖̞̜̹̦̞͒̿͆͋͗̔̆́͐̏͒͒͂̇͂͌̇́̈͛͊̐̀̾̄̓̑͋͒̍̔̌̒͊̏̽̋̈́͐̒̈́͂͌̀̐͊̄̃̍͛̾̔̈́́͐̿͂̅͊̉̈́̉̆̓͐͛͌̅͐̽̊̒͌̿͋̅̈̂̿͑͆̅̕̕̕̕͘̚͜͜͜͜͝͠͝͝͝͝͝͝͝͝ͅͅͅá̸̡̡̨̨̡̨̡̧̧̨̛͖̺̠̼̻̮̬͔̼̪̻̖̩̝̲͍͙̻͎̜̼̪̩͇͕̗̞̥̜̤̲̬͓̝̖̤̠̘̙͍̩̹̗̥̗͔̩͓͚̦̼̳̳̫͕̭̲̙͓̺̣̠̯̙̹̼͕̝̥͎̣͚̠̦̙̖͈̟̼͔̝͙͉͚̗̟̫̜̪̉̊̆̃̈́̃̎̾̇̂̀̈́͊̈́̇̌̈́̀̓̉̀̐̀͊̐̋͊͒͒̇̋̄̑́̆̃̏̈́͒͛̎͐͒͗́̓́͒̈́͌͋̓̓̓̇̄͆̌̇̈́̓̿̑͒̐̓͆̒̅̎̑̑̽̿̎͋́̿̀͂̇̌͌͘̚̕̚̕̚̚̕͘͜͠͝͝͠͝͝m̶̨̡̧̢̡̡̢̡̡̛̛̛̰̗͖̤̥̦̙̯̩͖̫̩͓̤̖͈̤̬͚̲̯̫̹̱͙̞͓͔̫͖̩͉̲̗̹͚͖̝̺̣̼̺̘̼̳̭̳̥̥̣̫̻̟͖̝̣̞̲͓̮̩̣̻̰̗̣̩̬̺̬̗̻̘̳̗̠̹̠̟̯̻͓̤̓̀͂͆̑͂̑̂̐̓́͐̄̀̀̄̒̀̏̅̋͛̌̎̑̓̉͊͛̆̒̓̒̈́͐͋͆͂͊͒͊̌̀̀̏̔̒̀̌̽̈́͗̑͑̍̊̋̈́͒̅̓̈́̅̓̍̌͛̈́̑̽̈́̌̑͋̀͛̾̃̏̅́̅̄̚̚̚̚͜͜͜͜͜͝͝͝͝͠͝͝͝͝͝ͅͅͅų̶̧̢̨̧̧̛͚̣͙̱̩̳͎͎͍̰͙̠̼̰͙̹̫̻̟̬͚͓̰̭̯̖̻̱̝̣͙̖̙̟̠̱̥͍͔̺̳̠͖̮̠͙̞͇̙̮͖̝̺͔͖̥͎̞̦̠͎̮͕̯̣͕̘̼̖̫̪̼͓̥͚̦̞̜̣̞̻̝͇͕̻͍̤͙͕͉͔̾̃́̐̎̏̽̈́̉̃̃͊͆̋̅̈́̄͊̽͑͐̂̿͋̓̉͛̎̏͐̃͗̽͐̔̃͆̐̽̈́̃͂̐̂̂̈́̂̽̅̆̓̋́̋̂̓̍͌́͊̓̈́̐͛́̂̂̌̏̇͋̈̅͊̾́́̈́̒̒͐͛̉̈̃͒̔͘͘̕̚͜͜͜͝͝͝͝͝͝͠͝3̸̧̢̨̡̡̧̧̢̧̢̡̢̧̛̛̫͇͍͓̹̝͉̥̯͔̻̙̙̠̜̼͔̜̥̯͎̻͈̼̺̹̜̙̘̭̘͚̮̝̪̮͕̠̩͈͚͖̙̪̤͍̫̤̻̮͉̥̘̮̮̫͉͔̠͉̩̜͖̹̟͎̬̬̘̣̘̟͓̘̺̳͍̥͕̥̬̹́̂̅̒̾͑̄͗͒̐̀͛̅̃̉̈́͛̈́̈́͗͗̑̀̆̓͌̔̒̀̒̂̇͆͌͌̇̈́͗̒̉̾̿̽͊̿̏̎͑̃̍̀̽͊͛́̏͂̊͛͋̀̀̽̋̀̂̉̅̓́̇́̽͑̆͂̀͒̈́̅͊̌̈́̉̽́̇̓̚̚͘͘͘̚͜͜͝͝͝͝ͅͅͅ3̴̡̨̢̨̢̢̧̧̢̡̨̨̡̨̛̭̺̹̬̺̭͖̩̮̹̳̗̱̗̪̜̺̻̝̫͓̖͈͙̠̪͔̗̺͇̩̻̪̗̗̙̱̥͖͇̹̱̟̦̙̣̰͉̘͙̭̙̤̱̠͔͉͎̣͈͔̩͉̭̜̠͖̤̰͙͉̖͇̥̥̟̜͎̹̥̬̤̌̂́̑́̔͑͑̽͆͌̈́͛͌͒̀͗̓̆͐̒͗̐́͋̀̈́̾̓̋̇͐͂͑͌̌̊̇̿̎͑̀̒̿̐͒͂̽̉̽͌̒̀̔͂͛̎͌̈́̀͑̍͊́̃̇̄́͑̐̆̎̀̋̑̎̿̎̋͑̑̈́̌̉͐̓̌͌͆̈́͑͘̚̚͘͜͠͝͠͝ͅͅͅ0̷̢̡̧̧̢̨̢̧̡̢̛̛̛͈̘̤̜̠̜̹̖̙͔̫͕̼͍͔͓̞̫̖͙̺̖̜̹̠̭̺̗̞̦̻͚̹̝̝̭͍̭͍̮̭̳̜̫͕͈̲̝̹̟͍͕̼͓̜̖͍̖̖͕̪̖̜̜͇͍̣͎͉̼̹̺͔͚͉̲̥͔̺̟̦̞͙̫̩̥̤̗̜̞̒̏̈́͒̔͐̀͋͛̈̽̓͊̀̈́̍̄͗̎͋͒̾̉̄̇̇̈́̓̌̒͆͑̾̾͑̀̃̈̒̽̔́̾̽̃̽̉̽̎̍̀̐̋́̽̏̅̃̾͗͑̏́̊̍͂̇̑̿͆̈̓͗̈̐́̇̈́͒̈͒̋͗͆͘͘͘̕̚̕͘̚͝͠͝͠͝ ̶̧̢̢̧̢̨̨̨̡̧̛̛̭͕̺͍̻̺̭̮̱̳͔̜̪͚̘̭͈̩̜̼͕̭̘͎̰̼̰̮̭̱̙̣̘͕̫̦̠̟̙͍̪̦̱̩̮͓͙̯̜̼͍̯͇͉̪̳̪̗̝̙͔͙̫̬̘͈̦͔̳͚̖̩̣͕̳̹̝̠̠̞̳̺̼̯̫̺̭͎̇͐̅̈́̊̄̾̀̄͛̌̎̂̿͗͊͐̎̏̀̓̊̓̒̓͆̀̓̃͌͌̑̄̿̑̓̀̎͛͛̉̌̾̄̐̈́̓͑̈́̀̋͂͊͆͐̿͛̒͛̏̅̈̉̌͂̀̏͋̇̾̀̈́͊͐̐̐͛̌̐̀̀͘͘͘̕̕͝͠͝͝͝͝͠͝͝͝͝͠ͅͅ·-\n'
++ 'FN:-·⚙Samu330📵·-\n'
 + 'ORG:🐬NyanBot;\n'
 + 'TEL;type=CELL;type=VOICE;waid=5219984907794:+521 9984 907794\n' 
 + 'END:VCARD' 
@@ -381,7 +381,7 @@ function kyun(seconds) {
 	var seconds = Math.floor(seconds % 60);
 	return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
 let d = new Date
-				let locale = 'id'
+				let locale = 'es'
 					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
 					let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
 					let week = d.toLocaleDateString(locale, { weekday: 'long' })
@@ -391,12 +391,12 @@ let d = new Date
 				year: 'numeric'
 				})
 			let v = new Date
-				let localle = 'id'
+				let localle = 'es'
 					const harinya = d.toLocaleDateString(locale, { weekday: 'long' })
 				
 				var ramadhan = Math.floor(penghitungRmd - moment().format('DD:HH:mm')) 
 				let hri = new Date
-				let localev = 'id'
+				let localev = 'es'
 					var hari= hri.toLocaleDateString(localev, { weekday: 'long' })
 }
 
@@ -556,8 +556,6 @@ samu330.on('message-update', async (mek) => {
 			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
 			const id_deleted = mek.key.id
 			const conts = mek.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-			const pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
-			//const pushname = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
 			const opt4tag = {
 				contextInfo: { mentionedJid: [sender] }
 			}
@@ -825,7 +823,6 @@ samu330.on('message-new', async (mek) => {
 			const groupMembers = isGroup ? groupMetadata.participants : ''
 			const groupDesc = isGroup ? groupMetadata.desc : ''
 			const groupOwner = isGroup ? groupMetadata.owner : ''
-			const pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
@@ -847,6 +844,7 @@ samu330.on('message-new', async (mek) => {
 			const isBanned = ban.includes(sender)
 			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
 			const soyYo = sender == botNumber ? true : false
+            let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1859,7 +1857,7 @@ const moment = require('moment-timezone')
 const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 
 let d = new Date
-				let locale = 'id'
+				let locale = 'es'
 					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
 					let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
 					let week = d.toLocaleDateString(locale, { weekday: 'long' })
@@ -1886,7 +1884,7 @@ let d = new Date
 🔐Hola *${pushname}* 
 Hora: ${jmn}
 Fecha: ${calender}
-╔════════════════════════════════════╗
+╔══════════════════════════════╗
 ٌ‖${samu} [ ${prefix} ]  Prefijo:${samu}✏️
 ٌ‖${samu} Tiempo de actividad:${samu} *${kyun(uptime)}*🕐
 ٌ‖${samu} Modo:${samu} *ON*✅
@@ -1894,7 +1892,7 @@ Fecha: ${calender}
 ٌ‖${samu} Número de grupos:${samu} *${_registered.length}*⚡
 ٌ‖${samu} Número de chats:${samu} *${totalchat.length}*🔥
 ٌ‖${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
-╚═════════════════════════════════════╝
+╚══════════════════════════════╝
 ︵‿︵‿︵‿︵‿︵　　‿︵‿︵‿︵‿︵‿︵‿︵
 *SI AI ALGUN ERROR, PORFAVOR AGANMELO SABER PARA SOLUCIONARLO.*
 _Para eso usa el comando:_
@@ -1947,7 +1945,7 @@ ${bodyM} ${prefix}menu8 *(Comandos de xp)*
 ¦:     🔥❣️𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆❣️🔥
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
-		     🌸 SamịPerry.li 🌸
+		     🌸 S̸̢̡̨̨̧̡̧̢̨̨̢̧̧̛̛͖̯̞͚͖͇̫͔̫̘̯̫͓̮̼̝͇͇̮͈̥̙̪̫̣̼̣̺̙̹͓͍̪̹̹̯̣͕̘͔̻͙̠̦̪̥͓̟̤̻̫̮̦̹̥̯͈̦̝̺̮͈̖͍̗̩̺̻̟͔̤̬͕̖͖̞̜̹̦̞͒̿͆͋͗̔̆́͐̏͒͒͂̇͂͌̇́̈͛͊̐̀̾̄̓̑͋͒̍̔̌̒͊̏̽̋̈́͐̒̈́͂͌̀̐͊̄̃̍͛̾̔̈́́͐̿͂̅͊̉̈́̉̆̓͐͛͌̅͐̽̊̒͌̿͋̅̈̂̿͑͆̅̕̕̕̕͘̚͜͜͜͜͝͠͝͝͝͝͝͝͝͝ͅͅͅá̸̡̡̨̨̡̨̡̧̧̨̛͖̺̠̼̻̮̬͔̼̪̻̖̩̝̲͍͙̻͎̜̼̪̩͇͕̗̞̥̜̤̲̬͓̝̖̤̠̘̙͍̩̹̗̥̗͔̩͓͚̦̼̳̳̫͕̭̲̙͓̺̣̠̯̙̹̼͕̝̥͎̣͚̠̦̙̖͈̟̼͔̝͙͉͚̗̟̫̜̪̉̊̆̃̈́̃̎̾̇̂̀̈́͊̈́̇̌̈́̀̓̉̀̐̀͊̐̋͊͒͒̇̋̄̑́̆̃̏̈́͒͛̎͐͒͗́̓́͒̈́͌͋̓̓̓̇̄͆̌̇̈́̓̿̑͒̐̓͆̒̅̎̑̑̽̿̎͋́̿̀͂̇̌͌͘̚̕̚̕̚̚̕͘͜͠͝͝͠͝͝m̶̨̡̧̢̡̡̢̡̡̛̛̛̰̗͖̤̥̦̙̯̩͖̫̩͓̤̖͈̤̬͚̲̯̫̹̱͙̞͓͔̫͖̩͉̲̗̹͚͖̝̺̣̼̺̘̼̳̭̳̥̥̣̫̻̟͖̝̣̞̲͓̮̩̣̻̰̗̣̩̬̺̬̗̻̘̳̗̠̹̠̟̯̻͓̤̓̀͂͆̑͂̑̂̐̓́͐̄̀̀̄̒̀̏̅̋͛̌̎̑̓̉͊͛̆̒̓̒̈́͐͋͆͂͊͒͊̌̀̀̏̔̒̀̌̽̈́͗̑͑̍̊̋̈́͒̅̓̈́̅̓̍̌͛̈́̑̽̈́̌̑͋̀͛̾̃̏̅́̅̄̚̚̚̚͜͜͜͜͜͝͝͝͝͠͝͝͝͝͝ͅͅͅų̶̧̢̨̧̧̛͚̣͙̱̩̳͎͎͍̰͙̠̼̰͙̹̫̻̟̬͚͓̰̭̯̖̻̱̝̣͙̖̙̟̠̱̥͍͔̺̳̠͖̮̠͙̞͇̙̮͖̝̺͔͖̥͎̞̦̠͎̮͕̯̣͕̘̼̖̫̪̼͓̥͚̦̞̜̣̞̻̝͇͕̻͍̤͙͕͉͔̾̃́̐̎̏̽̈́̉̃̃͊͆̋̅̈́̄͊̽͑͐̂̿͋̓̉͛̎̏͐̃͗̽͐̔̃͆̐̽̈́̃͂̐̂̂̈́̂̽̅̆̓̋́̋̂̓̍͌́͊̓̈́̐͛́̂̂̌̏̇͋̈̅͊̾́́̈́̒̒͐͛̉̈̃͒̔͘͘̕̚͜͜͜͝͝͝͝͝͝͠͝3̸̧̢̨̡̡̧̧̢̧̢̡̢̧̛̛̫͇͍͓̹̝͉̥̯͔̻̙̙̠̜̼͔̜̥̯͎̻͈̼̺̹̜̙̘̭̘͚̮̝̪̮͕̠̩͈͚͖̙̪̤͍̫̤̻̮͉̥̘̮̮̫͉͔̠͉̩̜͖̹̟͎̬̬̘̣̘̟͓̘̺̳͍̥͕̥̬̹́̂̅̒̾͑̄͗͒̐̀͛̅̃̉̈́͛̈́̈́͗͗̑̀̆̓͌̔̒̀̒̂̇͆͌͌̇̈́͗̒̉̾̿̽͊̿̏̎͑̃̍̀̽͊͛́̏͂̊͛͋̀̀̽̋̀̂̉̅̓́̇́̽͑̆͂̀͒̈́̅͊̌̈́̉̽́̇̓̚̚͘͘͘̚͜͜͝͝͝͝ͅͅͅ3̴̡̨̢̨̢̢̧̧̢̡̨̨̡̨̛̭̺̹̬̺̭͖̩̮̹̳̗̱̗̪̜̺̻̝̫͓̖͈͙̠̪͔̗̺͇̩̻̪̗̗̙̱̥͖͇̹̱̟̦̙̣̰͉̘͙̭̙̤̱̠͔͉͎̣͈͔̩͉̭̜̠͖̤̰͙͉̖͇̥̥̟̜͎̹̥̬̤̌̂́̑́̔͑͑̽͆͌̈́͛͌͒̀͗̓̆͐̒͗̐́͋̀̈́̾̓̋̇͐͂͑͌̌̊̇̿̎͑̀̒̿̐͒͂̽̉̽͌̒̀̔͂͛̎͌̈́̀͑̍͊́̃̇̄́͑̐̆̎̀̋̑̎̿̎̋͑̑̈́̌̉͐̓̌͌͆̈́͑͘̚̚͘͜͠͝͠͝ͅͅͅ0̷̢̡̧̧̢̨̢̧̡̢̛̛̛͈̘̤̜̠̜̹̖̙͔̫͕̼͍͔͓̞̫̖͙̺̖̜̹̠̭̺̗̞̦̻͚̹̝̝̭͍̭͍̮̭̳̜̫͕͈̲̝̹̟͍͕̼͓̜̖͍̖̖͕̪̖̜̜͇͍̣͎͉̼̹̺͔͚͉̲̥͔̺̟̦̞͙̫̩̥̤̗̜̞̒̏̈́͒̔͐̀͋͛̈̽̓͊̀̈́̍̄͗̎͋͒̾̉̄̇̇̈́̓̌̒͆͑̾̾͑̀̃̈̒̽̔́̾̽̃̽̉̽̎̍̀̐̋́̽̏̅̃̾͗͑̏́̊̍͂̇̑̿͆̈̓͗̈̐́̇̈́͒̈͒̋͗͆͘͘͘̕̚̕͘̚͝͠͝͠͝ ̶̧̢̢̧̢̨̨̨̡̧̛̛̭͕̺͍̻̺̭̮̱̳͔̜̪͚̘̭͈̩̜̼͕̭̘͎̰̼̰̮̭̱̙̣̘͕̫̦̠̟̙͍̪̦̱̩̮͓͙̯̜̼͍̯͇͉̪̳̪̗̝̙͔͙̫̬̘͈̦͔̳͚̖̩̣͕̳̹̝̠̠̞̳̺̼̯̫̺̭͎̇͐̅̈́̊̄̾̀̄͛̌̎̂̿͗͊͐̎̏̀̓̊̓̒̓͆̀̓̃͌͌̑̄̿̑̓̀̎͛͛̉̌̾̄̐̈́̓͑̈́̀̋͂͊͆͐̿͛̒͛̏̅̈̉̌͂̀̏͋̇̾̀̈́͊͐̐̐͛̌̐̀̀͘͘͘̕̕͝͠͝͝͝͝͠͝͝͝͝͠ͅͅ.li 🌸
 	 ********************************
 `
 samu330.sendMessage(from, foto, image, { quoted: ftoko, caption: menu, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
