@@ -54,7 +54,6 @@ const
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const axios = require("axios");
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-
 const os = require('os');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const CryptoJS = require("crypto-js");
@@ -167,56 +166,56 @@ const samyperry = JSON.parse(fs.readFileSync('./src/samu330.json'))
 
 ///////////////////////////////////////////////////////////////////////////
 
-const getLevelingXp = (userId) => {
+	    const getLevelingXp = (userId) => {
             let position = false
             Object.keys(_level).forEach((i) => {
-                if (_level[i].jid === userId) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                return _level[position].xp
+            if (_level[i].jid === userId) {
+            position = i
             }
-        }
+            })
+            if (position !== false) 
+	    return _level[position].xp
+            }
+            }
 
-        const getLevelingLevel = (userId) => {
+	    const getLevelingLevel = (userId) => {
             let position = false
             Object.keys(_level).forEach((i) => {
-                if (_level[i].jid === userId) {
-                    position = i
-                }
+            if (_level[i].jid === userId) {
+            position = i
+            }
             })
             if (position !== false) {
-                return _level[position].level
+            return _level[position].level
             }
-        }
+            }
 
-        const getLevelingId = (userId) => {
+            const getLevelingId = (userId) => {
             let position = false
             Object.keys(_level).forEach((i) => {
-                if (_level[i].jid === userId) {
-                    position = i
-                }
+            if (_level[i].jid === userId) {
+            position = i
+            }
             })
             if (position !== false) {
-                return _level[position].jid
+            return _level[position].jid
             }
-        }
+            }
 	
-        const addLevelingXp = (userId, amount) => {
+            const addLevelingXp = (userId, amount) => {
             let position = false
             Object.keys(_level).forEach((i) => {
-                if (_level[i].jid === userId) {
-                    position = i
-                }
+            if (_level[i].jid === userId) {
+            position = i
+            }
             })
             if (position !== false) {
-                _level[position].xp += amount
-                fs.writeFileSync('./src/level.json', JSON.stringify(_level))
+            _level[position].xp += amount
+            fs.writeFileSync('./src/level.json', JSON.stringify(_level))
             }
-        }
+            }
 	
-        const addLevelingLevel = (userId, amount) => {
+            const addLevelingLevel = (userId, amount) => {
             let position = false
             Object.keys(_level).forEach((i) => {
                 if (_level[i].jid === userId) {
@@ -224,86 +223,86 @@ const getLevelingXp = (userId) => {
                 }
             })
             if (position !== false) {
-                _level[position].level += amount
-                fs.writeFileSync('./src/level.json', JSON.stringify(_level))
+            _level[position].level += amount
+            fs.writeFileSync('./src/level.json', JSON.stringify(_level))
             }
-        }
+            }
 
-        const addLevelingId = (userId) => {
+            const addLevelingId = (userId) => {
             const obj = {jid: userId, xp: 1, level: 1}
             _level.push(obj)
             fs.writeFileSync('./src/level.json', JSON.stringify(_level))
-        }
+            }
 	
-       const addATM = (sender) => {
-        	const obj = {id: sender, samyperry : 0}
+            const addATM = (sender) => {
+            const obj = {id: sender, samyperry : 0}
             samyperry.push(obj)
             fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
-        }
+            }
 
-        const addKoinUser = (sender, amount) => {
+            const addKoinUser = (sender, amount) => {
             let position = false
             Object.keys(samyperry).forEach((i) => {
-                if (samyperry[i].id === sender) {
-                    position = i
-                }
+            if (samyperry[i].id === sender) {
+            position = i
+            }
             })
             if (position !== false) {
-                samyperry[position].samyperry += amount
-                fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
+            samyperry[position].samyperry += amount
+            fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
             }
-        }
+            }
 	
-        const checkATMuser = (sender) => {
-        	let position = false
+            const checkATMuser = (sender) => {
+            let position = false
             Object.keys(samyperry).forEach((i) => {
-                if (samyperry[i].id === sender) {
-                    position = i
-                }
+            if (samyperry[i].id === sender) {
+            position = i
+            }
             })
             if (position !== false) {
-                return samyperry[position].samyperry
+            return samyperry[position].samyperry
             }
-        }
+            }
 
-        const bayarLimit = (sender, amount) => {
-        	let position = false
+            const bayarLimit = (sender, amount) => {
+            let position = false
             Object.keys(_limit).forEach((i) => {
-                if (_limit[i].id === sender) {
-                    position = i
-                }
+            if (_limit[i].id === sender) {
+            position = i
+            }
             })
             if (position !== false) {
-                _limit[position].limit -= amount
-                fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
+            _limit[position].limit -= amount
+            fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
             }
-	}
+	    }
 
-        const confirmATM = (sender, amount) => {
-        	let position = false
+            const confirmATM = (sender, amount) => {
+            let position = false
             Object.keys(samyperry).forEach((i) => {
-                if (samyperry[i].id === sender) {
-                    position = i
-                }
+            if (samyperry[i].id === sender) {
+            position = i
+            }
             })
             if (position !== false) {
-                samyperry[position].samyperry -= amount
-                fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
+            samyperry[position].samyperry -= amount
+            fs.writeFileSync('./src/sam.json', JSON.stringify(samyperry))
             }
-        }
+            }
 
-         const limitAdd = (sender) => {
-             let position = false
+            const limitAdd = (sender) => {
+            let position = false
             Object.keys(_limit).forEach((i) => {
-                if (_limit[i].id == sender) {
-                    position = i
-                }
+            if (_limit[i].id == sender) {
+            position = i
+            }
             })
             if (position !== false) {
-                _limit[position].limit += 1
-                fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
+            _limit[position].limit += 1
+            fs.writeFileSync('./src/limit.json', JSON.stringify(_limit))
             }
-        }
+            }
 	 
 //============ Premium ============\\
 
@@ -346,26 +345,25 @@ const getPremiumExpired = (sender) => {
 //========= Funcion de Registro =========\\
 		
 const getRegisteredRandomId = () => {
-            return _registered[Math.floor(Math.random() * _registered.length)].id
+        return _registered[Math.floor(Math.random() * _registered.length)].id
         }
-
         const addRegisteredUser = (userid, sender, age, time, serials) => {
-            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
-            _registered.push(obj)
-            fs.writeFileSync('./src/registered.json', JSON.stringify(_registered))
+        const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
+        _registered.push(obj)
+        fs.writeFileSync('./src/registered.json', JSON.stringify(_registered))
         }
 
         const createSerial = (size) => {
-            return crypto.randomBytes(size).toString('hex').slice(0, size)
+        return crypto.randomBytes(size).toString('hex').slice(0, size)
         }
 
         const checkRegisteredUser = (sender) => {
-            let status = false
-            Object.keys(_registered).forEach((i) => {
-                if (_registered[i].id === sender) {
-                    status = true
-                }
-            })
+        let status = false
+        Object.keys(_registered).forEach((i) => {
+        if (_registered[i].id === sender) {
+        status = true
+        }
+        })
             return status
         }
 
@@ -560,148 +558,147 @@ samu330.on('message-update', async (mek) => {
 				contextInfo: { mentionedJid: [sender] }
 			}
 			for (let i = 0; i < infoMSG.length; i++) {
-				if (infoMSG[i].key.id == id_deleted) {
-					const dataInfo = infoMSG[i]
-					const type = Object.keys(infoMSG[i].message)[0]
-					const timestamp = infoMSG[i].messageTimestamp
-					int = {
-						no: i,
-						type: type,
-						timestamp: timestamp,
-						data: dataInfo
-					}
-				}
+			if (infoMSG[i].key.id == id_deleted) {
+			const dataInfo = infoMSG[i]
+			const type = Object.keys(infoMSG[i].message)[0]
+			const timestamp = infoMSG[i].messageTimestamp
+			int = {
+			no: i,
+			type: type,
+			timestamp: timestamp,
+			data: dataInfo
+			}
+			}
 			}
 			const index = Number(int.no)
 			const body = int.type == 'conversation' ? infoMSG[index].message.conversation : int.type == 'extendedTextMessage' ? infoMSG[index].message.extendedTextMessage.text : int.type == 'imageMessage' ? infoMSG[index].message.imageMessage.caption : int.type == 'stickerMessage' ? 'Sticker' : int.type == 'contactMessage' ? 'Contact' : int.type == 'locationMessage' ? 'Location' : int.type == 'documentMessage' ? 'Document' : int.type == 'audioMessage' ? 'Audio' : int.type == 'videoMessage' ? infoMSG[index].videoMessage.caption : infoMSG[index]
 			const mediaData = int.type === 'extendedTextMessage' ? JSON.parse(JSON.stringify(int.data).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : int.data
 			var itsme = '0@s.whatsapp.net'
-				var split = '❌ANTIDELETE'
-				// var taged = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-				var nyan = {
-					contextInfo: {
-						participant: itsme,
-						quotedMessage: {
-							extendedTextMessage: {
-								text: split,
-							}
-						}
-					}
-				}
+			var split = '❌ANTIDELETE'
+			var nyan = {
+			contextInfo: {
+			participant: itsme,
+			quotedMessage: {
+			extendedTextMessage: {
+			text: split,
+			}
+			}
+			}
+			}
 			if (int.type == 'conversation' || int.type == 'extendedTextMessage') {
-				const strConversation = `		 「 *ANTI-DELETE* 」
+			const strConversation = `		 「 *ANTI-DELETE* 」
  *Nombre :* *${pushname}*
  *Numero :* ${sender.replace('@s.whatsapp.net', '')}
  *Tipe :* Text
  *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
  *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*
  *Mensaje :* ${body ? body : '-'}`
-				samu330.sendMessage(from, strConversation, MessageType.text, nyan)
+			samu330.sendMessage(from, strConversation, MessageType.text, nyan)
 			} else if (int.type == 'stickerMessage') {
-				var itsme = '0@s.whatsapp.net'
-					var split = '❌ANTIDELETE'
-					const nyanbot = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
-				const strConversation = `		 「 *ANTI-DELETE* 」
+			var itsme = '0@s.whatsapp.net'
+			var split = '❌ANTIDELETE'
+			const nyanbot = {
+			contextInfo: {
+			participant: itsme,
+			quotedMessage: {
+			extendedTextMessage: {
+			text: split,
+			}
+			}
+			}
+			}
+			const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+			const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+			const strConversation = `		 「 *ANTI-DELETE* 」
  *Nombre :* *${pushname}*
  *Numero :* ${sender.replace('@s.whatsapp.net', '')}
  *Tipe :* Sticker
  *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
  *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
 
-				const buff = fs.readFileSync(savedFilename)
-				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
-				samu330.sendMessage(from, buff, MessageType.sticker, nyanbot)
-				// console.log(stdout)
-				fs.unlinkSync(savedFilename)
+			const buff = fs.readFileSync(savedFilename)
+			samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
+			samu330.sendMessage(from, buff, MessageType.sticker, nyanbot)
+			// console.log(stdout)
+			fs.unlinkSync(savedFilename)
 
 			} else if (int.type == 'audioMessage') {
-				var itsme = '0@s.whatsapp.net'
-					var split = 'ANTIDELETE'
-					const perry330 = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
-				const strConversation = `		 「 *ANTI-DELETE* 」
+			var itsme = '0@s.whatsapp.net'
+			var split = 'ANTIDELETE'
+			const perry330 = {
+			contextInfo: {
+			participant: itsme,
+			quotedMessage: {
+			extendedTextMessage: {
+			text: split,
+			}
+			}
+			}
+			}
+			const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+			const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+			const strConversation = `		 「 *ANTI-DELETE* 」
  *Nombre :* *${pushname}*
  *Numero :* ${sender.replace('@s.whatsapp.net', '')}
  *Tipe :* Audio
  *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
  *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
 
-				const dio = fs.readFileSync(savedFilename)
-				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
-				samu330.sendMessage(from, dio, MessageType.audio, perry330)
-				// console.log(stdout)
-				fs.unlinkSync(savedFilename)
+			const dio = fs.readFileSync(savedFilename)
+			samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
+			samu330.sendMessage(from, dio, MessageType.audio, perry330)
+			// console.log(stdout)
+			fs.unlinkSync(savedFilename)
 
 			} else if (int.type == 'videoMessage') {
-				var itsme = '0@s.whatsapp.net'
-					var split = 'Antidelete'
-					const vid = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
-				const buff = fs.readFileSync(savedFilename)
-				const strConversation = `	 「 *ANTI-DELETE* 」
+			var itsme = '0@s.whatsapp.net'
+			var split = 'Antidelete'
+			const vid = {
+			contextInfo: {
+			participant: itsme,
+			quotedMessage: {
+			extendedTextMessage: {
+			text: split,
+			}
+			}
+			}
+			}
+			const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+			const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+			const buff = fs.readFileSync(savedFilename)
+			const strConversation = `	 「 *ANTI-DELETE* 」
  *Nombre :* *${pushname}*
  *Numero :* ${sender.replace('@s.whatsapp.net', '')}
  *Tipe :* Video
  *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
  *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
-				samu330.sendMessage(from, buff, MessageType.video, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
-				fs.unlinkSync(savedFilename)
+			samu330.sendMessage(from, buff, MessageType.video, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
+			fs.unlinkSync(savedFilename)
 
 			} else if (int.type == 'imageMessage') {
-				var itsme = '@s.whatsapp.net'
-					var split = 'Antidelete'
-					const img = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
-				const buff = fs.readFileSync(savedFilename)
-				const strConversation = `	 「 *ANTI-DELETE* 」
+			var itsme = '@s.whatsapp.net'
+			var split = 'Antidelete'
+			const img = {
+			contextInfo: {
+			participant: itsme,
+			quotedMessage: {
+			extendedTextMessage: {
+			text: split,
+			}
+			}
+			}
+			}
+			const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
+			const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/${filename}`);
+			const buff = fs.readFileSync(savedFilename)
+			const strConversation = `	 「 *ANTI-DELETE* 」
 *Nombre :* *${pushname}*
  *Numero :* ${sender.replace('@s.whatsapp.net', '')}
  *Tipe :* Image
  *Hora :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
  *Fecha :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
-				samu330.sendMessage(from, buff, MessageType.image, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
-				fs.unlinkSync(savedFilename)
+			samu330.sendMessage(from, buff, MessageType.image, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
+			fs.unlinkSync(savedFilename)
 			}
 		}
 	} catch (e) {
@@ -797,25 +794,25 @@ samu330.on('message-new', async (mek) => {
 				Iv: '❌ Link invalido ❌'
 			},
 			only: {
-    group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
-    premium: '🤴🏻 _*LO SIENTO, ESTE COMANDO SOLO PUEDE SER UTILIZADO POR USUARIOS*_ ```PREMIUM``` 🐱‍💻',
-    benned: '⚠ *USTED ES UN USUARIO BANEADO, ESO QUIERE DECIR QUE NO PUEDE USAR EL BOT* ⚠',
-    ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
-    ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: wa.me/+529984907794, Habla con el para que pueda cambiar el numero del owner en este bot',
-    admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
-    Badmin: '[❗] ¡Este comando solo se puede usar cuando el bot es administrador! ❌',
-    daftarB: `Hola, usa *${prefix}reg* para poder usar el bot`
-  }
-		}
+    			group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
+   			premium: '🤴🏻 _*LO SIENTO, ESTE COMANDO SOLO PUEDE SER UTILIZADO POR USUARIOS*_ ```PREMIUM``` 🐱‍💻',
+    			benned: '⚠ *USTED ES UN USUARIO BANEADO, ESO QUIERE DECIR QUE NO PUEDE USAR EL BOT* ⚠',
+    			ownerG: '[❗] ¡Este comando solo puede ser utilizado por el creador del grupo! ❌',
+    			ownerB: '[❗] ¡Este comando solo puede ser utilizado por el creador del bot! ❌\nOsea, Samu: wa.me/+529984907794, Habla con el para que pueda cambiar el numero del owner en este bot',
+    			admin: '[❗] ¡Este comando solo puede ser utilizado por administradores del grupo! ❌',
+    			Badmin: '[❗] ¡Este comando solo se puede usar cuando el bot es administrador! ❌',
+    			daftarB: `Usuario no *Registrado*\n_Para registrarte usa el comando_: *${prefix}reg*`
+  			}
+			}
 
 		const botNumber = samu330.user.jid
-		const ownerNumber = [`5219984907794@s.whatsapp.net`, `${ow}@s.whatsapp.net`]
+		const ownerNumber = ["5219984907794@s.whatsapp.net", `${ow}@s.whatsapp.net`]
 			const samu = '```'
 			const crypto = require('crypto')
 			const isGroup = from.endsWith('@g.us')
 			const totalchat = await samu330.chats.all()
-			const tescuk = ["0@s.samu330.net"]
-			const sender = isGroup ? mek.participant : mek.key.remoteJid
+			const tescuk = ["0@s.whatsapp.net"]
+			const sender =  isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await samu330.groupMetadata(from) : ''
 			const groupName = isGroup ? groupMetadata.subject : ''
 			const q = args.join(' ')
@@ -835,7 +832,7 @@ samu330.on('message-new', async (mek) => {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isAntiMedia = isGroup ? antimedia.includes(from) : false
             		const isAntiFake = isGroup ? antifake.includes(from) : false
-		//	const isAntiVirtex = isGroup ? antivirtex.includes(from) : false
+			const isAntiLeg = isGroup ? antilegion.includes(from) : false
 			const isAutoSt = isGroup ? autostick.includes(from) : false
 			const isBadWord = isGroup ? badword.includes(from) : false
 			const isPrem = prem.includes(sender)
@@ -844,130 +841,48 @@ samu330.on('message-new', async (mek) => {
 			const isBanned = ban.includes(sender)
 			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
 			const soyYo = sender == botNumber ? true : false
-    		        pushname = sender.vname
-		//	const pushname = sender.vname
-          	//	let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
+    		        let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
 			const isUrl = (url) => {
-			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+			return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
-		const reply = (teks) => {
+			const reply = (teks) => {
 			samu330.sendMessage(from, teks, text, { quoted: mek, timestamp: 0, contextInfo:{ "forwardingScore": 9999, "isForwarded": true}
-		})
-		}
+			})
+			}
 		
-		const math = (teks) => {
-				return Math.floor(teks)
+			const math = (teks) => {
+			return Math.floor(teks)
 			}
 		
 		
-const fileurl = async(link, type) => {
- woy = await getBuffer(link)
- samu330.sendMessage(from, woy, type, {quoted:ftoko})
-}
-
+			const fileurl = async(link, type) => {
+ 			woy = await getBuffer(link)
+ 			samu330.sendMessage(from, woy, type, {quoted:ftoko})
+			}
 			const costum = (pesan, tipe, target, target2) => {
-
 			samu330.sendMessage(from, pesan, tipe, {quoted: { key: { fromMe: false, participant: `${target}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target2}` }}})
-
 			}
-
 			const createSerial = (size) => {
-
 			return crypto.randomBytes(size).toString('hex').slice(0, size)
 
         		}
-	//FAKE STATUS
-	const fimg = {
-	 key:
-	 { fromMe: false,
-	 participant: `0@s.whatsapp.net`, ...(from ? 
-	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "imageMessage": { "mimetype": "image/jpeg","caption": '💓𝑆𝐴𝑀 𝑌 𝑃𝐸𝑅𝑅𝑌🔥\🐬NyanBot', 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
-	const fdoc = {
-	 key:
-	 { fromMe: false,
-	 participant: `5219984907794@s.whatsapp.net`, ...(from ? 
-	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "documentMessage": { "title":"❣️𝓢𝓪𝓶 𝔂 𝓟𝓮𝓻𝓻𝔂,🔥", 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}
-	}
-	const floc = {
-	 key:
-	 { fromMe: false,
-	 participant: `0@s.whatsapp.net`, ...(from ? 
-	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "locationMessage": { "title":"🔐Samu330⚡", 'jpegThumbnail': fs.readFileSync('./src/samyperry.png')}}
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
-	const fliveLoc = {
-	 key:
-	 { fromMe: false,
-	 participant: `0@s.whatsapp.net`, ...(from ? 
-	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "liveLocationMessage": {"caption": "🔥❣️Sᥲm ყ Pᥱrrყ | NყᥲᥒBot🐬", 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
-	const fvid = {
-	 key:
-	 { fromMe: false,
-	 participant: `0@s.whatsapp.net`, ...(from ? 
-	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "videoMessage": {"caption": '⚡🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎 | 𝒩𝓎𝒶𝓃ℬ𝑜𝓉💓', 'jpegThumbnail': fs.readFileSync('./src/fake.jpg')}}
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
-   	const ftoko = {
-		key: {
-			fromMe: false,
-			participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-		},
-		message: {
-			"productMessage": {
-				"product": {
-					"productImage":{
-						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./src/fake.jpg`)
-					},
-					"title": "➫𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🔥❣️" ,
-					"currencyCode": "SYP",
-					"priceAmount1000": "999999999999999999999999999999999999999999999999999999999999999",
-					"productImageCount": 999
-				},
-				"businessOwnerJid": `0@s.whatsapp.net`
-		}
-	}
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
-	const fgc = {
-                    key: {
-                        fromMe: false,
-                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "5214447000377-1621516991@g.us" } : {})
-                    },
-                    message: {
-                        "imageMessage": {
-                            "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
-                            "mimetype": "image/jpeg",
-                            "caption": `🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎\n${args.join(' ')}`,
-                            "jpegThumbnail": fs.readFileSync('./src/samyperry.png'),
-                        }
-                    }
-	}
-		contextInfo: {
-  mentionedJid: [sender]}
+	
+			const fimg = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg","caption": '💓𝑆𝐴𝑀 𝑌 𝑃𝐸𝑅𝑅𝑌🔥\🐬NyanBot', 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}} contextInfo: { mentionedJid: [sender]}
+			const fdoc = { key: { fromMe: false, participant: `5219984907794@s.whatsapp.net`, ...(from ?  { remoteJid: "status@broadcast" } : {}) }, message: { "documentMessage": { "title":"❣️𝓢𝓪𝓶 𝔂 𝓟𝓮𝓻𝓻𝔂,🔥", 'jpegThumbnail': fs.readFileSync('./NyanBot.jpg')}}}
+			const floc = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ?  { remoteJid: "status@broadcast" } : {}) }, message: { "locationMessage": { "title":"🔐Samu330⚡", 'jpegThumbnail': fs.readFileSync('./src/samyperry.png')}} } contextInfo: { mentionedJid: [sender]}
+			const fliveLoc = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": {"caption": "🔥❣️Sᥲm ყ Pᥱrrყ | NყᥲᥒBot🐬", 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}} } contextInfo: { mentionedJid: [sender]}
+			const fvid = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ?  { remoteJid: "status@broadcast" } : {}) }, message: { "videoMessage": {"caption": '⚡🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎 | 𝒩𝓎𝒶𝓃ℬ𝑜𝓉💓', 'jpegThumbnail': fs.readFileSync('./src/fake.jpg')}} } contextInfo: { mentionedJid: [sender]}
+   			const ftoko = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": fs.readFileSync(`./src/fake.jpg`)}, "title": "➫𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🔥❣️" , "currencyCode": "SYP", "priceAmount1000": "999999999999999999999999999999999999999999999999999999999999999", "productImageCount": 999}, "businessOwnerJid": `0@s.whatsapp.net`}}} contextInfo: { mentionedJid: [sender]}
+			const fgc = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "5214447000377-1621516991@g.us" } : {})}, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `🔥𝒮𝒶𝓂 𝓎 𝒫𝑒𝓇𝓇𝓎\n${args.join(' ')}`, "jpegThumbnail": fs.readFileSync('./src/samyperry.png'), }}} contextInfo: {mentionedJid: [sender]}
                 
 
-		const sendMess = (hehe, teks) => {
+			const sendMess = (hehe, teks) => {
 			samu330.sendMessage(hehe, teks, text, {contextInfo: {"forwardingScore": 9999, "isForwarded": true}}, {quoted: mek
-})
-}
-		const mentions = (teks, memberr, id) => {
+			})
+			}
+			const mentions = (teks, memberr, id) => {
 			(id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : samu330.sendMessage(from, teks.trim(), extendedText, { quoted: ftoko, contextInfo: { "mentionedJid": memberr } })
-		}
+			}
 
 		
 		
@@ -1947,7 +1862,7 @@ ${bodyM} ${prefix}menu8 *(Comandos de xp)*
 ¦:     🔥❣️𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆❣️🔥
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
-		     🌸 S̸̢̡̨̨̧̡̧̢̨̨̢̧̧̛̛͖̯̞͚͖͇̫͔̫̘̯̫͓̮̼̝͇͇̮͈̥̙̪̫̣̼̣̺̙̹͓͍̪̹̹̯̣͕̘͔̻͙̠̦̪̥͓̟̤̻̫̮̦̹̥̯͈̦̝̺̮͈̖͍̗̩̺̻̟͔̤̬͕̖͖̞̜̹̦̞͒̿͆͋͗̔̆́͐̏͒͒͂̇͂͌̇́̈͛͊̐̀̾̄̓̑͋͒̍̔̌̒͊̏̽̋̈́͐̒̈́͂͌̀̐͊̄̃̍͛̾̔̈́́͐̿͂̅͊̉̈́̉̆̓͐͛͌̅͐̽̊̒͌̿͋̅̈̂̿͑͆̅̕̕̕̕͘̚͜͜͜͜͝͠͝͝͝͝͝͝͝͝ͅͅͅá̸̡̡̨̨̡̨̡̧̧̨̛͖̺̠̼̻̮̬͔̼̪̻̖̩̝̲͍͙̻͎̜̼̪̩͇͕̗̞̥̜̤̲̬͓̝̖̤̠̘̙͍̩̹̗̥̗͔̩͓͚̦̼̳̳̫͕̭̲̙͓̺̣̠̯̙̹̼͕̝̥͎̣͚̠̦̙̖͈̟̼͔̝͙͉͚̗̟̫̜̪̉̊̆̃̈́̃̎̾̇̂̀̈́͊̈́̇̌̈́̀̓̉̀̐̀͊̐̋͊͒͒̇̋̄̑́̆̃̏̈́͒͛̎͐͒͗́̓́͒̈́͌͋̓̓̓̇̄͆̌̇̈́̓̿̑͒̐̓͆̒̅̎̑̑̽̿̎͋́̿̀͂̇̌͌͘̚̕̚̕̚̚̕͘͜͠͝͝͠͝͝m̶̨̡̧̢̡̡̢̡̡̛̛̛̰̗͖̤̥̦̙̯̩͖̫̩͓̤̖͈̤̬͚̲̯̫̹̱͙̞͓͔̫͖̩͉̲̗̹͚͖̝̺̣̼̺̘̼̳̭̳̥̥̣̫̻̟͖̝̣̞̲͓̮̩̣̻̰̗̣̩̬̺̬̗̻̘̳̗̠̹̠̟̯̻͓̤̓̀͂͆̑͂̑̂̐̓́͐̄̀̀̄̒̀̏̅̋͛̌̎̑̓̉͊͛̆̒̓̒̈́͐͋͆͂͊͒͊̌̀̀̏̔̒̀̌̽̈́͗̑͑̍̊̋̈́͒̅̓̈́̅̓̍̌͛̈́̑̽̈́̌̑͋̀͛̾̃̏̅́̅̄̚̚̚̚͜͜͜͜͜͝͝͝͝͠͝͝͝͝͝ͅͅͅų̶̧̢̨̧̧̛͚̣͙̱̩̳͎͎͍̰͙̠̼̰͙̹̫̻̟̬͚͓̰̭̯̖̻̱̝̣͙̖̙̟̠̱̥͍͔̺̳̠͖̮̠͙̞͇̙̮͖̝̺͔͖̥͎̞̦̠͎̮͕̯̣͕̘̼̖̫̪̼͓̥͚̦̞̜̣̞̻̝͇͕̻͍̤͙͕͉͔̾̃́̐̎̏̽̈́̉̃̃͊͆̋̅̈́̄͊̽͑͐̂̿͋̓̉͛̎̏͐̃͗̽͐̔̃͆̐̽̈́̃͂̐̂̂̈́̂̽̅̆̓̋́̋̂̓̍͌́͊̓̈́̐͛́̂̂̌̏̇͋̈̅͊̾́́̈́̒̒͐͛̉̈̃͒̔͘͘̕̚͜͜͜͝͝͝͝͝͝͠͝3̸̧̢̨̡̡̧̧̢̧̢̡̢̧̛̛̫͇͍͓̹̝͉̥̯͔̻̙̙̠̜̼͔̜̥̯͎̻͈̼̺̹̜̙̘̭̘͚̮̝̪̮͕̠̩͈͚͖̙̪̤͍̫̤̻̮͉̥̘̮̮̫͉͔̠͉̩̜͖̹̟͎̬̬̘̣̘̟͓̘̺̳͍̥͕̥̬̹́̂̅̒̾͑̄͗͒̐̀͛̅̃̉̈́͛̈́̈́͗͗̑̀̆̓͌̔̒̀̒̂̇͆͌͌̇̈́͗̒̉̾̿̽͊̿̏̎͑̃̍̀̽͊͛́̏͂̊͛͋̀̀̽̋̀̂̉̅̓́̇́̽͑̆͂̀͒̈́̅͊̌̈́̉̽́̇̓̚̚͘͘͘̚͜͜͝͝͝͝ͅͅͅ3̴̡̨̢̨̢̢̧̧̢̡̨̨̡̨̛̭̺̹̬̺̭͖̩̮̹̳̗̱̗̪̜̺̻̝̫͓̖͈͙̠̪͔̗̺͇̩̻̪̗̗̙̱̥͖͇̹̱̟̦̙̣̰͉̘͙̭̙̤̱̠͔͉͎̣͈͔̩͉̭̜̠͖̤̰͙͉̖͇̥̥̟̜͎̹̥̬̤̌̂́̑́̔͑͑̽͆͌̈́͛͌͒̀͗̓̆͐̒͗̐́͋̀̈́̾̓̋̇͐͂͑͌̌̊̇̿̎͑̀̒̿̐͒͂̽̉̽͌̒̀̔͂͛̎͌̈́̀͑̍͊́̃̇̄́͑̐̆̎̀̋̑̎̿̎̋͑̑̈́̌̉͐̓̌͌͆̈́͑͘̚̚͘͜͠͝͠͝ͅͅͅ0̷̢̡̧̧̢̨̢̧̡̢̛̛̛͈̘̤̜̠̜̹̖̙͔̫͕̼͍͔͓̞̫̖͙̺̖̜̹̠̭̺̗̞̦̻͚̹̝̝̭͍̭͍̮̭̳̜̫͕͈̲̝̹̟͍͕̼͓̜̖͍̖̖͕̪̖̜̜͇͍̣͎͉̼̹̺͔͚͉̲̥͔̺̟̦̞͙̫̩̥̤̗̜̞̒̏̈́͒̔͐̀͋͛̈̽̓͊̀̈́̍̄͗̎͋͒̾̉̄̇̇̈́̓̌̒͆͑̾̾͑̀̃̈̒̽̔́̾̽̃̽̉̽̎̍̀̐̋́̽̏̅̃̾͗͑̏́̊̍͂̇̑̿͆̈̓͗̈̐́̇̈́͒̈͒̋͗͆͘͘͘̕̚̕͘̚͝͠͝͠͝.li 🌸
+		     🌸 S̸̢̡̨̨̧̡̧̢̨̨̢̧̧̛̛͖̯̞͚͖͇̫͔̫̘̯̫͓̮̼̝͇͇̮͈̥̙̪̫̣̼̣̺̙̹͓͍̪̹̹̯̣͕̘͔̻͙̠̦̪̥͓̟̤̻̫̮̦̹̥̯͈̦̝̺̮͈̖͍̗̩̺̻̟͔̤̬͕̖͖̞̜̹̦̞͒̿͆͋͗̔̆́͐̏͒͒͂̇͂͌̇́̈͛͊̐̀̾̄̓̑͋͒̍̔̌̒͊̏̽̋̈́͐̒̈́͂͌̀̐͊̄̃̍͛̾̔̈́́͐̿͂̅͊̉̈́̉̆̓͐͛͌̅͐̽̊̒͌̿͋̅̈̂̿͑͆̅̕̕̕̕͘̚͜͜͜͜͝͠͝͝͝͝͝͝͝͝ͅͅͅá̸̡̡̨̨̡̨̡̧̧̨̛͖̺̠̼̻̮̬͔̼̪̻̖̩̝̲͍͙̻͎̜̼̪̩͇͕̗̞̥̜̤̲̬͓̝̖̤̠̘̙͍̩̹̗̥̗͔̩͓͚̦̼̳̳̫͕̭̲̙͓̺̣̠̯̙̹̼͕̝̥͎̣͚̠̦̙̖͈̟̼͔̝͙͉͚̗̟̫̜̪̉̊̆̃̈́̃̎̾̇̂̀̈́͊̈́̇̌̈́̀̓̉̀̐̀͊̐̋͊͒͒̇̋̄̑́̆̃̏̈́͒͛̎͐͒͗́̓́͒̈́͌͋̓̓̓̇̄͆̌̇̈́̓̿̑͒̐̓͆̒̅̎̑̑̽̿̎͋́̿̀͂̇̌͌͘̚̕̚̕̚̚̕͘͜͠͝͝͠͝͝m̶̨̡̧̢̡̡̢̡̡̛̛̛̰̗͖̤̥̦̙̯̩͖̫̩͓̤̖͈̤̬͚̲̯̫̹̱͙̞͓͔̫͖̩͉̲̗̹͚͖̝̺̣̼̺̘̼̳̭̳̥̥̣̫̻̟͖̝̣̞̲͓̮̩̣̻̰̗̣̩̬̺̬̗̻̘̳̗̠̹̠̟̯̻͓̤̓̀͂͆̑͂̑̂̐̓́͐̄̀̀̄̒̀̏̅̋͛̌̎̑̓̉͊͛̆̒̓̒̈́͐͋͆͂͊͒͊̌̀̀̏̔̒̀̌̽̈́͗̑͑̍̊̋̈́͒̅̓̈́̅̓̍̌͛̈́̑̽̈́̌̑͋̀͛̾̃̏̅́̅̄̚̚̚̚͜͜͜͜͜͝͝͝͝͠͝͝͝͝͝ͅͅͅų̶̧̢̨̧̧̛͚̣͙̱̩̳͎͎͍̰͙̠̼̰͙̹̫̻̟̬͚͓̰̭̯̖̻̱̝̣͙̖̙̟̠̱̥͍͔̺̳̠͖̮̠͙̞͇̙̮͖̝̺͔͖̥͎̞̦̠͎̮͕̯̣͕̘̼̖̫̪̼͓̥͚̦̞̜̣̞̻̝͇͕̻͍̤͙͕͉͔̾̃́̐̎̏̽̈́̉̃̃͊͆̋̅̈́̄͊̽͑͐̂̿͋̓̉͛̎̏͐̃͗̽͐̔̃͆̐̽̈́̃͂̐̂̂̈́̂̽̅̆̓̋́̋̂̓̍͌́͊̓̈́̐͛́̂̂̌̏̇͋̈̅͊̾́́̈́̒̒͐͛̉̈̃͒̔͘͘̕̚͜͜͜͝͝͝͝͝͝͠͝3̸̧̢̨̡̡̧̧̢̧̢̡̢̧̛̛̫͇͍͓̹̝͉̥̯͔̻̙̙̠̜̼͔̜̥̯͎̻͈̼̺̹̜̙̘̭̘͚̮̝̪̮͕̠̩͈͚͖̙̪̤͍̫̤̻̮͉̥̘̮̮̫͉͔̠͉̩̜͖̹̟͎̬̬̘̣̘̟͓̘̺̳͍̥͕̥̬̹́̂̅̒̾͑̄͗͒̐̀͛̅̃̉̈́͛̈́̈́͗͗̑̀̆̓͌̔̒̀̒̂̇͆͌͌̇̈́͗̒̉̾̿̽͊̿̏̎͑̃̍̀̽͊͛́̏͂̊͛͋̀̀̽̋̀̂̉̅̓́̇́̽͑̆͂̀͒̈́̅͊̌̈́̉̽́̇̓̚̚͘͘͘̚͜͜͝͝͝͝ͅͅͅ3̴̡̨̢̨̢̢̧̧̢̡̨̨̡̛̭̺̹̬̺̭͖̩̮̹̳̗̱̗̪̜̺̻̝̫͓̖͈͙̠̪͔̗̺͇̩̻̪̗̗̙̱̥͖͇̹̱̟̦̙̣̰͉̘͙̭̙̤̱̠͔͉͎̣͈͔̩͉̭̜̠͖̤̰͙͉̖͇̥̥̟̜͎̹̥̬̤̌̂́̑́̔͑͑̽͆͌̈́͛͌͒̀͗̓̆͐̒͗̐́͋̀̈́̾̓̋̇͐͂͑͌̌̊̇̿̎͑̀̒̿̐͒͂̽̉̽͌̒̀̔͂͛̎͌̈́̀͑̍͊́̃̇̄́͑̐̆̎̀̋̑̎̿̎̋͑̑̈́̌̉͐̓̌͌͆̈́͑͘̚̚͘͜͠͝͠͝ͅͅͅ0̷̢̡̧̧̢̨̢̧̡̢̛̛̛͈̘̤̜̠̜̹̖̙͔̫͕̼͍͔͓̞̫̖͙̺̖̜̹̠̭̺̗̞̦̻͚̹̝̝̭͍̭͍̮̭̳̜̫͕͈̲̝̹̟͍͕̼͓̜̖͍̖̖͕̪̖̜̜͇͍̣͎͉̼̹̺͔͚͉̲̥͔̺̟̦̞͙̫̩̥̤̗̜̒̏̈́͒̔͐̀͋͛̈̽̓͊̀̈́̍̄͗̎͋͒̾̉̄̇̇̈́̓̌̒͆͑̾̾͑̀̃̈̒̽̔́̾̽̃̽̉̽̎̍̀̐̋́̽̏̅̃̾͗͑̏́̊̍͂̇̑̿͆̈̓͗̈̐́̇̈́͒̈͒̋͗͆͘͘͘̕̚̕͘̚͝͠͝͠͝.li 🌸
 	 ********************************
 `
 samu330.sendMessage(from, foto, image, { quoted: ftoko, caption: menu, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2093,6 +2008,8 @@ ${bodyM} ${prefix}playvid *(Descarga de videos por nombre)*
 ${bodyM} ${prefix}ig *(Fotos y videos de Instagram)*
 ${bodyM} ${prefix}ytmp3
 ${bodyM} ${prefix}ytmp4
+${bodyM} ${prefix}fb _(Link de FaceBook)_
+${bodyM} ${prefix}twit _Link de Twitter_
 ${bodyM} ${prefix}mfire *(Link de mediafire)*
 ${bodyM} ${prefix}tomp3 *(Videos a audio)*
 `,
@@ -3203,28 +3120,43 @@ samu330.sendMessage(from, smuu, text, {quoted: { key: {
 			
 			case 'imagen':
 				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
-if (!isRegister) return reply(mess.only.daftarB)
-
-if (args.length < 1) return reply('Ingresa algo para buscar en imágenes🔐')
-tels = body.slice(8)
-fakee = fs.readFileSync('./src/help.jpg')
-samu330.updatePresence(from, Presence.composing)
-reply(mess.wait)
-try {
-data = await fetchJson(`https://api.fdci.se/sosmed/rep.php?gambar=${tels}`, {
-  method: 'get'
-})
-n = JSON.parse(JSON.stringify(data));
-nimek = n[Math.floor(Math.random() * n.length)];
-pok = await getBuffer(nimek)
-samu330.sendMessage(from, pok, image, {
-  quoted: ftoko, caption: `Espero y te guste esta imagen de *${tels}*`, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
-})
-
-} catch {
-  reply(mess.ferr)
-}
-break
+				if (!isRegister) return reply(mess.only.daftarB)
+				if (args.length < 1) return reply('Ingresa algo para buscar en imágenes🔐')
+				texto = body.slice(8)
+				fakee = fs.readFileSync('./src/help.jpg')
+				samu330.updatePresence(from, Presence.composing)
+				reply(mess.wait)
+				try {
+				data = await fetchJson(`https://api.vhtear.com/googleimg?query=${texto}&apikey=${ApiVhtear}`, {method: 'get'})
+				pok = await getBuffer(data.result_search[0])
+				samu330.sendMessage(from, pok, image, {
+				quoted: ftoko, caption: `Espero y te guste esta imagen de *${tels}*`, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true}					})
+				} catch {
+					reply(mess.ferr)
+				}
+				break
+				
+			case 'calc':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
+				if (!isRegister) return reply(mess.only.daftarB)
+				if (args.length < 1) return reply('Porfavor ingresa una ecuacion para poder calcular')
+				calc = args.joi(' ')
+				op = await fetchJson(`https://api.vhtear.com/calculator?value=${calc}&apikey=${ApiVhtear}`)
+				reply(`
+    CALCULADORA
+     Samu330✅
+____________________
+_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
+_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
+_¶¶  *ECUACION:*  ¶¶
+_¶¶_______________¶¶
+_¶¶ _${calc}_
+_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
+_¶¶  *RESULTADO:* ¶¶
+_¶¶_______________¶¶
+_¶¶ _${op.data}
+_¶¶_______________¶¶`)
+				break
 				
 				
 			case 'modeanime':
@@ -3746,12 +3678,43 @@ json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 reply('Ya entre al grupo😉')
 break
 				
+			case 'fb':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
+				if (!isRegister) return reply(mess.only.daftarB)
+				if (args.length < 1) return reply('Y el link de FaceBook?')
+				reply(mess.wait)
+  				fb = args.jion(' ')
+  				try {
+				book = await fetchJson(`https://api.vhtear.com/fbdl?link=${fb}&apikey=${ApiVhtear}`)
+				face = await getBuffer(book.result.urlVideo)
+				samu330.sendMessage(from, face, video, { mimetype: 'video/mp4', duration :-999999999999999, filename: '✅Samu330.mp4', quoted: fvid })
+				} catch {                                                                                                
+	  			reply(mess.ferr)
+  				}                                                        
+				break
+				
+			case 'twit':
+				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
+				if (!isRegister) return reply(mess.only.daftarB)
+				if (args.length < 1) return reply('Y el link de Twitter?')
+				reply(mess.wait)
+  				tw = args.jion(' ')
+  				try {
+				ter = await fetchJson(`https://api.vhtear.com/twitter?link=${tw}=20&apikey=${ApiVhtear}`)
+				twit = await getBuffer(ter.result.urlVideo)
+				samu330.sendMessage(from, twit, video, { mimetype: 'video/mp4', caption: `${ter.desk}`, duration :-999999999999999, filename: '✅Samu330.mp4', quoted: fvid })
+				} catch {                                                                                                
+	  			reply(mess.ferr)
+  				}                                                        
+				break
+				
+				
 
 
 case 'playfree':
-				if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
-  if (!isRegister) return reply(mess.only.daftarB)
-  if (args.length < 1) return reply('Escribe el nombre')
+if (isLimit(sender)) return reply('Sus limites se an agotado, porfavor compra mas')
+if (!isRegister) return reply(mess.only.daftarB)
+if (args.length < 1) return reply('Escribe el nombre')
   reply(mess.wait)
   play = body.slice(7)
   try {
@@ -3877,7 +3840,7 @@ case 'playvid':
                     ini_buffer = await getBuffer(get_info.thumbnail)
                     await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
                     get_video = await getBuffer(get_result.video[0].link)
-                    await samu330.sendMessage(from, get_video, video, { mimetype: 'video/mp4', filename: `${get_info.title}.mp4`, quoted: fvid })
+                    await samu330.sendMessage(from, get_video, video, { mimetype: 'video/mp4', duration :-999999999999999, filename: `${get_info.title}.mp4`, quoted: fvid })
 				await limitAdd(sender)
                     break
 				
@@ -5511,7 +5474,7 @@ break
 					if (body.startsWith(`${prefix}${command}`)) {
   reply(`        »»————-　★　————-««\nHola *${pushname}* !!!\nEse comando no esta en mi lista : *${prefix}${command}*\nUsa esto para ver el menu: *${prefix}Menu*\n        »»————-　★　————-««`)
 				}
-					if (isGroup && isSimi && budy != undefined) {
+					if (isGroup && isSimi && !botNumber && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
 						console.log(muehe)
