@@ -152,8 +152,6 @@ const ApiVhtear = 'AdiOfficial404'
 
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const datosDelBro = JSON.parse(fs.readFileSync('./src/reglas.json'))
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 
 ///////////////////////////////////////////////////////////////////////////
 		
@@ -176,17 +174,6 @@ const getRegisteredRandomId = () => {
         let status = false
         Object.keys(_registered).forEach((i) => {
         if (_registered[i].id === sender) {
-        status = true
-        }
-        })
-            return status
-        }
-	
-	
-	const checkReadRules = (sender) => {
-        let status = false
-        Object.keys(datosDelBro).forEach((i) => {
-        if (datosDelBro[i].id === sender) {
         status = true
         }
         })
@@ -245,9 +232,81 @@ async function starts() {
         fs.writeFileSync('./Samu.json', JSON.stringify(samu330.base64EncodedAuthInfo(), null, '\t'))
 	
 //=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
-		
-const _0x14bf=['error','13TfwCUz','group-participants-update','524413HiLgBU','readFileSync','status','1dwQHmn','info','long','trace','jid','constructor','warn','prototype','*❌UN\x20ADMIN\x20MENOS❌*\x0a*🙋🏻‍♂️\x20Nombre*:\x20@','\x27\x20-pointsize\x2035\x20-annotate\x20+460+83\x20\x27','581687cRvxFa','446568bZaRCc','sendMessage','name','497909mbjMyT','__proto__','vname','hamsil.jpg',',\x20esperamos\x20que\x20te\x20la\x20pases\x20a\x20gusto\x20en\x20este\x20grupo✨*_\x0a\x0a_Recuerda\x20siempre\x20seguir\x20las\x20reglas\x20y\x20mantener\x20una\x20formalidad\x20respetuosa_😉\x0a\x0aSon\x20las\x20*','numeric','add','desc','format','getStatus','Asia/Jakarta','https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg','bind','Pon','remove','log','demote','1aLjeFV','*✅NUEVO\x20ADMIN✅*\x0a*🙋🏻‍♂️\x20Nombre*:\x20@','return\x20(function()\x20','1pSKLBQ','moment-timezone','action','subject','getProfilePicture','toLocaleDateString','533960MnDPvJ','Legi','magick\x20\x27./src/wel.jpg\x27\x20-gravity\x20west\x20-fill\x20\x27#00FFFF\x27\x20-font\x20\x27./src/font-gue.ttf\x27\x20-size\x201280x710\x20-pointsize\x2075\x20-interline-spacing\x207.5\x20-annotate\x20+460-45\x20\x27','@c.us','\x27\x20\x27','text','\x0a*📋\x20INFO*:\x20','17665LvZIbW','HH:mm:ss','exception','Wage','getTime','Pahing','red','apply','user','length','1\x20Januari\x202021','_Weno\x20ps....\x20amm😪...\x20\x20@','*\x0a\x0a','key','console','notify','participants','split','return\x20/\x22\x20+\x20this\x20+\x20\x22/','image','\x20se\x20nos\x20fue,\x20ni\x20llorar\x20es\x20bueno:)_\x0a_*Ojala\x20y\x20le\x20baya\x20bien,\x20y\x20mas\x20despues.....\x20que\x20lo\x20atropelle\x20un\x20tren!!🚉🤣*_\x0a*No\x20se\x20awiten\x20gente,\x20esten\x20seguros\x20que\x20nadie\x20lo\x20extrañara:D*',',\x20_*Bienvenido\x20a\x20','455343wIjVAh','exit'];const _0x54efb7=_0x1693;(function(_0xe37813,_0x1c3c89){const _0x56a5cb=_0x1693;while(!![]){try{const _0x196d6a=-parseInt(_0x56a5cb(0x222))+-parseInt(_0x56a5cb(0x1ff))*-parseInt(_0x56a5cb(0x1eb))+parseInt(_0x56a5cb(0x205))+-parseInt(_0x56a5cb(0x1e8))+-parseInt(_0x56a5cb(0x1e7))*parseInt(_0x56a5cb(0x1fc))+parseInt(_0x56a5cb(0x227))*parseInt(_0x56a5cb(0x22a))+parseInt(_0x56a5cb(0x225))*parseInt(_0x56a5cb(0x20c));if(_0x196d6a===_0x1c3c89)break;else _0xe37813['push'](_0xe37813['shift']());}catch(_0x221d79){_0xe37813['push'](_0xe37813['shift']());}}}(_0x14bf,0x49cf9));const _0x22dbd7=function(){let _0x14f483=!![];return function(_0x309b8d,_0xf79c98){const _0xef5a1=_0x14f483?function(){const _0x55f79b=_0x1693;if(_0xf79c98){const _0x1c54d7=_0xf79c98[_0x55f79b(0x213)](_0x309b8d,arguments);return _0xf79c98=null,_0x1c54d7;}}:function(){};return _0x14f483=![],_0xef5a1;};}(),_0xee3356=_0x22dbd7(this,function(){const _0x33540d=function(){const _0x2a3539=_0x1693,_0x42e83a=_0x33540d[_0x2a3539(0x22f)](_0x2a3539(0x21e))()[_0x2a3539(0x22f)]('^([^\x20]+(\x20+[^\x20]+)+)+[^\x20]}');return!_0x42e83a['test'](_0xee3356);};return _0x33540d();});function _0x1693(_0x4f6ebf,_0xd8f2b3){_0x4f6ebf=_0x4f6ebf-0x1e6;let _0x375fa9=_0x14bf[_0x4f6ebf];return _0x375fa9;}_0xee3356();const _0x43bda8=function(){let _0xcb0e52=!![];return function(_0x219f84,_0x23bf15){const _0xd8bf9c=_0xcb0e52?function(){const _0x56fac3=_0x1693;if(_0x23bf15){const _0x402e30=_0x23bf15[_0x56fac3(0x213)](_0x219f84,arguments);return _0x23bf15=null,_0x402e30;}}:function(){};return _0xcb0e52=![],_0xd8bf9c;};}(),_0x21e15c=_0x43bda8(this,function(){const _0x5904e8=_0x1693,_0x167695=function(){const _0x3859d5=_0x1693;let _0x590095;try{_0x590095=Function(_0x3859d5(0x1fe)+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x57ebc3){_0x590095=window;}return _0x590095;},_0x415e41=_0x167695(),_0x344913=_0x415e41[_0x5904e8(0x21a)]=_0x415e41[_0x5904e8(0x21a)]||{},_0x572ba8=[_0x5904e8(0x1fa),_0x5904e8(0x230),_0x5904e8(0x22b),'error',_0x5904e8(0x20e),'table',_0x5904e8(0x22d)];for(let _0x197879=0x0;_0x197879<_0x572ba8[_0x5904e8(0x215)];_0x197879++){const _0x577abd=_0x43bda8['constructor'][_0x5904e8(0x231)][_0x5904e8(0x1f7)](_0x43bda8),_0x3008c3=_0x572ba8[_0x197879],_0x4dfae4=_0x344913[_0x3008c3]||_0x577abd;_0x577abd[_0x5904e8(0x1ec)]=_0x43bda8[_0x5904e8(0x1f7)](_0x43bda8),_0x577abd['toString']=_0x4dfae4['toString']['bind'](_0x4dfae4),_0x344913[_0x3008c3]=_0x577abd;}});_0x21e15c(),samu330['on'](_0x54efb7(0x226),async _0x1afef8=>{const _0x491879=_0x54efb7;if(!welkom['includes'](_0x1afef8[_0x491879(0x22e)]))return;try{const _0x1ca849=await samu330['groupMetadata'](_0x1afef8['jid']);console[_0x491879(0x1fa)](_0x1afef8);if(_0x1afef8[_0x491879(0x201)]==_0x491879(0x1f1)){num=_0x1afef8['participants'][0x0];const _0x38c6f3=require(_0x491879(0x200)),_0x5a81e3=_0x38c6f3['tz'](_0x491879(0x1f5))[_0x491879(0x1f3)](_0x491879(0x20d));let _0x3508d9=new Date(),_0x61a730='es',_0x1d311b=new Date(0x0)[_0x491879(0x210)]()-new Date(_0x491879(0x216))[_0x491879(0x210)](),_0x3b5508=[_0x491879(0x211),_0x491879(0x1f8),_0x491879(0x20f),'Kliwon',_0x491879(0x206)][Math['floor']((_0x3508d9*0x1+_0x1d311b)/0x50ae4c0)%0x5],_0x59e2fe=_0x3508d9[_0x491879(0x204)](_0x61a730,{'weekday':_0x491879(0x22c)}),_0x35914a=_0x3508d9['toLocaleDateString'](_0x61a730,{'day':_0x491879(0x1f0),'month':'long','year':_0x491879(0x1f0)});try{pushnem=mek[_0x491879(0x219)]['fromMe']?samu330[_0x491879(0x214)][_0x491879(0x1ea)]:conts[_0x491879(0x21b)]||conts[_0x491879(0x1ed)]||conts['name']||'-';}catch{pushnem=num[_0x491879(0x21d)]('@')[0x0];}try{ppimg=await samu330[_0x491879(0x203)](_0x1afef8['participants'][0x0][_0x491879(0x21d)]('@')[0x0]+_0x491879(0x208));}catch{ppimg=_0x491879(0x1f6);}exec(_0x491879(0x207)+pushnem+_0x491879(0x1e6)+_0x5a81e3+'\x20'+_0x35914a+'\x27\x20-pointsize\x2050\x20-annotate\x20+460+200\x20\x27Bienvenido\x20a\x20'+_0x1ca849[_0x491879(0x202)]+_0x491879(0x209)+ppimg+'\x27\x20-resize\x20%[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h]\x20-gravity\x20center\x20-geometry\x20-430+70\x20-composite\x20\x27hamsil.jpg\x27')['on'](_0x491879(0x224),()=>reply(_0x491879(0x224)))['on'](_0x491879(0x223),()=>{const _0x508159=_0x491879;samu330[_0x508159(0x1e9)](_0x1ca849['id'],fs[_0x508159(0x228)](_0x508159(0x1ee)),MessageType[_0x508159(0x21f)],{'caption':'😙Hola,\x20@'+num[_0x508159(0x21d)]('@')[0x0]+_0x508159(0x221)+_0x1ca849[_0x508159(0x202)]+_0x508159(0x1ef)+_0x5a81e3+'*\x20del\x20*'+_0x35914a+_0x508159(0x218)+_0x1ca849[_0x508159(0x1f2)],'contextInfo':{'mentionedJid':[num]}});});}else{if(_0x1afef8[_0x491879(0x201)]==_0x491879(0x1f9))num=_0x1afef8[_0x491879(0x21c)][0x0],teks=_0x491879(0x217)+num[_0x491879(0x21d)]('@')[0x0]+_0x491879(0x220),samu330[_0x491879(0x1e9)](_0x1ca849['id'],teks,MessageType['text'],{'contextInfo':{'mentionedJid':[num]}});else{if(_0x1afef8[_0x491879(0x201)]=='promote'){num=_0x1afef8[_0x491879(0x21c)][0x0];try{ppimg=await samu330[_0x491879(0x203)](num[_0x491879(0x21d)]('@')[0x0]+_0x491879(0x208));}catch{ppimg=_0x491879(0x1f6);}thu=await samu330['getStatus'](_0x1afef8['participants'][0x0],MessageType[_0x491879(0x20a)]),teks=_0x491879(0x1fd)+num[_0x491879(0x21d)]('@')[0x0]+_0x491879(0x20b)+thu[_0x491879(0x229)]+'\x0a\x0a🥳\x20*FEILICIDADES!!*,\x20te\x20as\x20convertido\x20en\x20administrador\x20del\x20grupo\x20'+_0x1ca849[_0x491879(0x202)];let _0x5d7109=await getBuffer(ppimg);samu330[_0x491879(0x1e9)](_0x1ca849['id'],_0x5d7109,MessageType[_0x491879(0x21f)],{'caption':teks,'contextInfo':{'mentionedJid':[num]}});}else{if(_0x1afef8[_0x491879(0x201)]==_0x491879(0x1fb)){num=_0x1afef8['participants'][0x0];try{ppimg=await samu330[_0x491879(0x203)](num[_0x491879(0x21d)]('@')[0x0]+'@c.us');}catch{ppimg=_0x491879(0x1f6);}thu=await samu330[_0x491879(0x1f4)](_0x1afef8[_0x491879(0x21c)][0x0],MessageType['text']),teks=_0x491879(0x232)+num[_0x491879(0x21d)]('@')[0x0]+_0x491879(0x20b)+thu[_0x491879(0x229)]+'\x0a\x0a*😪Nimodos,\x20ya\x20no\x20eres\x20admnistrador\x20del\x20grupo*\x20'+_0x1ca849[_0x491879(0x202)];let _0x5c9e54=await getBuffer(ppimg);samu330[_0x491879(0x1e9)](_0x1ca849['id'],_0x5c9e54,MessageType['image'],{'caption':teks,'contextInfo':{'mentionedJid':[num]}});}}}}}catch(_0xf4505c){console['log']('Error\x20:\x20%s',color(_0xf4505c,_0x491879(0x212)));}});
+samu330.on('group-participants-update', async (anu) => {
+		if (!welkom.includes(anu.jid)) return
+		try {
+			const mdata = await samu330.groupMetadata(anu.jid)
+			console.log(anu)
+			if (anu.action == 'add') {
+				num = anu.participants[0]
+				const moment = require('moment-timezone')
+const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+			let d = new Date
+				let locale = 'es'
+					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
+					let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
+					let week = d.toLocaleDateString(locale, { weekday: 'long' })
+					let calender = d.toLocaleDateString(locale, {
+				day: 'numeric',
+				month: 'long',
+				year: 'numeric'
+				})
 
+	try {
+		pushnem = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
+
+} catch { 
+ pushnem = num.split('@')[0]
+}
+			try {
+				ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+			} catch {
+				ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+			}
+				exec(`magick './src/wel.jpg' -gravity west -fill '#00FFFF' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Bienvenido a ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
+				.on('error', () => reply('error'))
+				.on('exit', () => {
+			samu330.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\n\nSon las *${jm}* del *${calender}*\n\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
+			})
+			//leave
+		}  else if (anu.action == 'remove') {
+				num = anu.participants[0]
+				teks = `_Weno ps.... amm😪...  @${num.split('@')[0]} se nos fue, ni llorar es bueno:)_
+_*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
+*No se awiten gente, esten seguros que nadie lo extrañara:D*`
+				samu330.sendMessage(mdata.id, teks, MessageType.text,{ contextInfo: {"mentionedJid": [num]}})
+			
+			} else if (anu.action == 'promote') {
+				
+
+				num = anu.participants[0]
+				try {
+					ppimg = await samu330.getProfilePicture(`${num.split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+				thu = await samu330.getStatus(anu.participants[0], MessageType.text)
+				teks = `*✅NUEVO ADMIN✅*\n*🙋🏻‍♂️ Nombre*: @${num.split('@')[0]}\n*📋 INFO*: ${thu.status}\n\n🥳 *FEILICIDADES!!*, te as convertido en administrador del grupo ${mdata.subject}`
+				let buff = await getBuffer(ppimg)
+
+				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			} else if (anu.action == 'demote') {
+				num = anu.participants[0]
+				try {
+					ppimg = await samu330.getProfilePicture(`${num.split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+				thu = await samu330.getStatus(anu.participants[0], MessageType.text)
+				teks = `*❌UN ADMIN MENOS❌*\n*🙋🏻‍♂️ Nombre*: @${num.split('@')[0]}\n*📋 INFO*: ${thu.status}\n\n*😪Nimodos, ya no eres admnistrador del grupo* ${mdata.subject}`
+				let buff = await getBuffer(ppimg)
+				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			}
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})
+	
 samu330.on('CB:action,,battery', json => {
 		global.batteryLevelStr = json[2][0][1].value
 		global.batterylevel = parseInt(batteryLevelStr)
@@ -271,184 +330,6 @@ var _0x2021=['OtVez','Wlwqj','njFyJ','OzMRo','LSEbU','gger','qMezM','lTaoi','fOn
 	})
 	
 	
-	samu330.on('message-update', async (mek) => {
-		try {
-	   const from = mek.key.remoteJid
-		const messageStubType = WA_MESSAGE_STUB_TYPES[mek.messageStubType] || 'MESSAGE'
-		const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
-		const dataCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked.json'))
-		const dataBanCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked-banlist.json'))
-		const sender = mek.key.fromMe ? samu330.user.jid : mek.key.remoteJid.endsWith('@g.us') ? mek.participant : mek.key.remoteJid
-		const isRevoke = mek.key.remoteJid.endsWith('@s.whatsapp.net') ? true : mek.key.remoteJid.endsWith('@g.us') ? dataRevoke.includes(from) : false
-		const isCtRevoke = mek.key.remoteJid.endsWith('@g.us') ? true : dataCtRevoke.data ? true : false
-		const isBanCtRevoke = mek.key.remoteJid.endsWith('@g.us') ? true : !dataBanCtRevoke.includes(sender) ? true : false
-		if (messageStubType == 'REVOKE') {
-			console.log(`Status untuk grup : ${!isRevoke}\nStatus semua kontak : ${!isCtRevoke}\nStatus kontak dikecualikan : ${!isBanCtRevoke}`)
-			if (!isRevoke) return
-			if (!isCtRevoke) return
-			if (!isBanCtRevoke) return
-			const from = mek.key.remoteJid
-			const isGroup = mek.key.remoteJid.endsWith('@g.us') ? true : false
-			let int
-			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
-			const id_deleted = mek.key.id
-			const conts = mek.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-			const pushname = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
-			const opt4tag = {
-				contextInfo: { mentionedJid: [sender] }
-			}
-			for (let i = 0; i < infoMSG.length; i++) {
-				if (infoMSG[i].key.id == id_deleted) {
-					const dataInfo = infoMSG[i]
-					const type = Object.keys(infoMSG[i].message)[0]
-					const timestamp = infoMSG[i].messageTimestamp
-					int = {
-						no: i,
-						type: type,
-						timestamp: timestamp,
-						data: dataInfo
-					}
-				}
-			}
-			const index = Number(int.no)
-			const body = int.type == 'conversation' ? infoMSG[index].message.conversation : int.type == 'extendedTextMessage' ? infoMSG[index].message.extendedTextMessage.text : int.type == 'imageMessage' ? infoMSG[index].message.imageMessage.caption : int.type == 'stickerMessage' ? 'Sticker' : int.type == 'contactMessage' ? 'Contact' : int.type == 'locationMessage' ? 'Location' : int.type == 'documentMessage' ? 'Document' : int.type == 'audioMessage' ? 'Audio' : int.type == 'videoMessage' ? infoMSG[index].videoMessage.caption : infoMSG[index]
-			const mediaData = int.type === 'extendedTextMessage' ? JSON.parse(JSON.stringify(int.data).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : int.data
-			var itsme = `${numbernye}@s.whatsapp.net`
-				var split = `${fake}`
-				// var taged = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-				var selepbot72 = {
-					contextInfo: {
-						participant: itsme,
-						quotedMessage: {
-							extendedTextMessage: {
-								text: split,
-							}
-						}
-					}
-				}
-			if (int.type == 'conversation' || int.type == 'extendedTextMessage') {
-				const strConversation = `		 「 *ANTI-DELETE* 」
-╔❒ *Nome :* *${pushname}*
-╠❒ *Numero :* ${sender.replace('@s.whatsapp.net', '')}
-╠❒ *Tipe :* Text
-╠❒ *Waktu :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
-╠❒ *Tanggal :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*
-╚❒ *Pesan :* *${body ? body : '-'}*`
-				samu330.sendMessage(from, strConversation, MessageType.text, selepbot72)
-			} else if (int.type == 'stickerMessage') {
-				var itsme = `${numbernye}@s.whatsapp.net`
-					var split = `${fake}`
-					const pingbro23 = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/sticker/${filename}`);
-				const strConversation = `		 「 *ANTI-DELETE* 」
-╔❒ *Nama :* *${pushname}*
-╠❒ *Nomer :* ${sender.replace('@s.whatsapp.net', '')}
-╠❒ *Tipe :* *Sticker*
-╠❒ *Waktu :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
-╚❒ *Tanggal :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
-
-				const buff = fs.readFileSync(savedFilename)
-				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
-				samu330.sendMessage(from, buff, MessageType.sticker, pingbro23)
-				// console.log(stdout)
-				fs.unlinkSync(savedFilename)
-
-			} else if (int.type == 'audioMessage') {
-				var itsme = `${numbernye}@s.whatsapp.net`
-					var split = `${fake}`
-					const pingbro22 = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/audio/${filename}`);
-				const strConversation = `		 「 *ANTI-DELETE* 」
-╔❒ *Nama :* *${pushname}*
-╠❒ *Nomer :* ${sender.replace('@s.whatsapp.net', '')}
-╠❒ *Tipe :* *Audio*
-╠❒ *Waktu :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
-╚❒ *Tanggal :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*`
-
-				const dio = fs.readFileSync(savedFilename)
-				samu330.sendMessage(from, strConversation, MessageType.text, opt4tag)
-				samu330.sendMessage(from, dio, MessageType.audio, pingbro22)
-				// console.log(stdout)
-				fs.unlinkSync(savedFilename)
-
-			} else if (int.type == 'videoMessage') {
-				var itsme = `${numbernye}@s.whatsapp.net`
-					var split = `${fake}`
-					const pingbro22 = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/revoke/${filename}`);
-				const buff = fs.readFileSync(savedFilename)
-				const strConversation = `	 「 *ANTI-DELETE* 」
-╔❒ *Nama :* *${pushname}*
-╠❒ *Nomer :* ${sender.replace('@s.whatsapp.net', '')}
-╠❒ *Tipe :* Video
-╠❒ *Waktu :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
-╠❒ *Tanggal :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*
-╚❒ *Pesan :* ${body ? body : '-'}*`
-				samu330.sendMessage(from, buff, MessageType.video, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
-				fs.unlinkSync(savedFilename)
-
-			} else if (int.type == 'imageMessage') {
-				var itsme = `${numbernye}@s.whatsapp.net`
-					var split = `${fake}`
-					const pingbro22 = {
-						contextInfo: {
-							participant: itsme,
-							quotedMessage: {
-								extendedTextMessage: {
-									text: split,
-								}
-							}
-						}
-					}
-				const filename = `${sender.replace('@s.whatsapp.net', '')}-${moment().unix()}`
-				const savedFilename = await samu330.downloadAndSaveMediaMessage(int.data, `./media/revoke/${filename}`);
-				const buff = fs.readFileSync(savedFilename)
-				const strConversation = `	 「 *ANTI-DELETE* 」
-╔❒ *Nama :* *${pushname}*
-╠❒ *Nomer :* ${sender.replace('@s.whatsapp.net', '')}
-╠❒ *Tipe :* Image
-╠❒ *Waktu :* *${moment.unix(int.timestamp).format('HH:mm:ss')}*
-╠❒ *Tanggal :* *${moment.unix(int.timestamp).format('DD/MM/YYYY')}*
-╚❒ *Pesan :* ${body ? body : '-'}*`
-				samu330.sendMessage(from, buff, MessageType.image, { contextInfo: { mentionedJid: [sender] }, caption: strConversation })
-				fs.unlinkSync(savedFilename)
-			}
-		}
-	} catch (e) {
-		console.log('Message : %s', color(e, 'green'))
-		// console.log(e)
-	}
-})
 //==============================================
 
 samu330.on('message-new', async (mek) => {
@@ -456,7 +337,8 @@ samu330.on('message-new', async (mek) => {
 		try {
 			if (!mek.message) return
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+			if (mek.key && mek.key.remoteJid == 'status@broadcast') {
+			}
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 			let infoMSG = JSON.parse(fs.readFileSync('./src/.dat/msg.data.json'))
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -489,11 +371,6 @@ samu330.on('message-new', async (mek) => {
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 			const apiKey = 'APIKEY'
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-			const insom = from.endsWith('@g.us')
-			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-			const sambot = insom ? mek.participant : mek.key.remoteJid
-			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-			pushname2 = samu330.contacts[sambot] != undefined ? samu330.contacts[sambot].vname || samu330.contacts[sambot].notify : undefined
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 			////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -576,7 +453,6 @@ samu330.on('message-new', async (mek) => {
 			const isAutoSt = isGroup ? autostick.includes(from) : false
 			const isBadWord = isGroup ? badword.includes(from) : false
 			const isRegister = checkRegisteredUser(sender)
-			const isReglas = checkReadRules(sender)
 			const isOwner = ownerNumber.includes(sender)
 			const isBanned = ban.includes(sender)
 			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
@@ -886,8 +762,8 @@ quoted: fimg, "forwardingScore": 9999, "isForwarded": true
 switch(is) {
   case 'tutorial':
 result = fs.readFileSync(`./media/app.apk`)
-  samu330.sendMessage(from, result, audio, {
-  mimetype: 'aplication/apk', quoted: fliveLoc,
+  samu330.sendMessage(from, result, documet, {
+  mimetype: 'aplication', quoted: fliveLoc,
   })
 }
 				
@@ -964,6 +840,9 @@ let d = new Date
 🔐Hola *${pushname}* 
 
 Hora: ${jmn}
+
+_PORFAVOR LEE LAS REGLAS_:
+${prefix}reglas
 
 Fecha: ${calender}
 ٌ${meku} [ ${prefix} ]  Prefijo:${meku}✏️
@@ -1636,15 +1515,7 @@ break
 				        break
 				
 			case 'reglas':
-				const elweYaLeyoLasReglas = (userid, sender, time) => {
-  				const datosDelBro = {
-				id: userid,
-				Numero: sender,
-				time: time,
- 				}
-  				reglas.push(datosDelBro)
-  				fs.writeFileSync('./src/reglas.json', JSON.stringify(reglas))
-				}
+				
 				reply(`
 				*Hola, estas son las reglas que debes seguir para que no tengas ningun problema con el propietario del bot*
 				
@@ -1655,9 +1526,7 @@ break
 				5- _🕐Espera el tiempo nesesario cuando pidas alguna funcion, ya que algunas tardan en realizarse, no vuelvas a pedir el comando nuevamente hasta que te llege un mensaje de error_
 				
 				Lee las reglas y cumplelas, no te quieras hacer el chistoso, por que no lo eres y ni te sale, asi que porfavor respeta las reglas.
-				
-				*Ahora puedes hacer uso del bot*
-				_Escribe ${prefif}menu_`)
+				`)
 				break
 				
 				
