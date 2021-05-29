@@ -34,7 +34,7 @@ echo -e '\e[1;32m
                                     \/__/\e[0m
 
                                               
-\e[1;32mAJUSTA LA PANTALLA PARA QUE LAS LETRAS DE ARRIBA SE PUEDAN VER. PELLIZCA PARA MIMINIZAR:v\e[0m'
+\e[4;32;41mAJUSTA LA PANTALLA PARA QUE LAS LETRAS DE ARRIBA SE PUEDAN VER. PELLIZCA PARA MIMINIZAR:v\e[0m'
 sleep 5.0
 echo -e  '\e[1;36mBuscame en \e[4;34mG\e[0m\e[4;31mo\e[0m\e[4;33mo\e[0m\e[4;34mg\e[0m\e[4;32ml\e[0m\e[4;31me\e[0m\e[1;36m y en \e[1;30;47mY\e[0m\e[1;30;47mo\e[0m\e[1;30;47mu\e[0m\e[1;37;41mT\e[0m\e[0m\e[1;37;41mu\e[0m\e[0m\e[1;37;41mb\e[0m\e[0m\e[1;37;41me\e[0m
 \e[1;36mComo: \e[4;32;41mSamu330\033[0m'
@@ -249,13 +249,6 @@ echo -e '\033[0m\033[1;32m
 #          https://github.com/asreimer/bash_hangman
 # ---
 # Date: Fall 2019
-
- echo -e '\033[0m\033[1;36m
- Vamos a jugar Al muertito :D (Ahorcado:v)
- \033[0m'
- echo -e '\033[0m\033[1;31m
- Si no quieres jugar solo presiona CTRL+c
- \033[0m'
 declare -a word
 declare -a word_img
 declare -a alpha_img
@@ -282,7 +275,14 @@ while [[ $resp_idioma != 1 && $resp_idioma != 2 ]]
     do
         # Borra pantalla
         printf "\e[2J\e[H"
-        echo -ne "¿Español (Es) / English (En)? \n"
+	echo -e '\033[0m\033[1;36m
+ 	Vamos a jugar Al muertito :D (Ahorcado:v)
+	\033[0m'
+ 	echo -e '\033[0m\033[1;31m
+ 	Si no quieres jugar solo presiona CTRL+c
+ 	\033[0m'
+        echo -ne "Elige un idioma: / Choose a language:
+	Español (Es) / English (En) \n"
         echo -n "Es = 1 / En = 2: "
         read resp_idioma
         char=$resp_idioma
