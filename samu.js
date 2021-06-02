@@ -448,7 +448,8 @@ samu330.on('chat-update', async (mek) => {
         const mentions = (teks, memberr, id) => {
 	    (id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : samu330.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 	}
-	let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
+	const user = samu330.contacts[jid]
+    	let pushname =  user != undefined ? user.notify : ""
 	const q = args.join(' ')
 	    	
         
