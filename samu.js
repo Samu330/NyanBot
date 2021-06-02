@@ -123,11 +123,9 @@ const antiporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 publik = true;
 const memberlimit = '5'
-userDefaultLimit = '999';
-prefix = samu.prefix;
+const prefix = samu.prefix;
 const ow = '5219984907794';
 const bodyM = samu.samuM;
-const limitawal = userDefaultLimit
 targetprivate = '';
 blocked = [];
 ban : [];
@@ -339,10 +337,8 @@ samu330.on('chat-update', async (mek) => {
             		if (!mek.hasNewMessage) return
             		mek = mek.messages.all()[0]
 			if (!mek.message) return
-			if (mek.key && mek.key.remoteJid == 'status@broadcast') {
-			}
-			if (mek.key.fromMe) {
-			}
+			if (mek.key && mek.key.remoteJid == 'status@broadcast') {}
+			if (mek.key.fromMe) {}
 			global.prefix
 			global.blocked
 			const content = JSON.stringify(mek.message)
@@ -352,13 +348,10 @@ samu330.on('chat-update', async (mek) => {
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
-			var pes = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''
-			const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
       			const is = budy.slice(0).trim().split(/ +/).shift().toLowerCase()
-			
           ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 			samu330.chatRead (from)
 		
@@ -369,8 +362,8 @@ samu330.on('chat-update', async (mek) => {
 			nsfw: '𝗟𝗼 𝘀𝗶𝗲𝗻𝘁𝗼 𝗽𝗲𝗿𝗼 𝗻𝗼 𝗽𝘂𝗲𝗱𝗼 𝗲𝗷𝗲𝗰𝘂𝘁𝗮𝗿 𝗲𝘀𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼, 𝗲𝘀𝘁𝗲 𝗴𝗿𝘂𝗽𝗼 𝗻𝗼 𝗽𝗲𝗿𝗺𝗶𝘁𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 +𝟭𝟴\n*PARA ACTIVAR LOS COMANDOS +18, USA:* .+18 1', 
 			ferr: 'Intentalo de nuevo mas tarde',
 			error: {
-				stick: '[❗] 𝙀𝙍𝙍𝙊𝙍 intentalo de nuevo, da error a la primera:D  ❌',
-				Iv: '❌ Link invalido ❌'
+			stick: '[❗] 𝙀𝙍𝙍𝙊𝙍 intentalo de nuevo, da error a la primera:D  ❌',
+			Iv: '❌ Link invalido ❌'
 			},
 			only: {
     			group: '[❗] ¡Este comando solo se puede usar en grupos! ❌',
@@ -382,18 +375,17 @@ samu330.on('chat-update', async (mek) => {
     			usrReg: `Usuario no *Registrado*\n_Para registrarte usa el comando_: *${prefix}reg*`
   			}
 			}
-
-		const botNumber = samu330.user.jid
-		const ownerNumber = ["5214447000377@s.whatsapp.net", "5219984907794@s.whatsapp.net", `${ow}@s.whatsapp.net`]
+			const totalchat = await samu330.chats.all()
+			const botNumber = samu330.user.jid
 			const samu = '```'
+			const ownerNumber = ["5214447000377@s.whatsapp.net", "5219984907794@s.whatsapp.net", `${ow}@s.whatsapp.net`]
 			const crypto = require('crypto')
 			const isGroup = from.endsWith('@g.us')
-			const sender =  isGroup ? mek.participant : mek.key.remoteJid
+			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await samu330.groupMetadata(from) : ''
 			const groupName = isGroup ? groupMetadata.subject : ''
 			const groupId = isGroup ? groupMetadata.jid : ''
 			const groupMembers = isGroup ? groupMetadata.participants : ''
-			const groupDesc = isGroup ? groupMetadata.desc : ''
 			const groupOwner = isGroup ? groupMetadata.owner : ''
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
@@ -406,20 +398,20 @@ samu330.on('chat-update', async (mek) => {
 			const isAntiMedia = isGroup ? antimedia.includes(from) : false
 			const isAutoSt = isGroup ? autostick.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
-			const isSimi = isGroup ? simi.includes(from) : false
+			const isSimi = isGroup ? samih.includes(from): false
       			const isRegister = checkRegisteredUser(sender)
-      			const soyYoxd = sender === botNumber ? true : false
       			const q = args.join(' ')
       			const tescuk = ["0@s.whatsapp.net"]
 			let pushname = samu330.contacts[sender] != undefined ? samu330.contacts[sender].vname || samu330.contacts[sender].notify: undefined
-
-
-
 			const isUrl = (url) => {
 			return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
+
 			const reply = (teks) => {
 			members_id = []
+			for (let mem of groupMembers) {
+			members_id.push(mem.jid)
+			}
 			mentions(teks, members_id, true, MessageType.text, { quoted: mek,  "messageTimestamp": "1622408128", contextInfo:{ "forwardingScore": 9999, "isForwarded": true}
 			})
 			}
@@ -483,15 +475,67 @@ samu330.on('chat-update', async (mek) => {
 			}
 
 
-		
 
+			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+			const isQuotedText = type === 'extendedTextMessage' && content.includes('textMessage')
+			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+			const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+
+
+			colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']       
+			  
+			if (!isGroup && isCmd) console.log( '|', color(command), '\x1b[1;32m>', time, color(command), 'from', color(pushname), 'args :', (args.length))       
+			if (isCmd && isGroup) console.log('|', color(command),'\x1b[1;32m>', time, color(command), 'from', (groupName), 'args :', color(args.length))
+
+
+			function addMetadata(packname, playstore) {	
+				if (!packname) packname = 'WABot';
+        			playstore = 'https://www.youtube.com/channel/UCHD4T8Pfcv5PFVzsAbfAPZA';
+				let name = `${packname}`
+				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
+				const json = {	
+				"sticker-pack-name": packname,
+          			"android-app-store-link": playstore
+				}
+				const littleEndian = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])	
+				const bytes = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]	
+
+				let len = JSON.stringify(json).length	
+				let last	
+
+				if (len > 256) {	
+					len = len - 256	
+					bytes.unshift(0x01)	
+				} else {	
+					bytes.unshift(0x00)	
+				}	
+
+				if (len < 16) {	
+					last = len.toString(16)	
+					last = "0" + len	
+				} else {	
+					last = len.toString(16)	
+				}	
+
+				const buf2 = Buffer.from(last, "hex")	
+				const buf3 = Buffer.from(bytes)	
+				const buf4 = Buffer.from(JSON.stringify(json))	
+
+				const buffer = Buffer.concat([littleEndian, buf2, buf3, buf4])	
+
+				fs.writeFile(`./src/stickers/${name}.exif`, buffer, (err) => {	
+					return `./src/stickers/${name}.exif`	
+				})	
+
+			}
 	
 //======================================================================================================================================
 
 
-if (isGroup && isAutoSt && !soyYoxd) {
+if (isGroup && isAutoSt && !botNumber) {
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {           
-	if (!soyYoxd) {
 	const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek       
 	const media = await samu330.downloadAndSaveMediaMessage(encmedia) 
 	ran = getRandom('.webp')           
@@ -520,7 +564,6 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 	.save(ran)
 	}
 	}
-	}
 
 	
 			
@@ -531,28 +574,28 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 					reply(`lo siento, los miembros del grupo no han cumplido con los requisitos. miembros mínimo del grupo: ${memberlimit}`)
 					setTimeout( () => {
  	                           	samu330.groupLeave(from) 
- 					   	}, 5000)
-								setTimeout( () => {
-								samu330.updatePresence(from, Presence.composing)
-								reply("Chaucito😊")
-							}, 4000)
-								setTimeout( () => {
-								samu330.updatePresence(from, Presence.composing)
-								reply("NOS EMOS PRONTO......")
-							}, 3000)
-								setTimeout( () => {
-								samu330.updatePresence(from, Presence.composing)
-								reply(".....")
-							}, 2000)
-								setTimeout( () => {
-								samu330.updatePresence(from, Presence.composing)
-								reply("PARA QUE ME QUEDE AGREGA A MAS MIENBROS")
-							}, 1000)
-								setTimeout( () => {
-								samu330.updatePresence(from, Presence.composing)
-								reply("ME VOI:D")
-							}, 0)
-					    }
+ 					}, 5000)
+					setTimeout( () => {
+					samu330.updatePresence(from, Presence.composing)
+					reply("Chaucito😊")
+					}, 4000)
+					setTimeout( () => {
+					samu330.updatePresence(from, Presence.composing)
+					reply("NOS EMOS PRONTO......")
+					}, 3000)
+					setTimeout( () => {
+					samu330.updatePresence(from, Presence.composing)
+					reply(".....")
+					}, 2000)
+					setTimeout( () => {
+					samu330.updatePresence(from, Presence.composing)
+					reply("PARA QUE ME QUEDE AGREGA A MAS MIENBROS")
+					}, 1000)
+					setTimeout( () => {
+					samu330.updatePresence(from, Presence.composing)
+					reply("ME VOI:D")
+					}, 0)
+					}
 		       } catch (err) { console.error(err)  }
  	       }			
 			
@@ -560,9 +603,9 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 
 			if (isGroup && isBotGroupAdmins && isBadWord) {
                         if (bad.includes(messagesC)) {
-                                if (!isGroupAdmins) { 
-                                        samu330.updatePresence(from, Presence.composing)
-					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+                        if (!isGroupAdmins) { 
+                        samu330.updatePresence(from, Presence.composing)
+			var kic = `${sender.split("@")[0]}@s.whatsapp.net`
                         reply(`Lo siento ${sender.split("@")[0]}, pero aqui no se permiten las malas palabras, serás expulsado en 5 segundos`)
                         setTimeout( () => {
                                 samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
@@ -591,22 +634,22 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 			}
 		}
 			if (isGroup && isBotGroupAdmins && isAntiMedia && !botNumber) {         
-				if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-					if (!isGroupAdmins) {
-                                        samu330.updatePresence(from, Presence.composing)
-						var kic = `${sender.split("@")[0]}@s.whatsapp.net`     
+			if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+			if (!isGroupAdmins) {
+                        samu330.updatePresence(from, Presence.composing)
+			var kic = `${sender.split("@")[0]}@s.whatsapp.net`     
 			reply(`Lo siento ${sender.split("@")[0]}, pero aqui no se permiten las fotos ni videos, *serás expulsado por seguridad:D*`)
-				samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})       
+			samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})       
 					}        
 				}      
 			}
 			if (isGroup && isBotGroupAdmins && isAntiMedia && !botNumber) {
-				if (isMedia && mek.message.videoMessage) {
-                                        if (!isGroupAdmins) {
-                                        samu330.updatePresence(from, Presence.composing)
-                                                var kic = `${sender.split("@")[0]}@s.whatsapp.net`     
-						reply(`Lo siento ${sender.split("@")[0]}, pero aqui no se permiten las fotos ni videos, *serás expulsado por seguridad:D*`)
-                                samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})                                               
+			if (isMedia && mek.message.videoMessage) {
+                        if (!isGroupAdmins) {
+                        samu330.updatePresence(from, Presence.composing)
+                        var kic = `${sender.split("@")[0]}@s.whatsapp.net`     
+			reply(`Lo siento ${sender.split("@")[0]}, pero aqui no se permiten las fotos ni videos, *serás expulsado por seguridad:D*`)
+                        samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})                                               
 					}
 				}
 			}
@@ -735,67 +778,12 @@ if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 			reply("🤯")
 	}
 		
-			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-			const isQuotedText = type === 'extendedTextMessage' && content.includes('textMessage')
-			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-			const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
-			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-
-
-			colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']       
-			  
-			if (!isGroup && isCmd) console.log( '|', color(command), '\x1b[1;32m>', time, color(command), 'from', color(pushname), 'args :', (args.length))       
-			if (isCmd && isGroup) console.log('|', color(command),'\x1b[1;32m>', time, color(command), 'from', (groupName), 'args :', color(args.length))
-
-
-			function addMetadata(packname, playstore) {	
-				if (!packname) packname = 'WABot';
-        			playstore = 'https://www.youtube.com/channel/UCHD4T8Pfcv5PFVzsAbfAPZA';
-				let name = `${packname}`
-				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
-				const json = {	
-				"sticker-pack-name": packname,
-          			"android-app-store-link": playstore
-				}
-				const littleEndian = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])	
-				const bytes = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]	
-
-				let len = JSON.stringify(json).length	
-				let last	
-
-				if (len > 256) {	
-					len = len - 256	
-					bytes.unshift(0x01)	
-				} else {	
-					bytes.unshift(0x00)	
-				}	
-
-				if (len < 16) {	
-					last = len.toString(16)	
-					last = "0" + len	
-				} else {	
-					last = len.toString(16)	
-				}	
-
-				const buf2 = Buffer.from(last, "hex")	
-				const buf3 = Buffer.from(bytes)	
-				const buf4 = Buffer.from(JSON.stringify(json))	
-
-				const buffer = Buffer.concat([littleEndian, buf2, buf3, buf4])	
-
-				fs.writeFile(`./src/stickers/${name}.exif`, buffer, (err) => {	
-					return `./src/stickers/${name}.exif`	
-				})	
-
-			}
-}
 		
 switch(is) {
   case 'tutorial':
 result = fs.readFileSync(`./media/app.apk`)
   samu330.sendMessage(from, result, document, {
-	  mimetype: 'application/vnd.android.package-archive', title: "bot.samu330app2", "fileName": '🥀Bot App = bot.samu330app2.apk', quoted: fliveLoc,
+	  mimetype: 'application/vnd.android.package-archive', title: "bot.samu330app2", "fileName": "🥀Bot App = bot.samu330app2.apk", quoted: fliveLoc,
   })
 }
 				
@@ -1295,7 +1283,9 @@ quoted: fvid})
 				
 case 'fake':
 sasa = args.join(' ')
-samu330.sendMessage(from, sasa, text, { quoted: { key:                                                                                                          { fromMe: false,                                                                                                                     participant: `0@s.whatsapp.net`,
+samu330.sendMessage(from, sasa, text, { quoted: { key:                                                                                                          
+				{ fromMe: false,                                                                                                                     
+				 participant: `0@s.whatsapp.net`,
 				     message:  "stickerMessage"
 					}}})
 break
@@ -1307,6 +1297,33 @@ result = fs.readFileSync(`./media/app.apk`)
   samu330.sendMessage(from, result, document, {
 mimetype: 'application/vnd.android.package-archive', title: "bot.samu330app2", "fileName": '🥀Bot App = bot.samu330app2.apk', quoted: fliveLoc,
   })
+break
+				
+case 'setppbot':
+  samu330.updatePresence(from, Presence.composing)
+  const botpp = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contxtInfo: mek
+  const cuk = await samu330.downloadAndSaveMediaMessage(botpp)
+  await samu330.updateProfilePicture(botNumber, cuk)
+  reply('😉')
+  break
+				
+case 'reply':
+if (!isGroup) return reply(mess.only.group)
+if (args.length < 1) return reply(`Ejemplo de uso :\n${prefix}reply [@tag|frase|frase]]\n\nEj. : \n${prefix}reply @miembro|hola|que tal`)
+var gh = body.slice(7)
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+var replace = gh.split("|")[0];
+var target = gh.split("|")[1];
+var bot = gh.split("|")[2];
+samu330.sendMessage(from, `${bot}`, text, {
+  quoted: {
+key: {
+  fromMe: false, participant: `${mentioned}`, ...(from ? {
+remoteJid: from
+  }: {})
+}, message: {
+  conversation: `${target}`
+}}})
 break
 
 
@@ -2343,7 +2360,7 @@ samu330.sendMessage(from, smuu, text, {quoted: { key: {
 case 'off':
 if(!isOwner) return reply(`ora tu que te crees!!?🤨\nacaso quieres q te obedezca??🤔\nSolo obedezco a mi dueño y a mi creador samu😒\n\n*Asi q ushcale, vayase por ai*🙂`)
                                 samu330.updatePresence(from, Presence.recording)                  
-npm = `ctrl+c`                                                
+npm = `stoped npm start`                                                
 reply('*Weno ps..... me tengo q ir:) adios:D*')
                                                        exec(npm, (err, stdout) => {              
 							       if(err) return samu330.sendMessage(from, "uuuujale, no quiero dormir ahorita:D", text, {quoted: mek})                    
@@ -2407,6 +2424,7 @@ samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Ya entre al grupo😉')
+await samu330.sendMessage(from, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_, me an designado como *BOT* para este grupo🤖\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, groupId)
 break
 				
 			case 'fb':
@@ -3109,42 +3127,11 @@ quoted: mek
 
 				
 				
-				case 'addprem':
-				samu330.updatePresence(from, Presence.composing)
-				if (!isOwner) return reply(mess.only.ownerB)
-				if (args.length < 1 ) return reply('Etiqueta a una persona')
-				mente = `${body.slice(9)}@s.whatsapp.net`
-				prem.push(mente)
-				fs.writeFileSync('./src/prem.json',JSON.stringify(prem))
-				reply(`*「 PREMIUM ADD 」*\n\n*Felicidades ${mente}, eres ahora un usuario Premium🥳*`)
-				break
-				
-				case 'dellprem':
-					if (!isOwner) return reply(mess.only.ownerB)
-					delp = body.slice(11)
-					premium.splice(`${delp}@s.whatsapp.net`, 1)
-					fs.writeFileSync('./src/premium.json', JSON.stringify(premium))
-					reply(`El usuario *wa.me/${delp}* ya no es premium _*premium*_`)
-					break	
-				
-		case 'listprem':
-	                if (!isRegister) return reply(mess.only.usrReg)
-	                let listPremi = '「 *PREMIUM USER LIST* 」\n\n'
-	                let nomorList = 0
-	                const deret = getAllPremiumUser()
-	                const arrayPremi = []
-	                for (let i = 0; i < deret.length; i++) {
-	                    arrayPremi.push(getAllPremiumUser()[i])
-	                    nomorList++
-	                    listPremi += `🤴🏻 ${nomorList}. wa.me/${getAllPremiumUser()[i].split("@")[0]}`
-	                }
-	                await reply(listPremi)
-	            break
 				
 			case 'leave':
 				if (!isGroup) return reply(mess.only.group)
-				samu330.samu330.leaveGroup(from, 'Nos vemos, de lugares mejores me an corrido🥱', MessageType.text)
-				await samu330.samu330.leaveGroup(from, '𝗕𝘆𝗲𝗲', groupId)
+				samu330.leaveGroup(from, 'Nos vemos, de lugares mejores me an corrido🥱', MessageType.text)
+				await samu330.leaveGroup(from, '𝗕𝘆𝗲𝗲', groupId)
 				break
 			case 'bc':
 					if (!isOwner) return reply('Solo *Samu* puede usar este comando')
@@ -3471,54 +3458,7 @@ quoted: fimg, caption: `☕`, contextInfo: {"forwardingScore": 9999, "isForwarde
     reply(mess.ferr)
   }
   break 
-				case 'naruto':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Naruto`, {method: 'get'})
-					naru = JSON.parse(JSON.stringify(anu));
-					to =  naru[Math.floor(Math.random() * naru.length)];
-					nye = await getBuffer(to)
-					samu330.sendMessage(from, nye, image, { caption: 'naruto!!', quoted: ftoko })
-					break 
-				case 'minato':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Minato`, {method: 'get'})
-					min = JSON.parse(JSON.stringify(anu));
-					ato =  min[Math.floor(Math.random() * min.length)];
-					nye = await getBuffer(ato)
-					samu330.sendMessage(from, nye, image, { caption: 'minato!!', quoted: ftoko })
-					break 
-				case 'boruto':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=boruto`, {method: 'get'})
-					bor = JSON.parse(JSON.stringify(anu));
-					uto =  bor[Math.floor(Math.random() * bor.length)];
-					nye = await getBuffer(uto)
-					samu330.sendMessage(from, nye, image, { caption: 'boruto!!', quoted: ftoko })
-					break 
-				case 'hinata':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Hinata`, {method: 'get'})
-					hina = JSON.parse(JSON.stringify(anu));
-					ta =  hina[Math.floor(Math.random() * hina.length)];
-					nye = await getBuffer(ta)
-					samu330.sendMessage(from, nye, image, { caption: 'hinata!!', quoted: ftoko })
-					break
-					case 'levi':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=levi+ackerman`, {method: 'get'})
-					levi = JSON.parse(JSON.stringify(anu));
-					ackerman =  levi[Math.floor(Math.random() * levi.length)];
-					nye = await getBuffer(ackerman)
-					samu330.sendMessage(from, nye, image, { caption: 'levi!!', quoted: ftoko })
-					break
-					case 'eren':
-				reply(mess.wait)
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=eren+yeager`, {method: 'get'})
-					er = JSON.parse(JSON.stringify(anu));
-					en =  er[Math.floor(Math.random() * er.length)];
-					nye = await getBuffer(en)
-					samu330.sendMessage(from, nye, image, { caption: 'eren!!', quoted: ftoko })
-					break
+				
 			
 case 'bitly':
 				
@@ -3554,15 +3494,15 @@ case 'tempo':
 })
 				break
 				case 'mfire':
-				   if (args.length < 1) return reply('Y el link de mediafire?')
+				   if (args.length < 1) return reply(`Y el link de mediafire?\nEjemplo:\n\nhttp://www.mediafire.com/file/4252y4jyyw5b4k1/GTA+Ei+V4+ANDROID+LITE+(iLhaM_51).7z/file`)
 				   var link = args.join(' ')
 				samu330.updatePresence(from, Presence.composing) 
-                data = await fetchJson(`https://videfikri.com/api/mediafire/?query=${link}`)
-		smyperry = await getBuffer(data.result.download)
-                hasil = `link : ${link}\n\n*SI NO SE ENVIA EL ARCHIVO, O SI SE ENVIA CON ERRORES, PUEDE TOCAR EL ENLACE DE ABAJO Y SU DESCARGA INICIARA AL INSTANTE* : ${data.result.download}`
+                data = await fetchJson(`https://api-anoncybfakeplayer.herokuapp.com/mediafire?url=${link}`)
+		smyperry = await getBuffer(data.result)
+                hasil = `link : ${link}\n\n*SI NO SE ENVIA EL ARCHIVO, O SI SE ENVIA CON ERRORES, PUEDE TOCAR EL ENLACE DE ABAJO Y SU DESCARGA INICIARA AL INSTANTE* : ${data.result}`			
                 reply(hasil)
 		samu330.sendMessage(from, smyperry, document, {                                                                
-			mimetype: 'file', filename: `${data.result.filename}`, quoted: fdoc
+			mimetype: 'file', filename: `${data.result.filesize}`, quoted: fdoc
   })	
 break
                 //
