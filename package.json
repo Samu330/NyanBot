@@ -7,11 +7,14 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "^3.4.1",
+    "@adiwajshing/baileys": "^3.5.0",
+    "form-data": "^4.0.0",
     "crypto-js": "^4.0.0",
     "async": "^2.4.1",
+    "performance-now": "^2.1.0",
     "dotenv": "^8.2.0",
     "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
     "cfonts": "^2.9.0",
     "escape-string-regexp": "^1.0.5",
     "fake-useragent": "^1.0.1",
@@ -31,6 +34,7 @@
     "spinnies": "^0.5.1",
     "tiktok-scraper": "^1.4.7",
     "ytdl-core": "^4.4.0",
+    "ytsr": "^3.3.1"
     "brainly-scraper": "^1.0.3"
   },
   "scripts": {
