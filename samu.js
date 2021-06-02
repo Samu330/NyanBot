@@ -108,6 +108,7 @@ const audionye = JSON.parse(fs.readFileSync('./src/audio.json'));
 const imagenye = JSON.parse(fs.readFileSync('./src/image.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const samu = JSON.parse(fs.readFileSync('./setting.json'));
+const config = JSON.parse(fs.readFileSync("./config.json"));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const { spawn, exec, execSync } = require("child_process");
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -130,8 +131,8 @@ const antiporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
 
 //Settings
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const mods = samu.mods
-var public = samu.public
+const mods = config.mods
+var public = config.public
 const owner = config.owner
 const memberlimit = '5'
 const prefix = samu.prefix;
