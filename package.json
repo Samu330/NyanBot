@@ -34,7 +34,7 @@
     "spinnies": "^0.5.1",
     "tiktok-scraper": "^1.4.7",
     "ytdl-core": "^4.4.0",
-    "ytsr": "^3.3.1"
+    "ytsr": "^3.3.1",
     "brainly-scraper": "^1.0.3"
   },
   "scripts": {
