@@ -3,143 +3,77 @@
 //   tal y como esta.
 // + Si modificaras, manten los
 //   creditos:
-//   ____MankBarBar & Samu____
+//   _MankBarBar & Samu & LolHuman_
 //============ Samu330 ============\\
-const
-	{
+const { 
   WAConnection,
   MessageType,
-  Presence,
+  Presence, 
   MessageOptions,
-  WALocationMessage,
   Mimetype,
-  GroupSettingChange,
-  MessageOptions,
   WALocationMessage,
   WA_MESSAGE_STUB_TYPES,
   ReconnectMode,
   ProxyAgent,
+  GroupSettingChange,
+  ChatModification,
   waChatKey,
   WA_DEFAULT_EPHEMERAL,
   mentionedJid,
-  processTime,
-  ChatModification,
-} = require('@adiwajshing/baileys');
-
-const qrcode = require("qrcode-terminal");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+  processTime
+} = require("@adiwajshing/baileys")
 const moment = require("moment-timezone");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const fs = require("fs");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const brainly = require("brainly-scraper");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { color, bgcolor } = require('./lib/color');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { fetchJson } = require('./lib/fetcher');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { recognize } = require('./lib/ocr');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const conn = require("./lib/connect")
-const msg = require("./lib/message")
-const help = require("./lib/help")
-const postBuffer = help.postBuffer
-const postJson = help.postJson
-const getJson = help.getJson
-const
- { 
-  wait,
-  simih,
-  getBuffer,
-  h2k,
-  generateMessageID,
-  getGroupAdmins,
-  getRandom,
-  banner,
-  start, 
-  info,
-  success
-} = require('./lib/functions');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const axios = require("axios");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const os = require('os');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const CryptoJS = require("crypto-js");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const request = require('request');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const util = require('util');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const ffmpeg = require('fluent-ffmpeg');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const imgbb = require('imgbb-uploader');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const FormData = require('form-data')
 const imageToBase64 = require('image-to-base64');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { Utils_1 } = require('./node_modules/@adiwajshing/baileys/lib/WAConnection/Utils')
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { removeBackgroundFromImageFile } = require('remove.bg');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antimedia = JSON.parse(fs.readFileSync('./src/antimedia.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const bad = JSON.parse(fs.readFileSync('./src/bad.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const badword = JSON.parse(fs.readFileSync('./src/badword.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const autostick = JSON.parse(fs.readFileSync('./src/autostick.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { virtex } = require('./src/virtex');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const setiker = JSON.parse(fs.readFileSync('./src/stik.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const videonye = JSON.parse(fs.readFileSync('./src/video.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const audionye = JSON.parse(fs.readFileSync('./src/audio.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const imagenye = JSON.parse(fs.readFileSync('./src/image.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const samu = JSON.parse(fs.readFileSync('./setting.json'));
-const config = JSON.parse(fs.readFileSync("./config.json"));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const { spawn, exec, execSync } = require("child_process");
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const speed = require('performance-now');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const crypto = require('crypto');
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const chalk = require('chalk');
+const request = require('request');
+const fs = require('fs');
+const { exec } = require('child_process');
+const ffmpeg = require('fluent-ffmpeg');
+const axios = require('axios');
+const fetch = require('node-fetch');
+const CryptoJS = require("crypto-js");
+const { Utils_1 } = require('./node_modules/@adiwajshing/baileys/lib/WAConnection/Utils');
+const { removeBackgroundFromImageFile } = require('remove.bg');
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'));
+const antimedia = JSON.parse(fs.readFileSync('./src/antimedia.json'));
+const bad = JSON.parse(fs.readFileSync('./src/bad.json'));
+const badword = JSON.parse(fs.readFileSync('./src/badword.json'));
+const autostick = JSON.parse(fs.readFileSync('./src/autostick.json'));
+const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'));
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'));
 const simi = JSON.parse(fs.readFileSync('./src/simi.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const ban = JSON.parse(fs.readFileSync('./src/banned.json'));
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const { ssstik } = require("./lib/tiktok.js")
+const conn = require("./lib/connect")
+const msg = require("./lib/message")
 const wa = require("./lib/wa")
 const Exif = require('./lib/exif');
 const exif = new Exif();
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antilegion = JSON.parse(fs.readFileSync('./src/antilegion.json'));
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const antiporn = JSON.parse(fs.readFileSync('./src/antiporn.json'));
-
+const { recognize } = require('./lib/ocr');
+const help = require("./lib/help")
+const postBuffer = help.postBuffer
+const getBuffer = help.getBuffer
+const getRandom = help.getRandomExt
+const postJson = help.postJson
+const getJson = help.getJson
+const samu = JSON.parse(fs.readFileSync('./setting.json'))
+const config = JSON.parse(fs.readFileSync("./config.json"))
+const owner = config.owner
+const mods = config.mods
+var public = config.public
 
 //Settings
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const mods = config.mods
-var public = config.public
-const owner = config.owner
 const memberlimit = '5'
-const prefix = samu.prefix;
-const bodyM = samu.samuM;
-targetprivate = '';
-blocked = [];
-ban : [];
+const prefix = samu.prefix
+const bodyM = samu.samuM
+targetprivate = ''
+blocked = []
+ban : []
+hit_today = []
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 const vcard = 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
@@ -165,7 +99,6 @@ const ApiVhtear = 'AdiOfficial404'
 ///////////////////////////////////////////////////////////////////////////
 
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
-////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
 
 ///////////////////////////////////////////////////////////////////////////
 		
@@ -236,7 +169,7 @@ samu330.on('group-participants-update', async (anu) => {
 			if (anu.action == 'add') {
 			num = anu.participants[0]
 			const moment = require('moment-timezone')
-const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+			const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 			let d = new Date
 			let locale = 'es'
 			let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
@@ -255,22 +188,22 @@ const jm = moment.tz('Asia/Jakarta').format('HH:mm:ss')
  pushnem = num.split('@')[0]
 }
 			try {
-				ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+			ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
 			} catch {
-				ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+			ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 			}
-				exec(`magick './src/wel.jpg' -gravity west -fill '#00FFFF' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Bienvenido a ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
-				.on('error', () => reply('error'))
-				.on('exit', () => {
+			exec(`magick './src/wel.jpg' -gravity west -fill '#00FFFF' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Bienvenido a ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
+			.on('error', () => reply('error'))
+			.on('exit', () => {
 			samu330.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\n\nSon las *${jm}* del *${calender}*\n\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
 			})
 			//leave
 		}  else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				teks = `_Weno ps.... amm😪...  @${num.split('@')[0]} se nos fue, ni llorar es bueno:)_
+			num = anu.participants[0]
+			teks = `_Weno ps.... amm😪...  @${num.split('@')[0]} se nos fue, ni llorar es bueno:)_
 _*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
 *No se awiten gente, esten seguros que nadie lo extrañara:D*`
-				samu330.sendMessage(mdata.id, teks, MessageType.text,{ contextInfo: {"mentionedJid": [num]}})
+			samu330.sendMessage(mdata.id, teks, MessageType.text,{ contextInfo: {"mentionedJid": [num]}})
 			
 			} else if (anu.action == 'promote') {
 				
@@ -555,41 +488,6 @@ samu330.on('chat-update', async (mek) => {
   			})
 			}
 
-
-	const isImage = type == 'imageMessage'
-        const isVideo = type == 'videoMessage'
-        const isAudio = type == 'audioMessage'
-        const isSticker = type == 'stickerMessage'
-        const isContact = type == 'contactMessage'
-        const isLocation = type == 'locationMessage'
-        const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-        
-        typeMessage = body.substr(0, 50).replace(/\n/g, '')
-        if (isImage) typeMessage = "Image"
-        else if (isVideo) typeMessage = "Video"
-        else if (isAudio) typeMessage = "Audio"
-        else if (isSticker) typeMessage = "Sticker"
-        else if (isContact) typeMessage = "Contact"
-        else if (isLocation) typeMessage = "Location"
-
-	const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-	const isQuotedText = type === 'extendedTextMessage' && content.includes('textMessage')
-	const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-	const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-	const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
-	const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-	const isQuotedContact = type === 'extendedTextMessage' && content.includes('contactMessage')
-       	const isQuotedLocation = type === 'extendedTextMessage' && content.includes('locationMessage')
-
-
-			colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']       
-			  
-			if (!isGroup && isCmd) console.log( '|', color(command), '\x1b[1;32m>', time, color(command), 'from', color(pushname), 'args :', (args.length))       
-			if (isCmd && isGroup) console.log('|', color(command),'\x1b[1;32m>', time, color(command), 'from', (groupName), 'args :', color(args.length))
-
-
-			
-	
 //======================================================================================================================================
 
 
@@ -818,14 +716,14 @@ result = fs.readFileSync(`./media/app.apk`)
 if(budy.match('rosas') && !botNumber){
 result = fs.readFileSync(`./media/rosas.mp3`)
   samu330.sendMessage(from, result, audio, {
-  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999999999999, ptt: true
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999, ptt: true
   })
 }
 			
 if(budy.match('luna') && !botNumber){
 result = fs.readFileSync(`./media/luna.mp3`)
   samu330.sendMessage(from, result, audio, {
-  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999999999999, ptt: true
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999, ptt: true
   })
 }
 
@@ -841,7 +739,7 @@ switch(is) {
   case 'buenos':
 buf = fs.readFileSync(`./temp/audio/wenas.mp3`)
 samu330.sendMessage(from, buf, audio, {
-  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999999999999, ptt: true
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999, ptt: true
 })
 }
 
@@ -851,7 +749,7 @@ buf = fs.readFileSync(`./temp/audio/oni.mp3`)
 samu330.updatePresence(from, Presence.composing)
 reply(`Hola *${pushname}*, aqui andamos, mi velocidad de respueta es de: _${process.uptime()}_ milisegundos`)
 samu330.sendMessage(from, buf, audio, {
-  mimetype: 'audio/mp4', quoted: fliveLoc, duration :9999999999999999999999999, ptt: true
+  mimetype: 'audio/mp4', quoted: fliveLoc, duration :999, ptt: true
 }) 
 break
 }		
@@ -868,19 +766,18 @@ const moment = require('moment-timezone')
 const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 
 let d = new Date
-				let locale = 'es'
-					let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-					let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
-					let week = d.toLocaleDateString(locale, { weekday: 'long' })
-					let calender = d.toLocaleDateString(locale, {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric'
-				})
-				
-				var num = mek.participant
-				foto = fs.readFileSync('./src/help.jpg')
-				fakee = fs.readFileSync('./src/fake.jpg')
+let locale = 'es'
+let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
+let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
+let week = d.toLocaleDateString(locale, { weekday: 'long' })
+let calender = d.toLocaleDateString(locale, {
+day: 'numeric',
+month: 'long',
+year: 'numeric'
+})
+var num = mek.participant
+foto = fs.readFileSync('./src/help.jpg')
+fakee = fs.readFileSync('./src/fake.jpg')
 				
   samu330.updatePresence(from, Presence.recording)
   if (!isRegister) return reply(mess.only.usrReg)
@@ -1460,7 +1357,16 @@ break
                 media = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
                 buffer = await samu330.downloadMediaMessage(media)
                 await wa.hideTagImage(from, buffer)
-                break				
+                break	
+				
+				
+	case 'tiktok':
+                url = args.join(" ")
+                result = await ssstik(url)
+                console.log(result)
+                buf = await getBuffer(`${result.videonowm}`)
+                samu330.sendMessage(from, buf, MessageType.video, {mimetype: 'video/mp4', filename: `tiktok.mp4`, quoted: mek, caption: `${result.text}\n\nUrl music : ${result.music}`})	
+                break
 				
 case 'tutorial':
 case 'git':
@@ -1523,6 +1429,10 @@ case 'top5':
                         mentions(teks, member, true)
                                         break
 				
+				
+				
+				
+		
 				
 				
 //encode y decode by Samu
@@ -2740,14 +2650,7 @@ case 'playvid':
 					reply(`Api cambiada : ${newapi}`)
 					break
 
-case 'tiktok2':
- reply('wait')
- pe = args.join(' ')
-  anu = await fetchJson(`http://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${pe}`)
-teks = `Nih Boss Videonya...`
-					buffer = await getBuffer(`${anu.result}`)
-					samu330.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: ftoko, caption: teks})
-					break
+
 case 'ig':
  pe = args.join(' ')
  anu = await fetchJson(`https://videfikri.com/api/igdl/?url=${pe}`)
@@ -2832,17 +2735,7 @@ mimetype: 'video/mp4', duration :-999999999999999, filename: `${anu.result.title
   }
 				
   break
- case 'tiktokaudio':
- pe = args.join(' ')
- anu = await fetchJson(`http://docs-jojo.herokuapp.com/api/tiktok_audio?url=${pe}`)
- buf = await getBuffer(`${anu.result}`)
- samu330.sendMessage(from, buf, audio, {mimetype: 'audio/mp4', quoted: ftoko, ptt:true})
- break
-case 'ss':
- pe = args.join(' ')
- anu = await getBuffer(`https://api-rull.herokuapp.com/api/ssweb?url=${pe}`)
- samu330.sendMessage(from, anu, image, {quoted: fimg})
- break
+
  
 				case 'imut':
 					encmedia = JSON.parse(JSON.stringify(mekk).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -3708,7 +3601,7 @@ if (args[0] === '1') {
 	reply('1 para activar, 0 para desactivar')           
 }           
 break
-case 'antiporno':                
+/*case 'antiporno':                
 if (!isGroup) return reply(mess.only.group)
                                         if (!isGroupAdmins) return reply(mess.only.admin)     
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -3727,7 +3620,7 @@ if (args[0] === '1') {
 } else {                                         
 	reply('1 para activar, 0 para desactivar')           
 }           
-break
+break*/
 case '+18':                
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)     
@@ -3838,7 +3731,7 @@ break
 					}
                                       break
 
-case 'antifake':                                          
+/*case 'antifake':                                          
 if (!isGroup) return reply(mess.only.group)              
 if (!isGroupAdmins) return reply(mess.only.admin)            
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)          
@@ -3857,7 +3750,7 @@ if (args[0] === '1') {
 } else {                                                             
 	reply('*1 para activar, 0 para desactivar*')               
 }                                                                
-break
+break*/
 
 
 
@@ -3887,7 +3780,8 @@ break
 					break
 
 
-				case 'simsimi':                                                                                                                             if (!isGroup) return reply(mess.only.group)  
+				case 'simsimi':   
+				if (!isGroup) return reply(mess.only.group)  
 					if (args.length < 1) return reply('escriba *1* para activar')        
 					if (args[0] === '1') {                 
 						if (isSimi) return reply('Ya esta activo')            
@@ -3902,21 +3796,6 @@ break
 						reply('*1 para activar, 0 para desactivar*')             
 					}
                                         break
-
-
-
-case 'update':
-if (!isOwner) return reply(mess.only.ownerB)
-                   npm = `npm start`
-                   reply(`*Ando actualizandome🙂*\n_Espera porfavor, este proceso puede ser tardado⚡_`)
-	               exec(npm, (err, stdout) => {
-		           if(err) return samu330.sendMessage(from, "Comando inexistente", text, {quoted: mek})
-
-		           if (stdout) {
-			       samu330.sendMessage(from, stdout, text, {quoted: nay})
-}
-                   })
-                  break
 
 
 
