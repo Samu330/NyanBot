@@ -28,6 +28,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const axios = require('axios');
 const fetch = require('node-fetch');
 
+const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
 const conn = require("./lib/connect")
 const msg = require("./lib/message")
@@ -328,6 +329,20 @@ samu330.on('chat-update', async(sam) => {
         if (!mods.includes(senderNumber)) return
         mods.slice(mods.indexOf(owner), 1)
         }
+	    
+	const sendFileFromUrl = async(link, type, options) => {
+  	hasil = await getBuffer(link)
+	samu330.sendMessage(from, hasil, type, options).catch(e => {
+	fetch(link).then((hasil) => {
+	samu330.sendMessage(from, hasil, type, options).catch(e => {
+	samu330.sendMessage(from, { url : link }, type, options).catch(e => {
+	  reply('_[ ! ] Error al descargar el archivo_')
+	  console.log(e)
+	})
+	})
+	})
+	})
+	}
 
 	const noreg = {
 		key: {
@@ -551,6 +566,10 @@ ${bodyM} ${prefix}menu7 *(Comandos de logos)*
 │ _Nombre|Autor_
 ╰─────────────╮
 ╭─────────────╯
+│ *${prefix}swm*
+│ _Nombre|Autor_
+╰─────────────╮
+╭─────────────╯
 │ *${prefix}colores*
 │ _Texto a colores_
 ╰─────────────╮
@@ -632,6 +651,20 @@ ${res.desc}` : '*🚫SIN DESCRIPCIÓN🚫*'}
     }
   })
 
+break
+case 'mfire':
+if (args.length < 1) return reply('y el link?? ')
+if(!isUrl(args[0]) && !args[0].includes('mediafire')) return reply('Link invalido, debe ser de MediaFire')
+reply('*Espera un momento...*')
+teks = args.join(' ')
+res = await sm330mfire(teks)
+result = `❒「  𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒  」
+ *Nombre :* ${res[0].nama}
+ *Tamaño :* ${res[0].size}
+ *Link :* ${res[0].link}
+_*El archivo se esta enviando......*_`
+reply(result)
+sendFileFromUrl(res[0].link, document, {mimetype: res[0].mime, filename: res[0].nama, quoted: msg})
 break
 
 	    case 'play':
