@@ -98,7 +98,7 @@ samu330.on('CB:action,,call', async json => {
 })
 
 samu330.on('group-participants-update', async (anu) => {
-	//	if (!welkom.includes(anu.jid)) return
+		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await samu330.groupMetadata(anu.jid)
 			console.log(anu)
@@ -117,12 +117,12 @@ samu330.on('group-participants-update', async (anu) => {
 			year: 'numeric'
 			})
 
-	try {
-		pushnem = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
+			try {
+			pushnem = mek.key.fromMe ? samu330.user.name : conts.notify || conts.vname || conts.name || '-'
 
-} catch { 
- pushnem = num.split('@')[0]
-}
+			} catch { 
+ 			pushnem = num.split('@')[0]
+			}
 			try {
 			ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
 			} catch {
@@ -134,7 +134,7 @@ samu330.on('group-participants-update', async (anu) => {
 			samu330.sendMessage(mdata.id, fs.readFileSync('hamsil.jpg'), MessageType.image, {caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\n\nSon las *${jm}* del *${calender}*\n\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
 			})
 			//leave
-		}  else if (anu.action == 'remove') {
+			}  else if (anu.action == 'remove') {
 			num = anu.participants[0]
 			teks = `_Weno ps.... amm😪...  @${num.split('@')[0]} se nos fue, ni llorar es bueno:)_
 _*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
@@ -155,7 +155,7 @@ _*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
 				let buff = await getBuffer(ppimg)
 
 				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-			} else if (anu.action == 'demote') {
+				} else if (anu.action == 'demote') {
 				num = anu.participants[0]
 				try {
 					ppimg = await samu330.getProfilePicture(`${num.split('@')[0]}@c.us`)
@@ -166,11 +166,11 @@ _*Ojala y le baya bien, y mas despues..... que lo atropelle un tren!!🚉🤣*_
 				teks = `*❌UN ADMIN MENOS❌*\n*🙋🏻‍♂️ Nombre*: @${num.split('@')[0]}\n*📋 INFO*: ${thu.status}\n\n*😪Nimodos, ya no eres admnistrador del grupo* ${mdata.subject}`
 				let buff = await getBuffer(ppimg)
 				samu330.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-			}
-		} catch (e) {
-			console.log('Error : %s', color(e, 'red'))
-		}
-	})
+				}
+				} catch (e) {
+				console.log('Error : %s', color(e, 'red'))
+				}
+				})
 
 samu330.on('chat-update', async(sam) => {
     try {
@@ -190,57 +190,57 @@ samu330.on('chat-update', async(sam) => {
         budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 
         if (prefix != "") {
-            if (!body.startsWith(prefix)) {
-                cmd = false
-                comm = ""
-            } else {
-                cmd = true
-                comm = body.slice(1).trim().split(" ").shift().toLowerCase()
-            }
+        if (!body.startsWith(prefix)) {
+        cmd = false
+        comm = ""
         } else {
-            cmd = false
-            comm = body.trim().split(" ").shift().toLowerCase()
+        cmd = true
+        comm = body.slice(1).trim().split(" ").shift().toLowerCase()
+        }
+        } else {
+        cmd = false
+        comm = body.trim().split(" ").shift().toLowerCase()
         }
 
         const reply = async(teks) => {
-            await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {
+        await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {
 			fromMe: false,
 			participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-		},
-		message: {
+			},
+			message: {
 			"productMessage": {
-				"product": {
-					"title": "📌𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝙎𝙖𝙢 𝙮 𝙋𝙚𝙧𝙧𝙮🥀",
-					"description": "📌𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝙎𝙖𝙢 𝙮 𝙋𝙚𝙧𝙧𝙮🥀",
-					"currencyCode": "SYP",
-					"priceAmount1000": "999999999999999999",
-					"retailerId": "𝒩𝓎𝒶𝓃ℬ𝑜𝓉🍃",
-					"productImageCount": 1
-				},
-				"businessOwnerJid": `0@s.whatsapp.net`
-		}
-	} }
-        
-	    })
-	}
-	const uploadImages = (filePath) => {
-			return new Promise(async (resolve, reject) => {
-            const fileData = fs.readFileSync(filePath)
-            const form = new FormData()
-            form.append('file', fileData, 'tmp.png')
-            fetch('https://telegra.ph/upload', {
-                method: 'POST',
-                body: form
-            })
-                .then(res => res.json())
-                .then(res => {
-                    if (res.error) return reject(res.error)
-                    resolve('https://telegra.ph' + res[0].src)
-                })
-                .then(() => fs.unlinkSync(filePath))
-                .catch(err => reject(err))
-			})
+			"product": {
+			"title": "📌𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝙎𝙖𝙢 𝙮 𝙋𝙚𝙧𝙧𝙮🥀",
+			"description": "",
+			"currencyCode": "SYP",
+			"priceAmount1000": "999999999999999999",
+			"retailerId": "𝒩𝓎𝒶𝓃ℬ𝑜𝓉🍃",
+			"productImageCount": 10
+			},
+			"businessOwnerJid": `0@s.whatsapp.net`
 			}
+			}}
+        
+	    		})
+			}
+	const uploadImages = (filePath) => {
+	return new Promise(async (resolve, reject) => {
+        const fileData = fs.readFileSync(filePath)
+        const form = new FormData()
+        form.append('file', fileData, 'tmp.png')
+        fetch('https://telegra.ph/upload', {
+	method: 'POST',
+        body: form
+        })
+        .then(res => res.json())
+        .then(res => {
+        if (res.error) return reject(res.error)
+        resolve('https://telegra.ph' + res[0].src)
+        })
+        .then(() => fs.unlinkSync(filePath))
+        .catch(err => reject(err))
+	})
+	}
 
         const command = comm
         hit_today.push(command)
@@ -272,33 +272,30 @@ samu330.on('chat-update', async(sam) => {
         mention != undefined ? mention.push(mentionByReply) : []
         const mentionUser = mention != undefined ? mention.filter(n => n) : []
         const mentions = (teks, memberr, id) => {
-	    (id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : samu330.sendMessage(from, teks.trim(), extendedText, {quoted: sam, contextInfo: {"mentionedJid": memberr}})
+	(id == null || id == undefined || id == false) ? samu330.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : samu330.sendMessage(from, teks.trim(), extendedText, {quoted: sam, contextInfo: {"mentionedJid": memberr}})
 	}
-	
-	const sender1 = isGroup ? sam.participant : sam.key.remoteJid
-		const senderito1 = sam.key.fromMe ? samu330.user.jid : isGroup ? sam.participant : sam.key.remoteJid
-	const pushname1 = sam.key.fromMe ? samu330.user.name : sam.notify || sam.vname || sam.name || '-'
+	const pushname = sam.key.fromMe ? samu330.user.name : sam.notify || sam.vname || sam.name || '-'
 
 	const createSerial = (size) => {
-			return crypto.randomBytes(size).toString('hex').slice(0, size)
+	return crypto.randomBytes(size).toString('hex').slice(0, size)
 
-        		}
+        }
 	    	
-        // Ucapan Waktu
+        
         const hour_now = moment().format('HH')
-        var ucapanWaktu = 'Buenos dias🍃'
+        var timeFt = 'Buenos dias🍃'
         if (hour_now >= '03' && hour_now <= '10') {
-          ucapanWaktu = 'Buenos dias🍃'
+          timeFt = 'Buenos dias🍃'
         } else if (hour_now >= '10' && hour_now <= '14') {
-          ucapanWaktu = 'Buen mediodia😊'
+          timeFt = 'Buen mediodia😊'
         } else if (hour_now >= '14' && hour_now <= '17') {
-          ucapanWaktu = 'Buenas tarde🌇'
+          timeFt = 'Buenas tarde🌇'
         } else if (hour_now >= '17' && hour_now <= '18') {
-          ucapanWaktu = 'Buenas tardes🌇'
+          timeFt = 'Buenas tardes🌇'
         } else if (hour_now >= '18' && hour_now <= '23') {
-          ucapanWaktu = 'Buenas noches🌆'
+          timeFt = 'Buenas noches🌆'
         } else {
-          ucapanWaktu = '*BUEN NUEVO DIA🌉*'
+          timeFt = '*BUEN NUEVO DIA🌉*'
         }
 
         const isImage = type == 'imageMessage'
@@ -326,35 +323,123 @@ samu330.on('chat-update', async(sam) => {
         const isQuotedLocation = isQuoted && typeQuoted == 'locationMessage'
 
         if (!public) {
-            mods.indexOf(botNumber) === -1 ? mods.push(botNumber) : false
-            mods.indexOf(owner) === -1 ? mods.push(owner) : false
-            if (!mods.includes(senderNumber)) return
-            mods.slice(mods.indexOf(owner), 1)
+        mods.indexOf(botNumber) === -1 ? mods.push(botNumber) : false
+        mods.indexOf(owner) === -1 ? mods.push(owner) : false
+        if (!mods.includes(senderNumber)) return
+        mods.slice(mods.indexOf(owner), 1)
         }
 
 	const noreg = {
 		key: {
-			fromMe: false,
-			participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+		fromMe: false,
+		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 		},
 		message: {
-			"productMessage": {
-				"product": {
-					"productImage":{
-						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./src/assistant.jpg`)
-					},
-					"title": '🗒️𝐔𝐬𝐮𝐚𝐫𝐢𝐨 𝐧𝐨 𝐫𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐝𝐨!',
-					"description": "𝙍𝙚𝙜𝙞𝙨𝙩𝙧𝙖𝙩𝙚",
-					"currencyCode": "SYP",
-					"priceAmount1000": "99999999",
-					"retailerId": "NyanBot",
-					"productImageCount": 1
-				},
-				"businessOwnerJid": `0@s.whatsapp.net`
+		"productMessage": {
+		"product": {
+		"productImage":{
+		"mimetype": "image/jpeg",
+		"jpegThumbnail": fs.readFileSync(`./src/assistant.jpg`)
+		},
+		"title": '🗒️𝐔𝐬𝐮𝐚𝐫𝐢𝐨 𝐧𝐨 𝐫𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐝𝐨!',
+		"description": "𝙍𝙚𝙜𝙞𝙨𝙩𝙧𝙖𝙩𝙚",
+		"currencyCode": "SYP",
+		"priceAmount1000": "99999999",
+		"retailerId": "NyanBot",
+		"productImageCount": 1
+		},
+		"businessOwnerJid": `0@s.whatsapp.net`
 		}
-	}
-	}
+		}
+		}
+	const menuVf = {
+		key: {
+		fromMe: false,
+		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+		},
+		message: { "imageMessage": { "mimetype": "image/jpeg","caption": `NყᥲᥒBot | 🍒Sᥲm ყ Pᥱrrყ\n${timeFt}`, 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+ 		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const fimg = {
+	 	key:
+	 	{ fromMe: false,
+		participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "imageMessage": { "mimetype": "image/jpeg","caption": 'NყᥲᥒBot | 🍒Sᥲm ყ Pᥱrrყ', 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const fdoc = {
+	 	key:
+	 	{ fromMe: false,
+	 	participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "documentMessage": { "title": "🔥𝓢𝓪𝓶 𝔂 𝓟𝓮𝓻𝓻𝔂🔥", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const floc = {
+	 	key:
+	 	{ fromMe: false,
+	 	participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "locationMessage": { "title": "🥇𝑵𝒚𝒂𝒏𝑩𝒐𝒕 | 𝑺𝒂𝒎 𝒚 𝑷𝒆𝒓𝒓𝒚🔮", 'jpegThumbnail': fs.readFileSync('./src/fake.jpg')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const fliveLoc = {
+	 	key:
+	 	{ fromMe: false,
+	 	participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "liveLocationMessage": { "title": "🥇𝙉𝙮𝙖𝙣𝘽𝙤𝙩 | 𝙎𝙖𝙢 𝙮 𝙋𝙚𝙧𝙧𝙮✨", 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const fvid = {
+	 	key:
+	 	{ fromMe: false,
+	 	participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "videoMessage": { "title": "💞𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆💞", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+	const faud = {
+	 	key:
+	 	{ fromMe: false,
+	 	participant: `0@s.whatsapp.net`, ...(from ? 
+	 	{ remoteJid: "status@broadcast" } : {}) },
+	 	message: { "audioMessage": { "title": "💞𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆💞", 'jpegThumbnail': fs.readFileSync('./src/samyperry.png')}}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
+   	const ftoko = {
+		key: {
+		fromMe: false,
+		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+		},
+		message: {
+		"productMessage": {
+		"product": {
+		"productImage":{
+		"mimetype": "image/jpeg",
+		"jpegThumbnail": fs.readFileSync('./src/help.jp')
+		},
+		"title": "💞𝑆𝑎𝑚 𝑦 𝑃𝑒𝑟𝑟𝑦💞 | ✅NyɑnBot✅",
+		"description": "",
+		"currencyCode": "SYP",
+		"priceAmount1000": "9999999999999999",
+		"retailerId": "NyanBot",
+		"productImageCount": 999
+		},
+		"businessOwnerJid": `0@s.whatsapp.net`
+		}
+		}
+		}
+		contextInfo: {
+  mentionedJid: [sender]}
 
         if (!isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
         if (isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber), chalk.greenBright("en el grupo"), chalk.keyword("yellow")(groupName))
@@ -363,44 +448,51 @@ samu330.on('chat-update', async(sam) => {
             case 'help':
 	    case 'menu':
 	    case 'comandos':
-const moment = require('moment-timezone')
+		const moment = require('moment-timezone')
 
-const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+		const jmn = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 
-let d = new Date
-let locale = 'es'
-let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
-let week = d.toLocaleDateString(locale, { weekday: 'long' })
-let calender = d.toLocaleDateString(locale, {
-day: 'numeric',
-month: 'long',
-year: 'numeric'
-})
-var num = sam.participant
-foto = fs.readFileSync('./src/help.jpg')
-fakee = fs.readFileSync('./src/fake.jpg')
-assistant = fs.readFileSync('./src/assistant.jpg')
-  samu330.updatePresence(from, Presence.recording)
-uptime = process.uptime()
-if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: sam, caption: `😊Hola, ${ucapanWaktu}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+		let d = new Date
+		let locale = 'es'
+		let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
+		let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
+		let week = d.toLocaleDateString(locale, { weekday: 'long' })
+		let calender = d.toLocaleDateString(locale, {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric'
+		})
+		var num = sam.participant
+		foto = fs.readFileSync('./src/help.jpg')
+		fakee = fs.readFileSync('./src/fake.jpg')
+		assistant = fs.readFileSync('./src/assistant.jpg')
+  		samu330.updatePresence(from, Presence.recording)
+		uptime = process.uptime()
+if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 
                 Menu = `
 ➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
-🔐Hola *${pushname1}* ${ucapanWaktu}
+🔐Hola *${pushname}* ${timeFt}
+
 Hora: ${jmn}
-*Hit Today : ${hit_today.length}*
+Fecha: ${calender}
+
+*Comandos usados hoy : ${hit_today.length}*
+
 _PORFAVOR LEE LAS REGLAS_:
 ${prefix}reglas
-Fecha: ${calender}
-ٌ${samu} [ ${prefix} ]  Prefijo:${samu}✏️
-ٌ${samu} Tiempo de actividad:${samu} *${uptime}*🕐
-ٌ${samu} Modo:${samu} *ON*✅
-ٌ${samu} Grupo:${samu} *${groupName}*👥
-ٌ${samu} Número de grupos:${samu}
-ٌ${samu} Número de chats:${samu} 
-ٌ${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+
+
+${samu} [ ${prefix} ]  Prefijo:${samu}✏️
+${samu} Tiempo de actividad:${samu} *${uptime}*🕐
+${samu} Modo:${samu} *ON*✅
+${samu} Grupo:${samu} *${groupName}*👥
+${samu} Número de grupos:${samu}
+${samu} Número de chats:${samu} 
+${samu} Numero del Dueño wa.me/+529984907794${samu}🏆
+
 𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
+
 ⍣ *BOT INFO* ⍣
 ${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
 ${samu}◦ 📡servidor :${samu} *${samu330.browserDescription[0]}*
@@ -408,7 +500,10 @@ ${samu}◦ ✅version :${samu} *${samu330.browserDescription[2]}*
 ${samu}◦ 🚄Velocidad :${samu} *${process.uptime()}*
 ${samu}◦ 📲Sistema operativo :${samu} *${samu330.user.phone.device_manufacturer}*
 ${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
+
+
 _Lista de MENUs_
+
 ${bodyM} ${prefix}menu1 *(Menu de Media*
 ${bodyM} ${prefix}menu2 *(Menu de Sticker)*
 ${bodyM} ${prefix}menu3 *(Menu de Grupos)*
@@ -427,11 +522,12 @@ ${bodyM} ${prefix}menu7 *(Comandos de logos)*
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
 		     🌸 SamịPerry.li 🌸
- ********************************`
-            samu330.sendMessage(from, foto, image, { quoted: sam, caption: Menu, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-break
-	    case 'menu2':
-			stc = `╭⸻⃞✫꯭𝙈꯭𝙀꯭𝙉꯭𝙐꯭✫⃞⸻╮
+********************************`
+            samu330.sendMessage(from, foto, image, { quoted: menuVf, caption: Menu, thumbnail: fakee, contextInfo: {"forwardingScore": 999, "isForwarded": true})
+	    	break
+	    	case 'menu2':
+		if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+		stc = `╭⸻⃞✫꯭𝙈꯭𝙀꯭𝙉꯭𝙐꯭✫⃞⸻╮
 ╰────ြ𝐒𝐭𝐢𝐜𝐤𝐞𝐫🃏
 ╭─────────────
 │ *${prefix}sticker*
@@ -449,6 +545,10 @@ break
 ╭───────────────────╯
 │ *${prefix}robar*
 │ *${prefix}exif*
+╰─────────────╮
+╭─────────────╯
+│ *${prefix}takestick*
+│ _Nombre|Autor_
 ╰─────────────╮
 ╭─────────────╯
 │ *${prefix}colores*
@@ -470,48 +570,19 @@ break
 │ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li 
 ╰──────────────╯`
 	    samu330.sendMessage(from, stc, MessageType.text, {quoted:
-		    { key: {                 
-			    fromMe: false,            
-			    participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})               
-		    },                
-			    message: {         
-				    "productMessage": {         
-					    "product": {        
-						    "productImage":{        
-							    "mimetype": "image/jpeg",                   
-							    "jpegThumbnail": fs.readFileSync(`./src/fake.jpg`)             
-						    },       
-						    "title": '📚𝑆𝑡𝑖𝑘𝑒𝑟 𝑚𝑒𝑛𝑢',
-						    "description": "",
-						    "currencyCode": "SYP",    
-						    "priceAmount1000": "99999999999999",     
-						    "retailerId": "NyanBot",
-                                        "productImageCount": 1       
-					    },        
-					    "businessOwnerJid": `0@s.whatsapp.net`    
-				    }
-        }}})
-
-			break
+		{ key: {                 
+		fromMe: false,            
+		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})               
+		},                
+		message: {         
+		"documentMessage": { "title": "📚𝑆𝑡𝑖𝑘𝑒𝑟 𝑚𝑒𝑛𝑢", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+		}})
+		break
 			    
-            case 'otakuongoing':
-                o = await onGoing()
-                console.log(o)
-                ot = 'Ongoing Otakudesu'
-                for (let i = 0; i < o.length; i++) {
-                  ot += `\n\nJudul : ${o[i].judul}\nEpisode : ${o[i].eps}\nEps berikutnya pada hari : ${o[i].hri}\nTanggal : ${o[i].tgl}\n\nImage : ${o[i].thumb}`
-                }
-                buff = await getBuffer(o[0].thumb)
-                samu330.sendMessage(from, buff, MessageType.image, {caption: ot})
-                break
-            case 'covidindo':
-                c = await covid()
-                var { kasus, kematian, sembuh } = c[0]
-                reply(`Kasus : ${kasus}\n\nKematian : ${kematian}\n\nSembuh : ${sembuh}`)
-                break
+            
 
 	    case 'nombre':
-			samu330.sendMessage(from, `${pushname1}`, MessageType.text)
+			samu330.sendMessage(from, `${pushname}`, MessageType.text)
 			break
 	    case 'hoy':
 		const momento1 = require('moment-timezone')
@@ -527,19 +598,19 @@ day: 'numeric',
 month: 'long',
 year: 'numeric'
 })
-			reply(`🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*\n\n_${ucapanWaktu}_`)
+			reply(`🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*\n\n_${timeFt}_`)
 			break
 
 	    case 'inspeccionar':
-			let linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
-  let code = q.includes(linkRegex)
-  if (!code) return reply('Link invalido')
-  let res = await samu330.query({
-    json: [code],
-    expect200: true
+let linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
+let code = q.includes(linkRegex)
+if (!code) return reply('Link invalido')
+let res = await samu330.query({
+	json: [code],
+	expect200: true
   })
-  if (!res) return res
-  let caption = `
+if (!res) return res
+let caption = `
 -- [Group Link Inspector] --
 ${res.id}
 *Nombre:* ${res.subject}
@@ -564,8 +635,7 @@ ${res.desc}` : '*🚫SIN DESCRIPCIÓN🚫*'}
 break
 
 	    case 'play':
-
-  //if (!isRegister) return reply(mess.only.usrReg)
+  if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
   if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
                     query = args.join(' ')
 		    fakee = fs.readFileSync('./src/img.jpg')
@@ -576,18 +646,18 @@ break
                     ini_txt = `*Titulo* : ${get_info.title}\n`
                     ini_txt += `•Publicador : ${get_info.uploader}\n`
                     ini_txt += `•Duracion : ${get_info.duration}\n`
-                    ini_txt += `°€Vistas : ${get_info.view}\n`
+                    ini_txt += `°Vistas : ${get_info.view}\n`
                     ini_txt += `°Like : ${get_info.like}\n`
                     ini_txt += `°Dislike : ${get_info.dislike}\n`
-                    ini_txt += `°‹Descripcion :\n ${get_info.description}\n\n`
+                    ini_txt += `°Descripcion :\n ${get_info.description}\n\n`
 		    ini_txt += `Si el audio no llega, puede descargar por aqui: :\n ${get_result.audio[3].link}\n\n`
 		    ini_txt += `Puede descargar tambien el video aqui: :\n ${get_result.video[0].link}\n`
                     ini_buffer = await getBuffer(get_info.thumbnail)
-                    await samu330.sendMessage(from, ini_buffer, image, { quoted: sam, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+                    await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
                     get_audio = await getBuffer(get_result.audio[4].link)
-                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: sam })
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: faud })
 			get_audio = await getBuffer(get_result.audio[4].link)
-                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, ptt: true, filename: `${get_info.title}.mp3`, quoted: sam })
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, ptt: true, filename: `${get_info.title}.mp3`, quoted: faud })
 				
 				} catch {
 
@@ -600,17 +670,15 @@ break
                     ini_txt += `°Tamaño :\n ${e.size}\n\n`
 		    ini_txt += `📌 *Descarga directa* : ${e.url_audio}\n`
 		    const playpp = await getBuffer(e.thumbnail)
-		    await samu330.sendMessage(from, playpp, image, { quoted: sam, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
+		    await samu330.sendMessage(from, playpp, image, { quoted: ftoko, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
                     get_audio = await getBuffer(e.url)
-                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${e.title}.mp3`, quoted: sam })
-		    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', ptt: true, duration :-999999999999999, filename: `${e.title}.mp3`, quoted: sam })
-
-					//reply('*Lo siento, ocurrio un error, esta funcion es de paga, si quieres descargar musica gratis usa el comando .playfree*')
+                    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${e.title}.mp3`, quoted: faud })
+		    await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', ptt: true, duration :-999999999999999, filename: `${e.title}.mp3`, quoted: faud })
 				}
 				
                     break
 
-		    case 'reg':
+		    		case 'reg':
 
                                         if (isRegister) return reply('*Tu cuenta ya estaba verificada*')
                                         if (!q.includes('|')) return  reply(`*PORFAVOR ESCRIBE BIEN EL FORMATO DE REGISTRO:* ${prefix}reg *Samu|17*`)
@@ -624,58 +692,25 @@ break
                                         if (edad > 30) return reply(`Uuuu, yastas viejito:c\n*Lo siento pero no puedo registrarte si eres mayor de 30 años*`)
                                         if (edad < 13) return reply(`Eres menor de 13 años, no puedo hacer un registro tuyo lo siento.\n*Si quieres muestrame una autorizacion de tus padres diciendo que puedes pasar tiempo usando este bot para que pueda aceptarte:d*`)
                                         try {
-		                          		ppimg = await samu330.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
-		                        		} catch {
+		                        ppimg = await samu330.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+		                        } catch {
 							                        	
-								ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                           	}
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                           		}
 			
-			                         	sasasasasamu = await getBuffer(ppimg)
+			                sasasasasamu = await getBuffer(ppimg)
                                         veri = sender
                                         if (isGroup) {
-                                                addRegisteredUser(sender, nombre, edad, time, serialUser)
-                                                samu330.sendMessage(from, sasasasasamu, image, { quoted: sam, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`})
-                                                console.log(color('[REGISTRO]'), color(jmn, 'yellow'), 'Nombre:', color(nombre, 'cyan'), 'Edad:', color(edad, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
+                                        addRegisteredUser(sender, nombre, edad, time, serialUser)
+                                        samu330.sendMessage(from, sasasasasamu, image, { quoted: sam, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`})
                                         } else {
-                                                addRegisteredUser(sender, nombre, edad, time, serialUser)
-                                                samu330.sendMessage(from, sasasasasamu, image, { quoted: sam, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`})
-                                                console.log(color('[REGISTRO]'), color(time, 'yellow'), 'Nombre:', color(nombre, 'cyan'), 'Edad:', color(edad, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
+                                        addRegisteredUser(sender, nombre, edad, time, serialUser)
+                                        samu330.sendMessage(from, sasasasasamu, image, { quoted: sam, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`})
                                         }
 				        break
 
-
-            case 'downandro1':
-                linkdown = args.join(" ")
-                result = await downAndro1(linkdown)
-                var { judul, dev, andro, versi, genre, updated, link, size, install, rated } = result[0]
-                console.log(result)
-                caption = `Title : ${judul}\n\nDeveloper : ${dev}\nAndroid : ${andro}\nVersion : ${versi}\nGenre : ${genre}\nUpdate : ${updated}\nLink : ${link}\nSize : ${size}\nInstall : ${install}\nRating : ${rated}`
-                buff = await getBuffer(result[0].thumb)
-                samu330.sendMessage(from, buff, MessageType.image, {caption: caption})
-                break
-            case 'searchandro1':
-                aplikasi = body.slice(14)
-                result = await searchAndro1(aplikasi)
-                console.log(result)
-                an = 'ANDROID1 SEARCH'
-                for (let i = 0; i < result.length; i++) {
-                  an += `\n\nTitle : ${result[i].judul}\n\nLink : ${result[i].link}\n\n=======================`
-                }
-                buff = await getBuffer(result[0].thumb)
-                samu330.sendMessage(from, buff, MessageType.image, {caption: an})
-                break
-            case 'cnn':
-                var result = await cnn()
-                console.log(result)
-                cn = 'CNN NEWS'
-                for (let i = 0; i < result.length; i++) {
-                  cn += `\n\nTitle : ${result[i].judul}\nLink : ${result[i].link}\nImage: ${result[i].thumb}`
-                }
-                buff = await getBuffer(result[0].thumb)
-                samu330.sendMessage(from, buff, MessageType.image, {caption: cn})
-                break
             case 'owner':
-                await wa.sendContact(from, owner, "Your Name")
+                await wa.sendContact(from, owner, "🥇𝑺𝒂𝒎𝒖𝟑𝟑𝟎🛺💨")
                 break
             case 'tiktok':
                 url = args.join(" ")
@@ -684,21 +719,6 @@ break
                 buf = await getBuffer(`${result.videonowm}`)
                 samu330.sendMessage(from, buf, MessageType.video, {mimetype: 'video/mp4', filename: `tiktok.mp4`, quoted: sam, caption: `${result.text}\n\nUrl music : ${result.music}`})
                 break
-	    case 'sfilesearch':
-                respo = await axios.get(`https://fzn-gaz.herokuapp.com/api/sfile?search=${body.slice(13)}`)
-            	result = respo.data.result
-		let pilem = `*「 SFILE SEARCH 」*\n\n*Hasil Pencarian : ${body.slice(13)}*\n\n─────────────────`
-		for (let i = 0; i < result.length; i++) {
-			pilem += `\n\nTitle : *${result[i].title}*\nLink : *${result[i].link}*`
-		}
-		reply(pilem)
-                break	
-	    case 'sfiledl':
-                respo = await axios.get(`https://fzn-gaz.herokuapp.com/api/sfiledl?url=${args.join(" ")}`);
-		gaslah = respo.data
-		filer = await getBuffer(gaslah.result)
-                samu330.sendMessage(from, filer, MessageType.document, {mimetype: 'application/octet-stream', filename: `${gaslah.title}`, quoted: sam});
-                break	
 		case 'smeme':
                     gh = body.slice(7).replace(/ /g, '%20')
                     wo1 = gh.split("|")[0];
@@ -733,223 +753,58 @@ break
                 au = await getBuffer(result)
                 samu330.sendMessage(from, au, MessageType.video, {mimetype: 'video/mp4', filename: `${title}.mp4`, quoted: sam, caption: `${title}`})
                 break
-            case 'wikipedia':
-                q = body.slice(11)
-                wiki = await axios.get(`https://lindow-python-api.herokuapp.com/api/wiki?q=${q}`)
-                reply(`Hasil pencarin dari ${q}\n\n${wiki.data.result}\n\nJika undefined berarti query tidak ditemukan`)
-                break
-            case 'kusonime':
-                try {
-                q = body.slice(10)
-                kus = await axios.get(`https://lindow-python-api.herokuapp.com/api/kuso?q=${q}`)
-                var { info, link_dl, sinopsis, thumb, title } = kus.data
-                buf = await getBuffer(thumb)
-                cap = `Title : ${title}\n\n${info}\n\nLink download : ${link_dl}\n\nSinopsis : ${sinopsis}`
-                samu330.sendMessage(from, buf, MessageType.image, {caption: cap})
-                } catch (e) {
-                console.log(e)
-                reply(`Anime ${q} tidak ditemukan, coba cari title lain`)
-                }
-                break
-            case 'dewabatch':
-                try {
-                q = body.slice(11)
-                dew = await axios.get(`https://lindow-python-api.herokuapp.com/api/dewabatch?q=${q}`)
-                var { result, sinopsis, thumb } = dew.data
-                buffer = await getBuffer(thumb)
-                cap = `${result}\n\n${sinopsis}`
-                samu330.sendMessage(from, buffer, MessageType.image, {caption: cap})
-                } catch (e) {
-                console.log(e)
-                reply(`Anime ${q} tidak dapat ditemukan`)
-                }
-                break
             case 'imagen':
-                getBuffer(`https://lindow-api.herokuapp.com/api/pinterest?search=${args.join(' ')}&apikey=${apikey}`).then((result) => {
-                samu330.sendMessage(from, result, image)
-                })
-                break
+                if (args.length < 1) return reply('Ingresa algo para buscar en imágenes🔐')
+				texto = body.slice(8)
+				fakee = fs.readFileSync('./src/help.jpg')
+				samu330.updatePresence(from, Presence.composing)
+				reply(mess.wait)
+				try {	
+				data = await getJson(`https://api.fdci.se/sosmed/rep.php?gambar=${texto}`, {
+  				method: 'get'
+				})
+				n = JSON.parse(JSON.stringify(data));
+				nimek = n[Math.floor(Math.random() * n.length)];
+				pok = await getBuffer(nimek)
+				samu330.sendMessage(from, pok, image, {
+				quoted: ftoko, caption: `Espero y te guste esta imagen de *${texto}*`, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true}					})
+				} catch {
+					reply('Ocurrio un problema')
+				}
+				break
             case 'noprefix':
                 prefix = ''
-                reply('succes')
+                reply(`*EL PREFIJO YA NO ES NECESARIO AHORA!*`)
                 break
             case 'tinyurl':
                 url = args.join(" ")
                 request(`https://tinyurl.com/api-create.php?url=${url}`, function (error, response, body) {
                 try {
-                    reply(body)
-                  } catch (e) {
-                    reply(e)
-                  }
-                })
-                break
-            case 'gempa':
-                const tres = await Gempa()
-                var { Waktu, Lintang, Bujur, Magnitude, Kedalaman, Wilayah, Map } = tres.result
-                console.log(Map)
-                captt = `Waktu : ${Waktu}\nLintang : ${Lintang}\nBujur : ${Bujur}\nWilayah : ${Wilayah}`
-                thumbbb = await getBuffer(Map)
-                samu330.sendMessage(from, thumbbb, MessageType.image, {caption: `${captt}`})
-                break
-            case 'herolist':
-                await herolist().then((ress) => {
-                    let hm = `*Menampilkan list hero mobile legends*\n\n`
-                    for (var i = 0; i < ress.hero.length; i++) {
-                        hm += '➣  ' + ress.hero[i] + '\n'
-                    }
-                    reply(hm)
-                    })
-                break
-            case 'herodetail':
-                herodetails(body.slice(12)).then((res) => {
-                capt = `*Hero details ${body.slice(12)}*
-*Nama* : ${res.hero_name}
-*Role* : ${res.role}
-*Quotes* : ${res.entrance_quotes}
-*Fitur Hero* : ${res.hero_feature}
-*Spesial* : ${res.speciality}
-*Rekomendasi Lane* : ${res.laning_recommendation}
-*Harga* : ${res.price.battle_point} (Battle point) | ${res.price.diamond} (Diamond) | ${res.price.hero_fragment} (Hero Fragment)
-*Tahun Rilis* : ${res.release_date}
-*Skill* : 
-*Durability* : ${res.skill.durability}
-*Offence* : ${res.skill.offense}
-*Skill Effect* : ${res.skill_effects}
-*Difficulty* : ${res.skill.difficulty}
- 
-*Movement Speed* : ${res.attributes.movement_speed}
-*Physical Attack* : ${res.attributes.physical_attack}
-*Magic Defense* : ${res.attributes.magic_defense}
-*Ability Crit Rate* : ${res.attributes.ability_crit_rate}
-*HP* : ${res.attributes.hp}
-*Mana* : ${res.attributes.mana}
-*Mana Regen* : ${res.attributes.mana_regen}
-*Story* : ${res.background_story}
-`
-                reply(capt)
-                })
-                break
-            case 'kartundrama':
-                ress = await Drama()
-                let megg = `Random Drama Kartun`
-                for (let i = 0; i < ress.hasil.length; i++) {
-                  megg += `\n\n${ress.hasil[i].sinopsis}\nUrl : ${ress.hasil[i].url}`
-                }
-                thumb = await getBuffer(ress.hasil[0].img)
-                samu330.sendMessage(from, thumb, MessageType.image, {caption: `${megg}`})
-                break
-            case 'kartunadventure':
-                ress = await Adventure()
-                let megggg = `Random Adventure Kartun`
-                for (let i = 0; i < ress.hasil.length; i++) {
-                  megggg += `\n\n${ress.hasil[i].sinopsis}\nUrl : ${ress.hasil[i].link}`
-                }
-                thumb = await getBuffer(ress.hasil[0].img)
-                samu330.sendMessage(from, thumb, MessageType.image, {caption: `${megggg}`})
-                break
-            case 'kartunaction':
-                ress = await Action()
-                let meggg = `Random Action Kartun`
-                for (let i = 0; i < ress.hasil.length; i++) {
-                  meggg += `\n\n${ress.hasil[i].sinopsis}\nUrl : ${ress.hasil[i].link}`
-                }
-                thumb = await getBuffer(ress.hasil[0].img)
-                samu330.sendMessage(from, thumb, MessageType.image, {caption: `${meggg}`})
-                break
-            case 'kartunmovie':
-                try {
-                result = await Movie()
-                let meg = `Random Movie Kartun`
-		for (let i = 0; i < result.hasil.length; i++) {
-	        meg += `\n\n${result.hasil[i].sinopsis}\nUrl : ${result.hasil[i].url}`
-	        }
-		thumb = await getBuffer(result.hasil[0].img)
-                samu330.sendMessage(from, thumb, MessageType.image, {caption: `${meg}`})
+                reply(body)
                 } catch (e) {
-                console.log(e)
                 reply(e)
                 }
-                break
-            case 'searchkartun':
-                film = body.slice(14)
-                try {
-                    result = await SearchKartun(film)
-		    let hehee = `Search kartun\nQuery : ${film}`
-		    for (let i = 0; i < result.hasil.length; i++) {
-		    hehee += `\n\n${result.hasil[i].sinopsis}\nLink : ${result.hasil[i].link}\nEpisode : ${result.hasil[i].episode}\nGenre : ${result.hasil[i].genre}`
-		    }
-		    thumb = await getBuffer(result.hasil[0].image)
-                    samu330.sendMessage(from, thumb, MessageType.image, {caption: `${hehee}`})
-                } catch (e) {
-                console.log(e)
-                reply(`Error, Coba judul lain!\n\nExample: ${prefix}searchkartun Spongebob`)
-                }
-		break
-            case 'ayatkursi':
-                res = await axios.get(`https://lindow-api.herokuapp.com/api/muslim/ayatkursi?apikey=${apikey}`)
-                var { tafsir, arabic, latin } = res.data.result.data
-                reply(`Tafsir : ${tafsir}\n\nArabic : ${arabic}\n\nLatin : ${latin}`)
-                break
-            case 'kisahnabi':
-                nama = budy.slice(11)
-                getres = await axios.get(`https://lindow-api.herokuapp.com/api/kisahnabi?nabi=${nama}&apikey=${apikey}`)
-                var { nabi, lahir, umur, tempat, kisah } = getres.data.result.nabi
-                caption = `Kisah Nabi\n\nNama nabi : ${nabi}\n\nLahir pada : ${lahir}\n\nUmur : ${umur}\n\nTempat : ${tempat}\n\nKisah :\n\n${kisah}`
-                foto = await getBuffer(`${getres.data.result.nabi.image}`)
-                samu330.sendMessage(from, foto, MessageType.image, {caption: caption})
-                break
-            case 'quoteislam':
-                quote = await axios.get(`https://lindow-api.herokuapp.com/api/randomquote/muslim?apikey=${apikey}`)
-                reply(`${quote.data.result.text_id}`)
-                break
-            case 'listimage':
-	        teks = '*List Image :*\n\n'
-                for (let awokwkwk of imagenye) {
-		teks += `- ${awokwkwk}\n`
-		}
-		teks += `\n*Total : ${imagenye.length}*`
-		samu330.sendMessage(from, teks.trim(), extendedText, { quoted: sam, contextInfo: { "mentionedJid": imagenye } })
-		break
-            case 'getimage':
-		namastc = body.slice(10)
-		buffer = fs.readFileSync(`./lib/image/${namastc}.jpeg`)
-		samu330.sendMessage(from, buffer, MessageType.image, {quoted: {
-                    key: {
-                        fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? {
-                        remoteJid: "status@broadcast"
-                        }: {})
-                    }, message: { conversation: `Result for database : ${namastc}.jpg` }}})
-		break
-            case 'addimage':
-	        if (!isQuotedImage) return reply('reply image!')
-	        svst = body.slice(10)
-		if (!svst) return reply('input image name!')
-	        boij = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-                delb = await samu330.downloadMediaMessage(boij)
-		imagenye.push(`${svst}`)
-	        fs.writeFileSync(`./lib/image/${svst}.jpeg`, delb)
-		fs.writeFileSync('./database/image.json', JSON.stringify(imagenye))
-		    reply(`Success add image\n${prefix}listimage to view list image`)
-		break
+                })
+                break            
             case 'exif':
-	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-	        if (args.length < 1) return reply(`Penggunaan ${prefix}exif nama|autho`)
-		if (!arg.split('|')) return reply(`Penggunaan ${prefix}exif nama|author`)
+	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+	        if (args.length < 1) return reply(`Forma de uso: *${prefix}exif nombre|autor*`)
+		if (!arg.split('|')) return reply(`Forma de uso: *${prefix}exif nombre|autor*`)
 		    exif.create(arg.split('|')[0], arg.split('|')[1])
-		    reply('sukses')
+		    reply(`*El nombre de paquete de Stiker a cambiado a:* _${arg.split('|')[0]}\n*Y el autor a:* ${arg.split('|')[1]}`)
 	        break
             case 'takestick':
-	        if (!isQuotedSticker) return reply(`Reply sticker dengan caption *${prefix}takestick nama|author*`)
-		const pembawm = body.slice(11)
-		if (!pembawm.includes('|')) return reply(`Reply sticker dengan caption *${prefix}takestick nama|author*`)
+	        if (!isQuotedSticker) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
+		const stsam = body.slice(11)
+		if (!stsam.includes('|')) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
                 const encmedia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
                 const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
-		const packname = pembawm.split('|')[0]
-	        const author = pembawm.split('|')[1]
+		const packname = stsam.split('|')[0]
+	        const author = stsam.split('|')[1]
 		    exif.create(packname, author, `takestick_${sender}`)
 		    exec(`webpmux -set exif ./sticker/takestick_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 		    if (error) return reply('error')
-		    wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)
+		    wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), floc)
 		    fs.unlinkSync(media)
 		    fs.unlinkSync(`./sticker/takestick_${sender}.exif`)
 		})
@@ -963,48 +818,39 @@ break
                     audiony = await getBuffer(result)
                     samu330.sendMessage(from, audiony, MessageType.audio, {mimetype: 'audio/mp4', filename: `${title}.mp3`, quoted: sam})
                 break
-            case 'ppcouple':
-                    getres = await axios.get(`https://lindow-api.herokuapp.com/api/ppcouple?apikey=${apikey}`)
-                    var { male, female } = getres.data.result
+            case 'par':
+                    pares = await axios.get(`https://lindow-api.herokuapp.com/api/ppcouple?apikey=${apikey}`)
+                    var { male, female } = pares.data.result
                     picmale = await getBuffer(`${male}`)
-                    samu330.sendMessage(from, picmale, image)
+                    samu330.sendMessage(from, picmale, image, quoted: fimg)
                     picfemale = await getBuffer(`${female}`)
-                    samu330.sendMessage(from, picfemale, image)
+                    samu330.sendMessage(from, picfemale, image, quoted: fimg)
                 break
-            case 'randomaesthetic':
+            case 'animevid':
                     url = `https://lindow-api.herokuapp.com/api/randomaesthetic?apikey=${apikey}`
                     estetik = await getBuffer(url)
-                    samu330.sendMessage(from, estetik, MessageType.video, {mimetype: 'video/mp4', filename: `estetod.mp4`, quoted: sam, caption: 'success'})
+                    samu330.sendMessage(from, estetik, MessageType.video, {mimetype: 'video/mp4', duration : 999999999, filename: `estetod.mp4`, quoted: fvid, caption: '𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒'})
                 break
             case 'asupan':
                     url = `https://lindow-api.herokuapp.com/api/asupan?apikey=${apikey}`
                     asupan = await getBuffer(url)
-                    samu330.sendMessage(from, asupan, MessageType.video, {mimetype: 'video/mp4', filename: `asupan.mp4`, quoted: sam, caption: 'success'})
+                    samu330.sendMessage(from, asupan, MessageType.video, {mimetype: 'video/mp4', duration : 999999999,filename: `asupan.mp4`, quoted: fvid, caption: '𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒'})
                 break
-            case 'igdl':
-                    var ini_url = body.slice(6)
-                    var ini_url2 = await axios.get(`https://lindow-api.herokuapp.com/api/igdl?link=${ini_url}&apikey=${apikey}`)
-                    var ini_url3 = ini_url2.data.result.url
-                    var ini_type = image
-                    if (ini_url3.includes(".mp4")) ini_type = video
-                    var ini_buffer = await getBuffer(ini_url3)
-                    var inicaption = `Username account : ${ini_url2.data.result.username}\n\nCaption : ${ini_url2.data.result.caption}\n\nShortcode : ${ini_url2.data.result.shortcode}\n\nDate : ${ini_url2.data.result.date}`
-                    samu330.sendMessage(from, ini_buffer, ini_type, {quoted: sam, caption: `${inicaption}`})
-                break
+            
 	    case 'robar':
 		if (!isQuotedSticker) return reply(`*Tururuu.... y el stiker kbron?*`)
 		const encmediia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 	        const meidia = await samu330.downloadAndSaveMediaMessage(encmediia, `./sticker/${sender}`)
 		    exec(`webpmux -set exif ./sticker/data.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 		    if (error) return reply('error')
-		    wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)
+		    wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)
 		    fs.unlinkSync(meidia)
 	        })
 		break
             case 'swm':
 	    case 'stickerwm':
 	        if (isMedia && !sam.message.videoMessage || isQuotedImage) {
-		if (!arg.includes('|')) return reply(`Kirim gambar atau reply gambar dengan caption *${prefix}stickerwm nama|author*`)
+		if (!arg.includes('|')) return reply(`Envie o etiquete una imagen con el comando: *${prefix}swn nombre|autor*`)
 		const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 		const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
 		const packname1 = arg.split('|')[0]
@@ -1024,7 +870,7 @@ break
 		console.log('Finish')
 		exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 	        if (error) return reply('error')
-	        wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)
+	        wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), fliveLoc)
 		    fs.unlinkSync(media)	
 		    fs.unlinkSync(`./sticker/${sender}.webp`)	
 		    fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
@@ -1034,7 +880,7 @@ break
 		.toFormat('webp')
 		.save(`./sticker/${sender}.webp`)
 		} else if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
-		if (!arg.includes('|')) return reply(`Kirim gambar atau reply gambar dengan caption *${prefix}stickerwm nama|author*`)
+		if (!arg.includes('|')) return reply(`Envie o etiquete un video/gif con el comando: *${prefix}swm nombre|autor*`)
 		const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 		const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
 		const packname1 = arg.split('|')[0]
@@ -1056,7 +902,7 @@ break
 		    console.log('Finish')
 		        exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 			if (error) return reply('error')
-			wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)									
+			wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)									
 			fs.unlinkSync(media)
 			fs.unlinkSync(`./sticker/${sender}.webp`)
 			fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
@@ -1066,38 +912,37 @@ break
 		    .toFormat('webp')
 		    .save(`./sticker/${sender}.webp`)
 		} else {
-		reply(`Kirim gambar/video dengan caption ${prefix}stickerwm nama|author atau tag gambar/video yang sudah dikirim\nNote : Durasi video maximal 10 detik`)
+		reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
 	        }
 		break
             case 'sticker':
 	    case 's':                
 	    case 'stiker':
 		if (isMedia && !sam.message.videoMessage || isQuotedImage) {
-                const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.
-contextInfo : sam
+                const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 const media1 = await samu330.downloadAndSaveMediaMessage(encmedia1, `./sticker/${sender}`)
                 const packname10 = `\n\n\n\n\n\n\n\n\n\n\nSamu330 NyanBot\n\n       Sam y Perry`               
 		const author10 = args.join(' ')
                 exif.create(packname10, author10, `stickwm_${sender}`)
-                    await ffmpeg(`${media1}`)
-                    .input(media1)
-                    .on('start', function (cmd) {
-                        console.log(`Started : ${cmd}`)
-                    })
-                    .on('error', function (err) {
-                    console.log(`Error : ${err}`)        
-			    fs.unlinkSync(media1)                
-			    reply('error')
+                await ffmpeg(`${media1}`)
+                .input(media1)
+                .on('start', function (cmd) {
+                console.log(`Started : ${cmd}`)
+                })
+                .on('error', function (err) {
+                console.log(`Error : ${err}`)        
+		fs.unlinkSync(media1)                
+		reply('*Intenta de nuevo*')
                 })
                 .on('end', function () {
                 console.log('Finish')                         
-			exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {                                               
-				if (error) return reply('error')
-                wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)             
-				fs.unlinkSync(media1)
-                    fs.unlinkSync(`./sticker/${sender}.webp`)
-                    fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
-                    })
+		exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {                                               
+		if (error) return reply('error')
+                wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)             
+		fs.unlinkSync(media1)
+                fs.unlinkSync(`./sticker/${sender}.webp`)
+                fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
+                })
                 })
                 .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,
 fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p]
@@ -1105,39 +950,40 @@ paletteuse`])
                 .toFormat('webp')
                 .save(`./sticker/${sender}.webp`)
                 } else if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
-                if (!arg.includes('|')) return reply(`Kirim gambar atau reply gambar dengan caption *${prefix}stickerwm nama|author*`
-)
-                const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.
+                const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.
 contextInfo : sam
-                const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
-                const packname1 = arg.split('|')[0]
-                const author1 = arg.split('|')[1]
-                    exif.create(packname1, author1, `stickwm_${sender}`)          
-			reply('wait')
-                    await ffmpeg(`${media}`)                                                                                                                 .inputFormat(media.split('.')[4])                                                                                                    .on('start', function (cmd) {
-                        console.log(`Started : ${cmd}`)
-                    })
-                    .on('error', function (err) {                                                                                                        console.log(`Error : ${err}`)
-                        fs.unlinkSync(media)                
-			    tipe = media.endsWith('.mp4') ? 'video' : 'gif'         
-			    reply('error')                   
-		    })                                      
-	.on('end', function () {                         
+                const media2 = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
+                const packname101 = `\n\n\n\n\n\n\n\n\n\n\nSamu330 NyanBot\n\n       Sam y Perry`               
+		const author101 = args.join(' ')
+                exif.create(packname101, author101, `stickwm_${sender}`)          
+		reply('*⌛EN PROVESO*')
+                await ffmpeg(`${media2}`)
+		.inputFormat(media2.split('.')[4])
+		.on('start', function (cmd) {
+                console.log(`Started : ${cmd}`)
+                })
+                .on('error', function (err) {                                                                                                        
+		console.log(`Error : ${err}`)
+                fs.unlinkSync(media2)                
+		tipe = media.endsWith('.mp4') ? 'video' : 'gif'         
+		reply('*Intenta de nuevo*')                   
+		})                                      
+		.on('end', function () {                         
 		console.log('Finish')                       
 		exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {                                                                     
-			if (error) return reply('error')                                 
-			wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), sam)           
-			fs.unlinkSync(media)                                             
-			fs.unlinkSync(`./sticker/${sender}.webp`)                  
-			fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)               
+		if (error) return reply('error')                                 
+		wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)           
+		fs.unlinkSync(media2)                                             
+		fs.unlinkSync(`./sticker/${sender}.webp`)                  
+		fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)               
 		})
-                    })                                                
-		    .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decre
+                })                                                
+		.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decre
 ase,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])                                                                      
 	.toFormat('webp')                                    
 	.save(`./sticker/${sender}.webp`)                       
 } else {                                                                     
-	reply(`Kirim gambar/video dengan caption ${prefix}stickerwm nama|author atau tag gambar/video yang sudah dikirim\nNote : Durasi video maximal 10 detik`)                                                                  
+	reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
 }       
 break
             case 'getbio':
@@ -1145,7 +991,7 @@ break
                 var p = await samu330.getStatus(`${yy}`, MessageType.text)
                 reply(p.status)
                 if (p.status == 401) {
-                reply("Status Profile Not Found")
+                reply("[ERROR 401] Status Profile Not Found")
                 }
                 break
 	   case 'getpic':
@@ -1157,7 +1003,7 @@ break
 		    pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
 		}
 		thumb = await getBuffer(pic)
-		samu330.sendMessage(from, thumb, MessageType.image, {caption: 'success'})
+		samu330.sendMessage(from, thumb, MessageType.image, {caption: '𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒'})
 	        }
 		break
             case 'fdeface': 
@@ -1178,37 +1024,37 @@ break
                     jpegThumbnail: ddatae }, 'extendedTextMessage', { detectLinks: false })
 		break
             case 'setbio':
-	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-		if (!arg) return reply('masukkan bio')
+	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+		if (!arg) return reply('Escribe algo almenos')
 	        wa.setBio(arg)
 	        .then((res) => wa.sendFakeStatus2(from, JSON.stringify(res), fake))
 		.catch((err) => wa.sendFakeStatus2(from, JSON.stringify(err), fake))
 		break
             case 'setname':
-		if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-	        if (!arg) return reply('masukkan nama')
+		if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+	        if (!arg) return reply('Escribe algo almenos')
 		wa.setName(arg)
 		.then((res) => wa.sendFakeStatus2(from, JSON.stringify(res), fake))
 		.catch((err) => wa.sendFakeStatus2(from, JSON.stringify(err), fake))
 	        break
             case 'setreply':
-		if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-	        if (!arg) return reply(`Penggunaan ${prefix}setreply teks`)
+		if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+	        if (!arg) return reply(`Uso: ${prefix}setreply texto`)
 		fake = arg
-		wa.sendFakeStatus2(from, `Sukses`, fake)
+		wa.sendFakeStatus2(from, `𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒`, fake)
 		break
             case 'term':
-	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
 		if (!arg) return
 		exec(arg, (err, stdout) => {
 		    if (err) return wa.sendFakeStatus2(from, err, fake)
 		    if (stdout) wa.sendFakeStatus2(from, stdout, fake)
 		})
 		break
-            case 'sendkontak':
-	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+            case 'contacto':
+	        if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
 	        argz = arg.split('|')
-	        if (!argz) return reply(`Penggunaan ${prefix}kontak @tag atau nomor|nama`)
+	        if (!argz) return reply(`Uso ${prefix}contacto @tag o escribe el numero|nombre`)
 		if (sam.message.extendedTextMessage != undefined){
                 mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
 		wa.sendKontak(from, mentioned[0].split('@')[0], argz[1])
@@ -1220,7 +1066,7 @@ break
             case 'ping':
 		let timestamp = speed();
 		let latensi = speed() - timestamp
-		wa.sendFakeStatus2(from, `Speed: ${latensi.toFixed(4)}second`, fake)
+		wa.sendFakeStatus2(from, `Velocidad de: ${latensi.toFixed(4)}second`, fake)
 		break
             case 'runtime':
 		run = process.uptime()
@@ -1228,24 +1074,25 @@ break
 	        wa.sendFakeStatus2(from, MessageType.text,`Runtime bro`)
 		break
             case 'unpin':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 samu330.modifyChat(from, ChatModification.unpin)
                 reply('*succes unpin this chat*')
                 console.log('unpin chat = ' + from)
                 break
             case 'pin':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 samu330.modifyChat(from, ChatModification.pin)
-                reply('*succes pin this chat*')
-                console.log('pinned chat = ' + from)
+                reply('*Este chat se ah fijado*')
+                console.log('Se fijo el chat = ' + from)
                 break
             case 'unread?':
 		const unread = await samu330.loadAllUnreadMessages()
-	        samu330.sendMessage(from, `unread message count : *${unread.length}*`, text)
+	        samu330.sendMessage(from, `Total de mensajes sin leer: ${unread.length}`, text)
+						
                 break
             case 'unarchiveall':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-                reply('*succes unarchive all chat*')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                reply('*Todos los chats archivados fueron desarchivados*')
                 console.log('succes unarchive chat = ' + from)
                 anu = await samu330.chats.all()
                 for (let _ of anu) {
@@ -1253,98 +1100,97 @@ break
                 }
                 break
             case 'archive':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-                reply('*okey wait..*')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                reply('*Vale, espera..*')
                 console.log('succes archive chat = ' + from)
                 await sleep(3000)
                 samu330.modifyChat(from, ChatModification.archive)
+		reply('*Yap*')
                 break
-            case 'delthischat':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-                reply('*succes delete this chat*')
+            case 'vaciar':
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                reply('*Este chat a sido vaciado*')
                 console.log('succes delete chat = ' + from)
                 await sleep(4000)
                 samu330.modifyChat(from, ChatModification.delete)
                 break
             case 'mute':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 samu330.modifyChat(from, ChatModification.mute, 24*60*60*1000)
-                reply('*succes mute this chat*')
+                reply('*Este chas a sido silenciado*')
                 console.log('succes mute chat = ' + from)
                 break
             case 'unmute':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 samu330.modifyChat(from, ChatModification.unmute)
-                reply('*succes unmute this chat*')
+                reply('*Este chat a dejado de silenciarse*')
                 console.log('succes unmute chat = ' + from)
                 break
             case 'ytsearch':
-                ytsr = require('ytsr')
-                if (!args.length) return reply('input title!')
-                try {
-                    const input = args.join(" ")
-                    const filter1 = await ytsr.getFilters(input)
-                    const filters1 = filter1.get('Type').get('Video')
-                    const { items } = await ytsr(filters1.url, { limit: 10 })
-                    let hehe = `*YOUTUBE SEARCH*\n\n*Search Query:* ${input}\n`
-                    for (let i = 0; i < items.length; i++) {
-                        hehe += `\n\n=====================\n\n*Judul:* ${items[i].title}\n\n*ID:* ${items[i].id}\n\n*Viewers:* ${items[i].views}\n\n*Duration:* ${items[i].duration}\n\n*Link:* ${items[i].url}\n`
+				
+                    if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+                    query = args.join(' ')
+                    get_result = await getJson(`https://api.lolhuman.xyz/api/ytsearch?apikey=${api}&query=${query}`)
+                    get_result = get_result.result
+                    ini_txt = ""
+                    for (var x of get_result) {
+                        ini_txt += `*◦Titulo* : ${x.title}\n`
+                        ini_txt += `*◦Vistas* : ${x.views}\n`
+                        ini_txt += `◦Publicado el ${x.published}\n`
+                        ini_txt += `📸Thumbnail : ${x.thumbnail}\n`
+                        ini_txt += `📲Link : https://www.youtube.com/watch?v=${x.videoId}\n\n`
                     }
-                    thumb = await getBuffer(items[0].bestThumbnail.url)
-                    await samu330.sendMessage(from, thumb, MessageType.image, {quoted: sam, caption: `${hehe}\n\nDownload:\n${prefix}ytmp3 [link youtube] = Audio\n${prefix}ytmp4 [link youtube] = Video`})
-                } catch(e) {
-                    reply('Didn\'t find anything or there is any error!')
-                    reply(`Error: ${e.message}`)
-                }
-                break
+                    reply(ini_txt)
+				
+                    break
             case 'upstorypic':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 var teksyy = body.slice(12)
-                    reply('wait')
+                    reply('*Espera un momento...*')
                 var foto = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 		var inisiap = await samu330.downloadAndSaveMediaMessage(foto)
                 var inisiap2 = fs.readFileSync(inisiap)
-                samu330.sendMessage('status@broadcast', inisiap2, MessageType.image, {quoted: sam, caption: `${teksyy}`})
-                    reply('Succes!')
+                samu330.sendMessage('status@broadcast', inisiap2, MessageType.image, {quoted: ftoko, caption: `${teksyy}`})
+                    reply('*SE ENVIO LA IMAGEN COMO ESTADO*')
                 break
             case 'upstoryvid':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
-                reply('wait')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                reply('*Espera un momento...*')
                 var foto = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 		var inisiap = await samu330.downloadAndSaveMediaMessage(foto)
                 var inisiap2 = fs.readFileSync(inisiap)
-                samu330.sendMessage('status@broadcast', inisiap2, MessageType.video, {quoted: sam, caption: `${body.slice(12)}`})
+                samu330.sendMessage('status@broadcast', inisiap2, MessageType.video, {quoted: ftoko, caption: `${body.slice(12)}`})
                     reply('Succes!')
                 break
             case 'upstory':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 var teks = body.slice(9)
                 samu330.sendMessage('status@broadcast', teks, MessageType.text)
-                    reply('succses')
+                    reply('*SE ENVIO EL VIDEO COMO ESTADO*')
                 break
             case 'unreadall':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 var chats = await samu330.chats.all()
                 chats.map( async ({ jid }) => {
                 await samu330.chatRead(jid, 'unread')
                     })
-		    var teks = `\`\`\`Successfully unread ${chats.length} chats !\`\`\``
-		    await samu330.sendMessage(from, teks, MessageType.text, {quoted: sam})
+		    var teks = `\`\`\`Se an marcado como NO LEIDOS ${chats.length} chats !\`\`\``
+		    await samu330.sendMessage(from, teks, MessageType.text, {quoted: fdoc})
 		    console.log(chats.length)
 	        break
             case 'readall':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 var chats = await samu330.chats.all()
                 chats.map( async ({ jid }) => {
                 await samu330.chatRead(jid)
                 })
-		var teks = `\`\`\`Successfully read ${chats.length} chats !\`\`\``
-	        await samu330.sendMessage(from, teks, MessageType.text, {quoted: sam})
+		var teks = `\`\`\`Se an leido ${chats.length} chats !\`\`\``
+	        await samu330.sendMessage(from, teks, MessageType.text, {quoted: floc})
 		console.log(chats.length)
 		break
-            case 'fakereply':
-		if (!args) return reply(`Usage :\n${prefix}fakereply [62xxx|pesan|balasanbot]]\n\nEx : \n${prefix}fakereply 0|hai|hai juga`)
-		var ghh = budy.slice(11)
+            case 'reply':
+		if (!args) return reply(`Uso :\n${prefix}reply [52xxx|frase|frase]]\n\nEx : \n${prefix}reply 0|hola wasa|que pex`)
+		var ghh = args.join(' ')
 		var nomorr = ghh.split("|")[0];
 	        var target = ghh.split("|")[1];
 		var bot = ghh.split("|")[2];
@@ -1359,13 +1205,13 @@ break
 		teks = (args.length > 1) ? budy.slice(8).trim() : ''
 	        teks += '\n\n'
 	        for (let mem of groupMembers) {
-		teks += `┣➥ @${mem.jid.split('@')[0]}\n`
+		teks += `│┠ @${mem.jid.split('@')[0]}\n`
 		members_id.push(mem.jid)
 		}
 		mentions(teks, members_id, true)
 		break
             case 'chat':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 var pc = budy.slice(6)
                 var nomor = pc.split("|")[0];
                 var org = pc.split("|")[1];
@@ -1373,13 +1219,13 @@ break
                 reply(`*El memsaje:* ${org} *Se envio a:* ${nomor}`)
                 break
             case 'setpp':
-                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 samu330.updatePresence(from, Presence.composing) 
-                if (!isQuotedImage) return reply(`Kirim gambar dengan caption ${prefix}setpp atau tag gambar yang sudah dikirim`)
+                if (!isQuotedImage) return reply(`Envia una imagen con el comando: *${prefix}setpp*`)
 	        var media1 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		var media2 = await samu330.downloadAndSaveMediaMessage(media1)
 	        await samu330.updateProfilePicture(meNumber, media2)
-		reply('Done!')
+		reply('*Yap*')
 	        break
             case 'kick':
 	    case 'eliminar':
@@ -1388,20 +1234,20 @@ break
 				//	if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply(`Asi no baboso😒🙄\n\nAsi, wacha: *${prefix}eliminar @tag/etiqueta un mensaje*`)
 					mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
+					var nomorr = mentioned
 					if (mentioned.length > 1) {
 						teks = `🐉 *°ORDEN RECIBIDA°* 🐉 : ${pushname1}\n`
 						for (let _ of mentioned) {
 							teks += `📌 _*Se eliminara a*_ @${_.split('@')[0]}\n`
 						}
 						mentions(teks, mentioned, true)
-						samu330.groupRemove(from, `${mentioned[0].split('@')[0]}`)
+						samu330.groupRemove(from, nomorr+'@s.whatsapp.net')
 					} else {
 						mentions(`📚 *ORDEN CUMPLIDA* 📚 : SE ELIMINO A  @${mentioned[0].split('@')[0]}`, mentioned, true)
 						samu330.groupRemove(from, mentioned)
 					}
 				
 					break
-                break
 	    case 'añadir':
 				if (!isGroup) return reply('')
 			//	if (!isBotGroupAdmins) return reply('')
@@ -1418,30 +1264,30 @@ break
 				break
 
 	    case 'public':
-                if (!isOwner && !itsMe) return await reply('This command only for owner or mega')
-                if (public) return await reply('already in public mode')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                if (public) return await reply('*El modo publico Ya esta activado*')
                 config["public"] = true
                 public = true
                 fs.writeFileSync("./config.json", JSON.stringify(config, null, 4))
-                await wa.sendFakeStatus(from, "*Success changed to public mode*", "Public : true")
+                await wa.sendFakeStatus(from, "*Se activo el modo publico*", "Public : true")
                 break
             case 'self':
-                if (!isOwner && !itsMe) return await reply('This command only for mega or owner')
-                if (!public) return await reply('mode private is already')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                if (!public) return await reply('El modo privado ya estaba activado')
                 config["public"] = false
                 public = false
                 fs.writeFileSync("./config.json", JSON.stringify(config, null, 4))
-                await wa.sendFakeStatus(from, "*Success changed to self mode*", "Self : true")
+                await wa.sendFakeStatus(from, "*Se a cambiado a modo PRIVADO*", "Self : true")
                 break
             case 'broadcast':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 text = args.join(" ")
                 for (let chat of totalChat) {
                     await wa.sendMessage(chat.jid, text)
                 }
                 break
             case 'setthumb':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (!isQuotedImage && !isImage) return await reply('Gambarnya mana?')
                 media1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 mediaa = await samu330.downloadMediaMessage(media1)
@@ -1449,7 +1295,7 @@ break
                 await wa.sendFakeStatus(from, "*Succes changed image for help image*", "success")
                 break
             case 'sethelpimg':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (!isQuotedImage && !isImage) return await reply('Gambarnya mana?')
                 media1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 mediaa = await samu330.downloadMediaMessage(media1)
@@ -1457,19 +1303,19 @@ break
                 await wa.sendFakeStatus(from, "*Succes changed image for help image*", "success")
                 break
             case 'fakethumb':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (!isQuotedImage && !isImage) return await reply('reply image!')
                 media1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 media2 = await samu330.downloadMediaMessage(media1)
                 await wa.sendFakeThumb(from, media2)
                 break	
             case 'stats':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 texxt = await msg.stats(totalChat)
                 await wa.sendFakeStatus(from, texxt, "BOT STATS")
                 break
             case 'block':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (isGroup) {
                     if (mentionUser.length == 0) return await reply("tag target!")
                     return await wa.blockUser(sender, true)
@@ -1477,7 +1323,7 @@ break
                 await wa.blockUser(sender, true)
                 break
             case 'unblock':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (isGroup) {
                     if (mentionUser.length == 0) return await reply("Tag targer!")
                     return await wa.blockUser(sender, false)
@@ -1485,37 +1331,36 @@ break
                 await wa.blockUser(sender, false)
                 break
             case 'leave':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 if (!isGroup) return await reply('This command only for group baka')
-                reply(`Akan keluar dari group ${groupName} dalam 3 detik`).then(async() => {
+                reply(`Saldre de este grupo: ${groupName} en 3 segundos`).then(async() => {
                     await help.sleep(3000)
                     await samu330.groupLeave(from)
                 })
                 break
-            case 'join':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
-                if (isGroup) return await reply('This command only for private chat')
-                if (args.length == 0) return await reply('Link group?')
-                var link = args[0].replace("https://chat.whatsapp.com/", "")
-                await samu330.acceptInvite(link)
-                break
+            case 'entrabot':
+		samu330.query({
+		json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
+		})
+		reply('Ya entre al grupo😉')
+		await samu330.sendMessage(from, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_, me an designado como *BOT* para este grupo🤖\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, groupId)
+		break
             case 'clearall':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                 for (let chat of totalChat) {
                     await samu330.modifyChat(chat.jid, "delete")
                 }
                 await wa.sendFakeStatus(from, "Success clear all chat", "success")
                 break
 
-            /** Group **/
             case 'hidetag':
-                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ')
-                if (!isAdmin && !isOwner && !itsMe) return await reply('this command only for admin, baka!')
+                if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
+                if (!isAdmin && !isOwner && !itsMe) return await reply('this command only for admin!')
                 await wa.hideTag(from, args.join(" "))
                 break
             case 'imagetag':
                 if (!isGroup) return await reply('this command only for group')
-                if (!isAdmin && !isOwner && !itsMe) return await reply('this command only for admin, baka!')
+                if (!isAdmin && !isOwner && !itsMe) return await reply('this command only for admin!')
                 if (!isQuotedImage && !isImage) return await reply(`Lalala... *cancion feliz*\nY la imagen pedazo de nada>:/`)
                 mediatag = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 buffer = await samu330.downloadMediaMessage(mediatag)
@@ -1524,7 +1369,7 @@ break
             case 'toimg':
 	        if (!isQuotedSticker) return reply(`send sticker and reply with caption ${prefix}toimg`)
 	        if (sam.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
-		reply(`Maaf tidak mendukung sticker gif`)
+		reply(`Este comando solo sirve con stikers estaticos, para convertir un stiker a gif, usa: ${prefix}agif`)
 	        } else {
 		var media1 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 	        var media2 = await samu330.downloadAndSaveMediaMessage(media1)
@@ -1536,12 +1381,23 @@ break
 			fs.unlinkSync(ran)
 			} else {
 			buffer = fs.readFileSync(ran)
-			samu330.sendMessage(from, buffer, MessageType.image, {quoted: sam, caption: 'success'})
+			samu330.sendMessage(from, buffer, MessageType.image, {quoted: sam, caption: '𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒'})
 			fs.unlinkSync(ran)
 			}
 	            })
 		}
 		break
+	    			case 'agif':
+					ger = isQuotedSticker ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
+					var imgbb = require('imgbb-uploader')
+					reply('*Espera un momento...*')
+					owgi = await samu330.downloadAndSaveMediaMessage(ger)
+					data = await imgbb("b0fc132474ca03ee7898fd5cac7275fe", owgi)
+					anu = await fetchJson(`https://api.lolhuman.xyz/api/convert/webptomp4?apikey=${api}&img=${data.display_url}`)
+					result = await getBuffer(anu.result)
+					samu330.sendMessage(from, result, video, {quoted: ftoko, caption: mess.success, mimetype: 'video/gif'})
+				
+					break
             case 'toptt':
 		reply(`wait..`)
 		var media1 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -1551,7 +1407,7 @@ break
 	        fs.unlinkSync(media2)
 		if (err) return reply('error')
 	        topt = fs.readFileSync(ran)
-		samu330.sendMessage(from, topt, MessageType.audio, {mimetype: 'audio/mp4', quoted: sam, ptt:true})
+		samu330.sendMessage(from, topt, MessageType.audio, {mimetype: 'audio/mp4', quoted: faud, ptt:true})
 	        })
 		break
             case 'stickertag':
@@ -1565,7 +1421,7 @@ break
             case 'promote':
                 if (!isGroup) return await reply('this command only for group')
                 if (!isAdmin) return await reply('This command only for admin')
-                if (!botAdmin) return await reply('jadikan bot admin')
+                if (!botAdmin) return await reply('Botcito debe ser admin')
                 if (mentionUser.length == 0) return await reply('Tag member')
                 await wa.promoteAdmin(from, mentionUser)
                 await reply(`Success promote member`)
@@ -1584,7 +1440,7 @@ break
                 break
             case 'linkgc':
                 var link = await wa.getGroupInvitationCode(from)
-                await wa.sendFakeStatus(from, link, "This link group")
+                await wa.sendFakeStatus(from, link, "El lik de este grupo es")
                 break
             case 'group':
                 if (!isGroup) return await reply('this command only for group')
@@ -1619,9 +1475,27 @@ break
                 samu330.groupUpdateDescription(from, newDesc).then(() => {
                     wa.sendFakeStatus(from, "Succes change description group to" + newDesc, "GROUP SETTING")
                 })
+		break
+	case 'welcome':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isAdmin) return reply(mess.only.admin)
+					if (args.length < 1) return reply('?')
+					if (Number(args[0]) === 1) {
+						if (isWelkom) return reply('Ya esta activo')
+						welkom.push(from)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply('Se activo con exito')
+					} else if (Number(args[0]) === 0) {
+						welkom.splice(from, 1)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply('Se desactivo con exito')
+					} else {
+						reply('1 para activar, 0 desactivar')
+					}
+                                      break
             default:
                 if (body.startsWith(">")) {
-                    if (!itsMe) return await reply('This command only for meguy')
+                    if (!itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
                     return await reply(JSON.stringify(eval(args.join(" ")), null, 2))
                 }
         }
