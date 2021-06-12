@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzXebuBoCOavnyRt8kbHlOah1nsI0DY3aqQ&usqp=CAUrevision/latest/top-crop/width/300/height/300?cb=20190417164406" width="128" height="128"/>
+<img src="./src/assistant.jpg" width="140" height="140"/>
 </p>
 <p align="center">
 <a href="#"><img title="NyanBot" src="https://img.shields.io/badge/🐬𝑵𝒚𝒂𝒏𝑩𝒐𝒕 | 🔥𝗦𝗮𝗺𝘂𝟯𝟯𝟬🔥 | Sᥲm ყ Pᥱrrყ🥀-green?colorA=%23ff0000&colorB=%2300ff00&style=for-the-badge"></a>
