@@ -316,24 +316,7 @@ samu330.on('chat-update', async(sam) => {
 	return crypto.randomBytes(size).toString('hex').slice(0, size)
         }
 	const sendMess = (hehe, teks) => {
-	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: { key: {
-                    fromMe: false,                                       
-		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "5214447000377-1624052995@g.us" } : {})          
-		},                             
-		message: {                   
-			"productMessage": {                 
-				"product": {
-                "title": '',                          
-					"description":"🌅𝑩𝒓𝒐𝒂𝒅𝒄𝒂𝒔𝒕 𝑵𝒚𝒂𝒏𝑩𝒐𝒕",              
-					"currencyCode": "SYP",                 
-					"priceAmount1000": "999999999999999999",                
-					"retailerId": "NyanBot",                     
-					"productImageCount": 1                  
-				},
-                "businessOwnerJid": `0@s.whatsapp.net`                 
-			}                
-		}}                        
-	})}
+	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
                     
 	
 	mess = {
