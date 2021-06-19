@@ -1161,7 +1161,7 @@ quoted: ftoko})
 	let buscar = args.join(' ')
 	if (!buscar) return reply('Que deseas buscar?')
   	let search = await samuGg({ query: buscar })
-	let kant = ``
+	let ggsm = ``
 for (let i of search) {
 ggsm += `
 *Titulo :* ${i.title}
