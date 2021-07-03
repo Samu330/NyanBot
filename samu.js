@@ -741,7 +741,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.04* ]======
+======[ *Versión 3.05* ]======
 
 *Comandos usados hoy : ${hit_today.length}*
 
