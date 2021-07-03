@@ -743,8 +743,6 @@ Fecha: ${calender}
 
 ======[ *Version BETA* ]======
 
-*Mensaje de prueba*
-
 *Comandos usados hoy : ${hit_today.length}*
 
 _PORFAVOR LEE LAS REGLAS_:
