@@ -1422,6 +1422,7 @@ exec(`bash update.sh`, (err, stdout) => {
 if (err) return reply(err)
 if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}`)
 })
+exec(`node samu`) 
 break
 
 case 'teles':
