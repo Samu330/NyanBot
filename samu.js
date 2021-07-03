@@ -1406,11 +1406,21 @@ samu330.close() }, 3000)
 break
 
 case 'restaurar':
-if (!isOwner) return reply('tu quien eres para decirme que hacer!?🤔')
+if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
 reply('*LA INFORMACION DE ESTE USUARIO SE RESTABLECERA PARA PODER USAR Y ESCANEAR EL CODIGO EN OTRO DISPOSITIVO*')
 exec(`bash restore.sh`, (err, stdout) => {
 if (err) return reply(err)
 if (stdout) reply(stdout)
+})
+break
+
+case 'actualizar':
+case 'update':
+if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
+reply('*ESPERE UN MOMENTO... EL BOT ESTA SIENDO ACTUALIZADO CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*')
+exec(`bash update.sh`, (err, stdout) => {
+if (err) return reply(err)
+if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout})
 })
 break
 
