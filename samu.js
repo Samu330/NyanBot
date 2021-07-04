@@ -1216,6 +1216,17 @@ if (!isRegister) return reply(mess.only.usrReg)
 const Menu8 = {
 text: `*COMANDOS PARA ${botNumber}*
 
+*Pará actualizar el bot:*
+_${prefix}actualizar_
+
+*Para apagar el bot:*
+_${prefix}apagar_
+
+
+⚠️ El siguiente comando es para restablecer los datos del usuario, para que el código vuelva a generarce, esto es por si quiere tener el bot en algún otro numero, o por si por error cerró la sección en WhatsApp. 
+
+*${prefix}Restaurar*
+
 ╭─────────────
 │ *${prefix}bloquear*
 │ _Bloquea usuarios_
