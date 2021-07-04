@@ -12,7 +12,7 @@ echo -e '\e[1;32m
 
 rm -r Samu330.json
 
-sleep(200)
+sleep 2.0
 
 echo -e '\033[0m\033[1;31m
 
