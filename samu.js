@@ -149,7 +149,6 @@ await samu330.blockUser(callerId, "add")
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
 if (!antifake.includes(anu.jid)) return
-if 
 try {
 const mdata = await samu330.groupMetadata(anu.jid)
 console.log(anu)
