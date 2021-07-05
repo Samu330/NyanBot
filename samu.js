@@ -441,7 +441,7 @@ samu330.on('chat-update', async(sam) => {
 	const reply = async(teks) => {
             await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
 		    fromMe: false,
-                participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+                participant: `447710173736@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
                 "imageMessage": {
