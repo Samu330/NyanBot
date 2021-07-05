@@ -445,8 +445,8 @@ samu330.on('chat-update', async(sam) => {
                 message: {
                 "imageMessage": {
                 "mimetype": "image/jpeg",
-                "caption": `🥀NʮɑƞBσt | 🐉Sɱ330\n${q}`,
-                'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
+                "caption": `🥀NʮɑƞBσt | 🐉Sɱ330\n${command + q}`,
+                'jpegThumbnail': fs.readFileSync('./src/samyperry.png')}}
 
 }
 		
