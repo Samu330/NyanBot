@@ -443,18 +443,18 @@ samu330.on('chat-update', async(sam) => {
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
-                "productMessage": {                   
-		"product": {                                       
-		"title": '🥀𝑺𝒂𝒎 𝒚 𝑷𝒆𝒓𝒓𝒚🍒 | 🌺NყᥲᥒBot🌺',
-                "description": "",                       
-		"currencyCode": "SYP",
-                "priceAmount1000": "999999999999999999",
-                "retailerId": "NyanBot",
-                "productImageCount": 1
-                },
-                "businessOwnerJid": `0@s.whatsapp.net`
-                }
-                }}
+                "imageMessage": {
+                "mimetype": "image/jpeg",
+                "caption": `🥀NʮɑƞBσt | 🐉Sɱ330\n${q}`,
+                'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
+
+}
+		
+
+
+
+                
+              
        		})
 		}
 	
@@ -547,7 +547,7 @@ message: {
 "mimetype": "image/jpeg",
 "jpegThumbnail": fs.readFileSync(`./src/fake.jpg`)
 },
-"title": `🐉𝗦𝗮𝗺𝘂𝟯𝟯𝟬🔥 | 📌𝑵𝒚𝒂𝒏𝑩𝒐𝒕🌹\n${timeFt}`,
+"title": `🐉𝗦𝗮𝗺𝘂𝟯𝟯𝟬🔥 | 📌𝑵𝒚𝒂𝒏𝑩𝒐𝒕🌹 ${timeFt}`,
 "description": "",
 "currencyCode": "SYP",
 "priceAmount1000": "999999999999999999",
