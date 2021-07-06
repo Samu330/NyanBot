@@ -717,7 +717,7 @@ case 'comandos':
 const moment = require('moment-timezone')
 
 const jmn = moment.tz('America/Mexico_City').format('HH:mm:ss')
-
+whatsApp = '0@s.whatsapp.net'
 let d = new Date
 let locale = 'es'
 let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
@@ -735,6 +735,7 @@ assistant = fs.readFileSync('./src/assistant.jpg')
 const forder = { key : {fromMe: false,participant : "0@s.whatsapp.net", ...(from ? { remoteJid: "5214447000377-1624232428@g.us" } : {})},message: {orderMessage: {itemCount : 999999999,status: 1,surface : 1,message: `🥀𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝑁𝑦𝑎𝑛𝐵𝑜𝑡🍒`,orderTitle: 'Samu330',sellerJid: `𝗡𝘆𝗮𝗻𝗕𝗼𝘁🌱`,thumbnail: fs.readFileSync('./src/fake.jpg')}}}
 samu330.updatePresence(from, Presence.recording)
 uptime = process.uptime()
+		
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 Menu = `
 ➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
@@ -744,7 +745,7 @@ Hora: ${jmn}
 Fecha: ${calender}
 
 ======[ *Versión 3.07* ]======
-✅ *Este bot esta verificado por* @${0@s.whatsapp.net.split('@')[0]}
+✅ *Este bot esta verificado por* @${whatsapp.split('@')[0]} 
 
 *Comandos usados hoy : ${hit_today.length}*
 
