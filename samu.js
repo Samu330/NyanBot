@@ -743,7 +743,8 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.06* ]======
+======[ *Versión 3.07* ]======
+✅ *Este bot esta verificado por* @${0@s.whatsapp.net.split('@')[0]}
 
 *Comandos usados hoy : ${hit_today.length}*
 
