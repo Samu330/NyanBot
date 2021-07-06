@@ -746,8 +746,7 @@ Hora: ${jmn}
 Fecha: ${calender}
 
 ======[ *Versión 3.07* ]======
-✅ *Este bot esta verificado por* @${whatsapp}
-✅ *Verificado por Facebook* @${fb.split('@')[0]}
+
 
 *Comandos usados hoy : ${hit_today.length}*
 
