@@ -718,6 +718,7 @@ const moment = require('moment-timezone')
 
 const jmn = moment.tz('America/Mexico_City').format('HH:mm:ss')
 whatsapp = '0@s.whatsapp.net'
+		fb ='447710173736@s.whatsapp.net
 let d = new Date
 let locale = 'es'
 let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
@@ -745,7 +746,8 @@ Hora: ${jmn}
 Fecha: ${calender}
 
 ======[ *Versión 3.07* ]======
-✅ *Este bot esta verificado por* @${whatsapp.split('@')[0]} 
+✅ *Este bot esta verificado por* @${whatsapp}
+✅ *Verificado por Facebook* @${fb.split('@')[0]}
 
 *Comandos usados hoy : ${hit_today.length}*
 
