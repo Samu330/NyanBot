@@ -717,7 +717,7 @@ case 'comandos':
 const moment = require('moment-timezone')
 
 const jmn = moment.tz('America/Mexico_City').format('HH:mm:ss')
-whatsApp = '0@s.whatsapp.net'
+whatsapp = '0@s.whatsapp.net'
 let d = new Date
 let locale = 'es'
 let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
