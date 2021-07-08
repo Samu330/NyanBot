@@ -257,11 +257,12 @@ samu330.on('chat-update', async(sam) => {
         if (!sam.message) return
         const from = sam.key.remoteJid
         const type = Object.keys(sam.message)[0]
+	sam.message = (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText : sam.message
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
         const body = sam.message.conversation || sam.message[type].caption || sam.message[type].text || ""
-        chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText : ''
+        chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
         budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 
         if (prefix != "") {
@@ -796,52 +797,7 @@ ${bodyM} ${prefix}menu8 *(Comandos para el Owner)*
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
 		     🌸 SamịPerry.li 🌸
 ********************************`
-let smlist = samu330.prepareMessageFromContent(from,{
-  "listMessage": {
-            "title": "💎Samu330 | NyanBot💎",
-            "description": `${Menu}`,
-            "buttonText": "🍒Selecciona el menu que desées",
-            "listType": "SINGLE_SELECT",
-            "sections": [
-              {
-                "rows": [
-                  {
-                    "title": `${prefix}Menu1`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu2`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu3`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu4`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu5`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu6`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu7`,
-                    "rowId": ''
-                  },
-		  {
-                    "title": `${prefix}Menu8`,
-                    "rowId": ''
-                  },
-                ]
-              }
-            ]
-          }
-}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999, isForwarded: true}})
+const _0x48ac=['492261jYyjIa','Menu6','42041wJiDGR','Menu5','Menu8','507616fKsXna','328793MsnCbl','Menu3','Menu1','Menu7','6EnVCXX','Menu4','321260FVYATQ','293780qjaduo','prepareMessageFromContent','🍒Selecciona\x20el\x20menú\x20que\x20desées','9037ZfChIL','13FNcCfS','Menu2','💎Samu330\x20|\x20NyanBot💎'];const _0xb54fb=_0x4861;function _0x4861(_0x18a076,_0x3a1e8d){return _0x4861=function(_0x48ac73,_0x4861f2){_0x48ac73=_0x48ac73-0xe5;let _0x79d300=_0x48ac[_0x48ac73];return _0x79d300;},_0x4861(_0x18a076,_0x3a1e8d);}(function(_0x3fc5b0,_0x221e0f){const _0x31d737=_0x4861;while(!![]){try{const _0x55405f=parseInt(_0x31d737(0xf4))*-parseInt(_0x31d737(0xe6))+parseInt(_0x31d737(0xf6))+parseInt(_0x31d737(0xec))*-parseInt(_0x31d737(0xe7))+parseInt(_0x31d737(0xf7))+parseInt(_0x31d737(0xea))+parseInt(_0x31d737(0xf0))+-parseInt(_0x31d737(0xef));if(_0x55405f===_0x221e0f)break;else _0x3fc5b0['push'](_0x3fc5b0['shift']());}catch(_0x24c1c4){_0x3fc5b0['push'](_0x3fc5b0['shift']());}}}(_0x48ac,0x5002b));let smlist=samu330[_0xb54fb(0xf8)](from,{'listMessage':{'title':_0xb54fb(0xe9),'description':''+Menu,'buttonText':_0xb54fb(0xe5),'listType':'SINGLE_SELECT','sections':[{'rows':[{'title':prefix+_0xb54fb(0xf2),'rowId':''},{'title':prefix+_0xb54fb(0xe8),'rowId':''},{'title':prefix+_0xb54fb(0xf1),'rowId':''},{'title':prefix+_0xb54fb(0xf5),'rowId':''},{'title':prefix+_0xb54fb(0xed),'rowId':''},{'title':prefix+_0xb54fb(0xeb),'rowId':''},{'title':prefix+_0xb54fb(0xf3),'rowId':''},{'title':prefix+_0xb54fb(0xee),'rowId':''}]}]}},{'quoted':sam,'sendEphemeral':!![],'contextInfo':{'forwardingScore':0x3e7,'isForwarded':!![]}});
 samu330.relayWAMessage(smlist)
 break
 case 'menu2':
