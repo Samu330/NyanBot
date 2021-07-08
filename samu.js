@@ -257,7 +257,6 @@ samu330.on('chat-update', async(sam) => {
         if (!sam.message) return
         const from = sam.key.remoteJid
         const type = Object.keys(sam.message)[0]
-	 : sam.message
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
