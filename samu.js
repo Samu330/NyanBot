@@ -246,8 +246,7 @@ console.log('Error : %s', color(e, 'red'))
 })
 
 
-samu330.on('chat-
-, async(sam) => {
+samu330.on('chat-update', async(sam) => {
     try {
         if (!sam.hasNewMessage) return
         if (!sam.messages) return
@@ -576,9 +575,6 @@ mentionedJid: [sender]}
 			quoted: fimg, "forwardingScore": 9999, "isForwarded": true
   			})
 			}
-	    	if (messagesC.includes('Comunicate con Samu para obtener la contraseña')){
-		reply('HI')
-		}
 		if (isAutoSt && isMedia && isImage) {
 		if (!itsMe) {
                 const encmedia11 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
