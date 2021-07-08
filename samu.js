@@ -1079,7 +1079,8 @@ ${bodyM} ${prefix}ass
 ${bodyM} ${prefix}pussy
 ${bodyM} ${prefix}xnxx *(Link de Xnxx.com)*
 ${bodyM} ${prefix}pornode *(Japonesas)*
-${bodyM} ${prefix}xvid *(Japonesas)
+${bodyM} ${prefix}xvid *(Japonesas)*
+${bodyM} ${prefix}dxvid *(Descarga videos de Xvideos)* _Requiere contraseña_
 
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
 	     🌸 SamịPerry.li 🌸
@@ -2159,16 +2160,16 @@ case 'dxvid':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
-let nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Contraseña requerida*", "description": "Para usar este comando es obligatorio la contraseña.", "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
+nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Contraseña requerida*", "description": "Para usar este comando es obligatorio la contraseña.", "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
-let contraerr = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Contraseña incorrecta*", "description": `*La contraseña* _${contra}_ *No es correcta.*`, "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
+contraerr = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Contraseña incorrecta*", "description": `*La contraseña* _${contra}_ *No es correcta.*`, "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 if (!q.includes('|')) return samu330.relayWAMessage(nopsw)
-const contra = q.substring(0, q.indexOf('|') - 0)
+const contra1 = q.substring(0, q.indexOf('|') - 0)
 const linkx = q.substring(q.lastIndexOf('|') + 1)
-if (!contra) return reply(`*Y la contraseña?*\n_Recuerda separar la contraseña del link con el simbolo_ *'|'*`)
+if (!contra1) return reply(`*Y la contraseña?*\n_Recuerda separar la contraseña del link con el simbolo_ *'|'*`)
 if (!linkx) return reply(`*Y el link?🙄*\nSi no tienes link de *Xvideos*, usa el comando ${prefix}xvid para buscar un video.`)
-if (!contra == 'Samu330') return samu330.relayWAMessage(contraerr)
+if (!contra1 == 'Samu330') return samu330.relayWAMessage(contraerr)
 xv = await getJson(`https://fxc7-api.herokuapp.com/api/download/xvideos?url=${linkx}&apikey=Fxc7`)
 v = xv.result
 infoxv = `*Espere un momento, su video se esta enviando*\n\n_Informacion del video:_\n*Link:* ${v.url}\n*Titulo:*${v.title}\n*Largo del video:* ${v.length}\n*Vistas* ${v.views}\n\n*😋Tu video se esta enviando...*`
