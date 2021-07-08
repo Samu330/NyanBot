@@ -2172,7 +2172,7 @@ v = xv.result
 infoxv = `*Espere un momento, su video se esta enviando*\n\n_Informacion del video:_\n*Link:* ${v.url}\n*Titulo:* ${v.title}\n*Largo del video:* ${v.length}\n*Vistas* ${v.views}\n\n*😋Tu video se esta enviando...*`
 reply(infoxv)
 videox = await getBuffer(v.streams.hq)
-samu330.sendMessage(from, videox, video, {quoted: {caption: `${v.title}`, duration: 999999999999}})
+samu330.sendMessage(from, videox, video)
 break
 
 case 'lucky':
