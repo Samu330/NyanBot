@@ -1362,7 +1362,7 @@ let pyb = samu330.prepareMessageFromContent(from,{
                 "rows": [
                   {
                     "title": 'Hola bot',
-                    "rowId": ''
+                    "reply": 'a'
                   }
                 ]
               }
