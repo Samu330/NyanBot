@@ -830,7 +830,7 @@ let smlist = samu330.prepareMessageFromContent(from,{
                     "rowId": ''
                   },
 		  {
-                    "title": `${prefix}Menu7`',
+                    "title": `${prefix}Menu7`,
                     "rowId": ''
                   },
 		  {
