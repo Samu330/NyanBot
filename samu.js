@@ -261,7 +261,7 @@ samu330.on('chat-update', async(sam) => {
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
         const body = sam.message.conversation || sam.message[type].caption || sam.message[type].text || ""
-        chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : '' (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText
+        chats = (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText : (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
         budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 
         if (prefix != "") {
