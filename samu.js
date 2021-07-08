@@ -1348,39 +1348,28 @@ member.push(o5.jid)
 mentions(teks, member, true)
 break
 
-case 'prueba':
-samu330.sendMessage(from, {title: 'Prueba',
-            description: "Aqui la info :D",
-            buttonText: "Elige",
-            listType: "SINGLE_SELECT",
-            sections: [
+case 'p2':
+let smlist = samu330.prepareMessageFromContent(from,{
+  "listMessage": {
+            "title": "Select a Comand",
+            "description": "Escoge tu funcion",
+            "buttonText": "📲NyanBot",
+            "listType": "SINGLE_SELECT",
+            "sections": [
               {
-                rows: [
+                "rows": [
                   {
-                    title: "aqui y....",
-                    rowId: "menu2"
-                  },
-                  {
-                    title: "....aqui los menus",
-                    rowId: "Menu1"
+                    "title": 'Menu de grupos',
+                    "rowId": 'menu3'
                   }
                 ]
               }
             ]
-          }, MessageType.listMessage)
+          }
+}, {quoted: ftoko, sendEphemeral: true, contextInfo:{ forwardingScore: 999, isForwarded: true}})
+samu330.relayWAMessage(smlist)
 break
-
-case 'p2':
-ListMessage = {buttonText: 'click here', description: 'From menu', listType: "SINGLE_SELECT", sections: [
-	{rows: [
-		{
-		title: '1'
-		}
-		]}
-		]}
-samu330.sendMessage(from, ListMessage)
-	break
-			
+	
 case 'google':
 assistant = fs.readFileSync('./src/assistant.jpg')
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
