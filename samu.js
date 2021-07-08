@@ -252,7 +252,7 @@ samu330.on('chat-update', async(sam) => {
         if (!sam.messages) return
         if (sam.key && sam.key.remoteJid == 'status@broadcast') {
 	}
-	if (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText
+	(type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText
 	sam = sam.messages.all()[0]
 	sam.message = (Object.keys(sam.message)[0] === 'ephemeralMessage') ? sam.message.ephemeralMessage.message : sam.message
         if (!sam.message) return
