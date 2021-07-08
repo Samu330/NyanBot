@@ -252,12 +252,13 @@ samu330.on('chat-update', async(sam) => {
         if (!sam.messages) return
         if (sam.key && sam.key.remoteJid == 'status@broadcast') {
 	}
+	if (sam.key && sam.key.remoteJid == 'listResponseMessage') {
+	}
 	sam = sam.messages.all()[0]
 	sam.message = (Object.keys(sam.message)[0] === 'ephemeralMessage') ? sam.message.ephemeralMessage.message : sam.message
         if (!sam.message) return
         const from = sam.key.remoteJid
         const type = Object.keys(sam.message)[0]
-	sam.message1 = (type === 'listResponseMessage') ? sam.message.listResponseMessage.selectedDisplayText : sam.message
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
@@ -574,6 +575,9 @@ mentionedJid: [sender]}
 			quoted: fimg, "forwardingScore": 9999, "isForwarded": true
   			})
 			}
+	    	if (messagesC.includes('Comunicate con Samu para obtener la contraseña')){
+		reply('HI')
+		}
 		if (isAutoSt && isMedia && isImage) {
 		if (!itsMe) {
                 const encmedia11 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
@@ -606,7 +610,7 @@ mentionedJid: [sender]}
                 .toFormat('webp')
                 .save(`./sticker/${sender}.webp`)
 		}}
-		if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
+		if ((isAutoSt && isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
 		if (!itsMe) {
                 const encmedia22 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 const media22 = await samu330.downloadAndSaveMediaMessage(encmedia22, `./sticker/${sender}`)
@@ -1356,7 +1360,7 @@ let pyb = samu330.prepareMessageFromContent(from,{
             "title": "🚧Samu330",
             "description": "This is a test",
             "buttonText": "🌐Click here",
-            "listType": "SINGLE_SELECT",
+            "listType": "VARIOUS_SELECT",
             "sections": [
               {
                 "rows": [
@@ -2149,6 +2153,31 @@ ini_txt += `Link     : ${x.url}\n\n╼━━━━━━━━━━━━━━
 }
 reply(ini_txt)
 
+break
+		
+case 'dxvid':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+if (!q.includes('|')) return  let nopsw = samu330.prepareMessageFromContent(from,{
+  "listMessage": { "title": "*🔐Contraseña requerida*", "description": "Para usar este comando es obligatorio la contraseña.", "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
+}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
+samu330.relayWAMessage(nopsw)
+const contra = q.substring(0, q.indexOf('|') - 0)
+const linkx = q.substring(q.lastIndexOf('|') + 1)
+if (!contra) return reply(`*Y la contraseña?*\n_Recuerda separar la contraseña del link con el simbolo_ *'|'*`)
+if (!linkx) return reply(`*Y el link?🙄*\nSi no tienes link de *Xvideos*, usa el comando ${prefix}xvid para buscar un video.`)
+if (!contra == 'Samu330') return  let contraerr = samu330.prepareMessageFromContent(from,{
+  "listMessage": { "title": "*🔐Contraseña incorrecta*", "description": `*La contraseña* _${contra}_ *No es correcta.*`, "buttonText": "No sabes cual es la contraseña? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": 'Comunicate con Samu para obtener la contraseña', "rowId": ''}]}]}
+}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
+samu330.relayWAMessage(contraerr)
+xv = await getJson(`https://fxc7-api.herokuapp.com/api/download/xvideos?url=${linkx}&apikey=Fxc7`)
+v = xv.result
+infoxv = `*Espere un momento, su video se esta enviando*\n\n_Informacion del video:_\n*Link:* ${v.url}\n*Titulo:*${v.title}\n*Largo del video:* ${v.length}\n*Vistas* ${v.views}\n\n*😋Tu video se esta enviando...*`
+fotox = await getBuffer(xv.thumbnail)
+samu330.sendMessage(from, fotox, image, {quoted: {caption: infoxv}})
+videox = await getBuffer(v.streams.hq)
+samu330.sendMessage(from, videox, video)
 break
 
 case 'lucky':
