@@ -246,7 +246,8 @@ console.log('Error : %s', color(e, 'red'))
 })
 
 
-samu330.on('chat-update', async(sam) => {
+samu330.on('chat-
+, async(sam) => {
     try {
         if (!sam.hasNewMessage) return
         if (!sam.messages) return
@@ -1433,7 +1434,7 @@ if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
 reply('*ESPERE UN MOMENTO... EL BOT ESTA SIENDO ACTUALIZADO CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*')
 exec(`bash update.sh`, (err, stdout) => {
 if (err) return reply(err)
-if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
+if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
 })
 break
 
@@ -2162,7 +2163,7 @@ if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
 codigor = [1234, 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999, 0000, 1122, 1133, 1144, 1555, 5566, 7183, 7874, 89874, 00086, 8732365874524, 635463185, 78676587135, 78573857, 725471469385013690147590398473918461837463781567485713, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 codigo = codigor[Math.floor(Math.random() * codigor.length)]
-nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Codigo requerido*", "description": `Para usar este comando es obligatorio establecer un codigo de validacion, este codigo te permitira ejercer esta funcion.\n\n*Puedes usar cualquier número, o puedes genrar uno en el boton de abajo*\n\nPara seguir con tu descarga, debes escribir el comando de la siguiente manera:\n*${prefix}dxvid (CODIGO)|(LINK)*\n_Es importante que uses el signo_ *"|"* _para separar el codigo del link._`, "buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `${codigo}`, "rowId": ''}]}]}
+nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Codigo requerido*", "description": `Para usar este comando es obligatorio establecer un codigo de validacion, este codigo te permitira ejercer esta funcion.\n\n*Puedes usar cualquier número, o puedes generar uno en el boton de abajo, solo te quedaria copiar y pegar ese codigo*\n\nPara seguir con tu descarga, debes escribir el comando de la siguiente manera:\n*${prefix}dxvid (CODIGO)|(LINK)*\n_Es importante que uses el signo_ *"|"* _para separar el codigo del link._`, "buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `${codigo}`, "rowId": ''}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 if (!q.includes('|')) return samu330.relayWAMessage(nopsw)
 const contra1 = q.substring(0, q.indexOf('|') - 0)
@@ -2173,7 +2174,7 @@ if (!linkx) return reply(`*Y el link?🙄*\nSi no tienes link de *Xvideos*, usa 
 xv = await getJson(`https://fxc7-api.herokuapp.com/api/download/xvideos?url=${linkx}&apikey=Fxc7`)
 v = xv.result
 infoxv = `*Espere un momento, su video se esta enviando*\n\n_Informacion del video:_\n*Link:* ${v.url}\n*Titulo:* ${v.title}\n*Largo del video:* ${v.length}\n*Vistas* ${v.views}\n\n*😋Tu video se esta enviando...*`
-reply(fotox)
+reply(infoxv)
 videox = await getBuffer(v.streams.hq)
 samu330.sendMessage(from, videox, video, {quoted: {caption: `${v.title}`, duration: 999999999999}})
 break
