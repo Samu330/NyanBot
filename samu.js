@@ -806,35 +806,35 @@ let smlist = samu330.prepareMessageFromContent(from,{
               {
                 "rows": [
                   {
-                    "title": 'Menu1',
+                    "title": `${prefix}Menu1`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu2',
+                    "title": `${prefix}Menu2`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu3',
+                    "title": `${prefix}Menu3`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu4',
+                    "title": `${prefix}Menu4`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu5',
+                    "title": `${prefix}Menu5`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu6',
+                    "title": `${prefix}Menu6`,
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu7',
+                    "title": `${prefix}Menu7`',
                     "rowId": ''
                   },
 		  {
-                    "title": 'Menu8',
+                    "title": `${prefix}Menu8`,
                     "rowId": ''
                   },
                 ]
