@@ -75,8 +75,6 @@ apt-get install wget -y
 apt-get install imagemagick -y
 apt-get install tesseract -y
 npm i node-tesseract-ocr
-npm i cheerio
-npm i
 npm i @adiwajshing/baileys@3.4.1
 echo -e '\033[0m\033[1;31m
   ___                 _             _                       _         
@@ -227,6 +225,7 @@ echo -e '\033[0m\033[1;32m
  | | | | | | \__ \ | |_  | (_| | | | | (_| | | (_| | | (_) |
  |_| |_| |_| |___/  \__|  \__,_| |_|  \__,_|  \__,_|  \___/ 
  \033[0m'
+ npm i
  sleep 3.0
  echo -e '\033[0m\033[1;36m
   ____                          _                     _        
@@ -327,7 +326,7 @@ function guess
 
     if [ ${resp_idioma} -eq "1" ]
         then
-            echo -n "Adivina una letra: "
+            echo -n "Escoje una letra: "
         else
             echo -n "Guess a letter: "
     fi
