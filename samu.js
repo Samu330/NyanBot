@@ -964,7 +964,7 @@ ${bodyM} ${prefix}imagetag
 ${bodyM} ${prefix}hidetag
 ${bodyM} ${prefix}todos
 ${bodyM} ${prefix}setdesc
-${bodyM} ${prefix}setnamegp
+${bodyM} ${prefix}nombre
 ${bodyM} ${prefix}adminlist
 ${bodyM} ${prefix}setpic
 ${bodyM} ${prefix}enlinea
@@ -1824,6 +1824,7 @@ fs.unlinkSync(ran)
 break
 
 case 'slow':
+case 'lento':
 reply(mess.wait)
 low = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 slo = await samu330.downloadAndSaveMediaMessage(low)
@@ -1983,7 +1984,7 @@ case 'exif':
 if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (args.length < 1) return reply(`Forma de uso: *${prefix}exif nombre|autor*`)
 if (!arg.split('|')) return reply(`Forma de uso: *${prefix}exif nombre|autor*`)
-exif.create(arg.split('|')[0], arg.split('|')[1])
+exif.create(q.split('|')[0], q.split('|')[1])
 reply(`*El nombre de paquete de Stiker a cambiado a:* _${arg.split('|')[0]}\n*Y el autor a:* ${arg.split('|')[1]}`)
 break
 			
@@ -3346,6 +3347,7 @@ buffer = await samu330.downloadMediaMessage(mediatag)
 await wa.hideTagImage(from, buffer)
 break
 case 'toimg':
+case 'aimg':
 if (!isQuotedSticker) return reply(`send sticker and reply with caption ${prefix}toimg`)
 if (sam.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
 reply(`Este comando solo sirve con stikers estaticos, para convertir un stiker a gif, usa: ${prefix}agif`)
@@ -3475,7 +3477,7 @@ reply('Antilegiones activado✔️')
 reply('*1 para activar, 0 para desactivar*')
 }
 break
-case 'setnamegp':
+case 'nombre':
 if (!isGroup) return await reply(mess.only.group)
 if (!isAdmin) return await reply(mess.only.admin)
 if (!botAdmin) return await reply(mess.only.Badmin)
