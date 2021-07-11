@@ -607,7 +607,7 @@ mentionedJid: [sender]}
                 .toFormat('webp')
                 .save(`./sticker/${sender}.webp`)
 		}}
-		if ((isAutoSt && isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
+		if ((isAutoSt && isMedia && sam.message.videoMessage.fileLength < 10000000 || sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
 		if (!itsMe) {
                 const encmedia22 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
                 const media22 = await samu330.downloadAndSaveMediaMessage(encmedia22, `./sticker/${sender}`)
