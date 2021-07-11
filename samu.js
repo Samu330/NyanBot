@@ -2137,6 +2137,15 @@ reply(ini_txt)
 
 break
 
+case 'setprefix':
+if (args.length < 1) return
+if (!isOwner) return reply(mess.only.ownerB)
+prefix = args[0]
+samu.prefix = prefix
+fs.writeFileSync('./data/settings.json', JSON.stringify(up, null, '\t'))
+reply(`Prefijo cambiado : ${prefix}`)
+break
+		
 case 'xvid':
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Japonesas`)
