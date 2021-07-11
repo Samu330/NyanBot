@@ -2140,10 +2140,8 @@ break
 case 'setprefix':
 if (args.length < 1) return
 if (!isOwner) return reply(mess.only.ownerB)
-prefix = args[0]
-samu.prefix = prefix
-fs.writeFileSync('./data/settings.json', JSON.stringify(up, null, '\t'))
-reply(`Prefijo cambiado : ${prefix}`)
+prefix.push(q)
+reply(`Prefijo cambiado : ${q}`)
 break
 		
 case 'xvid':
