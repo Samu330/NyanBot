@@ -1024,6 +1024,7 @@ const Menuo = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 
 
+${bodyM} ${prefix}pregunta *(Haz una pregunta y el bot te responde)*
 ${bodyM} ${prefix}ipbot *(Localiza al bot por ip)*
 ${bodyM} ${prefix}ip *(Haz una loclizacion por ip)*
 ${bodyM} ${prefix}igstalk *(Nombre de Usuario)*
