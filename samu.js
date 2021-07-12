@@ -527,7 +527,7 @@ key:
 { fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ?
 { remoteJid: "status@broadcast" } : {}) },
-message: { "audioMessage": {"mimetype": "audio/mp4", "ptt": true, "seconds": -999999999}}
+message: { "audioMessage": {"mimetype": "audio/mp4", "ptt": true, "seconds": -999999}}
 }
 contextInfo: {
 mentionedJid: [sender]}
