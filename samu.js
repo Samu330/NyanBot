@@ -925,7 +925,7 @@ fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"imageMessage": { "caption": "🧸𝙈𝙀𝙉𝙐⁡ 𝘿𝙀 𝙈𝙀𝘿𝘼📌", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
+"imageMessage": { "caption": "🧸𝙈𝙀𝙉𝙐⁡ 𝘿𝙀 𝙈𝙀𝘿𝙄𝘼📌", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
 }})
 break
 case 'menu3':
@@ -1007,6 +1007,7 @@ ${bodyM} ${prefix}ytmp4 *(Descarga de videos por link)*
 ${bodyM} ${prefix}fb _(Link de FaceBook)_
 ${bodyM} ${prefix}mfire *(Link de mediafire)*
 ${bodyM} ${prefix}tomp3 *(Videos a audio)*
+${bodyM} ${prefix}letra *(Busca la letra de una cancion)*
 `,
 contextInfo: {
 mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
@@ -1435,7 +1436,7 @@ case 'piano':
 aud = fs.readFileSync('./audio/piano.ogg') 
 samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
 break
-case 'pkachu':
+case 'pikachu':
 aud = fs.readFileSync('./audio/pikachu.ogg') 
 samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
 break
@@ -1545,6 +1546,30 @@ member.push(o3.jid)
 member.push(o4.jid)
 member.push(o5.jid)
 mentions(teks, member, true)
+break
+		
+case 'pregunta':
+respuesta = ['Si', 'No', 'Tal vez', 'Puede ser', 'Ai una probabilidad del 99.99999999991.01%', 'Puede que no', 'Yo que se', 'mmmm🤔.... Dejame lo pienso un poco']
+answer = respuesta[Math.floor(Math.random() * respuesta.length)]
+if (!q) return reply('Y la pregunta?')
+reply(answer)
+break
+		
+case 'lirik':
+case 'letra':
+case 'letras':
+if (args.length < 1) return reply('Escribe el nombre de la cancion')
+if (!isRegister) return reply(mess.only.usrReg)
+samu330.updatePresence(from, Presence.composing)
+tels = args.join(' ')
+try {
+anu = await getJson(`https://fxc7-api.herokuapp.com/api/search/liriklagu?apikey=Fxc7&query=${tels}`, {
+method: 'get'
+})
+reply(`🥰Resultado de ${tels}:\n\n____________________\n\n${anu.result}`)
+} catch {
+reply(mess.ferr)
+}
 break
 
 case 'p2':
