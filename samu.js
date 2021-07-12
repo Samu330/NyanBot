@@ -527,7 +527,7 @@ key:
 { fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ?
 { remoteJid: "status@broadcast" } : {}) },
-message: { "audioMessage": { "caption":"🪀𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝘆", 'jpegThumbnail': fs.readFileSync('./src/help.jpg')}}
+message: { "audioMessage": {"mimetype": "audio/mp4", "ptt": true, "fileLength": "-999999", "seconds": -999,}}
 }
 contextInfo: {
 mentionedJid: [sender]}
@@ -747,7 +747,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.07* ]======
+======[ *Versión 3.08* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -784,6 +784,7 @@ ${bodyM} ${prefix}menu5 *(Comandos Tools)*
 ${bodyM} ${prefix}menu6 *(Comandos +18)* 
 ${bodyM} ${prefix}menu7 *(Comandos de logos)*
 ${bodyM} ${prefix}menu8 *(Comandos para el Owner)*
+${bodyM} ${prefix}audios *(Audios)*
 
 ᴸᵃ ᵐᵃʸᵒʳᶦ́ᵃ ᵈᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᶠᵘⁿᶜᶦᵒⁿᵃⁿ ᵃˡ ¹⁰⁰
 ᴱˢᶜʳᶦᵇᵉ ˡᵒˢ ᶜᵒᵐᵃⁿᵈᵒˢ ᵉⁿ ˢᵘ ᶠᵒʳᵐᵃᵗᵒ ᶜᵒʳʳᵉᶜᵗᵒ ᵖᵃʳᵃ ᑫᵘᵉ ⁿᵒ ᵈᵉ ᵉʳʳᵒʳᵉˢ
@@ -1092,6 +1093,11 @@ uptime = process.uptime()
 const Menu7 = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                            
 
+*Estos comandos nu funcionan hasta que page la api*
+si quieres apoyarme a pagar, puedes hacerlo mediante PayPal :)
+
+paypal.me/samu330
+
 
 ${bodyM} ${prefix}blackpink *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}neon *(Escribe un texto para crear logo)*
@@ -1330,10 +1336,193 @@ break
 
 //audios 
 case 'confeti':
-cofi = fs.readFileSync('./audio/confeti.ogg') 
-samu330.sendMessage(from, cofi, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, sendEphemeral: true}) 
+aud = fs.readFileSync('./audio/confeti.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
 break
-
+case 'anana':
+aud = fs.readFileSync('./audio/anana.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'asen':
+aud = fs.readFileSync('./audio/asen.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'flash':
+aud = fs.readFileSync('./audio/flash.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'asen':
+aud = fs.readFileSync('./audio/asen.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'hentai':
+aud = fs.readFileSync('./audio/hentai.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'jai':
+aud = fs.readFileSync('./audio/jai.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'jashire':
+aud = fs.readFileSync('./audio/jashire.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break	
+case 'kareta':
+aud = fs.readFileSync('./audio/kareta.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'kataka':
+aud = fs.readFileSync('./audio/kataka.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'kicks':
+aud = fs.readFileSync('./audio/kicks.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'kobarashi':
+aud = fs.readFileSync('./audio/kobarashi.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'mitamita':
+aud = fs.readFileSync('./audio/mitamita.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'mma':
+aud = fs.readFileSync('./audio/mma.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'motomoto':
+aud = fs.readFileSync('./audio/motomoto.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'nani':
+aud = fs.readFileSync('./audio/nani.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'niconico':
+aud = fs.readFileSync('./audio/niconico.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'nya':
+aud = fs.readFileSync('./audio/nya.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'nyan':
+aud = fs.readFileSync('./audio/nyan.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true})
+break
+case 'omaiga':
+aud = fs.readFileSync('./audio/omaiga.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'omaiwa':
+aud = fs.readFileSync('./audio/omaiwa.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'omg':
+aud = fs.readFileSync('./audio/omg.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'onichan':
+aud = fs.readFileSync('./audio/onichan.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'ooaa':
+aud = fs.readFileSync('./audio/ooaa.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'piano':
+aud = fs.readFileSync('./audio/piano.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'pkachu':
+aud = fs.readFileSync('./audio/pikachu.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'pupu':
+aud = fs.readFileSync('./audio/pupu.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'sempai':
+aud = fs.readFileSync('./audio/sempai.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'sss':
+aud = fs.readFileSync('./audio/sss.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'suspenso':
+aud = fs.readFileSync('./audio/suspenso.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'talcho':
+aud = fs.readFileSync('./audio/talcho.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'tobec':
+aud = fs.readFileSync('./audio/tobec.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'tuturu':
+aud = fs.readFileSync('./audio/tuturu.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'tututu':
+aud = fs.readFileSync('./audio/tututu.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'uchinchi':
+aud = fs.readFileSync('./audio/uchinchi.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'uff':
+aud = fs.readFileSync('./audio/uff.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'uma':
+aud = fs.readFileSync('./audio/uma.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'umai':
+aud = fs.readFileSync('./audio/umai.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'woau':
+aud = fs.readFileSync('./audio/woau.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'yajaro':
+aud = fs.readFileSync('./audio/yajaro.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'yame':
+aud = fs.readFileSync('./audio/yame.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'yamete':
+aud = fs.readFileSync('./audio/yamete.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'yokese':
+aud = fs.readFileSync('./audio/yokese.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'yutki':
+aud = fs.readFileSync('./audio/yutki.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'ñaña':
+aud = fs.readFileSync('./audio/ñaña.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'ñañañi':
+aud = fs.readFileSync('./audio/ñañañi.ogg') 
+samu330.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
+break
+case 'audios':
+reply(`*Estos audios son originales, provenientes de la app:*\nhttps://play.google.com/store/apps/details?id=com.aromaticnectarineapps.anime\n\n- anana\n- asen\n- flash\n- hentai\n- jai\n- jashire\n- kareta\n- kataka\n- kicks\n- kobarashi\n- mitamita\n- mma\n- motomoto\n- nani\n- niconico\n- nya\n- nyan\n- omaiga\n- omaiwa\n- omg\- onichan\n- ooaa\n- piano\- pikachu\n- pupu\n- sempai\n- sss\n- suspenso\n- talcho\n- tobec\n- tuturu\n- tututu\n- uchinchi\n- uff\n- uma\n- umai\n- unga\n- woau\n- yajaro\n- yame\n- yamete\n- yokese\n- yutki\n- ñaña\n- ñañañi\n\n🍒 *By Samu330* 💠`)
+break
+		
 case 'top5':
 if (!isGroup) return reply('*Este comando solo puede usarse en grupos🤕')
 member = []
@@ -1436,7 +1625,7 @@ if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
 reply('*ESPERE UN MOMENTO... EL BOT ESTA SIENDO ACTUALIZADO CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*')
 exec(`bash update.sh`, (err, stdout) => {
 if (err) return reply(err)
-if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
+if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
 })
 break
 
