@@ -2004,11 +2004,12 @@ fs.unlinkSync(ran)
 break
 
 case 'imut':
-encmedia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-media = await samu330.downloadAndSaveMediaMessage(encmedia)
+reply(mess.wait)
+im = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+ut = await samu330.downloadAndSaveMediaMessage(im)
 ran = getRandom('.mp3')
-exec(`ffmpeg -i ${media} -af atempo=3/4,asetrate=44500*4/3 ${ran}`, (err, stderr, stdout) => {
-fs.unlinkSync(media)
+exec(`ffmpeg -i ${ut} -af atempo=3/4,asetrate=44500*4/3 ${ran}`, (err, stderr, stdout) => {
+fs.unlinkSync(ut)
 if (err) return reply('Error!')
 hah = fs.readFileSync(ran)
 samu330.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, quoted: fdoc})
@@ -2017,11 +2018,12 @@ fs.unlinkSync(ran)
 
 break
 case 'hode':
-encmedia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-media = await samu330.downloadAndSaveMediaMessage(encmedia)
+reply(mess.wait)
+ho = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+de = await samu330.downloadAndSaveMediaMessage(ho)
 ran = getRandom('.mp3')
-exec(`ffmpeg -i ${media} -af atempo=4/3,asetrate=44500*3/4 ${ran}`, (err, stderr, stdout) => {
-fs.unlinkSync(media)
+exec(`ffmpeg -i ${de} -af atempo=4/3,asetrate=44500*3/4 ${ran}`, (err, stderr, stdout) => {
+fs.unlinkSync(de)
 if (err) return reply('Error!')
 hah = fs.readFileSync(ran)
 samu330.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, quoted: fdoc})
