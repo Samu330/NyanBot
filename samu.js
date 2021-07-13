@@ -84,7 +84,7 @@ const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const api = 'ec35353a991a258b05876861'
+const api = '273a9e8195c27ba24abd53e3'
 fak = 'samu3300'
 prefix = '.'
 apikey = 'LindowApi'
