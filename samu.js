@@ -1095,10 +1095,11 @@ uptime = process.uptime()
 const Menu7 = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                            
 
-*Estos comandos nu funcionan hasta que page la api*
-si quieres apoyarme a pagar, puedes hacerlo mediante PayPal :)
+Si quieres contribuir para que todos estos comandos y mas funcionen ala perfeccion, puedes aportar un granito de arena al sigiente paypal:
 
 paypal.me/samu330
+
+*Asi me ayudaran tambien a compensar a la persona que pago esta api❤*
 
 
 ${bodyM} ${prefix}blackpink *(Escribe un texto para crear logo)*
@@ -3402,7 +3403,7 @@ if (args.length == 0) return reply(`Example: ${prefix + command} es Hi bro`)
 idioma = args[0]
 args.shift()
 ini_txt = args.join(' ')
-get_result = await fetchJson(`https://api.lolhuman.xyz/api/translate/auto/${idioma}?apikey=${api}&text=${ini_txt}`)
+get_result = await getJson(`https://api.lolhuman.xyz/api/translate/auto/${idioma}?apikey=${api}&text=${ini_txt}`)
 get_result = get_result.result
 init_txt = `Traduccion de : ${get_result.from}\n`
 init_txt += `a : ${get_result.to}\n`
