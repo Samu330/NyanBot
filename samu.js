@@ -747,7 +747,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.08* ]======
+======[ *Versión 3.09* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -2960,22 +2960,15 @@ if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vi
 query = args.join(' ')
 fakee = fs.readFileSync('./src/img.jpg')
 try {
-get_result = await getJson(`https://api.lolhuman.xyz/api/ytplay?apikey=${api}&query=${query}`)
+get_result = await getJson(`https://api.lolhuman.xyz/api/ytplay2?apikey=${api}&query=${query}`)
 get_result = get_result.result
-get_info = get_result.info
-ini_txt = `🧊Titulo : ${get_info.title}\n`
-ini_txt += `🕵🏻‍♀️️Publicador : ${get_info.uploader}\n`
-ini_txt += `🕐Duracion : ${get_info.duration}\n`
-ini_txt += `👀Vistas : ${get_info.view}\n`
-ini_txt += `👍🏻Like : ${get_info.like}\n`
-ini_txt += `👎🏻Dislike : ${get_info.dislike}\n`
-ini_txt += `📋Descripcion :\n ${get_info.description}\n\n`
-ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${get_result.video[0].link}\n\n`
-ini_txt += `Puede descargar tambien el audio aqui: :\n ${get_result.audio[3].link}\n`
-ini_buffer = await getBuffer(get_info.thumbnail)
+ini_txt = `🧊Titulo : ${get_result.title}\n\n`
+ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${get_result.video}\n\n`
+ini_txt += `Puede descargar tambien el audio aqui: :\n ${get_result.audio}\n`
+ini_buffer = await getBuffer(get_result.thumbnail)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
-get_video = await getBuffer(get_result.video[0].link)
-await samu330.sendMessage(from, get_video, video, { mimetype: Mimetype.gif, duration :-999999999999999, filename: `${get_info.title}.mp4`, quoted: fvid })
+get_video = await getBuffer(get_result.video)
+await samu330.sendMessage(from, get_video, video, { mimetype: Mimetype.gif, duration :-999999999999999, filename: `${get_result.title}.mp4`, quoted: fvid })
 } catch {
 reply(`*Ocurrio un problema, la key vencio, puedes descargar videos de la siguiente manera:*\n\nBusca el video que quieras descargar con el comando *${prefix}ytsearch*\nCopias el link del video y descargas con: *${prefix}ytmp4*`)
 }
