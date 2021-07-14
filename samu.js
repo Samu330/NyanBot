@@ -3237,7 +3237,7 @@ if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y P
 reply(mess.wait)
 a = args.join(' ')
 txt1 = a.substring(0, a.indexOf('|') - 0)
-txt2 = a.substring(0, a.indexOf('|') + 1)
+txt2 = a.substring(a.lastIndexOf('|') + 1)
 if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 try {
@@ -3296,7 +3296,7 @@ if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y P
 reply(mess.wai)
 a = args.join(' ')
 txt1 = a.substring(0, a.indexOf('|') - 0)
-txt2 = a.substring(0, a.indexOf('|') + 1)
+txt2 = a.substring(a.lastIndexOf('|') + 1)
 if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 try {
