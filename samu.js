@@ -2957,6 +2957,7 @@ case 'playvid':
 
 if (!isRegister) return reply(mess.only.usrReg)
 if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
+reply('*Espere un momento porfavor...*')
 query = args.join(' ')
 fakee = fs.readFileSync('./src/img.jpg')
 try {
@@ -2965,8 +2966,8 @@ get_result = get_result.result
 short = await getJson(`https://tinyurl.com/api-create.php?url=${get_result.video}`)
 shorta = await getJson(`https://tinyurl.com/api-create.php?url=${get_result.audio}`)
 ini_txt = `🧊Titulo : ${get_result.title}\n\n`
-ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${short}\n\n`
-ini_txt += `Puede descargar tambien el audio aqui: :\n ${shorta}\n`
+ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${short.body}\n\n`
+ini_txt += `Puede descargar tambien el audio aqui: :\n ${shorta.body}\n`
 ini_buffer = await getBuffer(get_result.thumbnail)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
 get_video = await getBuffer(get_result.video)
