@@ -3216,7 +3216,7 @@ reply(mess.wait)
 ini_txt = args.join(" ")
 try {
 logo = await getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image, { quoted: sam })
+samu330.sendMessage(from, logo, image)
 } catch {
 reply(mess.ferr)
 }
@@ -3242,7 +3242,7 @@ if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330
 if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 try {
 logo = await getBuffer(`https://api.lolhuman.xyz/api/textprome2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`)
-samu330.sendMessage(from, logo, image, { quoted: sam })
+samu330.sendMessage(from, logo, image)
 } catch {
 reply(mess.ferr)
 }
@@ -3281,7 +3281,7 @@ reply(mess.wait)
 ini_txt = args.join(' ')
 try {
 logo = await getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image, { quoted: sam })
+samu330.sendMessage(from, logo, image)
 } catch {
 reply(mess.ferr)
 }
@@ -3301,7 +3301,7 @@ if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330
 if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
 try {
 logo = await getBuffer(`https://api.lolhuman.xyz/api/photooxy2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`)
-samu330.sendMessage(from, logo, image, { quoted: sam })
+samu330.sendMessage(from, logo, image)
 } catch {
 reply(mess.ferr)
 }
@@ -3345,7 +3345,7 @@ reply(mess.wait)
 ini_txt = args.join(' ')
 try {
 logo = await getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image, { quoted: sam })
+samu330.sendMessage(from, logo, image)
 } catch {
 reply(mess.ferr)
 }
