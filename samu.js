@@ -2963,11 +2963,10 @@ fakee = fs.readFileSync('./src/img.jpg')
 try {
 get_result = await getJson(`https://api.lolhuman.xyz/api/ytplay2?apikey=${api}&query=${query}`)
 get_result = get_result.result
-short = await getJson(`https://tinyurl.com/api-create.php?url=${get_result.video}`)
-shorta = await getJson(`https://tinyurl.com/api-create.php?url=${get_result.audio}`)
+request(`https://tinyurl.com/api-create.php?url=${get_result.video}`, function (error, response, body) {
 ini_txt = `🧊Titulo : ${get_result.title}\n\n`
-ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${short.body}\n\n`
-ini_txt += `Puede descargar tambien el audio aqui: :\n ${shorta.body}\n`
+ini_txt += `_Si el video no llega, puede descargar por aqui_ :\n ${body}`
+})
 ini_buffer = await getBuffer(get_result.thumbnail)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
 get_video = await getBuffer(get_result.video)
