@@ -68,6 +68,7 @@ const badword = JSON.parse(fs.readFileSync('./src/badword.json'))
 const autostick = JSON.parse(fs.readFileSync('./src/autostick.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
+const antigp = JSON.parse(fs.readFileSync('./src/antigp.json'))
 const simi = JSON.parse(fs.readFileSync('./src/simi.json'))
 const legion = JSON.parse(fs.readFileSync('./src/sm330Leg.json'))
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
@@ -321,6 +322,7 @@ samu330.on('chat-update', async(sam) => {
         const itsMe = senderNumber == botNumber
 	const isBadWord = isGroup ? badword.includes(from) : false
 	const isAntiLink = isGroup ? antilink.includes(from) : false
+	const isAntigp = isGroup ? antigp.includes(from) : false
 	const isAntiMedia = isGroup ? antimedia.includes(from) : false
 	const isAntiFake = isGroup ? antifake.includes(from) : false
 	const isAutoSt = isGroup ? autostick.includes(from) : false
@@ -575,6 +577,38 @@ mentionedJid: [sender]}
 			quoted: fimg, "forwardingScore": 9999, "isForwarded": true
   			})
 			}
+	    	if (isGroup && botAdmin && isBadWord) {
+                        if (bad.includes(messagesC)) {
+                        if (!isAdmin) { 
+                        samu330.updatePresence(from, Presence.composing)
+			var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+                        reply(`Lo siento ${sender.split("@")[0]}, pero aqui no se permiten las malas palabras, serás expulsado en 5 segundos`)
+                        setTimeout( () => {
+                                samu330.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+                        }, 5000)
+                        setTimeout( () => {
+                                samu330.updatePresence(from, Presence.composing)
+                                reply("1 segundo")
+                        }, 4000)
+                        setTimeout( () => {
+                                samu330.updatePresence(from, Presence.composing)
+                                reply("2 segundos")
+                        }, 3000)
+                        setTimeout( () => {
+                                samu330.updatePresence(from, Presence.composing)
+                                reply("3 segundos")
+                        }, 2000)
+                        setTimeout( () => {
+                                samu330.updatePresence(from, Presence.composing)
+                                reply("4 segundos")
+                        }, 1000)
+                        setTimeout( () => {
+                                samu330.updatePresence(from, Presence.composing)
+                                reply("5 segundos")
+                        }, 0)
+				}
+			}
+		}
 		if (isAutoSt && isMedia && isImage) {
 		if (!itsMe) {
                 const encmedia11 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
@@ -641,6 +675,13 @@ mentionedJid: [sender]}
 		.toFormat('webp')                                    
 		.save(`./sticker/${sender}.webp`)
 		}}
+	    	if (messagesC.includes("chat.whatsapp")){
+		        if (!isGroup) return
+		        if (!isAntigp) return
+		        if (isAdmin) return reply('Tienes suerte, eres admin y no te sacaré')
+			reply(`Link detectado ${sender.split("@")[0]} serás expulsado de este grupo`)
+			samu330.groupRemove(from, [sender])
+		}
 
 	    
 	    ///////////////////////FUNCIONES CREADAS POR SAMU330\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -747,7 +788,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.09* ]======
+======[ *Versión 3.10* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -942,6 +983,9 @@ ${bodyM} ${samu}${prefix}antimedia${samu}
 ${bodyM} ${samu}${prefix}antibad${samu}
 ${bodyM} ${samu}${prefix}autostick{samu}
 ${bodyM} ${samu}${prefix}antileg{samu}
+
+${bodyM} ${samu}${prefix}antigp${samu}
+_Para prohibir los links de otros grupos_
 
 ================================
 *🔞PARA ACTIVAR LOS COMANDOS +18*:
@@ -1927,6 +1971,8 @@ _${tik.result.audio}_`
 videot = getBuffer(`${tik.result.nowatermark}`)
 samu330.sendMessage(from, videot, video, {quoted: fvid, caption: tok, mimetype: Mimetype.gif, duration: 9999999999})
 break
+		
+
 			
 case 'spam':
 if (!itsMe) return reply('Este comando es solo para 🐉Samu330🪀')
@@ -3902,6 +3948,26 @@ break
 						antilink.splice(ini, 1)
 						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
 						reply('Anti-link desactivado ✔️')
+					} else {
+						reply('*1 para activar, 0 para desactivar*')
+					}
+					break
+					case 'antigp':
+                                	if (!isGroup) return reply(mess.only.group)
+					if (!isAdmin) return reply(mess.only.admin)
+					if (!botAdmin) return reply(mess.only.Badmin)
+					if (args.length < 1) return reply('escriba *1* para activar')
+					if (args[0] === '1') {
+						if (isAntigp) return reply('Ya esta activo')
+						antigp.push(from)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antigp))
+						reply('*Anti-link de grupos activado ✔️*')
+						samu330.sendMessage(from,`Los miembros que manden un link de otro grupo serán eliminados`, text)
+					} else if ((args[0]) === '0') {
+						var ini = antigp.indexOf(from)
+						antigp.splice(ini, 1)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antigp))
+						reply('Anti-link de grupos desactivado ✔️')
 					} else {
 						reply('*1 para activar, 0 para desactivar*')
 					}
