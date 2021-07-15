@@ -3889,7 +3889,7 @@ break
                                         if (!isOwner) return reply(mess.only.ownerB)
                                         if (!isAdmin) return reply(mess.only.admin)
                                         if (args.length < 1) return reply( `Escribe ${prefix}addbad [palabra]. Ejemplo: ${prefix}addbad pto`)
-                                        const bw = body.slice(12)
+                                        const bw = q
                                         bad.push(bw)
                                         fs.writeFileSync('./src/bad.json', JSON.stringify(bad))
                                         reply('Se añadio con exito')
@@ -3900,7 +3900,7 @@ break
                                         if (!isOwner) return reply(mess.only.ownerB)
                                         if (!isAdmin) return reply(mess.only.admin)
                                         if (args.length < 1) return reply( `Escribe ${prefix}delbad [palabra]. Ejemplo: ${prefix}delbad bego`)
-                                        let dbw = body.slice(12)
+                                        let dbw = q
                                         bad.splice(dbw)
                                         fs.writeFileSync('./src/bad.json', JSON.stringify(bad))
                                         reply('Se quito con exito')
