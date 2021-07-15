@@ -788,7 +788,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.10* ]======
+======[ *Versión 3.11* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -1045,7 +1045,7 @@ text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li
 ${bodyM} ${prefix}play *(Descarga de musica)*
 ${bodyM} ${prefix}playvid *(Descarga de videos por nombre)*
 ${bodyM} ${prefix}ig *(Fotos y videos de Instagram)*
-${bodyM} ${prefix}tik *(videos de TikTok)*
+${bodyM} ${prefix}twit *(videos de Twitter)*
 ${bodyM} ${prefix}ytmp3 *(Descarga de musica por link)*
 ${bodyM} ${prefix}ytmp4 *(Descarga de videos por link)*
 ${bodyM} ${prefix}fb _(Link de FaceBook)_
@@ -1956,10 +1956,11 @@ break
 case 'twit':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!q) return reply('Y el link de twiter??')
+reply('*Espera un mometo porfavor...*')
 twi = await getJson(`https://api.lolhuman.xyz/api/twitter?apikey=273a9e8195c27ba24abd53e3&url=${q}`)
 reply(`*° Titulo:* ${twi.title}\n*° Calidad:* ${twi.result[2].resolution}\n\n_Si el video no llega, descarge por aqui:_\n${twi.result[2].link}`)
 videotwit = getBuffer(twi.result[2].link)
-samu330.sendMesaage(from, videotwit, video, {quoted: fvid})
+samu330.sendMessage(from, videotwit, video, {quoted: fvid})
 break
 			
 case 'tik':
