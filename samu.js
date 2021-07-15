@@ -1960,7 +1960,7 @@ reply('*Espera un mometo porfavor...*')
 twi = await getJson(`https://api.lolhuman.xyz/api/twitter?apikey=273a9e8195c27ba24abd53e3&url=${q}`)
 reply(`*° Titulo:* ${twi.title}\n*° Calidad:* ${twi.result[2].resolution}\n\n_Si el video no llega, descarge por aqui:_\n${twi.result[2].link}`)
 videotwit = getBuffer(twi.result[2].link)
-samu330.sendMessage(from, videotwit, video, {quoted: fvid})
+samu330.sendMessage(from, videotwit, video)
 break
 			
 case 'tik':
