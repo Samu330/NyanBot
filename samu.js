@@ -1959,27 +1959,7 @@ if (!q) return reply('Y el link de twiter??')
 reply('*Espera un mometo porfavor...*')
 twi = await getJson(`https://api.lolhuman.xyz/api/twitter?apikey=273a9e8195c27ba24abd53e3&url=${q}`)
 reply(`*° Titulo:* ${twi.title}\n*° Calidad:* ${twi.result[2].resolution}\n\n_Si el video no llega, descarge por aqui:_\n${twi.result[2].link}`)
-videotwit = getBuffer(twi.result[2].link)
-samu330.sendMessage(from, videotwit, video)
-break
-			
-case 'tik':
-if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-if (args.length == 0) return reply(`Y el link de TikTok¿`)
-tik = await getJson(`https://fxc7-api.herokuapp.com/api/download/tiktok?apikey=Fxc7&url=${q}`)
-tok = `[ *🐱‍👤Samu330* ]
-_Video enviandose..._
-
-*Video sin marca de agua:*
-_${tik.result.nowatermark}_
-
-*Video con marca de agua:*
-_${tik.result.watermark}_
-
-*Audio:*
-_${tik.result.audio}_`
-videot = getBuffer(`${tik.result.nowatermark}`)
-samu330.sendMessage(from, videot, video, {quoted: fvid, caption: tok, mimetype: Mimetype.gif, duration: 9999999999})
+sendFileFromUrl(twi.result[2].link, video, {quoted: fvid})
 break
 		
 
