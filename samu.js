@@ -1952,6 +1952,15 @@ sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', durati
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
 }}
 break
+		
+case 'twit':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!q) return reply('Y el link de twiter??')
+twi = await getJson(`https://api.lolhuman.xyz/api/twitter?apikey=273a9e8195c27ba24abd53e3&url=${q}`)
+reply(`*° Titulo:* ${twi.title}\n*° Calidad:* ${twi.result[2].resolution}\n\n_Si el video no llega, descarge por aqui:_\n${twi.result[2].link}`)
+videotwit = getBuffer(twi.result[2].link)
+samu330.sendMesaage(from, videotwit, video, {quoted: fvid})
+break
 			
 case 'tik':
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2211,14 +2220,6 @@ break
 case 'owner':
 case 'creador':
 await wa.sendContact(from, owner, "🥇𝑺𝒂𝒎𝒖𝟑𝟑𝟎🛺💨")
-break
-	
-case 'tiktok':
-url = args.join(" ")
-result = await ssstik(url)
-console.log(result)
-buf = await getBuffer(`${result.videonowm}`)
-samu330.sendMessage(from, buf, MessageType.video, {mimetype: 'video/mp4', filename: `tiktok.mp4`, quoted: sam, caption: `${result.text}\n\nUrl music : ${result.music}`})
 break
 			
 case 'smeme':
@@ -3431,7 +3432,7 @@ case 'wpsearch':
 
 if (args.length == 0) return reply(`Example: ${prefix + command} gatos`)
 query = args.join(' ')
-get_result = await fetchJson(`https://api.lolhuman.xyz/api/wallpaper?apikey=${api}&query=${query}`)
+get_result = await getJson(`https://api.lolhuman.xyz/api/wallpaper?apikey=${api}&query=${query}`)
 ini_buffer = await getBuffer(get_result.result)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko })
 
