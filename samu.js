@@ -1003,6 +1003,7 @@ ${bodyM} ${prefix}+18 1/0
 *Para que el bot entre a tu grupo, usa el siguiente comando:*
 	${prefix}entrabot *(Link del grupo)*
 
+${bodyM} ${prefix}inspeccionar _(Requiere link de un grupo)_
 ${bodyM} ${prefix}nuevogrupo
 ${bodyM} ${prefix}grupo abrir/cerrar
 ${bodyM} ${prefix}getpic
@@ -1757,13 +1758,17 @@ let insSm = `_*Inspección By Samu330💎*_
 🪀 *Id* : _${id}_
 
 👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
+
 *° Nombre del Grupo:* _${subject}_
+
 *° Fecha de creacion:* ${Date(creation * 1000)}
 
 *° Total de Miembros:* ${size}
+
 ${desc ? `*Descripcion:* ${desc}` : 'Desc : Sin descripcion'}
 
 *° Id de la Descripcion:* ${descId}
+
 ${descOwner ? `° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n\n*Fecha* : ${descTime ? `${Date(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
 for ( let y of participants) {
 insSm += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Si' : 'No'}\n`
