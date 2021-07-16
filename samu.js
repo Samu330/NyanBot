@@ -1770,6 +1770,37 @@ jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid: jids}})
 break
+		
+		case 'inspect':
+            try {
+            if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply('')
+            if (!q) return reply('masukan link wa')
+            cos = args[0]
+            var net = cos.split('https://chat.whatsapp.com/')[1]
+            if (!net) return reply('pastikan itu link https://whatsapp.com/')
+            jids = []
+            let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
+            json: ["query", "invite",net],
+            expect200:true })
+            let par = `Id : ${id}
+${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
+Nama Gc : ${subject}
+Gc dibuat Tanggal : ${formatDate(creation * 1000)}
+Jumlah Member : ${size}
+${desc ? `Desc : ${desc}` : 'Desc : tidak ada'}
+Id desc : ${descId}
+${descOwner ? `Desc diubah oleh : @${descOwner.split('@')[0]}` : 'Desc diubah oleh : -'}\n*Tanggal* : ${descTime ? `${formatDate(descTime * 1000)}` : '-'}\n\n*Kontak yang tersimpan*\n`
+           for ( let y of participants) {
+             par += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Ya' : 'Tidak'}\n`
+             jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
+             }
+             jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+             jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+             samu330.sendMessage(from,par,text,{quoted:sam,contextInfo:{mentionedJid:jids}})
+             } catch {
+             reply('Link error')
+             }
+             break
 
 //encode y decode by Samu
 case 'code':
