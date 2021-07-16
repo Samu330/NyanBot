@@ -1745,8 +1745,8 @@ break
 case 'inspeccionar':
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply('*Este no es un link de WhatsApp...*')
 if (!q) return reply('*🙄Y el link??...*')
-samu330 = args[0]
-var net = samu330.split('/chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i') []
+sp = args[0]
+var net = sp.split('https://chat.whatsapp.com/')[1]
 if (!net) return reply('Porfavor aegurate que el link sea de un grupo de whatsapp: *https://whatsapp.com/....*')
 jids = []
 let { id1, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
