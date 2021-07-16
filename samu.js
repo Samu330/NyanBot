@@ -1665,20 +1665,17 @@ break
 case 'spoti':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!q) return reply('Porfavor escribe un titulo de una musica para buscar')
-let spo = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
-let tifi = ``
-for (let s of spo) {
-tifi += `*° ID:* ${s.id}
-*° Link:* ${s.link}
-*° Titulo:* ${s.title}
-*° Artistas:* ${s.artists}
-*° Duracion:* ${s.duration}
-*° Popularidad:* ${s.popularity}
+s = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)let tifi = ``
+reply(`💠Busqueda realizada por *Samu330🍒*
 
-____________________________________`
-}
-var arbol = tifi.trim()
-reply(`💠Busqueda realizada por *Samu330🍒*\n\n${arbol}`)
+° ID:* ${s.id[1]}
+*° Link:* ${s.link[1]}
+*° Titulo:* ${s.title[1]}
+*° Artistas:* ${s.artists[1]}
+*° Duracion:* ${s.duration[1]}
+*° Popularidad:* ${s.popularity[1]}
+
+____________________________________`)
 break
 			
 case 'imagen':
