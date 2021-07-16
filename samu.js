@@ -1746,7 +1746,7 @@ case 'inspeccionar':
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply('*Este no es un link de WhatsApp...*')
 if (!q) return reply('*🙄Y el link??...*')
 samu330 = args[0]
-var net = samu330.split('/chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i') || []
+var net = samu330.split('/chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i') []
 if (!net) return reply('Porfavor aegurate que el link sea de un grupo de whatsapp: *https://whatsapp.com/....*')
 jids = []
 let { id1, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
@@ -1768,6 +1768,7 @@ jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
 }
 jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+reply(insSm)
 samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid: jids}})
 break
 		
