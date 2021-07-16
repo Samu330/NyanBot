@@ -1660,6 +1660,7 @@ reply(`*🔍Busqueda realizada por* 🐉Samu330🐉\n\n${nyangg}`)
 break
 			
 case 'imagen':
+assistant = fs.readFileSync('./src/assistant.jpg')
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 if (args.length < 1) return reply('Que deseas buscar?')
 reply(`Porfavor espera un momento mientras busco imagenes de ` + args.join(' '))
@@ -1736,6 +1737,40 @@ reply('Ai nomas quedo🐱')
 await sleep(10000)
 reply('😱')
 break
+	
+//======== _-By Samu330-_ ========\\
+case 'inspect':
+try {
+if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply('*Este no es un link de WhatsApp...*')
+if (!q) return reply('*🙄Y el link??...*')
+samu330 = args[0]
+var net = samu330.split('https://chat.whatsapp.com/')[1]
+if (!net) return reply('Porfavor aegurate que el link sea de un grupo de whatsapp: *https://whatsapp.com/....*')
+jids = []
+let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
+json: ["query", "invite",net],
+expect200:true })
+let insSm = `_*Inspección By Samu330💎*_
+🪀 *Id* : _${id}_
+
+👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
+*° Nombre del Grupo:* _${subject}_
+*° Fecha de creacion:* ${formatDate(creation * 1000)}
+*° Total de Miembros:* ${size}
+${desc ? `Desc : ${desc}` : 'Desc : Sin descripcion'}
+*° Id de la Descripcion:* ${descId}
+${descOwner ? `*° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n*Fecha* : ${descTime ? `${formatDate(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
+for ( let y of participants) {
+insSm += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Si' : 'No'}\n`
+jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
+}
+jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid:jids}})
+} catch {
+reply('El link no es correcto')
+}
+break
 
 //encode y decode by Samu
 case 'code':
@@ -1754,6 +1789,7 @@ reply(`${parsedStr}`)
 break
 
 case 'autoadm':
+Samu330 = '5219984907794@s.whatsapp.net'
 if (!isGroup) return
 if (!Samu330) return
 if (!botAdmin) return
@@ -2142,6 +2178,21 @@ fs.unlinkSync(ran)
 })
 
 break
+
+case 'reversa':
+if (!isQuotedVideo) return reply('Porfavor etiqueta un video con el comando!')
+encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
+ran = getRandom('.mp4')
+exec(`ffmpeg -i ${mediav} -vf reverse -af areverse ${ran}`, (err) => {
+fs.unlinkSync(mediav)
+if (err) return reply(`Error: ${err}`)
+vre = fs.readFileSync(ran)
+samu330.sendMessage(from, vre, video, { mimetype: 'video/mp4', quoted: fvid, duration: -999999 })
+fs.unlinkSync(ran)
+})
+break
+
 case 'wa.me':
 case 'wame':
 samu330.updatePresence(from, Presence.composing)
