@@ -3519,9 +3519,9 @@ if (args.length < 1) return reply('Etiqueta a alguien para utilizar su foto!!!')
 if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply('Etiqueta a alguien')
 mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
 id2 = id
-let {jid, id2, notify } = groupMembers.find(x => x.jid === mentioned)
+let {jid, id3, notify } = groupMembers.find(x => x.jid === mentioned)
 try {
-pp = await samu330.getProfilePicture(id2)
+pp = await samu330.getProfilePicture(id3)
 buffer = await getBuffer(pp)
 samu330.updateProfilePicture(botNumber, buffer)
 mentions(`La foto de perfil se actualizó correctamente con la foto de perfil de: @${id.split('@')[0]}`, [jid], true)
