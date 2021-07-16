@@ -1757,11 +1757,11 @@ let insSm = `_*Inspección By Samu330💎*_
 
 👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
 *° Nombre del Grupo:* _${subject}_
-*° Fecha de creacion:* ${formatDate(creation * 1000)}
+*° Fecha de creacion:* ${Date(creation * 1000)}
 *° Total de Miembros:* ${size}
 ${desc ? `Desc : ${desc}` : 'Desc : Sin descripcion'}
 *° Id de la Descripcion:* ${descId}
-${descOwner ? `*° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n*Fecha* : ${descTime ? `${formatDate(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
+${descOwner ? `*° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n*Fecha* : ${descTime ? `${Date(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
 for ( let y of participants) {
 insSm += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Si' : 'No'}\n`
 jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
