@@ -905,6 +905,9 @@ mda = `
 ╠  ◈  𝙈𝙀𝙉𝙐⁪⁡ 𝘿𝙀 𝙈𝙀𝘿𝙄𝘼 ◈  ╣
 ╠════════════════╝
 ║
+╠ *●${prefix}reversa*
+║ _Etiqueta un video_
+║
 ╠ *●${prefix}imagen*
 ║ _Búsqueda de imágenes_
 ║ _en Google_
@@ -1739,8 +1742,7 @@ reply('😱')
 break
 	
 //======== _-By Samu330-_ ========\\
-case 'inspect':
-try {
+case 'inspeccionar':
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply('*Este no es un link de WhatsApp...*')
 if (!q) return reply('*🙄Y el link??...*')
 samu330 = args[0]
@@ -1766,10 +1768,7 @@ jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
 }
 jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
-samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid:jids}})
-} catch {
-reply('El link no es correcto')
-}
+samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid: jids}})
 break
 
 //encode y decode by Samu
@@ -2181,6 +2180,7 @@ break
 
 case 'reversa':
 if (!isQuotedVideo) return reply('Porfavor etiqueta un video con el comando!')
+reply('*Espera un momento porfavor....*')
 encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
 ran = getRandom('.mp4')
