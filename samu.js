@@ -1749,11 +1749,11 @@ samu330 = args[0]
 var net = samu330.split('https://chat.whatsapp.com/')[1]
 if (!net) return reply('Porfavor aegurate que el link sea de un grupo de whatsapp: *https://whatsapp.com/....*')
 jids = []
-let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
+let { id1, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
 json: ["query", "invite",net],
 expect200:true })
 let insSm = `_*Inspección By Samu330💎*_
-🪀 *Id* : _${id}_
+🪀 *Id* : _${id1}_
 
 👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
 *° Nombre del Grupo:* _${subject}_
