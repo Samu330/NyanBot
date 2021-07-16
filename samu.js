@@ -1748,28 +1748,29 @@ if (!q) return reply('*🙄Y el link??...*')
 sp = args[0]
 var net = sp.split('https://chat.whatsapp.com/')[1]
 if (!net) return reply('Porfavor aegurate que el link sea de un grupo de whatsapp: *https://whatsapp.com/....*')
-jids = []
-let { id1, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
+let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
 json: ["query", "invite", net],
 expect200:true })
 let insSm = `_*Inspección By Samu330💎*_
-🪀 *Id* : _${id1}_
+🪀 *Id* : _${id}_
 
 👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
 *° Nombre del Grupo:* _${subject}_
 *° Fecha de creacion:* ${Date(creation * 1000)}
+
 *° Total de Miembros:* ${size}
-${desc ? `Desc : ${desc}` : 'Desc : Sin descripcion'}
+${desc ? `*Descripcion:* ${desc}` : 'Desc : Sin descripcion'}
+
 *° Id de la Descripcion:* ${descId}
-${descOwner ? `*° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n*Fecha* : ${descTime ? `${Date(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
+${descOwner ? `° Descripcion cambiada por @${descOwner.split('@')[0]}` : 'Descripcion cambiada por : -'}\n\n*Fecha* : ${descTime ? `${Date(descTime * 1000)}` : '-'}\n\n*° Contactos agendados*\n`
 for ( let y of participants) {
 insSm += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Si' : 'No'}\n`
 jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
 }
 jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
-reply(insSm)
-samu330.sendMessage(from, insSm, text, {quoted: fliveLoc, contextInfo: {mentionedJid: jids}})
+let ppin = await samu330.getProfilePicture(id).catch(console.error)
+samu330.sendMessage(from, ppin, image, {quoted: fliveLoc, caption: insSm})
 break
 		
 
@@ -3504,9 +3505,10 @@ if (!isGroup) return reply(mess.only.group)
 if (args.length < 1) return reply('Etiqueta a alguien para utilizar su foto!!!')
 if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply('Etiqueta a alguien')
 mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
-let {jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
+id2 = id
+let {jid, id2, notify } = groupMembers.find(x => x.jid === mentioned)
 try {
-pp = await samu330.getProfilePicture(id)
+pp = await samu330.getProfilePicture(id2)
 buffer = await getBuffer(pp)
 samu330.updateProfilePicture(botNumber, buffer)
 mentions(`La foto de perfil se actualizó correctamente con la foto de perfil de: @${id.split('@')[0]}`, [jid], true)
