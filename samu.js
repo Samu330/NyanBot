@@ -1771,7 +1771,7 @@ jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
 }
 jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
-samu330.sendMessage(from, insSm, text, {quoted: fliveLoc})
+samu330.sendMessage(from, insSm, MessageType.text, {quoted: fliveLoc})
 break
 		
 
