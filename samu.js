@@ -3062,6 +3062,13 @@ await samu330.sendMessage(from, get_video, video, { mimetype: Mimetype.gif, dura
 reply(`*Ocurrio un problema, la key vencio, puedes descargar videos de la siguiente manera:*\n\nBusca el video que quieras descargar con el comando *${prefix}ytsearch*\nCopias el link del video y descargas con: *${prefix}ytmp4*`)
 }
 break
+case 'online':
+        		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
+			    let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
+			    samu330.sendMessage(from, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, MessageType.text, { quoted: fdoc,
+  			  contextInfo: { mentionedJid: online }
+			    })
+				break
 case 'soyyo':
 if (!isRegister) return reply(mess.only.usrReg)
 try {
