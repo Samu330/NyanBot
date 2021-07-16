@@ -44,7 +44,6 @@ const samuGgImg = require('g-i-s');
 const {y2mateA, y2mateV} = require('./lib/y2mate.js')
 const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
-const {fotoIg, videoIg} = require('./lib/ig.js')
 const {fbDown} = require('./lib/fb.js')
 const conn = require("./lib/connect")
 const msg = require("./lib/message")
@@ -1662,6 +1661,25 @@ ggsm += `
 var nyangg = ggsm.trim()
 reply(`*🔍Busqueda realizada por* 🐉Samu330🐉\n\n${nyangg}`)
 break
+		
+case 'spoti':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!q) return reply('Porfavor escribe un titulo de una musica para buscar')
+spo = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
+let tifi = ``
+for (let s of spo) {
+tifi += `*° ID:* ${s.id}
+*° Link:* ${s.link}
+*° Titulo:* ${s.title}
+*° Artistas:* ${s.artists}
+*° Duracion:* ${s.duration}
+*° Popularidad:* ${s.popularity}
+
+____________________________________`
+}
+var arbol = tifi.trim()
+reply(`💠Busqueda realizada por *Samu330🍒*\n\n${arbol}`)
+break
 			
 case 'imagen':
 assistant = fs.readFileSync('./src/assistant.jpg')
@@ -2006,7 +2024,13 @@ reply(`*° Titulo:* ${twi.title}\n*° Calidad:* ${twi.result[2].resolution}\n\n_
 sendFileFromUrl(twi.result[2].link, video, {quoted: fvid, caption: '🍒Samu330 | NyanBot💠', duration: 999999999})
 break
 		
-
+case 'ig':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!q) return reply('Y el link de Instagram??')
+ig = await getJson(`https://api.lolhuman.xyz/api/instagram?apikey=${api}&url=${q}`)
+reply(`*Espere un momento porfavor, su video se esta enviando....*`)
+sendFileFromUrl(ig.result, video, {quoted: fvid, caption: '🍒Samu330 | NyanBot💠', duration: 999999999})
+break
 			
 case 'spam':
 if (!itsMe) return reply('Este comando es solo para 🐉Samu330🪀')
@@ -2838,28 +2862,6 @@ samu330.sendMessage(from, pok, image, {
   reply(mess.ferr)
 }
 break
-case 'ig':
-case 'instagram':
-if (args.length < 1) return reply('Y el link? ')
-if(!isUrl(args[0]) && !args[0].includes('instagram')) return reply(mess.error.Iv)
-teks = args.join(' ')
-if (!teks.endsWith('-video') && !teks.endsWith('-foto')) return reply('Escriba  -foto o -video dependiendo del archivo que quiera descargar')
-reply(mess.wait)
-if (teks.endsWith('-foto')) {
-igl = teks.replace('-foto',"") 
-res = await fotoIg(igl).catch(e => {
-  reply(mess.ferr)
-})
-sendFileFromUrl(res[0].foto, image, {quoted: sam})
-}
-if (teks.endsWith('-video')) {
-igl = teks.replace('-video',"")
-res = await videoIg(teks).catch(e => {
-  reply(mess.ferr)
-})
-sendFileFromUrl(res[0].video, video, {mimetype: 'video/mp4', quoted: sam})
-}
-break
 case 'facebook':
 case 'fb':
 if (args.length < 1) return reply('Y el link? ')
@@ -3063,12 +3065,12 @@ reply(`*Ocurrio un problema, la key vencio, puedes descargar videos de la siguie
 }
 break
 case 'online':
-        		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
-			    let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
-			    samu330.sendMessage(from, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, MessageType.text, { quoted: fdoc,
-  			  contextInfo: { mentionedJid: online }
-			    })
-				break
+let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
+let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
+samu330.sendMessage(from, 'Lista de usuarios en linea:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, MessageType.text, { quoted: fdoc,
+contextInfo: { mentionedJid: online }
+})
+break
 case 'soyyo':
 if (!isRegister) return reply(mess.only.usrReg)
 try {
