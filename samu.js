@@ -1753,6 +1753,7 @@ let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOw
 json: ["query", "invite", net],
 expect200:true })
 let insSm = `_*Inspección By Samu330💎*_
+
 🪀 *Id* : _${id}_
 
 👤 *Creador del grupo:* ${owner ? `Owner : @${owner.split('@')[0]}` : 'Owner : -'}
@@ -1770,8 +1771,7 @@ jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
 }
 jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
 jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
-let ppin = await samu330.getProfilePicture(id).catch(console.error)
-samu330.sendMessage(from, ppin, image, {quoted: fliveLoc, caption: insSm})
+samu330.sendMessage(from, insSm, text, {quoted: fliveLoc})
 break
 		
 
