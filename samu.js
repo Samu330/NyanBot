@@ -1665,7 +1665,7 @@ break
 case 'spoti':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!q) return reply('Porfavor escribe un titulo de una musica para buscar')
-spo = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
+let spo = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
 let tifi = ``
 for (let s of spo) {
 tifi += `*° ID:* ${s.id}
