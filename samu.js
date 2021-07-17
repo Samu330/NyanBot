@@ -904,6 +904,9 @@ mda = `
 ╠  ◈  𝙈𝙀𝙉𝙐⁪⁡ 𝘿𝙀 𝙈𝙀𝘿𝙄𝘼 ◈  ╣
 ╠════════════════╝
 ║
+╠ *●${prefix}caras*
+║ _Etiqueta una imagen para detectar caras_
+║
 ╠ *●${prefix}reversa*
 ║ _Etiqueta un video_
 ║
@@ -1660,22 +1663,6 @@ ggsm += `
 }
 var nyangg = ggsm.trim()
 reply(`*🔍Busqueda realizada por* 🐉Samu330🐉\n\n${nyangg}`)
-break
-		
-case 'spoti':
-if (!isRegister) return reply(mess.only.usrReg)
-if (!q) return reply('Porfavor escribe un titulo de una musica para buscar')
-s = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
-reply(`💠Busqueda realizada por *Samu330🍒*
-
-° ID:* ${s[1].id}
-*° Link:* ${s[1].link}
-*° Titulo:* ${s[1].title}
-*° Artistas:* ${s[1].artists}
-*° Duracion:* ${s[1].duration}
-*° Popularidad:* ${s[1].popularity}
-
-____________________________________`)
 break
 			
 case 'imagen':
@@ -3820,9 +3807,21 @@ fs.writeFileSync('wasted.jpg', anu1)
 samu330.sendMessage(from, fs.readFileSync('wasted.jpg'), MessageType.image)
 } else {
 reply('Manda la foto!');
-}
-				
+}			
 break
+case 'caras':
+var imgbb = require('imgbb-uploader')
+if (((isMedia && !sam.message.videoMessage) || isQuotedImage) && args.length == 0) {
+cara = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam;
+reply(mess.wait);
+samsam = await samu330.downloadAndSaveMediaMessage(cara);
+anu = await imgbb('20a14861e4f7591f3dc52649cb07ae02', samsam);
+resultc = `${anu.display_url}`;
+caras = await getBuffer(`https://api.lolhuman.xyz/api/facedetect?apikey=${api}&img=${resultc}`)
+fs.writeFileSync('caras.jpg', caras)
+samu330.sendMessage(from, fs.readFileSync('caras.jpg'), MessageType.image, {quoted: fimg, caption: '💠Samu330 | NyanBot💎'})
+break
+		
 case 'ger':
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 var imgbb = require('imgbb-uploader')
