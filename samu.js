@@ -1668,12 +1668,12 @@ if (!q) return reply('Porfavor escribe un titulo de una musica para buscar')
 s = await getJson(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${api}&query=${q}`)
 reply(`💠Busqueda realizada por *Samu330🍒*
 
-° ID:* ${s.id[1]}
-*° Link:* ${s.link[1]}
-*° Titulo:* ${s.title[1]}
-*° Artistas:* ${s.artists[1]}
-*° Duracion:* ${s.duration[1]}
-*° Popularidad:* ${s.popularity[1]}
+° ID:* ${s[1].id}
+*° Link:* ${s[1].link}
+*° Titulo:* ${s[1].title}
+*° Artistas:* ${s[1].artists}
+*° Duracion:* ${s[1].duration}
+*° Popularidad:* ${s[1].popularity}
 
 ____________________________________`)
 break
