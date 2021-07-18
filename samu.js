@@ -787,7 +787,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.12* ]======
+======[ *Versión 3.13* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -986,8 +986,8 @@ text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li
 ${bodyM} ${samu}${prefix}antilink${samu}
 ${bodyM} ${samu}${prefix}antimedia${samu}
 ${bodyM} ${samu}${prefix}antibad${samu}
-${bodyM} ${samu}${prefix}autostick{samu}
-${bodyM} ${samu}${prefix}antileg{samu}
+${bodyM} ${samu}${prefix}autostick${samu}
+${bodyM} ${samu}${prefix}antileg${samu}
 
 ${bodyM} ${samu}${prefix}antigp${samu}
 _Para prohibir los links de otros grupos_
@@ -3618,7 +3618,7 @@ break
 case 'entrabot':
 linkgp = args.join(' ')
 if (!linkgp) return reply('Y el link del grupo... onta!?')
-		
+samunum = '5219984907794@swahtsapp.net'		
 var eb = q.split('https://chat.whatsapp.com/')[1]
 var { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await samu330.query({ 
 json: ["query", "invite", eb],
@@ -3628,7 +3628,7 @@ samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Ya entre al grupo😉')
-samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_, me an designado como *BOT* para este grupo🤖\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text)
+samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ], me han asignado como *BOT* para este grupo *(${subject})*\n\n*Informacion de este grupo:\n\👑Creador: ${owner}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: fliveLoc})
 break
 case 'clearall':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
