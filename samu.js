@@ -3628,7 +3628,7 @@ samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Ya entre al grupo😉')
-samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ], me han asignado como *BOT* para este grupo *(${subject})*\n\n*Informacion de este grupo:\n\👑Creador: ${owner}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: fliveLoc})
+samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ], @${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(${subject})*\n\n*Informacion de este grupo:*\n\👑Creador: ${owner}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: fliveLoc})
 break
 case 'clearall':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
