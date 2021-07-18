@@ -335,7 +335,7 @@ samu330.on('chat-update', async(sam) => {
 	const q = args.join(' ')
 	var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
 	const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
-	const jid = sender
+	jid = sender
 	const is = budy.slice(0).trim().split(/ +/).shift().toLowerCase()
 	const Smname = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
         const mentionByTag = type == "extendedTextMessage" && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.mentionedJid : []
