@@ -3190,6 +3190,14 @@ iwant = await getJson(`${nopor}`, {method: 'get'})
 you = await getBuffer(`${iwant.result}`)
 samu330.sendMessage(from, you, image, {quoted: fvid, caption: '🍒', sendEphemeral: true})
 break
+		
+case 'pdf':
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+reply('*Espera un momento....*')
+pdf = await getJson(`https://api.lolhuman.xyz/api/nhentaipdf/344253?apikey=${api}`)
+sendFileFromUrl(pdf, document, {quoted: ftoko, mimetype: 'application/pdf', tittle: '📚Samu330 | NyanBot🍒', pageCount: 999999999, jpegThumbnail: fs.readFileSync(`./src/fake.jpg`)})
+break
 
 
 case 'pussy':
@@ -3777,7 +3785,7 @@ reply('*Modo antilegiones activado✅*')
 var ini = legion.indexOf(from)
 legion.splice(ini, 1)
 fs.writeFileSync('./src/sm330Leg.json', JSON.stringify(legion))
-reply('Antilegiones activado✔️')
+reply('Antilegiones desactivado✔️')
 } else {
 reply('*1 para activar, 0 para desactivar*')
 }
