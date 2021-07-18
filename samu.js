@@ -3504,7 +3504,7 @@ if (!isGroup) return reply(mess.only.group)
 if (args.length < 1) return reply('Etiqueta a alguien para utilizar su foto!!!')
 if (sam.message.extendedTextMessage === undefined || sam.message.extendedTextMessage === null) return reply('Etiqueta a alguien')
 mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
-let {jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
+let {jid, id1, notify } = groupMembers.find(x => x.jid === mentioned)
 try {
 pp = await samu330.getProfilePicture(id)
 buffer = await getBuffer(pp)
