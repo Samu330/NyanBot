@@ -3196,7 +3196,7 @@ if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
 reply('*Espera un momento....*')
 pdf = await getJson(`https://api.lolhuman.xyz/api/nhentaipdf/344253?apikey=${api}`)
-sendFileFromUrl(pdf.result, document, {quoted: ftoko, mimetype: 'application/pdf', tittle: '📚Samu330 | NyanBot🍒', pageCount: 999999999, jpegThumbnail: fs.readFileSync(`./src/fake.jpg`)})
+sendFileFromUrl(pdf.result, {tittle: '📚Samu330 | NyanBot🍒', pageCount: 999999999}, document, {quoted: ftoko, mimetype: 'application/pdf'})
 break
 
 
