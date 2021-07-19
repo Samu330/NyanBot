@@ -1131,6 +1131,7 @@ ${bodyM} ${prefix}xnxx *(Link de Xnxx.com)*
 ${bodyM} ${prefix}pornode *(Japonesas)*
 ${bodyM} ${prefix}xvid *(Japonesas)*
 ${bodyM} ${prefix}dxvid *(Descarga videos de Xvideos)* _Requiere contraseña_
+${bodyM} ${prefix}pdf *(Nsfw en pdf)*
 
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
 	     🌸 SamịPerry.li 🌸
@@ -3196,7 +3197,7 @@ if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
 reply('*Espera un momento....*')
 pdf = await getJson(`https://api.lolhuman.xyz/api/nhentaipdf/344253?apikey=${api}`)
-sendFileFromUrl(pdf.result, document, {quoted: ftoko, mimetype: 'application/pdf', fileName: '📚Samu330 | NyanBot🍒', pageCount: 9999})
+sendFileFromUrl(pdf.result, fileName: '📚Samu330 | NyanBot🍒', pageCount: 9999, document, {quoted: ftoko, mimetype: 'application/pdf'})
 break
 
 
