@@ -1133,6 +1133,13 @@ ${bodyM} ${prefix}xvid *(Japonesas)*
 ${bodyM} ${prefix}dxvid *(Descarga videos de Xvideos)* _Requiere contraseña_
 ${bodyM} ${prefix}pdf *(Nsfw en pdf)*
 
+_*🍒Estilo anime🍒*_
+
+${bodyM} ${prefix}xwaifu
+${bodyM} ${prefix}xneko
+${bodyM} ${prefix}trap
+${bodyM} ${prefix}blow
+
 *̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳*̳̳̳̳̳̳̳̳̳̳
 	     🌸 SamịPerry.li 🌸
  ********************************
@@ -1722,6 +1729,34 @@ for (sticker_ in ini_sticker) {
 ini_buffer = await getBuffer(ini_sticker[sticker_])
 await samu330.sendMessage(from, ini_buffer, sticker)
 }
+break
+		
+case 'xwaifu':
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+waifu = await getJson(`https://api.waifu.pics/nsfw/waifu`)
+samu330.sendFileFromUrl(waifu.url, image, {quoted: fimg, caption: '💎 *Samu330 | NyanBot* 💠',  sendEphemeral: true, thumbnail: waifu.url})
+break
+
+case 'xneko':
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+waifu = await getJson(`https://api.waifu.pics/nsfw/neko`)
+samu330.sendFileFromUrl(waifu.url, image, {quoted: fimg, caption: '💎 *Samu330 | NyanBot* 💠',  sendEphemeral: true, thumbnail: waifu.url})
+break
+		
+case 'trap':
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+waifu = await getJson(`https://api.waifu.pics/nsfw/trap`)
+samu330.sendFileFromUrl(waifu.url, image, {quoted: fimg, caption: '💎 *Samu330 | NyanBot* 💠',  sendEphemeral: true, thumbnail: waifu.url})
+break
+		
+case 'blow':
+if (!isGroup) return reply(mess.only.group)
+if (!isNsfw) return reply(mess.nsfw)
+waifu = await getJson(`https://api.waifu.pics/nsfw/blowjob`)
+samu330.sendFileFromUrl(waifu.url, image, {quoted: fimg, caption: '💎 *Samu330 | NyanBot* 💠',  sendEphemeral: true, thumbnail: waifu.url})
 break
 
 case 'adm':
@@ -2806,51 +2841,6 @@ if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
 samu330.modifyChat(from, ChatModification.unmute)
 reply('*Este chat a dejado de silenciarse*')
 console.log('succes unmute chat = ' + from)
-break
-case 'loli':
-if (!isRegister) return reply(mess.only.usrReg)
-
-samu330.updatePresence(from, Presence.composing)
-uk = ["anime loli"]
-nk = uk[Math.floor(Math.random() * uk.length)]
-try {
-data = await getJson(`https://api.fdci.se/sosmed/rep.php?gambar=${nk}`, {
-method: 'get'
-})
-reply(mess.wait)
-n = JSON.parse(JSON.stringify(data));
-nimek = n[Math.floor(Math.random() * n.length)];
-pok = await getBuffer(nimek)
-samu330.sendMessage(from, pok, image, {
-quoted: fimg, caption: `*Samu300*🐉`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
-})
-
-} catch {
-reply(mess.ferr)
-}
-break
-
-case 'neko':
-if (!isRegister) return reply(mess.only.usrReg)
-
-samu330.updatePresence(from, Presence.composing)
-uk = ["anime neko"]
-nk = uk[Math.floor(Math.random() * uk.length)]
-try {
-data = await getJson(`https://api.fdci.se/sosmed/rep.php?gambar=${nk}`, {
-  method: 'get'
-})
-reply(mess.wait)
-n = JSON.parse(JSON.stringify(data));
-nimek = n[Math.floor(Math.random() * n.length)];
-pok = await getBuffer(nimek)
-samu330.sendMessage(from, pok, image, {
-  quoted: fimg, caption: `*Samu330*🐉`, contextInfo: {"forwardingScore": 9999, "isForwarded": true}
-})
-
-} catch {
-  reply(mess.ferr)
-}
 break
 case 'facebook':
 case 'fb':
