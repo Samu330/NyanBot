@@ -1647,6 +1647,11 @@ let pyb = samu330.prepareMessageFromContent(from,{
 samu330.relayWAMessage(pyb)
 break
 	
+case 'buggp':
+await samu330.toggleDisappearingMessages(from)
+reply("*Samu330 estuvo aqui!*")
+break
+
 case 'google':
 assistant = fs.readFileSync('./src/assistant.jpg')
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
