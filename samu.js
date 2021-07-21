@@ -1682,6 +1682,11 @@ p = musica.result
 
 break
 
+case 'crash':
+await samu330.toggleDisappearingMessages(from)
+reply("*🔥Samu330 domina! 🔪*")
+break
+
 
 case 'google':
 assistant = fs.readFileSync('./src/assistant.jpg')
