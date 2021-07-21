@@ -3605,6 +3605,22 @@ const button = {
 
 await samu330.sendMessage(from, button, MessageType.listMessage)
 break
+	
+case 'p3':
+const buttons = [
+  {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
+  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
+]
+
+const buttonMessage = {
+    contentText: "Hi it's button message",
+    footerText: 'Hello World',
+    buttons: buttons,
+    headerType: 1
+}
+
+samu330.sendMessage(id, buttonMessage, MessageType.buttonsMessage)
+break
 
 case 'public':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
@@ -3649,14 +3665,14 @@ case 'bloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("tag target!")
-await samu330.blockUser (mentionUser, "add")
+await samu330.blockUser (q, "add")
 }
 break
 case 'desbloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("Tag targer!")
-await samu330.blockUser (mentionUser, "remove")
+await samu330.blockUser (q, "remove")
 }
 break
 case 'salir':
