@@ -3586,7 +3586,24 @@ samu330.groupAdd(from, [num])
 console.log('Error :', e)
 return samu330.sendMessage(from, 'Modo privado dice:v', MessageType.text)
 }
+break
+	
+case 'p1':
+const rows = [
+ {title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"},
+ {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
+]
 
+const sections = [{title: "Section 1", rows: rows}]
+
+const button = {
+ buttonText: 'Click Me!',
+ description: "Hello it's list message",
+ sections: sections,
+ listType: 1
+}
+
+await samu330.sendMessage(from, button, MessageType.listMessage)
 break
 
 case 'public':
@@ -3632,17 +3649,15 @@ case 'bloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("tag target!")
-return await wa.blockUser(sender, true)
+await samu330.blockUser (mentionUser, "add")
 }
-await wa.blockUser(sender, true)
 break
 case 'desbloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("Tag targer!")
-return await wa.blockUser(sender, false)
+await samu330.blockUser (mentionUser, "remove")
 }
-await wa.blockUser(sender, false)
 break
 case 'salir':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
