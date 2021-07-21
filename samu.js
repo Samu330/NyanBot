@@ -3603,7 +3603,7 @@ const button = {
  listType: 1
 }
 
-await samu330.sendMessage(from, button, MessageType.listMessage)
+samu330.sendMessage(from, button, MessageType.listMessage)
 break
 	
 case 'p3':
@@ -3619,7 +3619,7 @@ const buttonMessage = {
     headerType: 1
 }
 
-samu330.sendMessage(id, buttonMessage, MessageType.buttonsMessage)
+samu330.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
 break
 
 case 'public':
