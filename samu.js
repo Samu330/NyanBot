@@ -3667,14 +3667,14 @@ case 'bloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("tag target!")
-await samu330.blockUser (q, "add")
+await samu330.blockUser (mentions, "add")
 }
 break
 case 'desbloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("Tag targer!")
-await samu330.blockUser (q, "remove")
+await samu330.blockUser (mentions, "remove")
 }
 break
 case 'salir':
