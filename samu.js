@@ -3664,17 +3664,20 @@ texxt = await msg.stats(totalChat1)
 await wa.sendFakeStatus(from, texxt, "BOT STATS")
 break
 case 'bloquear':
-if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
-if (isGroup) {
-if (mentionUser.length == 0) return await reply("tag target!")
-await samu330.blockUser (mentions, "add")
-}
-break
+samu330.updatePresence(from, Presence.composing)
+if (!isGroup) return reply(mess.only.group)
+if (!isOwner && !itsMe) return reply(mess.only.ownerB)
+samu330.blockUser (`${body.slice(8)}@c.us`, "add")
+samu330.sendMessage(from, `Usuario bloqueado`, MessageType.text, {
+quoted: fliveLoc
+  })
+  break
 case 'desbloquear':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 if (isGroup) {
 if (mentionUser.length == 0) return await reply("Tag targer!")
-await samu330.blockUser (mentions, "remove")
+mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
+await samu330.blockUser (mentioned, "remove")
 }
 break
 case 'salir':
