@@ -354,11 +354,6 @@ samu330.on('chat-update', async(sam) => {
 	const sendMess = (hehe, teks) => {
 	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
   	}
-	
-samu330.on ('CB:Presence', async (json) => {
-console.log(json.id + " presence is " + json.type)
-await samu330.requestPresenceUpdate (from)
-})
 
 	mess = {
 			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
