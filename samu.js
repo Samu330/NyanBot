@@ -145,8 +145,10 @@ await sleep(4000)
 await samu330.blockUser(callerId, "add")
 })
 
-samu330.on ('CB:Presence', async (json) => console.log(json.id + " presence is " + json.type))
-await samu330.requestPresenceUpdate (samu330.groupMetadata(json.jid))
+samu330.on ('CB:Presence', async (json) => {
+console.log(json.id + " presence is " + json.type))
+await samu330.requestPresenceUpdate (samu330.groupMetadata(json.jid)
+})
 
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
