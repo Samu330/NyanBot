@@ -145,11 +145,6 @@ await sleep(4000)
 await samu330.blockUser(callerId, "add")
 })
 
-samu330.on ('CB:Presence', async (json) => {
-console.log(json.id + " presence is " + json.type)
-await samu330.requestPresenceUpdate (json.id)
-})
-
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
 try {
@@ -359,6 +354,11 @@ samu330.on('chat-update', async(sam) => {
 	const sendMess = (hehe, teks) => {
 	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
   	}
+	
+samu330.on ('CB:Presence', async (json) => {
+console.log(json.id + " presence is " + json.type)
+await samu330.requestPresenceUpdate (from)
+})
 
 	mess = {
 			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
