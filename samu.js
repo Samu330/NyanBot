@@ -147,7 +147,7 @@ await samu330.blockUser(callerId, "add")
 
 samu330.on ('CB:Presence', async (json) => {
 console.log(json.id + " presence is " + json.type)
-await samu330.requestPresenceUpdate (json.id))
+await samu330.requestPresenceUpdate (json.id)
 })
 
 samu330.on('group-participants-update', async (anu) => {
