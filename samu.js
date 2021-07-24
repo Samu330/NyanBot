@@ -2691,6 +2691,7 @@ sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median);
 link = `${sam330.display_url}`;
 foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
 sendFileFromUrl(foto, image, {quoted: fimg, caption: '*💠Imagen sin fondo By Samu330💎*'})
+}
 break
 		
 break
