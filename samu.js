@@ -1985,7 +1985,7 @@ const group = await samu330.groupCreate(`${nombregc}`, [sender])
 reply(`*EL GRUPO FUE CREADO CORRECTAMENTE CON EL NOMBRE:*\n\n*${nombregc}*\n\nid del grupo: ${group.gid}`)
 samu330.sendMessage(group.gid, "hello everyone", MessageType.text, {quoted: fliveLoc})
 break
-			
+				
 case 'hoy':
 const momento1 = require('moment-timezone')
 const hora = momento1.tz('America/Mexico_City').format('HH:mm:ss')
@@ -2687,15 +2687,12 @@ if ((isMedia || isQuotedImage)) {
 const encmedianb = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
 const median = await samu330.downloadAndSaveMediaMessage(encmedianb)
 reply(mess.wait)
-keyrmbg = 'bcAvZyjYAjKkp1cmK8ZgQvWH'
-ranp = getRandom('.png')
-await removeBackgroundFromImageFile({path: median, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(res => {
-fs.unlinkSync(median)
-let buffer = Buffer.from(res.base64img, 'base64')
-samu330.sendMessage(from, buffer, image, {quoted: fimg, caption: '©Samu330 | NoBg™'})
-fs.unlinkSync(buffer)
-})
-}
+sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median);
+link = `${sam330.display_url}`;
+foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
+sendFileFromUrl(foto, image, {quoted: fimg, caption: '*💠Imagen sin fondo By Samu330💎*'}
+break
+		
 break
 case 'snobg':
 if ((isMedia || isQuotedImage)) {
