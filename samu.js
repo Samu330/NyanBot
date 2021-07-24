@@ -2697,18 +2697,16 @@ break
 		
 break
 case 'snobg':
+imgbb = require('imgbb-uploader')
 if ((isMedia || isQuotedImage)) {
 const encmedianb1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
 const median1 = await samu330.downloadAndSaveMediaMessage(encmedianb1)
 reply(mess.wait)
-keyrmbg = 'bcAvZyjYAjKkp1cmK8ZgQvWH'
-ranp = getRandom('.png')
-await removeBackgroundFromImageFile({path: median1, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(res => {
-fs.unlinkSync(median1)
-let buffer = Buffer.from(res.base64img, 'base64')
-samu330.sendMessage(from, buffer, sticker, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-fs.unlinkSync(buffer)                                                            
-})                                                                               
+sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median1);
+link = `${sam330.display_url}`;
+foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
+snobg = await getBuffer(`https://docs-jojo.herokuapp.com/api/img-to-webp?image_url=${foto}`)
+samu330.sendMessage(from, snobg, sticker)
 }
 break
 case 'getbio':
