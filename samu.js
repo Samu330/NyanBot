@@ -2281,6 +2281,21 @@ samu330.sendMessage(from, vre, video, { mimetype: 'video/mp4', quoted: fvid, dur
 fs.unlinkSync(ran)
 })
 break
+		
+case 'audioreversa':
+if (!isQuotedAudio) return reply('Porfavor etiqueta un audio con el comando!')
+reply('*Espera un momento porfavor....*')
+encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
+ran = getRandom('.mp3')
+exec(`ffmpeg -i ${mediav} -vf reverse -af areverse ${ran}`, (err) => {
+fs.unlinkSync(mediav)
+if (err) return reply(`Error: ${err}`)
+vre = fs.readFileSync(ran)
+samu330.sendMessage(from, vre, video, { mimetype: 'video/mp3', ptt: true, quoted: fvid, duration: -999999 })
+fs.unlinkSync(ran)
+})
+break
 
 case 'wa.me':
 case 'wame':
