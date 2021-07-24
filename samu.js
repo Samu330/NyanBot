@@ -2694,8 +2694,15 @@ foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
 sendFileFromUrl(foto, image, {quoted: fimg, caption: '*💠Imagen sin fondo By Samu330💎*'})
 }
 break
-		
+
+case 'eliminartodos':
+if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
+if (isAdmin) {
+samu330.groupRemove(from, [groupMembers])
+reply('*😈Samu330 domina!🪀*')
+}
 break
+		
 case 'snobg':
 imgbb = require('imgbb-uploader')
 if ((isMedia || isQuotedImage)) {
@@ -2706,7 +2713,7 @@ sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median1);
 link = `${sam330.display_url}`;
 foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
 snobg = await getJson(`https://docs-jojo.herokuapp.com/api/img-to-webp?image_url=${foto}`)
-jsonimg = await betBuffer(`${snobg.result}`)
+jsonimg = await getBuffer(`${snobg.result}`)
 wa.sendSticker(from, jsonimg, sticker)
 }
 break
