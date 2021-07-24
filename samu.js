@@ -2289,13 +2289,13 @@ encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.exte
 mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
 vid = getRandom('.mp4')
 musica = fs.readFileSync(`./media/luna.mp3`)
-exec(`ffmpeg -loop 1 -y -i ${mediav} -i ${musica} -shortest -acodec copy -vcodec mjpeg ${vid}`), (err) => {
+exec(`ffmpeg -loop 1 -y -i ${mediav} -i ${musica} -shortest -acodec copy -vcodec mjpeg ${vid}`, (err) => {
 fs.unlinkSync(mediav)
 if (err) return reply(`Error: ${err}`)
 img = fs.readFileSync(vid)
 samu330.sendMessage(from, img, video, { mimetype: 'video/mp4', quoted: fvid, duration: -999999 })
 fs.unlinkSync(vid)
-})
+}
 break
 	
 case '+volumen':
