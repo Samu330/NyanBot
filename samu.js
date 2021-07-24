@@ -2281,29 +2281,13 @@ samu330.sendMessage(from, vre, video, { mimetype: 'video/mp4', quoted: fvid, dur
 fs.unlinkSync(ran)
 })
 break
-		
-case 'imagenvid':
-if (!isQuotedImage) return reply('Porfavor etiqueta una imagen con el comando!')
-reply('*Espera un momento porfavor....*')
-encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
-vid = getRandom('.mp4')
-musica = fs.readFileSync(`./media/luna.mp3`)
-exec(`ffmpeg -loop 1 -y -i ${mediav} -i ${musica} -shortest -acodec copy -vcodec mjpeg ${vid}`, (err) => {
-fs.unlinkSync(mediav)
-if (err) return reply(`Error: ${err}`)
-img = fs.readFileSync(vid)
-samu330.sendMessage(from, img, video, { mimetype: 'video/mp4', quoted: fvid, duration: -999999 })
-fs.unlinkSync(vid)
-})
-break
 	
 case '+volumen':
 if (!isQuotedAudio) return reply('Porfavor etiqueta una audio con el comando!')
 reply('*Espera un momento porfavor....*')
 encmediav = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 mediav = await samu330.downloadAndSaveMediaMessage(encmediav)
-exec(`ffmpeg -i ${mediav} -filter:a "volume=1.5" output.wav`)
+exec(`ffmpeg -i ${mediav} -filter:a "volume=1.5" 'output.wav'`)
 samu330.sendMessage(from, fs.readFileSync(`output.wav`), audio, { mimetype: 'video/mp3', quoted: fvid, duration: -999999 })
 break
 
