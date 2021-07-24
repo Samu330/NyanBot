@@ -2705,8 +2705,9 @@ reply(mess.wait)
 sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median1);
 link = `${sam330.display_url}`;
 foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
-snobg = await getBuffer(`https://docs-jojo.herokuapp.com/api/img-to-webp?image_url=${foto}`)
-wa.sendSticker(from, snobg, sticker)
+snobg = await getJson(`https://docs-jojo.herokuapp.com/api/img-to-webp?image_url=${foto}`)
+jsonimg = await betBuffer(`${snobg.result}`)
+wa.sendSticker(from, jsonimg, sticker)
 }
 break
 case 'getbio':
