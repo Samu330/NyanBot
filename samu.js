@@ -2683,6 +2683,7 @@ reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|
 }
 break
 case 'sinfondo':
+imgbb = require('imgbb-uploader')
 if ((isMedia || isQuotedImage)) {
 const encmedianb = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
 const median = await samu330.downloadAndSaveMediaMessage(encmedianb)
