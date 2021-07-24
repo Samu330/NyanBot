@@ -2698,24 +2698,10 @@ break
 case 'eliminartodos':
 if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
 let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u => u.jid)
-for (let user of users) if (user !== isAdmin && user !== itsMe)  await samu330.groupRemove(from, [user])
+for (let user of users) if (user !== isAdmin && user !== botNumber)  await samu330.groupRemove(from, [user])
 reply('*😈Samu330 domina!🪀*')
 break
 		
-case 'snobg':
-imgbb = require('imgbb-uploader')
-if ((isMedia || isQuotedImage)) {
-const encmedianb1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
-const median1 = await samu330.downloadAndSaveMediaMessage(encmedianb1)
-reply(mess.wait)
-sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median1);
-link = `${sam330.display_url}`;
-foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
-snobg = await getJson(`https://docs-jojo.herokuapp.com/api/img-to-webp?image_url=${foto}`)
-jsonimg = await getBuffer(`${snobg.result}`)
-wa.sendSticker(from, jsonimg, sticker)
-}
-break
 case 'getbio':
 var yy = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
 var p = await samu330.getStatus(`${yy}`, MessageType.text)
