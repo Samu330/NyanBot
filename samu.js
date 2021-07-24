@@ -2295,7 +2295,7 @@ if (err) return reply(`Error: ${err}`)
 img = fs.readFileSync(vid)
 samu330.sendMessage(from, img, video, { mimetype: 'video/mp4', quoted: fvid, duration: -999999 })
 fs.unlinkSync(vid)
-}
+})
 break
 	
 case '+volumen':
