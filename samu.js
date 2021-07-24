@@ -2697,11 +2697,17 @@ break
 
 case 'eliminartodos':
 if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
-if (!itsMe) {
 let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u => u.jid)
-for (let user of users) if (user !== isAdmin)  await samu330.groupRemove(from, [user])
+for (let user of users) if (user !== isAdmin && !== itsMe)  await samu330.groupRemove(from, [user])
 reply('*😈Samu330 domina!🪀*')
-}
+break
+		
+case'stickerde':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!q) return reply('*Seas mamon... Stickers de que quieres!!* 🙄')
+reply('*Espera un momento porfavor....*')
+st = await getJson(`https://docs-jojo.herokuapp.com/api/getsticker?q=${q}`)
+wa.sendSticker(from, st.result.sticker, sticker)
 break
 		
 case 'getbio':
