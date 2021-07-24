@@ -2041,7 +2041,7 @@ ini_txt += `Puede descargar tambien el video aqui: :\n ${get_result.video[0].lin
 ini_buffer = await getBuffer(get_info.thumbnail)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
 get_audio = await getBuffer(get_result.audio[4].link)
-await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, filename: `${get_info.title}.mp3`, quoted: faud })
+await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_info.title}.mp3`, quoted: faud })
 get_audio = await getBuffer(get_result.audio[4].link)
 await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, ptt: true, filename: `${get_info.title}.mp3`, quoted: faud })
 
@@ -2066,7 +2066,7 @@ sendFileFromUrl(res.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res = await y2mateA(res.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration: 99999999999999, filename: res[0].output})
+sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', filename: res[0].output})
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
 }}
 break
@@ -2119,7 +2119,7 @@ result = `「  𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒  」
 _*El archivo se esta enviando.....*_
 `
 sendFileFromUrl(res[0].thumb, image, {caption: result, quoted: sam}).then((lalu) => {
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3', duration: 99999999})
+sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3'})
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3', ptt: true, duration: 99999999})
 })
 
@@ -2701,14 +2701,7 @@ let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u =>
 for (let user of users) if (user !== isAdmin && user !== itsMe)  await samu330.groupRemove(from, [user])
 reply('*😈Samu330 domina!🪀*')
 break
-		
-case'stickerde':
-if (!isRegister) return reply(mess.only.usrReg)
-if (!q) return reply('*Seas mamon... Stickers de que quieres!!* 🙄')
-reply('*Espera un momento porfavor....*')
-st = await getJson(`https://docs-jojo.herokuapp.com/api/getsticker?q=${q}`)
-wa.sendSticker(from, st.result.sticker, sticker)
-break
+
 		
 case 'getbio':
 var yy = sam.message.extendedTextMessage.contextInfo.mentionedJid[0]
@@ -2892,8 +2885,8 @@ Titulo :* ${a.judul}
 sendFileFromUrl(a.thumb, image, {caption: result, quoted: sam})
 sendFileFromUrl(a.link, video, { mimetype: 'video/mp4',quoted: sam, filename: `${a.judul}.${a.type}`})
 break
-            case 'ytsearch':
 
+case 'ytsearch':
 if (args.length == 0) return reply(`Ejemplo: ${prefix + command} Me olvide de vivir`)
 query = args.join(' ')
 try {
@@ -2927,6 +2920,18 @@ searchyt += `
 var samusamuxd = searchyt.trim()
 sendFileFromUrl(res.all[0].image, image, {quoted: fimg, caption: samusamuxd, sendEphemeral: true})
 }
+break
+case'stickerde':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!q) return reply('*Seas mamon... Stickers de que quieres!!* 🙄')
+reply('*Espera un momento porfavor....*')
+st = await getJson(`https://docs-jojo.herokuapp.com/api/getsticker?q=${q}`)
+ic = st.result.sticker
+ker = ""
+for (var x of ic) {
+ker = await getBuffer(x)
+}
+wa.sendSticker(from, ker, sticker)
 break
 case 'tts':
 case 'voz':
