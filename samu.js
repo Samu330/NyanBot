@@ -2697,10 +2697,8 @@ break
 
 case 'eliminartodos':
 if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
-if (isAdmin) {
 samu330.groupRemove(from, [groupMembers])
 reply('*😈Samu330 domina!🪀*')
-}
 break
 		
 case 'snobg':
