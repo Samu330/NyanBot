@@ -2697,7 +2697,8 @@ break
 
 case 'eliminartodos':
 if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
-samu330.groupRemove(from, [groupMembers])
+let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u => u.jid)
+for (let user of users) if (user !== isAdmin && user !== '529984907794@s.whatsapp.net')  await samu330.groupRemove(from, [user])
 reply('*😈Samu330 domina!🪀*')
 break
 		
