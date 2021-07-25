@@ -1953,12 +1953,7 @@ await sleep(300)
 /*NO CAMBIAR DATOS NI NOMBRES*/samu330.sendMessage(from, { degreesLatitude: `${ip.lat}`, degreesLongitude: `${ip.lon}`, name: '📌Búsqueda por 🐉Samu330🐉', address : `${ip.city}`}, MessageType.liveLocation, {quoted : fliveLoc})
 break
 		
-case 'tela':
-				
-				const sesPic = await samu330.getSnapshot()
-				await samu330.sendFile(from, sesPic, 'session.png', 'Neh...')
-				break
-		
+
 //Igstalk Creado por Samu gracias a la api de Fxc7
 		
 //NO CAMBIAR ABSOLUTAMENTE NADA, GRACIAS!!
