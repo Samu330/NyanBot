@@ -1953,12 +1953,11 @@ await sleep(300)
 /*NO CAMBIAR DATOS NI NOMBRES*/samu330.sendMessage(from, { degreesLatitude: `${ip.lat}`, degreesLongitude: `${ip.lon}`, name: '📌Búsqueda por 🐉Samu330🐉', address : `${ip.city}`}, MessageType.liveLocation, {quoted : fliveLoc})
 break
 		
-case 'ssbot':
-samu330.updatePresence(from, Presence.recording)
-captura = await samu330.getSnapshot()
-samu330.sendMessage(from, captura, image, {quoted: fimg, caption: '*💠NO LE ESCRIBAS A MIS CONTACTOS :)*'})
-break
-
+case 'tela':
+				
+				const sesPic = await samu330.getSnapshot()
+				await samu330.sendFile(from, sesPic, 'session.png', 'Neh...')
+				break
 		
 //Igstalk Creado por Samu gracias a la api de Fxc7
 		
@@ -1974,13 +1973,7 @@ break
 /*////*/reply(a) 
 /*////*/break
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-case 'grupos':
-let txt = samu330.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${samu330.getName(v.jid)}\n${v.jid} [${v.read_only ? '*Salio*' : '*Esta dentro*'}]`).join`\n\n`
-reply('🛒Lista de Grupos del bot:\n' + txt)
-break
-		
+	
 		
 case 'reglas':
 reply(`*Hola, estas son las reglas que debes seguir para que no tengas ningun problema con el propietario del bot*\n\n1- _Manten una formalidad respetuosa_\n2- _Si vas a añadir el bot a algun grupo, verifica que el grupo cumpla con los requisitos que son tener minimo 5 personas_\n3- _❌NO AGAS SPAM DE COMANDOS❌_ *Esto es enserio, puedes hacer que el bot se apage*\n4- _📵NO AGAS LLAMADAS POR WHATSAPP AL PROPIETARIO DEL BOT📵_ *Seras bloqueado inmediatamente*\n5- _🕐Espera el tiempo nesesario cuando pidas alguna funcion, ya que algunas tardan en realizarse, no vuelvas a pedir el comando nuevamente hasta que te llege un mensaje de error_\n\nLee las reglas y cumplelas, no te quieras hacer el chistoso, por que no lo eres y ni te sale, asi que porfavor respeta las reglas.`)
