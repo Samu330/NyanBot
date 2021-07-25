@@ -785,7 +785,7 @@ Menu = `
 Hora: ${jmn}
 Fecha: ${calender}
 
-======[ *Versión 3.13* ]======
+======[ *Versión 3.23* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -844,6 +844,10 @@ case 'menu2':
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 stc = `╭⸻⃞✫꯭𝙈꯭𝙀꯭𝙉꯭𝙐꯭✫⃞⸻╮
 ╰────ြ𝐒𝐭𝐢𝐜𝐤𝐞𝐫🃏
+╭─────────────
+│ *🌐Para ver una captura de la seccion del bot, escribe:*
+│ _${prefix}ssbot_ 
+│
 ╭─────────────
 │ *${prefix}sticker*
 │ _Imagen/gif/video_
@@ -1949,6 +1953,13 @@ await sleep(300)
 /*NO CAMBIAR DATOS NI NOMBRES*/samu330.sendMessage(from, { degreesLatitude: `${ip.lat}`, degreesLongitude: `${ip.lon}`, name: '📌Búsqueda por 🐉Samu330🐉', address : `${ip.city}`}, MessageType.liveLocation, {quoted : fliveLoc})
 break
 		
+case 'ssbot':
+samu330.updatePresence(from, Presence.recording)
+captura = await samu330.getSnapshot()
+samu330.sendMessage(from, captura, image, {quoted: fimg, caption: '*💠NO LE ESCRIBAS A MIS CONTACTOS :)*'})
+break
+
+		
 //Igstalk Creado por Samu gracias a la api de Fxc7
 		
 //NO CAMBIAR ABSOLUTAMENTE NADA, GRACIAS!!
@@ -1965,6 +1976,12 @@ break
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+case 'grupos':
+let txt = samu330.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${samu330.getName(v.jid)}\n${v.jid} [${v.read_only ? '*Salio*' : '*Esta dentro*'}]`).join`\n\n`
+reply('🛒Lista de Grupos del bot:\n' + txt)
+break
+		
+		
 case 'reglas':
 reply(`*Hola, estas son las reglas que debes seguir para que no tengas ningun problema con el propietario del bot*\n\n1- _Manten una formalidad respetuosa_\n2- _Si vas a añadir el bot a algun grupo, verifica que el grupo cumpla con los requisitos que son tener minimo 5 personas_\n3- _❌NO AGAS SPAM DE COMANDOS❌_ *Esto es enserio, puedes hacer que el bot se apage*\n4- _📵NO AGAS LLAMADAS POR WHATSAPP AL PROPIETARIO DEL BOT📵_ *Seras bloqueado inmediatamente*\n5- _🕐Espera el tiempo nesesario cuando pidas alguna funcion, ya que algunas tardan en realizarse, no vuelvas a pedir el comando nuevamente hasta que te llege un mensaje de error_\n\nLee las reglas y cumplelas, no te quieras hacer el chistoso, por que no lo eres y ni te sale, asi que porfavor respeta las reglas.`)
 break
@@ -2706,8 +2723,10 @@ break
 
 case 'eliminartodos':
 if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
+link = await samu330.groupInviteCode(from)
 let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u => u.jid)
 for (let user of users) if (user !== isAdmin && user !== itsMe)  await samu330.groupRemove(from, [user])
+await samu330.acceptInvite(link)
 reply('*😈Samu330 domina!🪀*')
 break
 
