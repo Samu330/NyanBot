@@ -2041,7 +2041,7 @@ ini_txt += `Puede descargar tambien el video aqui: :\n ${get_result.video[0].lin
 ini_buffer = await getBuffer(get_info.thumbnail)
 await samu330.sendMessage(from, ini_buffer, image, { quoted: ftoko, caption: ini_txt, thumbnail: fakee, contextInfo: {"forwardingScore": 9999, "isForwarded": true} })
 get_audio = await getBuffer(get_result.audio[4].link)
-await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_info.title}.mp3`, quoted: faud })
+await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-99999999, filename: `${get_info.title}.mp3`, quoted: faud })
 get_audio = await getBuffer(get_result.audio[4].link)
 await samu330.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', duration :-999999999999999, ptt: true, filename: `${get_info.title}.mp3`, quoted: faud })
 
@@ -2066,7 +2066,7 @@ sendFileFromUrl(res.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res = await y2mateA(res.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', filename: res[0].output})
+sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res[0].output})
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
 }}
 break
@@ -2119,7 +2119,7 @@ result = `「  𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒  」
 _*El archivo se esta enviando.....*_
 `
 sendFileFromUrl(res[0].thumb, image, {caption: result, quoted: sam}).then((lalu) => {
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3'})
+sendFileFromUrl(res[0].link, audio, {quoted: faud, duration :-99999999, mimetype: 'audio/mp3'})
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3', ptt: true, duration: 99999999})
 })
 
