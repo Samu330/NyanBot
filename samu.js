@@ -816,7 +816,9 @@ ${opcion}
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
 
-${PREFIX}api + key
+${prefix}api + key
+
+_Recuerda que cada vez que enciendas el bot debes establecer de nuevo la apikey!!_
 
 ===============================
 
@@ -3341,7 +3343,7 @@ await samu330.sendMessage(from, ini_buffer, image, { quoted: fvid, caption: ini_
 get_video = await getBuffer(get_result.video)
 await samu330.sendMessage(from, get_video, video, { mimetype: Mimetype.gif, duration :-999999999999999, filename: `${get_result.title}.mp4`, quoted: fvid })
 } catch {
-reply(`*Ocurrio un problema, la key vencio, puedes descargar videos de la siguiente manera:*\n\nBusca el video que quieras descargar con el comando *${prefix}ytsearch*\nCopias el link del video y descargas con: *${prefix}ytmp4*`)
+reply(`*Ocurrio un problema, la key vencio, puedes escribirle al creador del bot para que te proporcione la key o puedes descargar videos de la siguiente manera:*\n\nBusca el video que quieras descargar con el comando *${prefix}ytsearch*\nCopias el link del video y descargas con: *${prefix}ytmp4*`)
 }
 break
 case 'online':
