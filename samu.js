@@ -1696,7 +1696,7 @@ let ed = from
     delete global.math[ed]
     reply('Hmmm...y la ecuacion?')
   }
-  let val = text
+  let val = q
     .replace(/[^0-9\-\/+*×÷πEe()piPI/]/g, '')
     .replace(/×/g, '*')
     .replace(/÷/g, '/')
