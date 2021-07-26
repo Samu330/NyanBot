@@ -1085,6 +1085,7 @@ const Menuo = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 
 
+${bodyM} ${prefix}calc *(Calculadora)*
 ${bodyM} ${prefix}pregunta *(Haz una pregunta y el bot te responde)*
 ${bodyM} ${prefix}ipbot *(Localiza al bot por ip)*
 ${bodyM} ${prefix}ip *(Haz una loclizacion por ip)*
@@ -1714,9 +1715,19 @@ let ed = from
     console.log(val)
     let result = (new Function('return ' + val))()
     if (!result) throw result
-    reply(`*${format}* = _${result}_`)
+    reply(`
+       CALCULADORA
+╭──╼┥𝈸𖾗ᷤ𖾕꯭ͣ𖾔꯭𖾔ͫ𖽙ͧ𝈹┝╾──╮
+╽ ┌──────────┐ ┃
+┃  *${format}*
+┃ ├──────────┤ ┃
+┃  *Resultado*:
+┃ ├──────────┤ ┃
+┃ _${result}_
+╿ └──────────┘ ╿
+╰─┨ ⃞📟 𝜍𝛼𝜄𝜍 📟⃞ ┠─╯`)
   } catch (e) {
-    if (e == undefined) throw 'Isinya?'
+    if (e == undefined) throw '?'
     throw 'Formato incorrecto, solo 0-9 y símbolo -, +, *, /, ×, ÷, π, e, (, ) son compatibles'
   }
 break
@@ -2020,6 +2031,62 @@ if (!nombregc) return reply('*Porfavor escribe el nombre que quieras que tenga e
 const group = await samu330.groupCreate(`${nombregc}`, [sender])
 reply(`*EL GRUPO FUE CREADO CORRECTAMENTE CON EL NOMBRE:*\n\n*${nombregc}*\n\nid del grupo: ${group.gid}`)
 samu330.sendMessage(group.gid, "hello everyone", MessageType.text, {quoted: fliveLoc})
+break
+		
+case 'idiomas':
+reply(`*Estos son los idiomas soportados por la voz👇🏻*:
+
+'af': 'Afrikaans',
+  'sq': 'Albanian',
+  'ar': 'Arabic',
+  'hy': 'Armenian',
+  'ca': 'Catalan',
+  'zh': 'Chinese',
+  'zh-cn': 'Chinese (Mandarin/China)',
+  'zh-tw': 'Chinese (Mandarin/Taiwan)',
+  'zh-yue': 'Chinese (Cantonese)',
+  'hr': 'Croatian',
+  'cs': 'Czech',
+  'da': 'Danish',
+  'nl': 'Dutch',
+  'en': 'English',
+  'en-au': 'English (Australia)',
+  'en-uk': 'English (United Kingdom)',
+  'en-us': 'English (United States)',
+  'eo': 'Esperanto',
+  'fi': 'Finnish',
+  'fr': 'French',
+  'de': 'German',
+  'el': 'Greek',
+  'ht': 'Haitian Creole',
+  'hi': 'Hindi',
+  'hu': 'Hungarian',
+  'is': 'Icelandic',
+  'id': 'Indonesian',
+  'it': 'Italian',
+  'ja': 'Japanese',
+  'ko': 'Korean',
+  'la': 'Latin',
+  'lv': 'Latvian',
+  'mk': 'Macedonian',
+  'no': 'Norwegian',
+  'pl': 'Polish',
+  'pt': 'Portuguese',
+  'pt-br': 'Portuguese (Brazil)',
+  'ro': 'Romanian',
+  'ru': 'Russian',
+  'sr': 'Serbian',
+  'sk': 'Slovak',
+  'es': 'Spanish',
+  'es-es': 'Spanish (Spain)',
+  'es-us': 'Spanish (United States)',
+  'sw': 'Swahili',
+  'sv': 'Swedish',
+  'ta': 'Tamil',
+  'th': 'Thai',
+  'tr': 'Turkish',
+  'vi': 'Vietnamese',
+  'cy': 'Welsh'`)
 break
 				
 case 'hoy':
