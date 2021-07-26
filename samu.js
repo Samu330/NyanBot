@@ -367,16 +367,6 @@ samu330.on('chat-update', async(sam) => {
 	const sendMess = (hehe, teks) => {
 	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
   	}
-
-	if (isCmd && isFiltered(from) && !isGroup) {
-        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        spam = `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`
-        return reply(spam)}
-        
-        if (isCmd && isFiltered(from) && isGroup) {
-        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        spamgp = `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`
-        return reply(spamgp)}
 	
 	mess = {
 			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
@@ -495,6 +485,17 @@ samu330.on('chat-update', async(sam) => {
 		}
 		}
 		}
+	
+	
+	if (isCmd && isFiltered(from) && !isGroup) {
+        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
+        return reply(`🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+	}
+        
+        if (isCmd && isFiltered(from) && isGroup) {
+        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
+        return reply(`🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+	}
 
 
 		
@@ -580,8 +581,8 @@ contextInfo: {
 mentionedJid: [sender]}
 
 
-		if (!isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        	if (isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber), chalk.greenBright("en el grupo"), chalk.keyword("yellow")(groupName))
+		if (!isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(pushname))
+        	if (isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(pushname), chalk.greenBright("en el grupo"), chalk.keyword("yellow")(groupName))
 	
 		if (messagesC.includes("bot")){
 			samu330.updatePresence(from, Presence.composing)
@@ -2205,16 +2206,14 @@ case 'take':
                     stiker_wm = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
                     dlstiker_wm = await samu330.downloadAndSaveMediaMessage(stiker_wm)
                     stickerpackid = "com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2"
-                    packname = q.substring(0, q.indexOf('|') - 0)
-                    author = q.substring(q.lastIndexOf('|') + 1)
                     exif321 = getRandom('.exif')
                     exifst = getRandom('.webp')
                     googlelink = `https://wa.me/5219984907794?text=${prefix}menu`;
                     applelink = `https://wa.me/5219984907794?text=${prefix}menu`;
                     json = {
                         "sticker-pack-id": stickerpackid,
-                        "sticker-pack-name": packname,
-                        "sticker-pack-publisher": author,
+                        "sticker-pack-name": 'Samu330',
+                        "sticker-pack-publisher": 'Sam y Perry',
                         "android-app-store-link": googlelink,
                         "ios-app-store-link": applelink
                     }
