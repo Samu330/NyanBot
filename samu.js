@@ -496,7 +496,7 @@ samu330.on('chat-update', async(sam) => {
 		"vcard": 'BEGIN:VCARD\n' +
     		'Version:3.0\n' +
     		'TEL;type=CELL;type=VOICE;waid=5219984907794:+5219984907794\n' +
-		'item1.X-ABLabel:Celular'
+		'item1.X-ABLabel:Celular' +
     		'END:VCARD'
 		}
 		}
