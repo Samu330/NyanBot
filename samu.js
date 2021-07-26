@@ -2601,7 +2601,7 @@ break
 
 case 'owner':
 case 'creador':
-await wa.sendContact(from, owner, "🥇𝑺𝒂𝒎𝒖𝟑𝟑𝟎🛺💨")
+await wa.sendContact(from, '5219984907794', "🥇𝑺𝒂𝒎𝒖𝟑𝟑𝟎🛺💨")
 break
 			
 case 'smeme':
