@@ -1690,10 +1690,10 @@ break
 		
 case 'calc':
 global.math = global.math ? global.math : {}
-let id = from
-  if (id in global.math) {
-    clearTimeout(global.math[id][3])
-    delete global.math[id]
+let ed = from
+  if (ed in global.math) {
+    clearTimeout(global.math[ed][3])
+    delete global.math[ed]
     reply('Hmmm...y la ecuacion?')
   }
   let val = text
