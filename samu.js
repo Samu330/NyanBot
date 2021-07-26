@@ -4312,7 +4312,7 @@ break
                   	                        reply(`*[ Activado ]*`)
 						reply(`*Las personas que envien una mala palabra sera eliminada*. _Para ver la lista de malas palabras usa el comando: listbad_`)  
                                         } else if (args[0] === '0') {
-                  	                        var ini = antibad.indexOf(from)
+                  	                        var ini = badword.indexOf(from)
 						badword.splice(ini, 1)
                  	                        fs.writeFileSync('./src/badword.json', JSON.stringify(badword))
                  	                        reply(`Desactivado`)
