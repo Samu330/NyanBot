@@ -489,12 +489,12 @@ samu330.on('chat-update', async(sam) => {
 	
 	if (isCmd && isFiltered(from) && !isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return reply(`🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+        return reply(`🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
 	}
         
         if (isCmd && isFiltered(from) && isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return reply(`🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+        return reply(`🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
 	}
 
 
@@ -2208,14 +2208,12 @@ case 'take':
                     stickerpackid = "com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2"
                     exif321 = getRandom('.exif')
                     exifst = getRandom('.webp')
-                    googlelink = `https://wa.me/5219984907794?text=${prefix}menu`;
-                    applelink = `https://wa.me/5219984907794?text=${prefix}menu`;
                     json = {
                         "sticker-pack-id": stickerpackid,
-                        "sticker-pack-name": 'Samu330',
+                        "sticker-pack-name": '💎Samu330',
                         "sticker-pack-publisher": 'Sam y Perry',
-                        "android-app-store-link": googlelink,
-                        "ios-app-store-link": applelink
+                        "android-app-store-link": 'https://wa.me/5219984907794',
+                        "ios-app-store-link": 'https://wa.me/5219984907794'
                     }
                     len = JSON.stringify(json).length
                     f = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])
@@ -2262,9 +2260,10 @@ var timer = args[0] + "0000"
 } else if (args[1] == "horas") {
 var timer = args[0] + "00000"
 } else {
-return reply("Eliga entre: \nsegundos\nminutos\nhoras\n\nEjemplo: =timer 30 segundos")
+return reply("Porfavor eliga entre: \nsegundos\nminutos\nhoras\n\nEjemplo: =timer 30 segundos")
 }
 addFilter(from)
+reply(`*⏰Se ajusto su cronometro a ${q}*`)
 setTimeout(() => {
 reply("⏰Se acabo el tiempo")
 }, timer)
