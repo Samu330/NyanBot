@@ -85,7 +85,7 @@ const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const api = '273a9e8195c27ba24abd53e3'
+api = 'CONTACTAME PARA OBTENER LA API'
 fak = 'samu3300'
 prefix = '.'
 apikey = 'LindowApi'
@@ -811,7 +811,7 @@ Fecha: ${calender}
 
 ${opcion}
 
-======[ *Versión 3.25* ]======
+======[ *Versión 3.26* ]======
 
 
 *Comandos usados hoy : ${hit_today.length}*
@@ -1119,6 +1119,7 @@ const Menuo = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 
 
+${bodyM} ${prefix}timer *(Cronometro)*
 ${bodyM} ${prefix}calc *(Calculadora)*
 ${bodyM} ${prefix}pregunta *(Haz una pregunta y el bot te responde)*
 ${bodyM} ${prefix}ipbot *(Localiza al bot por ip)*
@@ -2201,57 +2202,6 @@ year: 'numeric'
 reply(`🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*\n\n_${timeFt}_`)
 break
 		
-		
-case 'take':
-                    stiker_wm = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-                    dlstiker_wm = await samu330.downloadAndSaveMediaMessage(stiker_wm)
-                    stickerpackid = "com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2"
-                    exif321 = getRandom('.exif')
-                    exifst = getRandom('.webp')
-                    json = {
-                        "sticker-pack-id": stickerpackid,
-                        "sticker-pack-name": '💎Samu330',
-                        "sticker-pack-publisher": 'Sam y Perry',
-                        "android-app-store-link": 'https://wa.me/5219984907794',
-                        "ios-app-store-link": 'https://wa.me/5219984907794'
-                    }
-                    len = JSON.stringify(json).length
-                    f = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])
-                    aaa = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]
-                    if (len > 256) {
-                        len = len - 256
-                        aaa.unshift(0x01)
-                    } else {
-                        aaa.unshift(0x00)
-                    }
-                    fff = Buffer.from(aaa)
-                    ffff = Buffer.from(JSON.stringify(json))
-
-                    if (len < 16) {
-                        len = len.toString(16)
-                        len = "0" + len
-                    } else {
-                        len = len.toString(16)
-                    }
-                    ff = Buffer.from(len, "hex")
-
-                    wm = Buffer.concat([f, ff, fff, ffff])
-
-                    fs.writeFile(exif321, wm, function(err) {
-                        if (err) return console.log(err);
-                        exec(`webpmux -set exif ${exif321} undefined.webp -o ${exifst}`, (err) => {
-                            if (err) return console.log(err);
-                            samu330.sendMessage(from, fs.readFileSync(exifst), sticker, {
-                                quoted: sam
-                            })
-                            fs.unlinkSync(exifst)
-                            fs.unlinkSync(exif321)
-                            fs.unlinkSync('undefined.webp')
-                        })
-                    });
-                    addFilter(from)
-                    break
-		
 case 'timer':        
 if (args[1] == "segundos") {
 var timer = args[0] + "000"
@@ -2528,7 +2478,7 @@ addFilter(from)
 break
 case 'bass':
 ass = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-
+reply(mess.wait)
 bas = await samu330.downloadAndSaveMediaMessage(ass)
 ran = getRandom('.mp3')
 exec(`ffmpeg -i ${bas} -af equalizer=f=94:width_type=o:width=2:g=30 ${ran}`, (err, stderr, stdout) => {
@@ -2544,11 +2494,12 @@ break
 case 'rapido':
 addFilter(from)
 if (!isQuotedAudio) return reply('Etiqueta un audio!')
+reply(mess.wait)
 encmediiiaa = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-media = await samu330.downloadAndSaveMediaMessage(encmediiiaa)
+medi1a = await samu330.downloadAndSaveMediaMessage(encmediiiaa)
 ran = getRandom('.mp3')
-exec(`ffmpeg -i ${media} -filter:a "atempo=0.9,asetrate=95100" ${ran}`, (err, stderr, stdout) => {
-fs.unlinkSync(media)
+exec(`ffmpeg -i ${medi1a} -filter:a "atempo=0.9,asetrate=95100" ${ran}`, (err, stderr, stdout) => {
+fs.unlinkSync(medi1a)
 if (err) return reply('Error!')
 fast = fs.readFileSync(ran)
 samu330.sendMessage(from, fast, audio, {
@@ -2661,6 +2612,11 @@ break
 case 'noprefix':
 prefix = ''
 reply(`*EL PREFIJO YA NO ES NECESARIO AHORA!*`)
+break
+		
+case 'api':
+prefix = `${q}`
+reply(`*La api a cambiado a ${q}!*`)
 break
 			
 case 'shortlink':
