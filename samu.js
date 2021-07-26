@@ -152,7 +152,7 @@ baterai = batterylevel
 if (json[2][0][1].live == 'true') charging = true
 if (json[2][0][1].live == 'false') charging = false
 console.log(json[2][0][1])
-console.log(chalk.greenBright("🔋Carga de la bateria: "), chalk.keyword("cyan")(`${batterylevel}%`), chalk.keyword("red")
+console.log(chalk.greenBright("🔋Carga de la bateria: "), chalk.keyword("cyan")(`${batterylevel}%`), chalk.keyword("red"))
 })
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
