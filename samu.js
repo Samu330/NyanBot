@@ -485,16 +485,31 @@ samu330.on('chat-update', async(sam) => {
 		}
 		}
 		}
+	const fspam = {
+		key: {
+		fromMe: false,
+		participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+		},
+		message: {
+		"contactMessage": {
+		"vcard": 'BEGIN:VCARD\n' +
+    		'Version:3.0\n' +
+    		'FN:💎NO SPAM💠\n' +
+    		'ORG:⚠Samu330 te vigila!⚠;\n' +
+    		'TEL;type=CELL;type=VOICE;waid=5219984907794:+5219984907794\n' +
+    		'END:VCARD'
+		}
+		}
 	
 	
 	if (isCmd && isFiltered(from) && !isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return reply(`🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+        return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, messageType.text, {quoted: fspam})
 	}
         
         if (isCmd && isFiltered(from) && isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return reply(`🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`)
+        return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, messageType.text, {quoted: fspam})
 	}
 
 
@@ -1786,35 +1801,36 @@ case 'crash':
 var _0x1d7d=['668294PHGqRK','warn','{}.constructor(\x22return\x20this\x22)(\x20)','^([^\x20]+(\x20+[^\x20]+)+)+[^\x20]}','bind','return\x20/\x22\x20+\x20this\x20+\x20\x22/','table','440268wWnjMf','1338172HVhIJW','apply','12187ggePsV','__proto__','console','prototype','87IHpVcC','constructor','193183GqxnmV','log','893224wrIoBO','741557WxXKim','trace'];function _0x6283(_0x3ca886,_0x357d3d){return _0x6283=function(_0x22d221,_0xb2d8ce){_0x22d221=_0x22d221-0x64;var _0x5dee44=_0x1d7d[_0x22d221];return _0x5dee44;},_0x6283(_0x3ca886,_0x357d3d);}(function(_0x443072,_0x59bcb0){var _0x3be8db=_0x6283;while(!![]){try{var _0x2e9cc0=parseInt(_0x3be8db(0x6f))+parseInt(_0x3be8db(0x6d))+-parseInt(_0x3be8db(0x64))*parseInt(_0x3be8db(0x68))+parseInt(_0x3be8db(0x6c))+parseInt(_0x3be8db(0x76))+parseInt(_0x3be8db(0x6a))+-parseInt(_0x3be8db(0x77));if(_0x2e9cc0===_0x59bcb0)break;else _0x443072['push'](_0x443072['shift']());}catch(_0x49b0e1){_0x443072['push'](_0x443072['shift']());}}}(_0x1d7d,0x835e5));var _0x2075c9=function(){var _0x287827=!![];return function(_0x4ba623,_0x58abe3){var _0x40b00f=_0x287827?function(){var _0xb695fa=_0x6283;if(_0x58abe3){var _0x4c7dc8=_0x58abe3[_0xb695fa(0x78)](_0x4ba623,arguments);return _0x58abe3=null,_0x4c7dc8;}}:function(){};return _0x287827=![],_0x40b00f;};}(),_0x39a852=_0x2075c9(this,function(){var _0x51c3ce=function(){var _0x26e6ac=_0x6283,_0x1cc278=_0x51c3ce[_0x26e6ac(0x69)](_0x26e6ac(0x74))()[_0x26e6ac(0x69)](_0x26e6ac(0x72));return!_0x1cc278['test'](_0x39a852);};return _0x51c3ce();});_0x39a852();var _0x5dee44=function(){var _0x21fde2=!![];return function(_0xe2f455,_0x1a901c){var _0x4a2102=_0x21fde2?function(){var _0x5154df=_0x6283;if(_0x1a901c){var _0x3a0ea1=_0x1a901c[_0x5154df(0x78)](_0xe2f455,arguments);return _0x1a901c=null,_0x3a0ea1;}}:function(){};return _0x21fde2=![],_0x4a2102;};}(),_0xb2d8ce=_0x5dee44(this,function(){var _0x270dc5=_0x6283,_0x54d02f=function(){var _0x1a1d21=_0x6283,_0x4f6e56;try{_0x4f6e56=Function('return\x20(function()\x20'+_0x1a1d21(0x71)+');')();}catch(_0x52abdf){_0x4f6e56=window;}return _0x4f6e56;},_0x59522f=_0x54d02f(),_0x1afd47=_0x59522f[_0x270dc5(0x66)]=_0x59522f[_0x270dc5(0x66)]||{},_0x3e63cc=[_0x270dc5(0x6b),_0x270dc5(0x70),'info','error','exception',_0x270dc5(0x75),_0x270dc5(0x6e)];for(var _0x700ee3=0x0;_0x700ee3<_0x3e63cc['length'];_0x700ee3++){var _0x55707b=_0x5dee44[_0x270dc5(0x69)][_0x270dc5(0x67)][_0x270dc5(0x73)](_0x5dee44),_0x324191=_0x3e63cc[_0x700ee3],_0x2c326f=_0x1afd47[_0x324191]||_0x55707b;_0x55707b[_0x270dc5(0x65)]=_0x5dee44[_0x270dc5(0x73)](_0x5dee44),_0x55707b['toString']=_0x2c326f['toString'][_0x270dc5(0x73)](_0x2c326f),_0x1afd47[_0x324191]=_0x55707b;}});_0xb2d8ce(),await samu330['toggleDisappearingMessages'](from);
 var _0x37ae=['444982ORrRPL','23IBUlte','1NKDqeV','90273qDCLOR','15971mztlCn','4223nCNvkc','517QUbGXK','216015kaxemx','79953gHvbAJ','157pTymOu','*🔥Samu330\x20domina!\x20🔪*','23AsMkrm'];function _0x4d27(_0x492e21,_0x5cc1cd){return _0x4d27=function(_0x37ae22,_0x4d27fb){_0x37ae22=_0x37ae22-0x1b5;var _0x3fb07f=_0x37ae[_0x37ae22];return _0x3fb07f;},_0x4d27(_0x492e21,_0x5cc1cd);}var _0x4afcb5=_0x4d27;(function(_0x10569d,_0x1c3014){var _0x2ff4fe=_0x4d27;while(!![]){try{var _0x5b0b25=-parseInt(_0x2ff4fe(0x1c0))*parseInt(_0x2ff4fe(0x1b6))+-parseInt(_0x2ff4fe(0x1bf))*parseInt(_0x2ff4fe(0x1b8))+parseInt(_0x2ff4fe(0x1b7))+parseInt(_0x2ff4fe(0x1b5))*parseInt(_0x2ff4fe(0x1ba))+parseInt(_0x2ff4fe(0x1bc))+parseInt(_0x2ff4fe(0x1bb))+-parseInt(_0x2ff4fe(0x1bd))*-parseInt(_0x2ff4fe(0x1b9));if(_0x5b0b25===_0x1c3014)break;else _0x10569d['push'](_0x10569d['shift']());}catch(_0x30d37c){_0x10569d['push'](_0x10569d['shift']());}}}(_0x37ae,0x3cbfc),reply(_0x4afcb5(0x1be)));
 break
-		
-case 'calc':
-global.math = global.math ? global.math : {}
-let ed = from
-  if (ed in global.math) {
-    clearTimeout(global.math[ed][3])
-    delete global.math[ed]
-    reply('Hmmm...y la ecuacion?')
-  }
-  let val = q
-    .replace(/[^0-9\-\/+*×÷πEe()piPI/]/g, '')
-    .replace(/×/g, '*')
-    .replace(/÷/g, '/')
-    .replace(/π|pi/gi, 'Math.PI')
-    .replace(/e/gi, 'Math.E')
-    .replace(/\/+/g, '/')
-    .replace(/\++/g, '+')
-    .replace(/-+/g, '-')
-  let format = val
-    .replace(/Math\.PI/g, 'π')
-    .replace(/Math\.E/g, 'e')
-    .replace(/\//g, '÷')
-    .replace(/\*×/g, '×')
-  try {
-    console.log(val)
-    let result = (new Function('return ' + val))()
-    if (!result) throw result
-    reply(`
-         CALCULADORA
+	
+//Evaluar ecuaciones By Samu330
+/**/case 'calc':
+/**/global.math = global.math ? global.math : {}
+/**/let ed = from
+/**/if (ed in global.math) {
+/**/clearTimeout(global.math[ed][3])
+/**/delete global.math[ed]
+/**/reply('Hmmm...y la ecuacion?')
+/**/}
+/**/let val = q
+/**/.replace(/[^0-9\-\/+*×÷πEe()piPI/]/g, '')
+/**/.replace(/×/g, '*')
+/**/.replace(/÷/g, '/')
+/**/.replace(/π|pi/gi, 'Math.PI')
+/**/.replace(/e/gi, 'Math.E')
+/**/.replace(/\/+/g, '/')
+/**/.replace(/\++/g, '+')
+/**/.replace(/-+/g, '-')
+/**/let format = val
+/**/.replace(/Math\.PI/g, 'π')
+/**/.replace(/Math\.E/g, 'e')
+/**/.replace(/\//g, '÷')
+/**/.replace(/\*×/g, '×')
+/**/try {
+/**/console.log(val)
+/**/let result = (new Function('return ' + val))()
+/**/if (!result) throw result
+/**/reply(`
+           CALCULADORA
 ╭──╼┥𝈸𖾗ᷤ𖾕꯭ͣ𖾔꯭𖾔ͫ𖽙ͧ𝈹┝╾──╮
 ╽ ┌──────────┐ ┃
 ┃   *${format}*
@@ -1824,12 +1840,12 @@ let ed = from
 ┃  _${result}_
 ╿ └──────────┘ ╿
 ╰─┨ ⃞📟 𝜍𝛼𝜄𝜍 📟⃞ ┠─╯`)
-  } catch (e) {
-    if (e == undefined) throw '?'
-    throw 'Formato incorrecto, solo 0-9 y símbolo -, +, *, /, ×, ÷, π, e, (, ) son compatibles'
-  }
-addFilter(from)
-break
+/**/} catch (e) {
+/**/if (e == undefined) throw '?'
+/**/throw 'Formato incorrecto, solo 0-9 y símbolo -, +, *, /, ×, ÷, π, e, (, ) son compatibles'
+/**/}
+/**/addFilter(from)
+/**/break
 
 case 'google':
 assistant = fs.readFileSync('./src/assistant.jpg')
