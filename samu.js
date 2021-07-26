@@ -492,11 +492,11 @@ samu330.on('chat-update', async(sam) => {
 		},
 		message: {
 		"contactMessage": {
+		"displayName": "⚠NO SPAM💠",
 		"vcard": 'BEGIN:VCARD\n' +
     		'Version:3.0\n' +
-    		'FN:💎NO SPAM💠\n' +
-    		'ORG:⚠Samu330 te vigila!⚠;\n' +
     		'TEL;type=CELL;type=VOICE;waid=5219984907794:+5219984907794\n' +
+		'item1.X-ABLabel:Celular'
     		'END:VCARD'
 		}
 		}
