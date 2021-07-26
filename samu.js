@@ -2154,14 +2154,6 @@ reply(`*EL GRUPO FUE CREADO CORRECTAMENTE CON EL NOMBRE:*\n\n*${nombregc}*\n\nid
 samu330.sendMessage(group.gid, "hello everyone", MessageType.text, {quoted: fliveLoc})
 break
 		
-case 'listmsg':
-let msgs = global.DATABASE._data.msgs
-reply(`
-*LIST MSG*
-${Object.keys(msgs).map(v => '- ' + v).join('\n')}
-`.trim())
-break		
-		
 case 'idiomas':
 reply(`*Estos son los idiomas soportados por la voz👇🏻*:
 
