@@ -370,22 +370,12 @@ samu330.on('chat-update', async(sam) => {
 
 	if (isCmd && isFiltered(from) && !isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        const spam = {
-	text:  `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`,
-	contextInfo: {
-	mentionedJid: [sender]
-	}
-	}
+        spam = `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`
         return reply(spam)}
         
         if (isCmd && isFiltered(from) && isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        const spamgp = {
-	text:  `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`,
-	contextInfo: {
-	mentionedJid: [sender]
-	}
-	}
+        spamgp = `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`
         return reply(spamgp)}
 	
 	mess = {
@@ -2212,13 +2202,11 @@ break
 		
 		
 case 'take':
-                    var namaPackss = q.substring(0, q.indexOf('|') - 0)
-                    var authorPackss = q.substring(q.lastIndexOf('|') + 1)
                     stiker_wm = JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
                     dlstiker_wm = await samu330.downloadAndSaveMediaMessage(stiker_wm)
                     stickerpackid = "com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2"
-                    packname = namaPackss;
-                    author = authorPackss;
+                    packname = q.substring(0, q.indexOf('|') - 0)
+                    author = q.substring(q.lastIndexOf('|') + 1)
                     exif321 = getRandom('.exif')
                     exifst = getRandom('.webp')
                     googlelink = `https://wa.me/5219984907794?text=${prefix}menu`;
