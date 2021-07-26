@@ -2154,6 +2154,33 @@ reply(`*EL GRUPO FUE CREADO CORRECTAMENTE CON EL NOMBRE:*\n\n*${nombregc}*\n\nid
 samu330.sendMessage(group.gid, "hello everyone", MessageType.text, {quoted: fliveLoc})
 break
 		
+case 'fantasmas':
+let member = participants.map(u => u.jid)
+	if(!q) {
+		var sum = member.length
+	} else {
+		var sum = q
+	}
+	var total = 0
+	var sider = []
+	for(let i = 0; i < sum; i++) {
+		let users = from.isGroup ? participants.find(u => u.jid == member[i]) : {}
+		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].chat == 0) && !users.isAdmin) { 
+			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
+				if(global.DATABASE.data.users[member[i]].whitelist == false){
+					total++
+					sider.push(member[i])
+				}
+			}else {
+				total++
+				sider.push(member[i])
+			}
+		}
+	}
+	if(total == 0) return reply(`*Este grupo no tiene fantasmas:D.*`) 
+	reply(`*[ SIDER CHECK ]*\n\n*Grupo $, miembros: ${sum} participantes (Activos)*\n*${total} Fantasmitas👻.*\n\n*NB* : *“Manténgase activo en el grupo porque habrá limpieza de miembros todo el tiempo.”*\n\n*[ LIST SIDER ]*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
+break
+		
 case 'idiomas':
 reply(`*Estos son los idiomas soportados por la voz👇🏻*:
 
