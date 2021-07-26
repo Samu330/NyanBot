@@ -500,7 +500,7 @@ samu330.on('chat-update', async(sam) => {
     		'END:VCARD'
 		}
 		}
-	
+		}
 	
 	if (isCmd && isFiltered(from) && !isGroup) {
         console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
