@@ -152,7 +152,7 @@ baterai = batterylevel
 if (json[2][0][1].live == 'true') charging = true
 if (json[2][0][1].live == 'false') charging = false
 console.log(json[2][0][1])
-console.log(color('🔋Carga de la bateria: ' + batterylevel+'%', "cyan"))
+console.log(chalk.greenBright("🔋Carga de la bateria: "), chalk.keyword("cyan")(`${batterylevel}%`), chalk.keyword("red")
 })
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
@@ -342,6 +342,9 @@ samu330.on('chat-update', async(sam) => {
 	const q = args.join(' ')
 	var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
 	const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
+	conts = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || {
+                notify: jid.replace(/@.+/, '')
+	}
 	const jid = sender
 	samu330.chatRead(from)
 	const is = budy.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -366,7 +369,7 @@ samu330.on('chat-update', async(sam) => {
   	}
 
 	if (isCmd && isFiltered(from) && !isGroup) {
-        console.log(color('SPAM', 'red'), color(moment.tz('America/Mexico_City').format('HH:mm:ss'), 'yellow'), color(`${command}`), 'DE:', color(sender))
+        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
         const spam = {
 	text:  `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`,
 	contextInfo: {
@@ -376,7 +379,7 @@ samu330.on('chat-update', async(sam) => {
         return reply(spam)}
         
         if (isCmd && isFiltered(from) && isGroup) {
-        console.log(color('SPAM', 'red'), color(moment.tz('America/Mexico_City').format('HH:mm:ss'), 'yellow'), color(`${command}`), 'DE:', color(sender))
+        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
         const spamgp = {
 	text:  `🙂 Porfavor @${sender.split('@')[0]}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`,
 	contextInfo: {
