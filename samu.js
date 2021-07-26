@@ -2615,7 +2615,7 @@ reply(`*EL PREFIJO YA NO ES NECESARIO AHORA!*`)
 break
 		
 case 'api':
-prefix = `${q}`
+api = `${q}`
 reply(`*La api a cambiado a ${q}!*`)
 break
 			
