@@ -446,7 +446,7 @@ samu330.on('chat-update', async(sam) => {
 	
 	const reply = async(teks) => {
             await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
-		    fromMe: false,
+		fromMe: false,
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
@@ -1755,7 +1755,7 @@ let pyb = samu330.prepareMessageFromContent(from,{
             "title": "🚧Samu330",
             "description": "This is a test",
             "buttonText": "🌐Click here",
-            "listType": "LIST",
+            "listType": "SINGLE_TYPE",
             "sections": [
               {
                 "rows": [
@@ -2232,7 +2232,7 @@ return reply("Porfavor eliga entre: \nsegundos\nminutos\nhoras\n\nEjemplo: =time
 addFilter(from)
 reply(`*⏰Se ajusto su cronometro a ${q}*`)
 setTimeout(() => {
-reply("⏰Se acabo el tiempo")
+reply(`⏰El tiempo de *${q}* a finalizado!`)
 }, timer)
 addFilter(from)
 break
