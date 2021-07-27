@@ -46,6 +46,7 @@ const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
 const {fbDown} = require('./lib/fb.js')
 const { isFiltered, addFilter } = require('./lib/antispam')
+const zalgo = require('./lib/zalgo')
 const conn = require("./lib/connect")
 const msg = require("./lib/message")
 const wa = require("./lib/wa")
@@ -948,6 +949,9 @@ mda = `
 ╔════════════════╗
 ╠  ◈  𝙈𝙀𝙉𝙐⁪⁡ 𝘿𝙀 𝙈𝙀𝘿𝙄𝘼 ◈  ╣
 ╠════════════════╝
+║
+╠ *●${prefix}clima* + region
+║ _El clima_
 ║
 ╠ *●${prefix}caras*
 ║ _Etiqueta una imagen para detectar caras_
@@ -1901,6 +1905,23 @@ if (err) return reply(err)
 if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
 })
 break
+		
+case 'zalgo':
+if (args.length < 1) return reply("Escriba una frase despues del comando para poder continuar!")
+reply(zalgo(`${body.slice(6)}`))
+addFilter(from)
+break
+		
+case 'reportar':
+if (args.length <= 1) return reply(`Ejemplo: ${prefix}reportar "Amm... disculpa, tengo un error en...."`)
+if (args.length >= 300) return samu330.sendMessage(from, '*El limite del reporte es de maximo 300 caracteres!*', MessageType.text, {quoted: ftoko})
+var numerorepo = sam.participant
+reporte = `[REPORTE]\nDe: @${sender.split("@s.whatsapp.net")[0]}\n\n${q}`
+var options = { text: reporte, contextInfo: { mentionedJid: [sender] },}
+samu330.sendMessage('5219984907794@s.whatsapp.net', options, MessageType.text, {quoted: floc})
+reply("*El reporte fue enviado al CREADOR del bot, reporte falso o bura = Block*")
+addFilter(from)
+break
 
 case 'teles':
 if (args.length == 0) return reply(`Ejemplo: ${prefix + command} https://t.me/addstickers/LINE_Menhera_chan_ENG`)
@@ -2144,6 +2165,12 @@ if (!nombregc) return reply('*Porfavor escribe el nombre que quieras que tenga e
 const group = await samu330.groupCreate(`${nombregc}`, [sender])
 reply(`*EL GRUPO FUE CREADO CORRECTAMENTE CON EL NOMBRE:*\n\n*${nombregc}*\n\nid del grupo: ${group.gid}`)
 samu330.sendMessage(group.gid, "hello everyone", MessageType.text, {quoted: fliveLoc})
+break
+		
+case 'clima':
+if (!q) return reply('*Y el lugar del que quieres ver el clima?*')
+clima = `https://api.apiflash.com/v1/urltoimage?access_key=57fcd6384cff4e529b9ca76089f05992&url=https://pt.wttr.in/${q}`
+sendFileFromUrl(clima, image, {quoted: fimg})
 break
 		
 case 'idiomas':
