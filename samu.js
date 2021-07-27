@@ -819,7 +819,7 @@ Fecha: ${calender}
 
 ${opcion}
 
-======[ *Versión 3.27 ]======
+======[ *Versión 3.28 ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -953,6 +953,12 @@ mda = `
 ╠ *●${prefix}clima* + region
 ║ _El clima_
 ║
+╠ *●${prefix}zalgo*
+║ _Texto estilo zalgo_
+║
+╠ *●${prefix}contar*
+║ _Cuenta caracteres de un texto_
+║
 ╠ *●${prefix}caras*
 ║ _Etiqueta una imagen para detectar caras_
 ║
@@ -975,7 +981,7 @@ mda = `
 ║
 ╠ *●${prefix}par*
 ║ _Anime para compartir perfil_
-║ _(hombre | mujere)_
+║ _(hombre | mujeres)_
 ║
 ╠ *●${prefix}animevid*
 ║ _Videos anime cortos_
@@ -1902,7 +1908,11 @@ if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
 reply('*ESPERE UN MOMENTO... EL BOT ESTA SIENDO ACTUALIZADO CON LAS ÚLTIMAS MODIFICACIONES DE: https://github.com/Samu330/NyanBot*')
 exec(`bash update.sh`, (err, stdout) => {
 if (err) return reply(err)
-if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}\n\n Los cambios serán reflejados la próxima vez que inicie el bot.`)
+if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe de la actualización:\n\n${stdout}\n\nAhora espera mientras el bot se reinicia para poder seguir!.`)
+})
+exec(`npm start`, (err, stdout) => {
+if (err) return reply(err)
+if (stdout) reply(`*Listo!!*\n${stdout}`)
 })
 break
 		
@@ -1910,6 +1920,17 @@ case 'zalgo':
 if (args.length < 1) return reply("Escriba una frase despues del comando para poder continuar!")
 reply(zalgo(`${body.slice(6)}`))
 addFilter(from)
+break
+		
+case 'contar':
+addFilter(from)
+if (args.length == 0) return reply('0 caracteres!😀 NO HAY TEXTO PARA CONTAR!')
+const count = body.slice(8).length
+if (count === 1) {
+reply(`El texto solo contine *${count}* caracter.`)
+} else if (count > 1) {
+reply(`Su texto contiene *${count}* caracteres.`)
+}
 break
 		
 case 'reportar':
