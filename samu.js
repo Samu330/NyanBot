@@ -41,6 +41,7 @@ const fetch = require('node-fetch');
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 
+const WSF = require('wa-sticker-formatter')
 const {y2mateA, y2mateV} = require('./lib/y2mate.js')
 const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
@@ -506,15 +507,7 @@ samu330.on('chat-update', async(sam) => {
 
 
 
-const flink = {
-key:
-{ fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ?
-{ remoteJid: "status@broadcast" } : {}) },
-message: {"extendedTextMessage": {"matchedText": "https://youtu.be/Q7AIo1_hhIE", "canonicalUrl": "https://www.youtube.com/watch?v=Q7AIo1_hhIE", "description": '💎NyanBot | Samu330🍒', "title": "📲NyanBot | WhatsApp🪀",  "previewType": "VIDEO", "jpegThumbnail": fs.readFileSync('./src/ara.png')}}
-}
-contextInfo: {
-mentionedJid: [sender]}
+
 const fimg = {
 key:
 { fromMe: false,
@@ -1132,7 +1125,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 }
 }
 samu330.sendMessage(from, Menud, MessageType.text, {
-quoted:  flink})
+quoted:  fvid})
 addFilter(from)
 break
 case 'menu5':
@@ -1899,11 +1892,7 @@ if (err) return reply(err)
 if (stdout) reply(stdout)
 })
 break
-		
-case 'flink':
-samu330.sendMessage(from, { "text": "bongo.cat", "matchedText": "https://youtu.be/Q7AIo1_hhIE", "canonicalUrl": "https://www.youtube.com/watch?v=Q7AIo1_hhIE", "description": "😈Samu330", "title": "Samu330📚", "previewType": "VIDEO"}, MessageType.text)
-break
-
+	
 case 'actualizar':
 case 'update':
 if (!itsMe) return reply('tu quien eres para decirme que hacer!?🤔')
@@ -4202,6 +4191,15 @@ samu330.sendMessage(from, fs.readFileSync('caras.jpg'), MessageType.image, {quot
 } else {
 reply('*Porfavor etiqueta una imagen con el comando*')
 }
+break
+		
+case 's2':
+if (((isMedia && !sam.message.videoMessage) || isQuotedImage) && args.length == 0) {
+s2 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam;
+const sticker2 = new WSF.Sticker(s2, { crop: false, animated: false, pack: '🌐', author: 'Samu330' })
+await sticker2.build()
+const sticBuffer = await sticker2.get()
+samu330.sendMessage(from, sticBuffer, sticker)
 break
 		
 case 'ger':
