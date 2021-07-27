@@ -511,7 +511,7 @@ key:
 { fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ?
 { remoteJid: "status@broadcast" } : {}) },
-message: {"extendedTextMessage": {"text": `${pushname}`, "description": '💎NyanBot | Samu330🍒', "title": "📲NyanBot | WhatsApp🪀",  "previewType": "VIDEO", "jpegThumbnail": fs.readFileSync('./src/ara.png')}}
+message: {"extendedTextMessage": {"matchedText": "https://youtu.be/Q7AIo1_hhIE", "canonicalUrl": "https://www.youtube.com/watch?v=Q7AIo1_hhIE", "description": '💎NyanBot | Samu330🍒', "title": "📲NyanBot | WhatsApp🪀",  "previewType": "VIDEO", "jpegThumbnail": fs.readFileSync('./src/ara.png')}}
 }
 contextInfo: {
 mentionedJid: [sender]}
