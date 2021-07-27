@@ -4200,6 +4200,7 @@ const sticker2 = new WSF.Sticker(s2, { crop: false, animated: false, pack: '🌐
 await sticker2.build()
 const sticBuffer = await sticker2.get()
 samu330.sendMessage(from, sticBuffer, sticker)
+}
 break
 		
 case 'ger':
