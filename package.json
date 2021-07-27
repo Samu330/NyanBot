@@ -25,6 +25,7 @@
     "multistream": "^2.1.0",
     "needle": "^2.5.2",
     "node-fetch": "^2.6.1",
+    "seedrandom": "^3.0.5",
     "node-gtts": "^2.0.2",
     "node-tesseract-ocr": "^2.0.0",
     "performance-now": "^2.1.0",
