@@ -4196,10 +4196,10 @@ break
 case 's2':
 if (((isMedia && !sam.message.videoMessage) || isQuotedImage) && args.length == 0) {
 s2 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-samsam = await samu330.downloadAndSaveMediaMessage(s2)
-const sticker2 = new WSF.Sticker(samsam, { crop: false, animated: false, pack: '🌐', author: 'Samu330' })
-await sticker2.build()
-const sticBuffer = await sticker2.get()
+samsam1 = await samu330.downloadAndSaveMediaMessage(s2)
+const sticker = new WSF.Sticker(samsam1, { crop: false })
+await sticker.build()
+const sticBuffer = await sticker.get()
 samu330.sendMessage(from, sticBuffer, sticker)
 }
 break
