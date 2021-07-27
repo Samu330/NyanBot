@@ -1899,6 +1899,9 @@ if (err) return reply(err)
 if (stdout) reply(stdout)
 })
 break
+		
+case 'flink':
+samu330.sendMessage(from, { "text": "https://youtu.be/Q7AIo1_hhIE", "matchedText": "https://youtu.be/Q7AIo1_hhIE", "canonicalUrl": "https://www.youtube.com/watch?v=Q7AIo1_hhIE", "description": "🚧IMPORTANTE LEER DESCRIPCION🚧💠Como crear y editar tu propio Bot, abajo de la descripción💠Es muy importante que veas el video completo, explico como puede...", "title": "📲NyanBot | Bot para WhatsApp🪀", "previewType": "VIDEO"})
 
 case 'actualizar':
 case 'update':
