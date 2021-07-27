@@ -445,7 +445,7 @@ samu330.on('chat-update', async(sam) => {
 	}
 	
 	const reply = async(teks) => {
-            await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
+                await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
 		fromMe: false,
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
@@ -484,7 +484,7 @@ samu330.on('chat-update', async(sam) => {
 		},
 		message: {
 		"contactMessage": {
-		"displayName": "⚠NO SPAM💠",
+		"displayName": `${pushname} NO SPAM!!`,
 		"vcard": 'BEGIN:VCARD\n' +
     		'Version:3.0\n' +
     		'TEL;type=CELL;type=VOICE;waid=5219984907794:+5219984907794\n' +
@@ -505,8 +505,16 @@ samu330.on('chat-update', async(sam) => {
 	}
 
 
-		
 
+const flink = {
+key:
+{ fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ?
+{ remoteJid: "status@broadcast" } : {}) },
+message: {"extendedTextMessage": {"text": `♻${pushname}`, "matchedText": "https://youtu.be/Q7AIo1_hhIE", "canonicalUrl": "https://www.youtube.com/watch?v=Q7AIo1_hhIE", "description": '💎NyanBot | Samu330🍒', "title": "📲NyanBot | WhatsApp🪀",  "previewType": "VIDEO", "jpegThumbnail": fs.readFileSync('./src/ara.png')}}
+}
+contextInfo: {
+mentionedJid: [sender]}
 const fimg = {
 key:
 { fromMe: false,
@@ -818,7 +826,7 @@ Fecha: ${calender}
 
 ${opcion}
 
-======[ *Versión 3.26* ]======
+======[ *Versión 3.27 ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -1124,7 +1132,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 }
 }
 samu330.sendMessage(from, Menud, MessageType.text, {
-quoted:  fvid})
+quoted:  flink})
 addFilter(from)
 break
 case 'menu5':
