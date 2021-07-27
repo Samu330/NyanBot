@@ -41,7 +41,6 @@ const fetch = require('node-fetch');
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 
-const WSF = require('wa-sticker-formatter')
 const {y2mateA, y2mateV} = require('./lib/y2mate.js')
 const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
@@ -4190,17 +4189,6 @@ fs.writeFileSync('caras.jpg', caras)
 samu330.sendMessage(from, fs.readFileSync('caras.jpg'), MessageType.image, {quoted: fimg, caption: '💠Samu330 | NyanBot💎'})
 } else {
 reply('*Porfavor etiqueta una imagen con el comando*')
-}
-break
-		
-case 's2':
-if (((isMedia && !sam.message.videoMessage) || isQuotedImage) && args.length == 0) {
-s2 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-samsam1 = await samu330.downloadAndSaveMediaMessage(s2)
-const sticker = new WSF.Sticker(samsam1, { crop: false })
-await sticker.build()
-const sticBuffer = await sticker.get()
-samu330.sendMessage(from, sticBuffer, sticker)
 }
 break
 		
