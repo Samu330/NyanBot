@@ -2101,16 +2101,42 @@ if (isMedia && !sam.message.videoMessage || isQuotedImage) {
 const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 const dlfile1 = await samu330.downloadMediaMessage(encmedia1)
 const bas641 = `data:image/jpeg;base64,${dlfile1.toString('base64')}`
-var mantap1 = await convertSticker(bas641, `💎Samu330 | Sam y Perry🍒`, `🔮薩姆330 | Nyan 機器人🥀\n${pushname}`)
+var mantap1 = await convertSticker(bas641, `💎Samu330 | Sam y Perry🍒`, `🔮薩姆330 | Nyan 機器人🥀`)
 var st = new Buffer.from(mantap1, 'base64');
 samu330.sendMessage(from, st, sticker, {quoted: sam})
 } else if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
-const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-const dlfile2 = await samu330.downloadMediaMessage(encmedia2)
-const bas641 = `data:image/jpeg;base64,${dlfile2.toString('base64')}`
-var mantap1 = await convertSticker(bas641, `💎Samu330 | Sam y Perry🍒`, `🔮薩姆330 | Nyan 機器人🥀`)
-var st1 = new Buffer.from(mantap1, 'base64');
-samu330.sendMessage(from, st1, sticker, {quoted: sam})
+const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.
+contextInfo : sam
+const media2 = await samu330.downloadAndSaveMediaMessage(encmedia2, `./sticker/${sender}`)
+const packname101 = `\n\n\n\n\n\n\n\n\n\n\nSamu330 NyanBot\n\n       Sam y Perry`
+const author101 = args.join(' ')
+exif.create(packname101, author101, `stickwm_${sender}`)
+reply('*⌛EN PROCESO*')
+await ffmpeg(`${media2}`)
+.inputFormat(media2.split('.')[4])
+.on('start', function (cmd) {
+console.log(`Started : ${cmd}`)
+})
+.on('error', function (err) {
+console.log(`Error : ${err}`)
+fs.unlinkSync(media2)
+tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+reply('*Intenta de nuevo*')
+})
+.on('end', function () {
+console.log('Finish')
+exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
+if (error) return reply('error')
+wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)
+fs.unlinkSync(media2)
+fs.unlinkSync(`./sticker/${sender}.webp`)
+fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
+})
+})
+.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decre
+ase,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+.toFormat('webp')
+.save(`./sticker/${sender}.webp`)
 } else {
 reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
 }
