@@ -1935,7 +1935,7 @@ if (!isBan) {
 	
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel1} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`)
+  	🕋rango: ${rango}`)}
 	} catch (err) {
 	console.error(err)
 	}
