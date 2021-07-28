@@ -305,6 +305,7 @@ samu330.on('chat-update', async(sam) => {
 
         const command = comm
         hit_today.push(command)
+	const content = JSON.stringify(sam.message)
 	const chats1 = (type === 'chat') ? body : ((type === 'image' || type === 'video')) ? caption : ''
 	const samu = '```'
 	const crypto = require('crypto')
