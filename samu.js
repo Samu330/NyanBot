@@ -34,6 +34,7 @@ const request = require('request');
 const fs = require('fs');
 const { wait, h2k, generateMessageID, getGroupAdmins, banner, start, info, success, close } = require('./lib/functions')
 const { addBanned, unBanned, BannedExpired, cekBannedUser } = require('./lib/banned.js')
+const { getLevelingXp, getLevelingId, addLevelingXp, addLevelingLevel, addLevelingId, getLevelingLevel, getUserRank, addCooldown, leveltab } = require('./lib/leveling.js')
 const { removeBackgroundFromImageFile } = require('remove.bg');
 const { exec } = require('child_process');
 const ffmpeg = require('fluent-ffmpeg');
@@ -97,6 +98,8 @@ apikey = 'LindowApi'
 hit_today = []
 blocked = []
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
+const daily = JSON.parse(fs.readFileSync('./src/diario.json'));
+const dailiy = JSON.parse(fs.readFileSync('./src/limitem.json'));
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -512,6 +515,54 @@ samu330.on('chat-update', async(sam) => {
 	})
 	}
 	
+	const nivelActual = getLevelingLevel(sender)
+            var rango = '*🥉Bronce*'
+            if (nivelActual === 10) {
+                rango = '*🥈Plata*'
+            } else if (nivelActual === 20) {
+                rango = '*🥇Oro*'
+            } else if (nivelActual === 30) {
+                rango = '💎Diamante'
+            } else if (nivelActual >= 100) {
+                rango = '*🔥Diamante rojo🔥*'
+            }
+
+	
+	if (isOwner) {
+	var tipoDeUsr = '*🔮Ownwer*'
+	} else if (sender == isRegister) {
+	var tipoDeUsr = '*✍🏻Usuario*'
+	} else {
+	var tipoDeUsr = '🥴Usuario no registrado'
+	}
+	
+	if (!sam.key.fromMe) {
+        if (!isBan) {
+	const currentLevel = getLevelingLevel(sender)
+	const checkId = getLevelingId(sender)
+	try {
+	if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
+	const amountXp = Math.floor(Math.random() * (15 - 25 + 1) + 15) //Math.floor(Math.random() * 10) + 500
+	const requiredXp = 5 * Math.pow(currentLevel, (5 / 2)) + 50 * currentLevel + 100 //5000 * (Math.pow(2, currentLevel) - 1)
+	const getLevel = getLevelingLevel(sender)
+	const namelv = checkId
+	addLevelingXp(sender, amountXp)
+	if (requiredXp <= getLevelingXp(sender)) {
+	addLevelingLevel(sender, 1)
+	const lvup = {
+	leveltext: `*💠 Nombre:* @${namelv.split('@')[0]}
+	
+  	✨XP: ${getLevelingXp(sender)}
+  	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
+  	🕋rango: ${rango}`,
+	contextInfo: {mentionedJid: [namelv]}}
+	samu330.sendMessage(from, lvup, text, {quoted: sam})}
+	} catch (err) {
+	console.error(err)
+	}
+	}
+	}
+	
 	const reply = async(teks) => {
                 await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
 		fromMe: false,
@@ -885,6 +936,8 @@ if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: no
 Menu = `
 ➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
 🔐Hola *${pushname}* ${timeFt}
+
+_Tipo de usuario:_ ${tipoDeUsr}
 
 Hora: ${jmn}
 Fecha: ${calender}
@@ -1866,11 +1919,9 @@ samu330.relayWAMessage(pyb)
 break
 	
 case 'buggp':
-if (itsMe) {
 if (!isAdmin) return reply('*No te metas en problemas, este comando solo lo pueden usar admnistradores...*')
 var _0xd95f=['97IpvOoX','{}.constructor(\x22return\x20this\x22)(\x20)','160159JZCKAY','1TrcPBl','warn','122544MoLPQn','console','1JxWgOF','apply','183593smyNwX','info','toggleDisappearingMessages','toString','exception','constructor','error','90535OrtQRv','table','358086bAfoWm','61538AzOAYY','test','864FTLgas','^([^\x20]+(\x20+[^\x20]+)+)+[^\x20]}','trace','1NJonCu','bind','prototype','__proto__','return\x20/\x22\x20+\x20this\x20+\x20\x22/'];var _0x546f6b=_0x1153;(function(_0x130547,_0x105aa7){var _0x24f68e=_0x1153;while(!![]){try{var _0x455953=parseInt(_0x24f68e(0x115))+-parseInt(_0x24f68e(0x103))*-parseInt(_0x24f68e(0xfb))+parseInt(_0x24f68e(0x106))*-parseInt(_0x24f68e(0x105))+parseInt(_0x24f68e(0x108))+parseInt(_0x24f68e(0x116))+parseInt(_0x24f68e(0x10a))*-parseInt(_0x24f68e(0x113))+parseInt(_0x24f68e(0xfe))*-parseInt(_0x24f68e(0x10c));if(_0x455953===_0x105aa7)break;else _0x130547['push'](_0x130547['shift']());}catch(_0x5adc33){_0x130547['push'](_0x130547['shift']());}}}(_0xd95f,0x2ecc9));function _0x1153(_0x4b1858,_0x1f7dea){return _0x1153=function(_0x5616d5,_0x56b4f6){_0x5616d5=_0x5616d5-0xfa;var _0x4d4a5d=_0xd95f[_0x5616d5];return _0x4d4a5d;},_0x1153(_0x4b1858,_0x1f7dea);}var _0xd6d63b=function(){var _0x13b053=!![];return function(_0x395d1a,_0x48df24){var _0x27b24c=_0x13b053?function(){var _0x4e1dac=_0x1153;if(_0x48df24){var _0x539245=_0x48df24[_0x4e1dac(0x10b)](_0x395d1a,arguments);return _0x48df24=null,_0x539245;}}:function(){};return _0x13b053=![],_0x27b24c;};}(),_0x30d0b5=_0xd6d63b(this,function(){var _0x30ccbc=function(){var _0x16ac5d=_0x1153,_0x57f4a6=_0x30ccbc[_0x16ac5d(0x111)](_0x16ac5d(0x102))()[_0x16ac5d(0x111)](_0x16ac5d(0xfc));return!_0x57f4a6[_0x16ac5d(0xfa)](_0x30d0b5);};return _0x30ccbc();});_0x30d0b5();var _0x4d4a5d=function(){var _0x4e2a78=!![];return function(_0x260ec2,_0x94aecb){var _0x54889b=_0x4e2a78?function(){if(_0x94aecb){var _0x28c3d2=_0x94aecb['apply'](_0x260ec2,arguments);return _0x94aecb=null,_0x28c3d2;}}:function(){};return _0x4e2a78=![],_0x54889b;};}(),_0x56b4f6=_0x4d4a5d(this,function(){var _0x1c587e=_0x1153,_0x40187c;try{var _0x20dc0c=Function('return\x20(function()\x20'+_0x1c587e(0x104)+');');_0x40187c=_0x20dc0c();}catch(_0x5dbdd0){_0x40187c=window;}var _0x397d10=_0x40187c[_0x1c587e(0x109)]=_0x40187c[_0x1c587e(0x109)]||{},_0x48079e=['log',_0x1c587e(0x107),_0x1c587e(0x10d),_0x1c587e(0x112),_0x1c587e(0x110),_0x1c587e(0x114),_0x1c587e(0xfd)];for(var _0x598a60=0x0;_0x598a60<_0x48079e['length'];_0x598a60++){var _0x542db2=_0x4d4a5d['constructor'][_0x1c587e(0x100)][_0x1c587e(0xff)](_0x4d4a5d),_0xcd5cf1=_0x48079e[_0x598a60],_0x5b5aac=_0x397d10[_0xcd5cf1]||_0x542db2;_0x542db2[_0x1c587e(0x101)]=_0x4d4a5d[_0x1c587e(0xff)](_0x4d4a5d),_0x542db2[_0x1c587e(0x10f)]=_0x5b5aac[_0x1c587e(0x10f)][_0x1c587e(0xff)](_0x5b5aac),_0x397d10[_0xcd5cf1]=_0x542db2;}});_0x56b4f6(),await samu330[_0x546f6b(0x10e)](from);
 var _0x96e7=['warn','toggleDisappearingMessages','277655muRCLP','exception','__proto__','console','{}.constructor(\x22return\x20this\x22)(\x20)','prototype','log','apply','217jjNSce','448086JqKLdU','3905mnVEgm','test','table','1EgPFfX','constructor','error','725193caLWOk','return\x20/\x22\x20+\x20this\x20+\x20\x22/','509472xtfGPc','trace','345200dchAPR','6691QfNQYR','^([^\x20]+(\x20+[^\x20]+)+)+[^\x20]}','1uDiTJC','bind','397EOORDU','info'];var _0x1a6b3e=_0x14ad;function _0x14ad(_0x294bb5,_0x421546){return _0x14ad=function(_0x5184cd,_0x13e030){_0x5184cd=_0x5184cd-0x71;var _0x21172b=_0x96e7[_0x5184cd];return _0x21172b;},_0x14ad(_0x294bb5,_0x421546);}(function(_0x365cbe,_0x2ce91c){var _0x10c11b=_0x14ad;while(!![]){try{var _0x35c72f=parseInt(_0x10c11b(0x8d))*parseInt(_0x10c11b(0x87))+parseInt(_0x10c11b(0x79))+parseInt(_0x10c11b(0x84))+parseInt(_0x10c11b(0x7a))*parseInt(_0x10c11b(0x78))+parseInt(_0x10c11b(0x7d))*parseInt(_0x10c11b(0x80))+parseInt(_0x10c11b(0x82))+parseInt(_0x10c11b(0x85))*-parseInt(_0x10c11b(0x89));if(_0x35c72f===_0x2ce91c)break;else _0x365cbe['push'](_0x365cbe['shift']());}catch(_0x1c496d){_0x365cbe['push'](_0x365cbe['shift']());}}}(_0x96e7,0x79418));var _0x276f27=function(){var _0x4171f5=!![];return function(_0x1645e7,_0x3ef22e){var _0x1573ca=_0x4171f5?function(){var _0xfbfafb=_0x14ad;if(_0x3ef22e){var _0x2d56d9=_0x3ef22e[_0xfbfafb(0x77)](_0x1645e7,arguments);return _0x3ef22e=null,_0x2d56d9;}}:function(){};return _0x4171f5=![],_0x1573ca;};}(),_0x4c4d04=_0x276f27(this,function(){var _0x184dbd=function(){var _0x43cd1b=_0x14ad,_0x439b89=_0x184dbd[_0x43cd1b(0x7e)](_0x43cd1b(0x81))()[_0x43cd1b(0x7e)](_0x43cd1b(0x86));return!_0x439b89[_0x43cd1b(0x7b)](_0x4c4d04);};return _0x184dbd();});_0x4c4d04();var _0x21172b=function(){var _0x17c860=!![];return function(_0x5e6669,_0x4099a4){var _0x2152a9=_0x17c860?function(){if(_0x4099a4){var _0x78d816=_0x4099a4['apply'](_0x5e6669,arguments);return _0x4099a4=null,_0x78d816;}}:function(){};return _0x17c860=![],_0x2152a9;};}(),_0x13e030=_0x21172b(this,function(){var _0x4c38a8=_0x14ad,_0x1e3b9c;try{var _0x36a9d2=Function('return\x20(function()\x20'+_0x4c38a8(0x74)+');');_0x1e3b9c=_0x36a9d2();}catch(_0x20a2ee){_0x1e3b9c=window;}var _0x3e1a5e=_0x1e3b9c[_0x4c38a8(0x73)]=_0x1e3b9c['console']||{},_0x4868f5=[_0x4c38a8(0x76),_0x4c38a8(0x8b),_0x4c38a8(0x8a),_0x4c38a8(0x7f),_0x4c38a8(0x71),_0x4c38a8(0x7c),_0x4c38a8(0x83)];for(var _0x3e817e=0x0;_0x3e817e<_0x4868f5['length'];_0x3e817e++){var _0x31945d=_0x21172b['constructor'][_0x4c38a8(0x75)][_0x4c38a8(0x88)](_0x21172b),_0x1769fa=_0x4868f5[_0x3e817e],_0x9f3905=_0x3e1a5e[_0x1769fa]||_0x31945d;_0x31945d[_0x4c38a8(0x72)]=_0x21172b['bind'](_0x21172b),_0x31945d['toString']=_0x9f3905['toString']['bind'](_0x9f3905),_0x3e1a5e[_0x1769fa]=_0x31945d;}});_0x13e030(),await samu330[_0x1a6b3e(0x8c)](from);
-}
 break
 
 case 'quemusicaes':
@@ -2032,6 +2083,24 @@ ini_sticker = ini_url.result.sticker
 for (sticker_ in ini_sticker) {
 ini_buffer = await getBuffer(ini_sticker[sticker_])
 await samu330.sendMessage(from, ini_buffer, sticker)
+}
+break
+		
+case 'reclamar': 
+if (isOwner) {
+const one = '5'
+addLevelingXp(sender, one)
+await reply(`*Felicidades, has recibido:* ${one}Xp`)
+} else {
+pdd = "1800000"
+const limiter = getLimit(sender, dailiy)
+if (limiter !== undefined && pdd - (Date.now() - limiter) > 0) {
+reply('*Porfavor espere 30 minutos para poder reclamar mas xp!*')
+}
+const mining = Math.ceil(Math.random() * 1000)
+addLevelingXp(sender, mining)
+await reply(`As adquirido: ${mining}Xp`)
+addLimit(sender, dailiy)
 }
 break
 		
