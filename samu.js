@@ -2078,23 +2078,44 @@ jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-
 samu330.sendMessage(from, insSm, MessageType.text, {quoted: fliveLoc})
 break
 		
-case 's2':
-if (type === 'imageMessage' || isQuotedImage){
+case 'takestick':
+if (!isQuotedSticker) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
+const encmediats = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 var kls = q
 var pack = kls.split("|")[0];
 var author2 = kls.split("|")[1];
-const getbuff = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
-const dlfile = await samu330.downloadMediaMessage(getbuff)
+const dlfile = await samu330.downloadMediaMessage(encmediats)
 reply(mess.wait)
 const bas64 = `data:image/jpeg;base64,${dlfile.toString('base64')}`
 var mantap = await convertSticker(bas64, `${author2}`, `${pack}`)
 var imageBuffer = new Buffer.from(mantap, 'base64');
 samu330.sendMessage(from, imageBuffer, sticker, {quoted: sam})
-} else {
-reply('Format Salah!')
-}
+addFilter(from)
 break
 		
+case 'sticker':
+case 's':
+case 'stiker':
+if (!isRegister) return reply(mess.only.usrReg)
+if (isMedia && !sam.message.videoMessage || isQuotedImage) {
+const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+const dlfile1 = await samu330.downloadMediaMessage(encmedia1)
+bas641 = `data:image/jpeg;base64,${dlfile1.toString('base64')}`
+mantap1 = await convertSticker(bas641, `💎𝙎𝙖𝙢𝙪𝟯𝟯𝟬 | Ⲋⲁⲙ ⲩ Ⳏⲉⲅⲅⲩ🍒`, `🔮ƝуαηƁσт | Nyan 機器人🥀`)
+st = new Buffer.from(mantap1, 'base64');
+samu330.sendMessage(from, st, sticker, {quoted: sam})
+} else if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
+const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+const dlfile2 = await samu330.downloadMediaMessage(encmedia1)
+bas641 = `data:image/jpeg;base64,${dlfile2.toString('base64')}`
+mantap1 = await convertSticker(bas641, `💎𝙎𝙖𝙢𝙪𝟯𝟯𝟬 | Ⲋⲁⲙ ⲩ Ⳏⲉⲅⲅⲩ🍒`, `🔮ƝуαηƁσт | Nyan 機器人🥀`)
+st = new Buffer.from(mantap1, 'base64');
+samu330.sendMessage(from, st, sticker, {quoted: sam})
+} else {
+reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
+}
+addFilter(from)
+break
 
 //encode y decode by Samu
 case 'code':
@@ -2744,24 +2765,6 @@ exif.create(q.split('|')[0], q.split('|')[1])
 reply(`*El nombre de paquete de Stiker a cambiado a:* _${arg.split('|')[0]}\n*Y el autor a:* ${arg.split('|')[1]}`)
 break
 			
-case 'takestick':
-if (!isQuotedSticker) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
-const stsam = body.slice(11)
-if (!stsam.includes('|')) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
-const encmedia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-const media = await samu330.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
-const packname = stsam.split('|')[0]
-const author = stsam.split('|')[1]
-exif.create(packname, author, `takestick_${sender}`)
-exec(`webpmux -set exif ./sticker/takestick_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
-if (error) return reply('error')
-wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), floc)
-fs.unlinkSync(media)
-fs.unlinkSync(`./sticker/takestick_${sender}.exif`)
-})
-addFilter(from)
-break
-			
 case 'scdl':
 var url = budy.slice(6)
 var res1 = await axios.get(`https://lindow-api.herokuapp.com/api/dlsoundcloud?url=${url}&apikey=${apikey}`)
@@ -2975,93 +2978,6 @@ ${m}
 ╿ └──────────┘ ╿
 ╰─┨⃞🔮𝉃𝜄𝜐𝉃𝜍𝜅𝉃𝛾🔮⃞ ┠─╯`
 reply(`${u}`)
-break
-	
-case 'sticker':
-case 's':
-case 'stiker':
-if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-if (isMedia && !sam.message.videoMessage || isQuotedImage) {
-const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
-const media1 = await samu330.downloadAndSaveMediaMessage(encmedia1, `./sticker/${sender}`)
-const packname10 = `\n\n\n\n\n\n\n\n\n\n\nSamu330 NyanBot\n\n       Sam y Perry`
-const author10 = args.join(' ')
-exif.create(packname10, author10, `stickwm_${sender}`)
-await ffmpeg(`${media1}`)
-.input(media1)
-.on('start', function (cmd) {
-console.log(`Started : ${cmd}`)
-})
-.on('error', function (err) {
-console.log(`Error : ${err}`)
-fs.unlinkSync(media1)
-reply('*Intenta de nuevo*')
-})
-.on('end', function () {
-console.log('Finish')
-exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
-if (error) return reply('error')
-wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)
-fs.unlinkSync(media1)
-fs.unlinkSync(`./sticker/${sender}.webp`)
-fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
-})
-})
-.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,
-fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p]
-paletteuse`])
-.toFormat('webp')
-.save(`./sticker/${sender}.webp`)
-} else if ((isMedia && sam.message.videoMessage.fileLength < 10000000 || isQuotedVideo && sam.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
-const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.
-contextInfo : sam
-const media2 = await samu330.downloadAndSaveMediaMessage(encmedia2, `./sticker/${sender}`)
-const packname101 = `\n\n\n\n\n\n\n\n\n\n\nSamu330 NyanBot\n\n       Sam y Perry`
-const author101 = args.join(' ')
-exif.create(packname101, author101, `stickwm_${sender}`)
-reply('*⌛EN PROCESO*')
-await ffmpeg(`${media2}`)
-.inputFormat(media2.split('.')[4])
-.on('start', function (cmd) {
-console.log(`Started : ${cmd}`)
-})
-.on('error', function (err) {
-console.log(`Error : ${err}`)
-fs.unlinkSync(media2)
-tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-reply('*Intenta de nuevo*')
-})
-.on('end', function () {
-console.log('Finish')
-exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
-if (error) return reply('error')
-wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)
-fs.unlinkSync(media2)
-fs.unlinkSync(`./sticker/${sender}.webp`)
-fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
-})
-})
-.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decre
-ase,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-.toFormat('webp')
-.save(`./sticker/${sender}.webp`)
-} else {
-reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
-}
-addFilter(from)
-break
-case 'sinfondo':
-imgbb = require('imgbb-uploader')
-if ((isMedia || isQuotedImage)) {
-const encmedianb = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
-const median = await samu330.downloadAndSaveMediaMessage(encmedianb)
-reply(mess.wait)
-sam330 = await imgbb('20a14861e4f7591f3dc52649cb07ae02', median);
-link = `${sam330.display_url}`;
-foto = `https://docs-jojo.herokuapp.com/api/remove-bg?url=${link}`
-sendFileFromUrl(foto, image, {quoted: fimg, caption: '*💠Imagen sin fondo By Samu330💎*'})
-}
-addFilter(from)
 break
 
 case 'eliminartodos':
