@@ -95,6 +95,7 @@ fak = 'samu3300'
 prefix = '.'
 apikey = 'LindowApi'
 hit_today = []
+blocked = []
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 
 ///////////////////////////////////////////////////////////////////////////
@@ -155,8 +156,8 @@ samu330.on('CB:action,,battery', json => {
 global.batteryLevelStr = json[2][0][1].value
 global.batterylevel = parseInt(batteryLevelStr)
 baterai = batterylevel
-if (json[2][0][1].live == 'Si⚡') charging = true
-if (json[2][0][1].live == 'No📵') charging = false
+if (json[2][0][1].live == 'true') charging = true
+if (json[2][0][1].live == 'false') charging = false
 console.log(chalk.greenBright("├"), chalk.keyword("magenta")("[ 🔋Nivel de carga de la bateria: ]"), chalk.greenBright(batterylevel+'%'), chalk.keyword("cyan")("Esta cargando?"), chalk.keyword("yellow")(charging))	
 })
 
