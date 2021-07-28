@@ -177,7 +177,6 @@ console.log(chalk.greenBright("├"), chalk.keyword("green")("[ NUEVO USUARIO DE
 samu330.on('group-update', async(chat) => {
 var donde = chat.jid
 var group = await samu330.groupMetadata(donde)
-if(!x9.includes(chat.jid)) return 
 if (!chat.desc == '') {
 var tag = chat.descOwner.split('@')[0] + '@s.whatsapp.net'
 var mensajeDesc = `✍🏻 *La descripcion del grupo ${group.subject} fue modificada por: @${chat.descOwner.split('@')[0]}*\n✅Ahora la nueva descripcion es:\n\n${chat.desc}`
