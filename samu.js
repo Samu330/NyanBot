@@ -4583,6 +4583,9 @@ const emror = String(e)
 if (emror.includes('convert')){ 
 return
 }
+if (emror.includes('this.isZero')){ 
+return
+}	
 if (emror.includes('fileLength')){                           
 return
 }
