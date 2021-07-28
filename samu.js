@@ -937,6 +937,7 @@ Menu = `
 🔐Hola *${pushname}* ${timeFt}
 
 _Tipo de usuario:_ ${tipoDeUsr}
+*🕋Rango:* ${rango}
 
 Hora: ${jmn}
 Fecha: ${calender}
@@ -1919,23 +1920,22 @@ break
 	
 case 'xp':
 if (!isBan) {
-	const currentLevel = getLevelingLevel(sender)
-	const checkId = getLevelingId(sender)
+	const currentLevel1 = getLevelingLevel(sender)
+	const checkId1 = getLevelingId(sender)
 	try {
-	if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
-	const amountXp = Math.floor(Math.random() * (15 - 25 + 1) + 15) //Math.floor(Math.random() * 10) + 500
-	const requiredXp = 5 * Math.pow(currentLevel, (5 / 2)) + 50 * currentLevel + 100 //5000 * (Math.pow(2, currentLevel) - 1)
-	const getLevel = getLevelingLevel(sender)
-	const namelv = checkId
-	addLevelingXp(sender, amountXp)
+	if (currentLevel1 === undefined && checkId1 === undefined) addLevelingId(sender)
+	const amountXp1 = Math.floor(Math.random() * (15 - 25 + 1) + 15) //Math.floor(Math.random() * 10) + 500
+	const requiredXp1 = 5 * Math.pow(currentLevel1, (5 / 2)) + 50 * currentLevel1 + 100 //5000 * (Math.pow(2, currentLevel) - 1)
+	const getLevel1 = getLevelingLevel(sender)
+	const namelv1 = checkId1
+	addLevelingXp1(sender, amountXp1)
 	if (requiredXp <= getLevelingXp(sender)) {
 	addLevelingLevel(sender, 1)
-	const lvup = `*💠 Nombre:* @${namelv.split('@')[0]}
+	reply(`*💠 Nombre:* @${namelv1.split('@')[0]}
 	
   	✨XP: ${getLevelingXp(sender)}
-  	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`
-	samu330.sendMessage(from, lvup, text, {quoted: sam})}
+  	📚Nivel: ${getLevel1} -> ${getLevelingLevel(sender)}
+  	🕋rango: ${rango}`)
 	} catch (err) {
 	console.error(err)
 	}
