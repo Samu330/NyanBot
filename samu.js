@@ -158,7 +158,7 @@ baterai = batterylevel
 if (json[2][0][1].live == 'true') charging = true
 if (json[2][0][1].live == 'false') charging = false
 exec(`toilet -f pagga "NyanBot | Samu330" --filter border | lolcat`)
-console.log(color('🔋Nivel de carga de la vateria: ' + batterylevel+'%', "magneta"))
+console.log(chalk.greenBright("├"), chalk.keyword("magneta")("[ 🔋Nivel de carga de la vateria: ]"), chalk.greenBright(batterylevel+'%'), chalk.cyanBright("Esta cargando?"), chalk.keyword("yellow")(charging))	
 })
 
 samu330.on('group-participants-update', async (anu) => {
