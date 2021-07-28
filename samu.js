@@ -151,6 +151,16 @@ await sleep(4000)
 await samu330.blockUser(callerId, "add")
 })
 
+samu330.on('CB:action,,battery', json => {
+global.batteryLevelStr = json[2][0][1].value
+global.batterylevel = parseInt(batteryLevelStr)
+baterai = batterylevel
+if (json[2][0][1].live == 'true') charging = true
+if (json[2][0][1].live == 'false') charging = false
+exec(`toilet -f pagga "NyanBot | Samu330" --filter border | lolcat`)
+console.log(color('🔋Nivel de carga de la vateria: ' + batterylevel+'%', "magneta"))
+})
+
 samu330.on('group-participants-update', async (anu) => {
 if (!welkom.includes(anu.jid)) return
 try {
