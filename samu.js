@@ -155,10 +155,34 @@ samu330.on('CB:action,,battery', json => {
 global.batteryLevelStr = json[2][0][1].value
 global.batterylevel = parseInt(batteryLevelStr)
 baterai = batterylevel
-if (json[2][0][1].live == 'true') charging = true
-if (json[2][0][1].live == 'false') charging = false
-exec(`toilet -f pagga "NyanBot | Samu330" --filter border | lolcat`)
-console.log(chalk.greenBright("├"), chalk.keyword("magenta")("[ 🔋Nivel de carga de la vateria: ]"), chalk.greenBright(batterylevel+'%'), chalk.keyword("cyan")("Esta cargando?"), chalk.keyword("yellow")(charging))	
+if (json[2][0][1].live == 'Si⚡') charging = true
+if (json[2][0][1].live == 'No📵') charging = false
+console.log(chalk.greenBright("├"), chalk.keyword("magenta")("[ 🔋Nivel de carga de la bateria: ]"), chalk.greenBright(batterylevel+'%'), chalk.keyword("cyan")("Esta cargando?"), chalk.keyword("yellow")(charging))	
+})
+
+samu330.on('blocklist-update', async (chat) => {
+for (i of chat.added){
+target = i.replace('@c.us', '@s.whatsapp.net')
+blocked.push(target)
+console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[ NUEVO USUARIO BLOQUEADO ]"), chalk.keyword("red")(target)
+}
+for (i of chat.removed){
+target = i.replace('@c.us', '@s.whatsapp.net')
+blocked.splice(blocked.indexOf(target), 1)
+console.log(chalk.greenBright("├"), chalk.keyword("green")("[ NUEVO USUARIO DESBLOQUEADO ]"), chalk.keyword("cyan")(target)
+}
+})
+
+samu330.on('group-update', async(chat) => {
+var donde = chat.jid
+var group = await samu330.groupMetadata(donde)
+if(!x9.includes(chat.jid)) return 
+if (!chat.desc == '') {
+var tag = chat.descOwner.split('@')[0] + '@s.whatsapp.net'
+var mensajeDesc = `✍🏻 *La descripcion del grupo ${group.subject} fue modificada por: @${chat.descOwner.split('@')[0]}*\n✅Ahora la nueva descripcion es:\n\n${chat.desc}`
+samu330.sendMessage(group.id, mensajeDesc, MessageType.text, {contextInfo: {"mentionedJid": [tag]}, sendEphemeral: true})
+console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[ DESCRIPCION CAMBIADA ]"), chalk.keyword("cyan")('grupo'), chalk.keyword("green")(`${group.subject}`)
+}
 })
 
 samu330.on('group-participants-update', async (anu) => {
