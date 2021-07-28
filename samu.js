@@ -564,7 +564,7 @@ samu330.on('chat-update', async(sam) => {
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
-		"groupInviteMessage": { "groupName": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
+		"groupInviteMessage": { "caption": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
 		}}
 		})}
 	} catch (err) {
