@@ -527,21 +527,6 @@ samu330.on('chat-update', async(sam) => {
 		}
 		}
 		}
-	
-	if (isBan && isCmd && !isOwner) {
-	reply('*Lo siento pero usted es un usuario baneado, no puede hacer uso del bot!*')
-        return console.log(chalk.greenBright("├"), chalk.keyword("magenta")("[ USUARIO BANEADO ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(pushname))
-        }
-	
-	if (isCmd && isFiltered(from) && !isGroup) {
-        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, MessageType.text, {quoted: fspam})
-	}
-        
-        if (isCmd && isFiltered(from) && isGroup) {
-        console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
-        return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, MessageType.text, {quoted: fspam})
-	}
 
 
 
@@ -630,6 +615,21 @@ mentionedJid: [sender]}
 		if (!isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(pushname))
         	if (isGroup && isCmd) console.log(chalk.greenBright("├"), chalk.keyword("aqua")("[ COMMANDO ]"), chalk.whiteBright(typeMessage), chalk.greenBright("de"), chalk.keyword("yellow")(pushname), chalk.greenBright("en el grupo"), chalk.keyword("yellow")(groupName))
 	
+	    	if (isBan && isCmd && !isOwner) {
+		reply('*Lo siento pero usted es un usuario baneado, no puede hacer uso del bot!*')
+        	return console.log(chalk.greenBright("├"), chalk.keyword("magenta")("[ USUARIO BANEADO ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(pushname))
+        	}
+	
+		if (isCmd && isFiltered(from) && !isGroup) {
+        	console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
+        	return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, MessageType.text, {quoted: fspam})
+		}
+        
+        	if (isCmd && isFiltered(from) && isGroup) {
+        	console.log(chalk.greenBright("├"), chalk.keyword("red")("[ SPAM ]"), chalk.whiteBright(`${command}`), chalk.greenBright("de"), chalk.keyword("yellow")(senderNumber))
+        	return samu330.sendMessage(from, `🙂 Porfavor ${pushname}...\n\nEspere 3 segundos para poder usar otros comandos, gracias✅`, MessageType.text, {quoted: fspam})
+		}
+	    
 		if (messagesC.includes("bot")){
 			samu330.updatePresence(from, Presence.composing)
 			rm = [
@@ -1411,6 +1411,14 @@ _${prefix}apagar_
 *${prefix}Restaurar*
 
 ╭─────────────
+│ *${prefix}ban*
+│ _Prohibe el uso del bot a una persona_
+╰─────────────╮
+╭─────────────╯
+│ *${prefix}unban*
+│ _Permite el uso del bot a una persona baneada_
+╰─────────────╮
+╭─────────────╯
 │ *${prefix}banchat*
 │ _Bloquea el uso del bot en los chats que se active_
 ╰─────────────╮
@@ -4336,8 +4344,6 @@ mentions(`@${mentioned[0].split('@')[0]} Usted a sido baneado, lo que significa 
 } else if (!isNaN(args[1])) {
 addBanned(args[1] + '@s.whatsapp.net', args[2], ban)
 mentions(`@${mentioned[0].split('@')[0]} Usted a sido baneado, lo que significa que no podra usar el bot!`, mentioned, true)
-} else {
-reply(`Para banear a aguien use: ${prefix}ban @mencion`)
 }
 break
                 
@@ -4355,8 +4361,6 @@ mentions(`@${mentioned[0].split('@')[0]} Usted a sido desbaneado, ahora podra us
 } else if (!isNaN(args[0])) {
 unBanned(args[0] + '@s.whatsapp.net', ban)
 mentions(`@${mentioned[0].split('@')[0]} Usted a sido desbaneado, ahora podra usar el bot!!`, mentioned, true)
-} else {
-reply(`Para desbanear a aguien use: ${prefix}unban @mencion`)
 }
 break
 		
