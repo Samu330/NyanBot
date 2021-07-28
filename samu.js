@@ -184,7 +184,14 @@ var group = await samu330.groupMetadata(donde)
 if (!chat.desc == '') {
 var tag = chat.descOwner.split('@')[0] + '@s.whatsapp.net'
 var mensajeDesc = `✍🏻 *La descripcion del grupo ${group.subject} fue modificada por: @${chat.descOwner.split('@')[0]}*\n✅Ahora la nueva descripcion es:\n\n${chat.desc}`
-samu330.sendMessage(group.id, mensajeDesc, MessageType.text, {contextInfo: {"mentionedJid": [tag]}, sendEphemeral: true})
+samu330.sendMessage(group.id, mensajeDesc, MessageType.text, {quoted: { key: {                
+		fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                },
+                message: {
+		"groupInviteMessage": { "caption": `Cambio de descripcion por @${chat.descOwner.split('@')[0]}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
+		}}
+		})
 console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[ DESCRIPCION CAMBIADA ]"), chalk.keyword("cyan")('grupo'), chalk.keyword("green")(`${group.subject}`))
 }
 })
@@ -436,7 +443,7 @@ samu330.on('chat-update', async(sam) => {
         } else if (hour_now >= '14' && hour_now <= '17') {
           timeFt = 'Buenas tardes🌇'
         } else if (hour_now >= '17' && hour_now <= '18') {
-          timeFy = 'Buenas tardes🌇'
+          timeFt = 'Buenas tardes🌇'
         } else if (hour_now >= '18' && hour_now <= '23') {
           timeFt = 'Buenas noches🌃'
         } else {
@@ -4137,7 +4144,7 @@ samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Ya entre al grupo😉')
-samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ],\n@${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(${subject})*\n\n*Informacion de este grupo:*\n\👑Creador: ${owner}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: { key: {
+samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ],\n@${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(@${subject.split('@')[0]})*\n\n*Informacion de este grupo:*\n\👑Creador: @${owner.split('@')[0]}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: { key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 }, message: {"groupInviteMessage": { "caption": `${subject}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}}}})
