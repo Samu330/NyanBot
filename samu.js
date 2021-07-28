@@ -520,9 +520,9 @@ samu330.on('chat-update', async(sam) => {
             var rango = '*🥉Bronce*'
             if (nivelActual === 10) {
                 rango = '*🥈Plata*'
-            } else if (nivelActual === 20) {
-                rango = '*🥇Oro*'
             } else if (nivelActual === 30) {
+                rango = '*🥇Oro*'
+            } else if (nivelActual === 50) {
                 rango = '💎Diamante'
             } else if (nivelActual >= 100) {
                 rango = '*🔥Diamante rojo🔥*'
@@ -550,13 +550,11 @@ samu330.on('chat-update', async(sam) => {
 	addLevelingXp(sender, amountXp)
 	if (requiredXp <= getLevelingXp(sender)) {
 	addLevelingLevel(sender, 1)
-	const lvup = {
-	leveltext: `*💠 Nombre:* @${namelv.split('@')[0]}
+	const lvup =  `*💠 Nombre:* @${namelv.split('@')[0]}
 	
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`,
-	contextInfo: {mentionedJid: [namelv]}}
+  	🕋rango: ${rango}`
 	samu330.sendMessage(from, lvup, text, {quoted: sam})}
 	} catch (err) {
 	console.error(err)
@@ -1932,13 +1930,11 @@ if (!isBan) {
 	addLevelingXp(sender, amountXp)
 	if (requiredXp <= getLevelingXp(sender)) {
 	addLevelingLevel(sender, 1)
-	const lvup = {
-	leveltext: `*💠 Nombre:* @${namelv.split('@')[0]}
+	const lvup = `*💠 Nombre:* @${namelv.split('@')[0]}
 	
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`,
-	contextInfo: {mentionedJid: [namelv]}}
+  	🕋rango: ${rango}`
 	samu330.sendMessage(from, lvup, text, {quoted: sam})}
 	} catch (err) {
 	console.error(err)
