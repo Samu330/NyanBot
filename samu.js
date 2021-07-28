@@ -46,7 +46,9 @@ const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
 const {fbDown} = require('./lib/fb.js')
 const { isFiltered, addFilter } = require('./lib/antispam')
+const chatban = JSON.parse(fs.readFileSync('./src/ban.json'))
 const zalgo = require('./lib/zalgo')
+const {convertSticker} = require("./lib/swm.js")
 const conn = require("./lib/connect")
 const msg = require("./lib/message")
 const wa = require("./lib/wa")
@@ -332,6 +334,8 @@ samu330.on('chat-update', async(sam) => {
 	const isRegister = checkRegisteredUser(sender)
 	const totalChat1 = samu330.chats.all()
         const isOwner = senderNumber == owner || senderNumber == botNumber || mods.includes(senderNumber)
+	const isBanChat = chatban.includes(from)
+	if (isBanChat && !isOwner) return
 	const q = args.join(' ')
 	var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
 	const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -430,6 +434,30 @@ samu330.on('chat-update', async(sam) => {
         if (!mods.includes(senderNumber)) return
         mods.slice(mods.indexOf(owner), 1)
         }
+	    
+	const sendFile = async (archivo, nombreDeArchivo, comentario, tag, vn) => {
+  	tipo = await getBuffer(archivo)
+  	tipo2 = ''
+  	if (nombreDeArchivo.includes('m4a')){
+  	samu330.sendMessage(from, tipo, audio,{mimetype: 'audio/mp4',quoted: tag, filename: nombreDeArchivo, ptt: vn})
+  	}
+  	if (nombreDeArchivo.includes('mp4')){
+	samu330.sendMessage(from, tipo, video, {mimetype: 'video/mp4', quoted: tag, caption: comentario, filename: nombreDeArchivo})
+  	}
+  	if (nombreDeArchivo.includes('gif')){
+  	samu330.sendMessage(from, tipo, video, {mimetype: Mimetype.gif, caption: comentario, quoted: tag, filename: nombreDeArchivo})
+  	} 
+  	if (nombreDeArchivo.includes('png')){
+  	samu330.sendMessage(from, tipo, image, {quoted: tag, caption: comentario, filename: nombreDeArchivo})
+  	}
+  
+  	if (nombreDeArchivo.includes('webp')){
+  	samu330.sendMessage(from, tipo, sticker, {quoted: tag})
+  	} else {
+  	tipo2 = nombreDeArchivo.split(`.`)[1]
+  	samu330.sendMessage(from, tipo, document, {mimetype: tipo2, quoted: tag, filename: nombreDeArchivo})
+  	}
+	}
 	    
 	const sendFileFromUrl = async(link, type, options) => {
   	hasil = await getBuffer(link)
@@ -2050,6 +2078,23 @@ jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-
 samu330.sendMessage(from, insSm, MessageType.text, {quoted: fliveLoc})
 break
 		
+case 's2':
+if (type === 'imageMessage' || isQuotedImage){
+var kls = q
+var pack = kls.split("|")[0];
+var author = kls.split("|")[1];
+const getbuff = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
+const dlfile = await samu330.downloadMediaMessage(getbuff)
+reply(mess.wait)
+const bas64 = `data:image/jpeg;base64,${dlfile.toString('base64')}`
+var mantap = await convertSticker(bas64, `${author}`, `${pack}`)
+var imageBuffer = new Buffer.from(mantap, 'base64');
+samu330.sendMessage(from, imageBuffer, sticker, {quoted: sam})
+} else {
+reply('Format Salah!')
+}
+break
+		
 
 //encode y decode by Samu
 case 'code':
@@ -3538,7 +3583,7 @@ nopor = pornito[Math.floor(Math.random() * pornito.length)]
 reply('*Espera un momento porfavor*')
 iwant = await getJson(`${nopor}`, {method: 'get'})
 you = await getBuffer(`${iwant.result}`)
-samu330.sendMessage(from, you, image, {quoted: fvid, caption: '🍒', sendEphemeral: true})
+sendFile(you, sam, '🍒')
 break
 		
 case 'pdf':
@@ -4304,7 +4349,23 @@ if (args[0] === '1') {
 	reply('1 para activar, 0 para desactivar')           
 }           
 break
-					case '+18':                
+case 'banchat':
+if (!itsMe) return reply('🤔')
+if (args.length < 1) return reply('*Amm... para activar usa *1* y para desactivar *0*')
+if (body.endsWith('1')) {
+if (isBanChat) return reply('Este chat ya ah estado baneado!')
+chatban.push(from)
+fs.writeFileSync('./src/ban.json', JSON.stringify(chatban))
+reply('*♻Este chat a sido baneado*')
+} else if (body.endsWith('0')) {
+chatban.splice(from)
+fs.writeFileSync('./src/ban.json', JSON.stringify(chatban))
+reply('*♻Este chat a dejado de ser baneado*')
+} else {
+reply(`Porfavor escriba bien el comando: ${prefix}banchat *0/1*`)
+}
+break
+case '+18':                
 if (!isGroup) return reply(mess.only.group)
 if (!isAdmin) return reply(mess.only.admin)     
 
