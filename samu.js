@@ -1920,7 +1920,7 @@ samu330.relayWAMessage(pyb)
 break
 	
 case 'xp':
-reply(`*💠 Nombre:* @${namelv.split('@')[0]}
+reply(`*💠 Nombre:* @${sender.split('@')[0]}
 	
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
