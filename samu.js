@@ -1401,6 +1401,10 @@ _${prefix}apagar_
 *${prefix}Restaurar*
 
 ╭─────────────
+│ *${prefix}banchat*
+│ _Bloquea el uso del bot en los chats que se active_
+╰─────────────╮
+╭─────────────╯
 │ *${prefix}bloquear*
 │ _Bloquea usuarios_
 ╰─────────────╮
