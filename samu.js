@@ -520,10 +520,12 @@ samu330.on('chat-update', async(sam) => {
             var rango = '*🥉Bronce*'
             if (nivelActual === 10) {
                 rango = '*🥈Plata*'
-            } else if (nivelActual === 30) {
+            } else if (nivelActual === 20) {
                 rango = '*🥇Oro*'
-            } else if (nivelActual === 50) {
+            } else if (nivelActual === 30) {
                 rango = '💎Diamante'
+	    } else if (nivelActual === 30) {
+                rango = '*🌬Diamante Rosa*'
             } else if (nivelActual >= 100) {
                 rango = '*🔥Diamante rojo🔥*'
             }
@@ -533,8 +535,6 @@ samu330.on('chat-update', async(sam) => {
 	var tipoDeUsr = '*🔮Ownwer*'
 	} else if (sender == isRegister) {
 	var tipoDeUsr = '*✍🏻Usuario*'
-	} else {
-	var tipoDeUsr = '🥴Usuario no registrado'
 	}
 	
 	if (!sam.key.fromMe) {
@@ -550,12 +550,23 @@ samu330.on('chat-update', async(sam) => {
 	addLevelingXp(sender, amountXp)
 	if (requiredXp <= getLevelingXp(sender)) {
 	addLevelingLevel(sender, 1)
-	const lvup =  `*💠 Nombre:* @${namelv.split('@')[0]}
+	const lvup =  `✴ _*🧗🏻‍♂️S͟u͟b͟e͟s͟ ͟d͟e͟ ͟n͟i͟v͟e͟l͟!͟*_ ✴
 	
+	𓆩*𓆪 *💠 Nombre:* @${namelv.split('@')[0]} 𓆩*𓆪
+	
+	┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈
   	✨XP: ${getLevelingXp(sender)}
-  	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`
-	samu330.sendMessage(from, lvup, text, {quoted: sam})}
+  	📚Nivel: ${getLevel} ➫ ${getLevelingLevel(sender)}
+  	🕋rango: ${rango}
+	┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈`
+	samu330.sendMessage(from, lvup, text, {quoted: { key: {                
+		fromMe: false,
+                participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+                },
+                message: {
+		"groupInviteMessage": { "groupName": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
+		}
+		})}
 	} catch (err) {
 	console.error(err)
 	}
@@ -1917,30 +1928,6 @@ let pyb = samu330.prepareMessageFromContent(from,{
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 samu330.relayWAMessage(pyb)
 break
-	
-case 'xp':
-if (!isBan) {
-	const currentLevel1 = getLevelingLevel(sender)
-	const checkId1 = getLevelingId(sender)
-	try {
-	if (currentLevel1 === undefined && checkId1 === undefined) addLevelingId(sender)
-	const amountXp1 = Math.floor(Math.random() * (15 - 25 + 1) + 15) //Math.floor(Math.random() * 10) + 500
-	const requiredXp1 = 5 * Math.pow(currentLevel1, (5 / 2)) + 50 * currentLevel1 + 100 //5000 * (Math.pow(2, currentLevel) - 1)
-	const getLevel1 = getLevelingLevel(sender)
-	const namelv1 = checkId1
-	addLevelingXp1(sender, amountXp1)
-	if (requiredXp <= getLevelingXp(sender)) {
-	addLevelingLevel(sender, 1)
-	reply(`*💠 Nombre:* @${namelv1.split('@')[0]}
-	
-  	✨XP: ${getLevelingXp(sender)}
-  	📚Nivel: ${getLevel1} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`)}
-	} catch (err) {
-	console.error(err)
-	}
-	}
-break
 		
 case 'buggp':
 if (!isAdmin) return reply('*No te metas en problemas, este comando solo lo pueden usar admnistradores...*')
@@ -2109,25 +2096,7 @@ ini_buffer = await getBuffer(ini_sticker[sticker_])
 await samu330.sendMessage(from, ini_buffer, sticker)
 }
 break
-		
-case 'reclamar': 
-if (isOwner) {
-const one = '5'
-addLevelingXp(sender, one)
-await reply(`*Felicidades, has recibido:* ${one}Xp`)
-} else {
-pdd = "1800000"
-const limiter = getLimit(sender, dailiy)
-if (limiter !== undefined && pdd - (Date.now() - limiter) > 0) {
-reply('*Porfavor espere 30 minutos para poder reclamar mas xp!*')
-}
-const mining = Math.ceil(Math.random() * 1000)
-addLevelingXp(sender, mining)
-await reply(`As adquirido: ${mining}Xp`)
-addLimit(sender, dailiy)
-}
-break
-		
+			
 case 'xwaifu':
 if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
