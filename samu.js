@@ -565,7 +565,7 @@ samu330.on('chat-update', async(sam) => {
                 },
                 message: {
 		"groupInviteMessage": { "groupName": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
-		}
+		}}
 		})}
 	} catch (err) {
 	console.error(err)
