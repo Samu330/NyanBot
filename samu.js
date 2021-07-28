@@ -97,6 +97,7 @@ prefix = '.'
 apikey = 'LindowApi'
 hit_today = []
 blocked = []
+let _level = JSON.parse(fs.readFileSync('./src/level.json'))
 const _registered = JSON.parse(fs.readFileSync('./src/registered.json'))
 const daily = JSON.parse(fs.readFileSync('./src/diario.json'));
 const dailiy = JSON.parse(fs.readFileSync('./src/limitem.json'));
