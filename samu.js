@@ -1920,11 +1920,30 @@ samu330.relayWAMessage(pyb)
 break
 	
 case 'xp':
-reply(`*💠 Nombre:* @${sender.split('@')[0]}
+if (!isBan) {
+	const currentLevel = getLevelingLevel(sender)
+	const checkId = getLevelingId(sender)
+	try {
+	if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
+	const amountXp = Math.floor(Math.random() * (15 - 25 + 1) + 15) //Math.floor(Math.random() * 10) + 500
+	const requiredXp = 5 * Math.pow(currentLevel, (5 / 2)) + 50 * currentLevel + 100 //5000 * (Math.pow(2, currentLevel) - 1)
+	const getLevel = getLevelingLevel(sender)
+	const namelv = checkId
+	addLevelingXp(sender, amountXp)
+	if (requiredXp <= getLevelingXp(sender)) {
+	addLevelingLevel(sender, 1)
+	const lvup = {
+	leveltext: `*💠 Nombre:* @${namelv.split('@')[0]}
 	
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel} -> ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}`)
+  	🕋rango: ${rango}`,
+	contextInfo: {mentionedJid: [namelv]}}
+	samu330.sendMessage(from, lvup, text, {quoted: sam})}
+	} catch (err) {
+	console.error(err)
+	}
+	}
 break
 		
 case 'buggp':
