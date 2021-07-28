@@ -568,7 +568,7 @@ samu330.on('chat-update', async(sam) => {
   	📚Nivel: ${getLevel} ➫ ${getLevelingLevel(sender)}
   	🕋rango: ${rango}
 	┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈`
-	samu330.sendMessage(from, lvup, text, {quoted: { key: {                
+	samu330.sendMessage(from, lvup, MessageType.text, {quoted: { key: {                
 		fromMe: false,
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
