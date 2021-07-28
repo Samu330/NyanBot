@@ -2082,12 +2082,12 @@ case 's2':
 if (type === 'imageMessage' || isQuotedImage){
 var kls = q
 var pack = kls.split("|")[0];
-var author = kls.split("|")[1];
+var author2 = kls.split("|")[1];
 const getbuff = isQuotedImage ? JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo : sam
 const dlfile = await samu330.downloadMediaMessage(getbuff)
 reply(mess.wait)
 const bas64 = `data:image/jpeg;base64,${dlfile.toString('base64')}`
-var mantap = await convertSticker(bas64, `${author}`, `${pack}`)
+var mantap = await convertSticker(bas64, `${author2}`, `${pack}`)
 var imageBuffer = new Buffer.from(mantap, 'base64');
 samu330.sendMessage(from, imageBuffer, sticker, {quoted: sam})
 } else {
