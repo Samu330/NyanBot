@@ -2075,7 +2075,7 @@ if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe d
 break
 		
 case 'chats':
-client.updatePresence(from, Presence.composing)  
+samu330.updatePresence(from, Presence.composing)  
 texto = '*➬ Esta es la lista de chats del bot* :\n'
 for (let all of totalchat) {
 texto += `◦ @${all}\n`
