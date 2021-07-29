@@ -2077,9 +2077,7 @@ break
 case 'chats':
 samu330.updatePresence(from, Presence.composing)  
 texto = '*➬ Esta es la lista de chats del bot* :\n'
-for (let all of totalchat) {
-texto += `◦ @${all}\n`
-}
+texto += `◦ @${totalchat}\n\n`
 texto += `*Total de chats* : ${totalchat.length}`
 samu330.sendMessage(from, texto.trim(), MessageType.text, {quoted: floc})
 break
