@@ -373,7 +373,7 @@ samu330.on('chat-update', async(sam) => {
 	const isAntiLeg = isGroup ? legion.includes(from): false
 	const isWelkom = isGroup ? welkom.includes(from) : false
 	const isRegister = checkRegisteredUser(sender)
-	const totalChat1 = samu330.chats.all()
+	const totalchat = await samu330.chats.all()
         const isOwner = senderNumber == owner || senderNumber == botNumber || mods.includes(senderNumber)
 	const isBanChat = chatban.includes(from)
 	if (isBanChat && !isOwner) return
@@ -426,6 +426,20 @@ samu330.on('chat-update', async(sam) => {
     			usrReg: `Usuario no *Registrado*\n_Para registrarte usa el comando_: *${prefix}reg*`
   			}
 			}
+	const momento1 = require('moment-timezone')
+	const hora = momento1.tz('America/Mexico_City').format('HH:mm:ss')
+	let d1 = new Date
+	let locale1 = 'es'
+	let gmt1 = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
+	let ayer = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][
+	Math.floor(((d1 * 1) + gmt1) / 84600000) % 7]
+	let week1 = d1.toLocaleDateString(locale1, { weekday: 'long' })
+	let calender1 = d1.toLocaleDateString(locale1, {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric'
+	})
+
 
 	const hour_now = moment().format('HH')
         var timeFt = '*Buenos dias🌅*'
@@ -908,34 +922,17 @@ mentionedJid: [sender]}
 			}             
 			}                     
 			}
-			switch(is) {
-  			case 'buenos':
-			buf = fs.readFileSync(`./temp/audio/wenas.mp3`)
-			samu330.sendMessage(from, buf, audio, {
-  			mimetype: 'audio/mp4', quoted: fliveLoc, duration :-999999, ptt: true
-			})
-			}
+			
 	    
 	//Zona de Comandos🛵
 switch (command) {
 case 'help':
 case 'menu':
 case 'comandos':
-const moment = require('moment-timezone')
 
-const jmn = moment.tz('America/Mexico_City').format('HH:mm:ss')
 redes = ['*Sigeme y te sigo en instagram!* https://www.instagram.com/samu330wabot', '*😊Seamos amigos en facebook!!* https://www.facebook.com/samu330wabot']
 opcion = redes[Math.floor(Math.random() * redes.length)]
-let d = new Date
-let locale = 'es'
-let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-let weton = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][Math.floor(((d * 1) + gmt) / 84600000) % 7]
-let week = d.toLocaleDateString(locale, { weekday: 'long' })
-let calender = d.toLocaleDateString(locale, {
-day: 'numeric',
-month: 'long',
-year: 'numeric'
-})
+
 var num = sam.participant
 foto = fs.readFileSync('./src/help.jpg')
 fakee = fs.readFileSync('./src/fake.jpg')
@@ -945,6 +942,7 @@ samu330.updatePresence(from, Presence.recording)
 uptime = process.uptime()
 		
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+try {		
 Menu = `
 ➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙😈.li Oℱịcιɑl.li
 🔐Hola *${pushname}* ${timeFt}
@@ -956,12 +954,11 @@ _Tipo de usuario:_ ${tipoDeUsr}
 🕋rango: ${rango}
 ┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 
-Hora: ${jmn}
-Fecha: ${calender}
+🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*
 
 ${opcion}
 
-======[ *Versión 3.31 ]======
+======[ *Versión 3.32 ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -1024,7 +1021,7 @@ ${bodyM} ${prefix}audios *(Audios)*
 		     🌸 SamịPerry.li 🌸
 ********************************`
 addFilter(from)
-try {
+addLevelingLevel(sender, 5)
 var _0x56da=['367342lxQRgg','relayWAMessage','52224EUhLvZ','readFileSync','3184312811796096','2ZQhqXh','37BvfGXn','1QpYCgS','233589MYSAPS','296046BsnUGu','./src/fake.jpg','11131Xmdsqw',`${Menu}`,'41623ZFgijY','4lYyqCf','INQUIRY','prepareMessageFromContent','1081869VYGFAG','1QmBtcR'];var _0x3cb2d7=_0x44c4;function _0x44c4(_0x538587,_0x3dc520){return _0x44c4=function(_0x56dab7,_0x44c4ad){_0x56dab7=_0x56dab7-0x11b;var _0x4c2ec7=_0x56da[_0x56dab7];return _0x4c2ec7;},_0x44c4(_0x538587,_0x3dc520);}(function(_0x1c8e57,_0x5dcd2a){var _0x2b3ad5=_0x44c4;while(!![]){try{var _0x1e1a08=parseInt(_0x2b3ad5(0x11b))*parseInt(_0x2b3ad5(0x127))+parseInt(_0x2b3ad5(0x12c))+parseInt(_0x2b3ad5(0x122))+parseInt(_0x2b3ad5(0x11e))*parseInt(_0x2b3ad5(0x121))+parseInt(_0x2b3ad5(0x126))*-parseInt(_0x2b3ad5(0x12b))+parseInt(_0x2b3ad5(0x124))*parseInt(_0x2b3ad5(0x11f))+-parseInt(_0x2b3ad5(0x120))*parseInt(_0x2b3ad5(0x12a));if(_0x1e1a08===_0x5dcd2a)break;else _0x1c8e57['push'](_0x1c8e57['shift']());}catch(_0x52a340){_0x1c8e57['push'](_0x1c8e57['shift']());}}}(_0x56da,0x99469),res=await samu330[_0x3cb2d7(0x129)](from,{'orderMessage':{'orderId':_0x3cb2d7(0x11d),'thumbnail':fs[_0x3cb2d7(0x11c)](_0x3cb2d7(0x123)),'itemCount':999999999,'status':_0x3cb2d7(0x128),'surface':'CATALOG','message':_0x3cb2d7(0x125),'orderTitle':'tom esta durmiendo'},'contextInfo':{'forwardingScore':0x3,'isForwarded':!![]}},{'quoted':forder,'contextInfo':{}}),samu330[_0x3cb2d7(0x12d)](res));
 } catch {
 samu330.sendMessage(from, fs.readFileSync('./src/ara.png'), image, {quoted: ftoko, caption: Menu, thumbnail: fs.readFileSync('./src/ara.png'), sendEphemeral: true})
@@ -1086,6 +1083,7 @@ message: {
 "documentMessage": { "title": "📚𝑆𝑡𝑖𝑘𝑒𝑟 𝑚𝑒𝑛𝑢", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
 }})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 
 case 'menu1':
@@ -1181,6 +1179,7 @@ message: {
 "imageMessage": { "caption": "🧸𝙈𝙀𝙉𝙐⁡ 𝘿𝙀 𝙈𝙀𝘿𝙄𝘼📌", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg')}}
 }})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 case 'menu3':
 samu330.updatePresence(from, Presence.composing)
@@ -1250,6 +1249,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 }
 }
 addFilter(from)
+addLevelingLevel(sender, 5)		
 samu330.sendMessage(from, Menug, MessageType.text, {
 quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "➫𝑴𝒆𝒏𝒖 𝑫𝒆 𝑮𝒓𝒖𝒑𝒐𝒔\n❣️⃞🔥𝙎꯭𝙖͠𝙢꯭ 𝙔 ꯭𝙋꯭𝙚𝙧𝙧꯭𝙮🔥❣️" ,"jpegThumbnail": fs.readFileSync(`./NyanBot.jpg`)}}}})
 break
@@ -1282,6 +1282,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 samu330.sendMessage(from, Menud, MessageType.text, {
 quoted:  fvid})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 case 'menu5':
 samu330.updatePresence(from, Presence.composing)
@@ -1291,6 +1292,7 @@ const Menuo = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 
 
+${bodyM} ${prefix}chats *(Ve los chats del bot)*
 ${bodyM} ${prefix}timer *(Cronometro)*
 ${bodyM} ${prefix}calc *(Calculadora)*
 ${bodyM} ${prefix}pregunta *(Haz una pregunta y el bot te responde)*
@@ -1332,6 +1334,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 samu330.sendMessage(from, Menuo, MessageType.text, {
 quoted: floc})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 case 'menu6':
 samu330.updatePresence(from, Presence.composing)
@@ -1365,6 +1368,7 @@ ${bodyM} ${prefix}blow
  ********************************
 `
 addFilter(from)
+addLevelingLevel(sender, 5)		
 samu330.sendMessage(from, samuPn, image, { quoted: fvid, caption: `${Menu18}`, thumbnail: samuPn, contextInfo: { mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true }})              
 break
 case 'menu7':
@@ -1500,6 +1504,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 samu330.sendMessage(from, Menu7, MessageType.text, {
 quoted: fvid})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 case 'menu8':
 samu330.updatePresence(from, Presence.composing)
@@ -1623,6 +1628,7 @@ mentionedJid: [sender], "forwardingScore": 9999, "isForwarded": true
 samu330.sendMessage(from, Menu8, MessageType.text, {
 quoted: ftoko})
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 
 
@@ -2068,6 +2074,16 @@ if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe d
 })
 break
 		
+case 'chats':
+client.updatePresence(from, Presence.composing)  
+texto = '*➬ Esta es la lista de chats del bot* :\n'
+for (let all of totalchat) {
+texto += `◦ @${all}\n`
+}
+texto += `*Total de chats* : ${totalchat.length}`
+samu330.sendMessage(from, texto.trim(), extendedText, {quoted: floc, contextInfo: {"mentionedJid": totalchat}})
+break
+		
 case 'zalgo':
 if (args.length < 1) return reply("Escriba una frase despues del comando para poder continuar!")
 reply(zalgo(`${body.slice(6)}`))
@@ -2465,23 +2481,6 @@ reply(`*Estos son los idiomas soportados por la voz👇🏻*:
   'vi': 'Vietnamese',
   'cy': 'Welsh'`)
 break
-				
-case 'hoy':
-const momento1 = require('moment-timezone')
-const hora = momento1.tz('America/Mexico_City').format('HH:mm:ss')
-let d1 = new Date
-let locale1 = 'es'
-let gmt1 = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
-let ayer = ['domingo','lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][
-Math.floor(((d1 * 1) + gmt1) / 84600000) % 7]
-let week1 = d1.toLocaleDateString(locale1, { weekday: 'long' })
-let calender1 = d1.toLocaleDateString(locale1, {
-day: 'numeric',
-month: 'long',
-year: 'numeric'
-})
-reply(`🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*\n\n_${timeFt}_`)
-break
 		
 case 'timer':        
 if (args[1] == "segundos") {
@@ -2570,6 +2569,7 @@ sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', durati
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
 }}
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 		
 case 'twit':
@@ -2626,6 +2626,7 @@ sendFileFromUrl(res[0].link, audio, {quoted: faud, duration :-99999999, mimetype
 sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp3', ptt: true, duration: 99999999})
 })
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 case 'ytmp4':
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -2648,6 +2649,7 @@ sendFileFromUrl(res[0].thumb, image, {caption: result, quoted: sam}).then((lalu)
 sendFileFromUrl(res[0].link, video, {quoted: fvid, mimetype: Mimetype.gif, duration: 9999999999})
 })
 addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 
 case 'tomp3':
@@ -2845,7 +2847,7 @@ break
 			
 case 'reg':
 if (isRegister) return reply('*Tu cuenta ya estaba verificada*')
-if (!q.includes('|')) return  reply(`*PORFAVOR ESCRIBE BIEN EL FORMATO DE REGISTRO:* ${prefix}reg *Samu|17*`)
+if (!q.includes('|')) return  reply(`*PORFAVOR ESCRIBE BIEN EL FORMATO DE REGISTRO:* ${prefix}reg *nombre|edad*`)
 const nombre = q.substring(0, q.indexOf('|') - 0)
 const edad = q.substring(q.lastIndexOf('|') + 1)
 const serialUser = createSerial(20)
@@ -2863,11 +2865,15 @@ ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gamb
 }
 veri = sender                                                
 addRegisteredUser(sender, nombre, edad, time, serialUser)
+try {
 exec(`magick './src/reg.jpg' -gravity west -fill '#00FF00' -font './src/font-gue.ttf' -size 1280x710 -pointsize 90 -interline-spacing 7.5 -annotate +460-45 '${nombre}' -pointsize 50 -annotate +460+200 '${serialUser}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'regsm.jpg'`)
 .on('error', () => reply('error'))
 .on('exit', () => {
 samu330.sendMessage(from, fs.readFileSync('regsm.jpg'), MessageType.image, { quoted: sam, caption: `*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`})
 })
+} catch {
+reply(`*「 SU REGISTRO FUE UN EXITO😉 」*\n\n *◦ Nombre : ${nombre}*\n*◦ Numero : wa.me/${sender.split("@")[0]}*\n*◦ Edad : ${edad}*\n*◦ Hora De Registro : ${time}*\n*◦ SN : ${serialUser}*\n\n *📋Su registro fue todo un exito*\n\n*Para Continuar Usando a NYANBOT Escriba el siguiente comando: ${prefix}menu*`)
+}
 addFilter(from)
 break
 
@@ -3441,7 +3447,7 @@ case 'fordward':
 samu330.sendMessage(from, `${budy.slice(10)}`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
 break
 
-            case 'todos':
+case 'todos':
 samu330.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(mess.only.group)
 if (!isRegister) return reply(mess.only.usrReg)
@@ -3453,7 +3459,7 @@ for (let mem of groupMembers) {
 teks += `┃ @${mem.jid.split('@')[0]}\n`
 members_id.push(mem.jid)
 }
-mentions('[  *TAGALL* ]\n┏━━━━━━━━━━━━━━━━━━━━\n┠ ►'+teks+'┃━━━━━━━━━━━━━━━━━━━━\n┃────🪀 *Samu330* 🪀────\n┗━━━━━━━━━━━━━━━━━━━━', members_id, true)
+mentions('*〈 Mención grupal 〉*\n╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┝ ● '+teks+'┊┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┊────🪀 *Samu330* 🪀────\n╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈', members_id, true)
 addFilter(from)
 break
 case 'notificar':
@@ -4023,42 +4029,6 @@ console.log('Error :', e)
 return samu330.sendMessage(from, 'Modo privado dice:v', MessageType.text)
 }
 break
-	
-case 'p1':
-const rows = [
- {title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"},
- {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
-]
-
-const sections = [{title: "Section 1", rows: rows}]
-
-const button = {
- buttonText: 'Click Me!',
- description: "Hello it's list message",
- sections: sections,
- listType: 1
-}
-
-const sendMsg = await samu330.sendMessage(from, button, MessageType.listMessage)
-sendMsg
-break
-	
-case 'p3':
-const buttons = [
-  {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
-  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
-]
-
-const buttonMessage = {
-    contentText: "Hi it's button message",
-    footerText: 'Hello World',
-    buttons: buttons,
-    headerType: 1
-}
-
-const sendMsg1 = await samu330.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
-sendMsg1
-break
 
 case 'public':
 if (!isOwner && !itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
@@ -4089,7 +4059,7 @@ samu330.sendMessage(_.jid, buff, image, {caption: `${body.slice(4)}\n\n ͏͏͏͏
 reply('Anuncio dado')
 } else {
 for (let _ of anu) {
-sendMess(_.jid, `	°𝑩𝑹𝑶𝑨𝑫𝑪𝑨𝑺𝑻°\n	[🪀 _NyanBot_]\n\_${args.join(' ')}`)}
+sendMess(_.jid, `	°𝑩𝑹𝑶𝑨𝑫𝑪𝑨𝑺𝑻°\n	[🪀 _NyanBot_]\n🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*\n\n${args.join(' ')}`)}
 }
 reply('Anuncio dado')
 
@@ -4137,7 +4107,7 @@ samu330.query({
 json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
 })
 reply('Ya entre al grupo😉')
-samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ],\n@${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(@${subject.split('@')[0]})*\n\n*Informacion de este grupo:*\n\👑Creador: @${owner.split('@')[0]}\n📚 Fecha de creacion: ${creation}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: { key: {
+samu330.sendMessage(id, `*Hola* 🙋🏻‍♂️\nSoy Samu _(NyanBot)_ [ @${samunum.split('@')[0]} ],\n@${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(@${subject.split('@')[0]})*\n\n*Informacion de este grupo:*\n\👑Creador: @${owner.split('@')[0]}\n📚 Fecha de creacion: ${Date(creation * 1000)}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: { key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 }, message: {"documentMessage": { "title": `${subject}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}}}})
@@ -4643,6 +4613,10 @@ default:
 if (body.startsWith(">")) {
 if (!itsMe) return await reply('Este comando solo puede ser usado por *Samu330* ⚙')
 return await reply(JSON.stringify(eval(args.join(" ")), null, 2))
+}
+if (body.startsWith('buenos dias')) {
+dias = fs.readFileSync(`./temp/audio/wenas.mp3`)
+samu330.sendMessage(from, dias, audio, {quoted: fliveLoc, mimetype: 'audio/mp4', ptt:true, duration: -999999})
 }
 if (isSimi && !itsMe &&  body != undefined){
 res = await getJson(`https://api.simsimi.net/v1/?text=${body}&lang=es`)
