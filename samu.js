@@ -2081,7 +2081,7 @@ for (let all of totalchat) {
 texto += `◦ @${all}\n`
 }
 texto += `*Total de chats* : ${totalchat.length}`
-samu330.sendMessage(from, texto.trim(), MessageType.text, {quoted: floc, contextInfo: {"mentionedJid": totalchat}})
+samu330.sendMessage(from, texto.trim(), MessageType.text, {quoted: floc})
 break
 		
 case 'zalgo':
