@@ -1292,7 +1292,7 @@ const Menuo = {
 text: `➫ြ𝚜ᷤ𝚊ͣ𝚖ͫ𝚞𝉄𖾔𖾔𖽙.li Oℱịcιɑl.li                                                                
 
 
-${bodyM} ${prefix}chats *(Ve los chats del bot)*
+${bodyM} ${prefix}grupos *(Ve los grupos del bot)*
 ${bodyM} ${prefix}timer *(Cronometro)*
 ${bodyM} ${prefix}calc *(Calculadora)*
 ${bodyM} ${prefix}pregunta *(Haz una pregunta y el bot te responde)*
@@ -2074,12 +2074,10 @@ if (stdout) reply(`*El bot se ah actualizado de forma satisfactoria*\n Informe d
 })
 break
 		
-case 'chats':
+case 'grupos':
 samu330.updatePresence(from, Presence.composing)  
-texto = '*➬ Esta es la lista de chats del bot* :\n'
-texto += `◦ @${totalchat}\n\n`
-texto += `*Total de chats* : ${totalchat.length}`
-samu330.sendMessage(from, texto.trim(), MessageType.text, {quoted: floc})
+let gruposT = samu330.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${samu330.groupMetadata(v.jid)}\n${v.jid} [${v.read_only ? '❌Salio' : '*✅Dentro*'}]`).join`\n\n`
+samu330.sendMessage(from, `*Lista de Grupos del Bot:*\n\n${gruposT}`, MessageType.text, {quoted: floc})
 break
 		
 case 'zalgo':
