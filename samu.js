@@ -2076,8 +2076,7 @@ break
 		
 case 'grupos':
 samu330.updatePresence(from, Presence.composing)  
-nombre = samu330.groupMetadata(v.jid)
-let gruposT = samu330.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${nombre.subject}\n${v.jid} [${v.read_only ? ' ❌Salio ' : ' *✅Dentro* '}]`).join`\n\n`
+let gruposT = samu330.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${samu330.groupMetadata(v.jid).subject}\n${v.jid} [${v.read_only ? ' ❌Salio ' : ' *✅Dentro* '}]`).join`\n\n`
 samu330.sendMessage(from, `*Lista de Grupos del Bot:*\n\n${gruposT}`, MessageType.text, {quoted: floc})
 break
 		
