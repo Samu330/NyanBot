@@ -4173,7 +4173,7 @@ attp = encodeURIComponent(args.join(' '))
 const attp2 = `https://api.xteam.xyz/attp?file&text=${attp}`
 var color = await convertSticker(attp2, `💎Samu330 | Attp By Sam y Perry♻`, `🔮薩姆330 | Nyan 機器人🥀`)
 var st = new Buffer.from(color, 'base64');
-samu330.sendMessage(from, st, sticker, {quoted: sam}
+samu330.sendMessage(from, st, sticker, {quoted: sam})
 break
 
 case 'añadir':
