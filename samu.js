@@ -577,14 +577,14 @@ samu330.on('chat-update', async(sam) => {
   	📚Nivel: ${getLevel} ➫ ${getLevelingLevel(sender)}
   	🕋rango: ${rango}
 	┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈`
-	samu330.sendMessage(from, lvup, MessageType.text, {quoted: { key: {                
+	/*samu330.sendMessage(from, lvup, MessageType.text, {quoted: { key: {                
 		fromMe: false,
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
 		"documentMessage": { "title": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
 		}}
-		})}
+		})*/}
 	} catch (err) {
 	console.error(err)
 	}
@@ -960,7 +960,7 @@ _Tipo de usuario:_ ${tipoDeUsr}
 
 ${opcion}
 
-======[ *Versión 3.32 ]======
+======[ *Versión 3.33 ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -1384,109 +1384,39 @@ Si quieres contribuir para que todos estos comandos y mas funcionen ala perfecci
 
 paypal.me/samu330
 
-*Asi me ayudaran tambien a compensar a la persona que pago esta api❤*
 
 
-${bodyM} ${prefix}blackpink *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}neon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}greenneon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}advanceglow *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}futureneon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}sandwriting *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}sandsummer *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}sandengraved *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}metaldark *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}neonlight *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}holographic *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}text1917 *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}minion *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}deluxesilver *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}newyearcard *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}bloodfrosted *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}halloween *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}jokerlogo *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}fireworksparkle *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}natureleaves *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}bokeh *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}toxic *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}strawberry *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}box3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}roadwarning *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}breakwall *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}icecold *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}luxury *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}cloud *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}summersand *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}horrorblood *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}thunder *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}pornhub *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}glitch *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}avenger *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}space *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}ninjalogo *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}marvelstudio *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}lionlogo *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}wolflogo *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}steel3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}wallgravity *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}sombra *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}cup *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}cup1 *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}romance *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}matrix *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}break *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}dropwater *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}lobo *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}flores *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}cross *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}seda *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}fire *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}glow *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}smoke *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}burnpaper *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}lovemessage *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}undergrass *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}love *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}cafe *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}woodheart *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}woodenboard *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}summer3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}wolfmetal *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}nature3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}underwater *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}golderrose *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}summernature *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}letterleaves *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}glowingneon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}fallleaves *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}flamming *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}hp *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}carvedwood *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}tiktok *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}arcade8bit *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}battlefield4 *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}pubg *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}wetglass *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}multicolor3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}watercolor *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}luxurygold *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}galaxywallpaper *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}lighttext *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}beautifulflower *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}puppycute *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}royaltext *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}heartshaped *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}birthdaycake *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}galaxystyle *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}hologram3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}greenneon *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}glossychrome *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}greenbush *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}metallogo *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}noeltext *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}glittergold *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}textcake *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}starsnight *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}wooden3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}textbyname *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}writegalacy *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}galaxybat *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}snow3d *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}birthdayday *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}goldplaybutton *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}silverplaybutton *(Escribe un texto para crear logo)*
-${bodyM} ${prefix}freefire *(Escribe un texto para crear logo)**
+${bodyM} ${prefix}cielo *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}cs *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}ligth *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}navidad *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}nieve *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}tfire *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}playa *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}ff *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}goldbutton *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}silverbutton *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}3d *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}avengers *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}3d2 *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}ph *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}blackpink *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}marvel *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}hojas *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}tligth *(Escribe un texto para crear logo)*
+${bodyM} ${prefix}gtext *(Escribe un texto para crear logo)*
 ${bodyM} ${prefix}gtav *(Etiqueta una imagen)*
 ${bodyM} ${prefix}wanted *(Etiqueta una imagen)*
 ${bodyM} ${prefix}wasted *(Etiqueta una imagen)*
@@ -4236,7 +4166,14 @@ if (args.length < 1) return reply('Y el texto?')
 var teks = encodeURIComponent(args.join(' '))
 const attp1 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${teks}`)
 samu330.sendMessage(from, attp1, sticker, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-
+break
+		
+case 'c2':
+attp = encodeURIComponent(args.join(' '))
+const attp2 = `https://api.xteam.xyz/attp?file&text=${attp}`
+var color = await convertSticker(attp2, `💎Samu330 | Attp By Sam y Perry♻`, `🔮薩姆330 | Nyan 機器人🥀`)
+var st = new Buffer.from(color, 'base64');
+samu330.sendMessage(from, st, sticker, {quoted: sam}
 break
 
 case 'añadir':
