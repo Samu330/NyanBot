@@ -379,6 +379,8 @@ samu330.on('chat-update', async(sam) => {
 	if (isBanChat && !isOwner) return
 	const isBan = cekBannedUser(sender, ban)
 	const q = args.join(' ')
+	const texto1 = q.substring(0, q.indexOf('|') - 0)
+	const texto2 = q.substring(q.lastIndexOf('|') + 1)
 	var pes = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''
 	const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
 	conts = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || {
@@ -2586,6 +2588,21 @@ reply(`*Espere un momento porfavor, su video se esta enviando....*`)
 sendFileFromUrl(ig.result, video, {quoted: fvid, caption: '🍒Samu330 | NyanBot💠', duration: 999999999})
 addFilter(from)
 break
+		//»»————-　★　————-««\\
+//˚ ༘✶ ⋆｡˚ ⁀➷  🔥 𝘓𝘰𝘨𝘰𝘴 𝘉𝘺 𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥
+		
+case 'neon1':
+if (!q) return reply('*Y el texto para crear el logo donde esta?*')
+neon = `https://api.zeks.xyz/api/bneon?apikey=apivinz&text=${q}`
+sendFileFromUrl(neon, image, {quoted: fimg, caption: '*🔥 𝘓𝘰𝘨𝘰𝘴 𝘉𝘺 𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥*', sendEphemeral: true})
+break
+		
+		
+		
+		
+		
+		
+		
 			
 case 'spam':
 if (!itsMe) return reply('Este comando es solo para 🐉Samu330🪀')
