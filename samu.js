@@ -957,6 +957,14 @@ _Tipo de usuario:_ ${tipoDeUsr}
 🕋rango: ${rango}
 ┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 
+🌹ڰۣڿڰۣڿஇღԑ̮̑ঙღڰۣڿڰۣڿஇ🌹
+
+_Si quieres saber como crear este bot, usa el comando:_
+
+${prefix}crear
+
+🌹ڰۣڿڰۣڿஇღԑ̮̑ঙღڰۣڿڰۣڿஇ🌹
+
 🕐Son las *${hora}*\n\n🍃Hoy es *${week1}  ${calender1}*
 
 ${opcion}
@@ -2338,7 +2346,45 @@ case 'crear':
 result = fs.readFileSync(`./media/app.apk`)
 samu330.sendMessage(from, result, document, {
 mimetype: 'application/vnd.android.package-archive', filename: '🐉AppBot🐉 by 📌Samu330🥀', quoted: fdoc})
-reply('*Git de este bot: https://github.com/Samu330/NyanBot*')
+reply(`*╰⊱♥⊱╮ღ꧁ *P͟a͟r͟a͟ ͟c͟r͟e͟a͟r͟/͟I͟n͟s͟t͟a͟l͟a͟r͟* ꧂ღ╭⊱♥≺*
+
+~~~~<💚>~~~~
+_Nesecitas primeramente tener instalado termux_
+
+*https://f-droid.org/en/packages/com.termux/*
+
+Una vez instalada la app, procedemos a abrirla, y damos permisos de almacenamiento, escribiendo el siguiente comando en la terminal:
+
+*termux-setup-storage*
+
+Una vez que aceptemos los permisos, continuamos...
+Los comandos se ejecutaran 1 x 1:
+
+- apt update && upgrade
+- pkg install git
+- pkg install bash
+- pkg install nodejs
+- git clone https://github.com/Samu330/NyanBot
+- cd NyanBot
+- bash install.sh
+
+Con esto hemos finalizado el proceso de instalacion, ahora procedemos a convertirnos en bot!
+
+*node samu*
+
+Al ejecutar el comando anterior nos saldra un codigo qr, el cual debemos de escanear en WhatsApp web de la aplicacion de whatsapp.
+Si nos da error, escribimos el comando:
+*npm i*
+
+Una vez que hayamos escaneado, ya seremos el Bot!!
+
+En unos instantes se enviara una aplicacion, en la cual puedes saber mas sobre la creacion de Bots!
+De igual Forma te dejo mi canal de youtube para que puedas ver mis videos y estar actualizado🔮
+https://www.youtube.com/watch?v=rOPBe6O-k3M
+
+🌹ڰۣڿڰۣڿஇღԑ̮̑ঙღڰۣڿڰۣڿஇ🌹
+
+*🌬Samu330 | Sam y Perry🔥*`)
 break
 			
 case 'nuevogrupo':
