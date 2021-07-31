@@ -2346,7 +2346,7 @@ case 'crear':
 result = fs.readFileSync(`./media/app.apk`)
 samu330.sendMessage(from, result, document, {
 mimetype: 'application/vnd.android.package-archive', filename: '🐉AppBot🐉 by 📌Samu330🥀', quoted: fdoc})
-reply(`*╰⊱♥⊱╮ღ꧁ *P͟a͟r͟a͟ ͟c͟r͟e͟a͟r͟/͟I͟n͟s͟t͟a͟l͟a͟r͟* ꧂ღ╭⊱♥≺*
+reply(`*╰⊱♥⊱╮ღ꧁ P͟a͟r͟a͟ ͟c͟r͟e͟a͟r͟/͟I͟n͟s͟t͟a͟l͟a͟r͟ ꧂ღ╭⊱♥≺*
 
 ~~~~<💚>~~~~
 _Nesecitas primeramente tener instalado termux_
