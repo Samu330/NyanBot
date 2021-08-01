@@ -229,8 +229,8 @@ ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 exec(`magick './src/wel.jpg' -gravity west -fill '#00FFFF' -font './src/font-gue.ttf' -size 1280x710 -pointsize 75 -interline-spacing 7.5 -annotate +460-45 '${pushnem}' -pointsize 35 -annotate +460+83 '${jm} ${calender}' -pointsize 50 -annotate +460+200 'Bienvenido a ${mdata.subject}' '${ppimg}' -resize %[fx:t?u.w*0.2:u.w]x%[fx:?u.h*0.2:u.h] -gravity center -geometry -430+70 -composite 'hamsil.jpg'`)
-.on('error', () => reply('error'))
-.on('exit', () => {
+.on('error', () => samu330.sendMessage(mdata.id, ppimg, MessageType.image, {quoted: anu, caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\n\nSon las *${jm}* del *${calender}*\n\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
+)
 samu330.sendMessage(mdata.id, fs.readFileSync('./hamsil.jpg'), MessageType.image, {quoted: {key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`          
@@ -251,7 +251,6 @@ message: {
 },                          
 "businessOwnerJid": `0@s.whatsapp.net`
 }}}, caption: `😙Hola, @${num.split('@')[0]}, _*Bienvenido a ${mdata.subject}, esperamos que te la pases a gusto en este grupo✨*_\n\n_Recuerda siempre seguir las reglas y mantener una formalidad respetuosa_😉\n\nSon las *${jm}* del *${calender}*\n\n${mdata.desc}`, contextInfo: { mentionedJid: [num] }})
-})
 //leave
 }  else if (anu.action == 'remove') {
 num = anu.participants[0]
@@ -1852,12 +1851,11 @@ case 'letras':
 if (args.length < 1) return reply('Escribe el nombre de la cancion')
 if (!isRegister) return reply(mess.only.usrReg)
 samu330.updatePresence(from, Presence.composing)
-tels = args.join(' ')
+if (!q) return reply('*Cual es el nombre de la cancion?*')
 try {
-anu = await getJson(`https://fxc7-api.herokuapp.com/api/search/liriklagu?apikey=Fxc7&query=${tels}`, {
-method: 'get'
-})
-reply(`🥰Resultado de ${tels}:\n\n____________________\n\n${anu.result}`)
+anu = await getJson(`https://some-random-api.ml/lyrics?title=${q}`)
+lyrics = `🥰Resultado de ${anu.title}:\n\n*Autor:* ${anu.author}\n\n____________________\n\n${anu.lyrics}\n\n🌬Link: ${anu.links.genius}`
+sendFileFromUrl(anu.thumbnail.genius, image, {quoted: fimg, caption: lyrics, sendEphemeral: true})
 } catch {
 reply(mess.ferr)
 }
@@ -2160,11 +2158,15 @@ samu330.sendMessage(from, insSm, MessageType.text, {quoted: fliveLoc})
 break
 		
 case 'takestick':
+case 'robar':
 if (!isQuotedSticker) return reply(`Etiqueta un stiquer y escribe: *${prefix}takestick nombre|autor*`)
 const encmediats = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 var kls = q
 var pack = kls.split("|")[0];
 var author2 = kls.split("|")[1];
+if (!q) return reply('*Y el nombre de autor y paquete?*')
+if (!pack) return reply(`*Porfavor escribe bien el formato: ${prefix + command} nombre|autor*`)
+if (!author2) return reply(`*Porfavor escribe bien el formato: ${prefix + command} nombre|autor*`)
 const dlfile = await samu330.downloadMediaMessage(encmediats)
 reply(mess.wait)
 const bas64 = `data:image/jpeg;base64,${dlfile.toString('base64')}`
@@ -3155,19 +3157,6 @@ url = `https://lindow-api.herokuapp.com/api/asupan?apikey=${apikey}`
 asupan = await getBuffer(url)
 samu330.sendMessage(from, asupan, MessageType.video, {mimetype: 'video/mp4', duration : 999999999,filename: `asupan.mp4`, quoted: fvid, caption: '𝗦𝗮𝗺 𝘆 𝗣𝗲𝗿𝗿𝘆🍒'})
 break
-
-case 'robar':
-if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-if (!isQuotedSticker) return reply(`*Tururuu.... y el stiker kbron?*`)
-const encmediia = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-const meidia = await samu330.downloadAndSaveMediaMessage(encmediia, `./sticker/${sender}`)
-exec(`webpmux -set exif ./sticker/data.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
-if (error) return reply('error')
-wa.sendSticker(from, fs.readFileSync(`./sticker/${sender}.webp`), ftoko)
-fs.unlinkSync(meidia)
-})
-addFilter(from)
-break
 			
 case 'swm':
 case 'stickerwm':
@@ -3932,179 +3921,6 @@ ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/smoji/${emoji}?apikey
 await samu330.sendMessage(from, ini_buffer, sticker, { quoted: ftoko })
 break
 
-case 'blackpink':
-case 'neon':
-case 'greenneon':
-case 'advanceglow':
-case 'futureneon':
-case 'sandwriting':
-case 'sandsummer':
-case 'sandengraved':
-case 'metaldark':
-case 'neonlight':
-case 'holographic':
-case 'text1917':
-case 'minion':
-case 'deluxesilver':
-case 'newyearcard':
-case 'bloodfrosted':
-case 'halloween':
-case 'jokerlogo':
-case 'fireworksparkle':
-case 'natureleaves':
-case 'bokeh':
-case 'toxic':
-case 'strawberry':
-case 'box3d':
-case 'roadwarning':
-case 'breakwall':
-case 'icecold':
-case 'luxury':
-case 'cloud':
-case 'summersand':
-case 'horrorblood':
-case 'thunder':
-
-if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
-reply(mess.wait)
-ini_txt = args.join(" ")
-try {
-logo = await getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image)
-} catch {
-reply(mess.ferr)
-}
-
-break
-case 'pornhub':
-case 'glitch':
-case 'avenger':
-case 'space':
-case 'ninjalogo':
-case 'marvelstudio':
-case 'lionlogo':
-case 'wolflogo':
-case 'steel3d':
-case 'wallgravity':
-
-if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
-reply(mess.wait)
-a = args.join(' ')
-txt1 = a.substring(0, a.indexOf('|') - 0)
-txt2 = a.substring(a.lastIndexOf('|') + 1)
-if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
-if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
-try {
-logo = await getBuffer(`https://api.lolhuman.xyz/api/textprome2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`)
-samu330.sendMessage(from, logo, image)
-} catch {
-reply(mess.ferr)
-}
-
-break
-
-
-
-case 'sombra':
-case 'cup':
-case 'cup1':
-case 'romance':
-case 'smoke':
-case 'burnpaper':
-case 'lovemessage':
-case 'undergrass':
-case 'love':
-case 'cafe':
-case 'woodheart':
-case 'woodenboard':
-case 'summer3d':
-case 'wolfmetal':
-case 'nature3d':
-case 'underwater':
-case 'golderrose':
-case 'summernature':
-case 'letterleaves':
-case 'glowingneon':
-case 'fallleaves':
-case 'flamming':
-case 'hp':
-case 'carvedwood':
-
-if (args.length == 0) return reply(`Example: ${prefix + command} Samu330`)
-reply(mess.wait)
-ini_txt = args.join(' ')
-try {
-logo = await getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image)
-} catch {
-reply(mess.ferr)
-}
-
-break
-case 'tiktok':
-case 'arcade8bit':
-case 'battlefield4':
-case 'pubg':
-
-if (args.length == 0) return reply(`Example: ${prefix + command} Samu330|Sam y Perry`)
-reply(mess.wai)
-a = args.join(' ')
-txt1 = a.substring(0, a.indexOf('|') - 0)
-txt2 = a.substring(a.lastIndexOf('|') + 1)
-if (!txt1) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
-if (!txt2) return reply(`Error de uso...\n*Ejemplo: ${prefix + command} Samu|330*`)
-try {
-logo = await getBuffer(`https://api.lolhuman.xyz/api/photooxy2/${command}?apikey=${api}&text1=${txt1}&text2=${txt2}`)
-samu330.sendMessage(from, logo, image)
-} catch {
-reply(mess.ferr)
-}
-
-break
-
-// Ephoto 360 //
-case 'wetglass':
-case 'multicolor3d':
-case 'watercolor':
-case 'luxurygold':
-case 'galaxywallpaper':
-case 'lighttext':
-case 'beautifulflower':
-case 'puppycute':
-case 'royaltext':
-case 'heartshaped':
-case 'birthdaycake':
-case 'galaxystyle':
-case 'hologram3d':
-case 'greenneon':
-case 'glossychrome':
-case 'greenbush':
-case 'metallogo':
-case 'noeltext':
-case 'glittergold':
-case 'textcake':
-case 'starsnight':
-case 'wooden3d':
-case 'textbyname':
-case 'writegalacy':
-case 'galaxybat':
-case 'snow3d':
-case 'birthdayday':
-case 'goldplaybutton':
-case 'silverplaybutton':
-case 'freefire':
-
-if (args.length == 0) return reply(`Example: ${prefix + command} Sam y Perry`)
-reply(mess.wait)
-ini_txt = args.join(' ')
-try {
-logo = await getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=${api}&text=${ini_txt}`)
-samu330.sendMessage(from, logo, image)
-} catch {
-reply(mess.ferr)
-}
-
-break
 case 'chat':
 if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
 var pc = budy.slice(6)
