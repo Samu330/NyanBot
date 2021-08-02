@@ -3244,7 +3244,12 @@ break
 case 'upmp3':
 const mp312 = isQuotedAudio ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
-fileIO(mp311)
+let res = await fetch('https://file.io/?expires=1d', {
+method: 'POST',
+body: mp311
+})
+let json = await res.json()
+if (!json.success) throw json
 reply(json.link)
 break
 			
