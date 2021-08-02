@@ -41,6 +41,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const axios = require('axios');
 const fetch = require('node-fetch');
 const fromBuffer = require('file-type');
+const FormData = require('form-data')
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -608,7 +609,7 @@ samu330.on('chat-update', async(sam) => {
        		})
 		}
 	
-	const fileIO = async buffer => {
+	/*const fileIO = async buffer => {
   		const { ext } = await fromBuffer(buffer) || {}
   		const form = new FormData
   		form.append('file', buffer, 'tmp.' + ext)
@@ -620,7 +621,7 @@ samu330.on('chat-update', async(sam) => {
   		if (!jsona.success) throw jsona
   		return jsona.link
 		reply(jsona.link)
-		}
+		}*/
 	
 	const noreg = {
 		key: {
@@ -3246,7 +3247,17 @@ break
 case 'upmp3':
 const mp312 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
-fileIO(mp311)
+const { ext } = await fromBuffer(mp311) || {}
+  		const form = new FormData
+  		form.append('file', mp311, 'tmp.' + ext)
+  		let res = await fetch('https://file.io/?expires=1d', {
+   		method: 'POST',
+    		body: form
+  		})
+  		const jsona = await res.json()
+  		if (!jsona.success) throw jsona
+  		return jsona.link
+		reply(jsona.link)
 break
 			
 case 'pornode':
