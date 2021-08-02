@@ -3249,11 +3249,11 @@ const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
 const { ext } = await fromBuffer(mp311) || {}
   		const form1 = new FormData
   		form1.append('file', mp311, 'tmp.' + ext)
-  		let res1 = await fetch('https://file.io/?expires=1d', {
+  		let res12 = await fetch('https://file.io/?expires=1d', {
    		method: 'POST',
     		body: form1
   		})
-  		const jsona = await res1.json()
+  		const jsona = await res12.json()
   		if (!jsona.success) throw jsona
   		return jsona.link
 		reply(jsona.link)
