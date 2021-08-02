@@ -602,9 +602,9 @@ samu330.on('chat-update', async(sam) => {
    		method: 'POST',
     		body: form
   		})
-  		let json = await res.json()
-  		if (!json.success) throw json
-  		return json.link
+  		const jsona = await res.json()
+  		if (!jsona.success) throw jsona
+  		return jsona.link
 		}
 	
 	const reply = async(teks) => {
@@ -3246,6 +3246,7 @@ case 'upmp3':
 const mp312 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
 fileIO(mp311)
+reply(jsona.link)
 break
 			
 case 'pornode':
