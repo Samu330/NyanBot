@@ -40,6 +40,7 @@ const { exec } = require('child_process');
 const ffmpeg = require('fluent-ffmpeg');
 const axios = require('axios');
 const fetch = require('node-fetch');
+const fromBuffer = require('file-type');
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
