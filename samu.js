@@ -43,7 +43,6 @@ const fetch = require('node-fetch');
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
-const inp = require('./lib/upmedia.js')
 const {y2mateA, y2mateV} = require('./lib/y2mate.js')
 const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
@@ -593,6 +592,19 @@ samu330.on('chat-update', async(sam) => {
 	}
 	}
 	}
+	    
+	const fileIO = async buffer => {
+  		const { ext } = await fromBuffer(buffer) || {}
+  		let form = new FormData
+  		form.append('file', buffer, 'tmp.' + ext)
+  		let res = await fetch('https://file.io/?expires=1d', { // 1 Day Expiry Date
+   		method: 'POST',
+    		body: form
+  		})
+  		let json = await res.json()
+  		if (!json.success) throw json
+  		return json.link
+		}
 	
 	const reply = async(teks) => {
                 await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
@@ -3232,7 +3244,7 @@ break
 case 'upmp3':
 const mp312 = isQuotedAudio ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
-up = await inp(form.append('file', mp311, 'tmp.' + mp3))
+form.append('file', mp311, 'tmp.' + ext)
 reply(json.link)
 break
 			
