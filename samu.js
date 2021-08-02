@@ -3732,8 +3732,8 @@ await samu330.sendMessage(from, get_video, video, { mimetype: Mimetype.gif, dura
 reply(`*Ocurrio un problema, la key vencio, puedes escribirle al creador del bot para que te proporcione la key*\n\n_Trataremos de buscar y descargar su video en el servidor 2, 3 y 4, este proceso puede ser un poco tardado..._`)
 video1 = await getJson(`https://api.zeks.xyz/api/ytplaymp4/2?apikey=apivinz&q=${q}`)
 info = `*[🔥 Busqueda realizada por Samu330 🔥]*\n\n*- Titulo: *${video1.title}\n*- Link:* ${video1.link}\n*- Tamaño del archivo:* ${video1.size}\n*- Calidad:* ${video1.quality}\n*- Extencion:* ${video1.ext}\n*- Duracion:*${video1.duration}\n*- Link:* ${video1.source}\n\n_Si el video no llega, lo puedes descargar directamente accediendo al siguiente limk:_\n\n${video1.link}`
-sendFileFromUrl(audio1.thumb, image, {quoted: fvid, caption: info, sendEphemeral: true})
-sendFileFromUrl(audio1.link, video, { mimetype: 'video/mp4', duration :-999999999999999, filename: `${audio1.title}.mp4`, quoted: fvid, caption: info, sendEphemeral: true})
+sendFileFromUrl(video1.thumb, image, {quoted: fvid, caption: info, sendEphemeral: true})
+sendFileFromUrl(video1.link, video, { mimetype: 'video/mp4', duration :-999999999999999, filename: `${audio1.title}.mp4`, quoted: fvid, caption: info, sendEphemeral: true})
 }
 break
 case 'online':
