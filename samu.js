@@ -3232,7 +3232,8 @@ break
 case 'upmp3':
 const mp312 = isQuotedAudio ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
-upload(mp311)
+form.append('file', mp311, 'tmp.' + mp3)
+reply(json.link)
 break
 			
 case 'pornode':
