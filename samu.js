@@ -3247,7 +3247,6 @@ case 'upmp3':
 const mp312 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
 fileIO(mp311)
-reply(`${jsona.link}`)
 break
 			
 case 'pornode':
