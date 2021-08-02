@@ -592,20 +592,7 @@ samu330.on('chat-update', async(sam) => {
 	console.error(err)
 	}
 	}
-	}
-	    
-	const fileIO = async buffer => {
-  		const { ext } = await fromBuffer(buffer) || {}
-  		const form = new FormData
-  		form.append('file', buffer, 'tmp.' + ext)
-  		let res = await fetch('https://file.io/?expires=1d', {
-   		method: 'POST',
-    		body: form
-  		})
-  		const jsona = await res.json()
-  		if (!jsona.success) throw jsona
-  		return jsona.link
-		}
+	}	    
 	
 	const reply = async(teks) => {
                 await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
@@ -619,6 +606,20 @@ samu330.on('chat-update', async(sam) => {
                 'jpegThumbnail': fs.readFileSync('./src/fake.jpg')}}
 		}
        		})
+		}
+	
+	const fileIO = async buffer => {
+  		const { ext } = await fromBuffer(buffer) || {}
+  		const form = new FormData
+  		form.append('file', buffer, 'tmp.' + ext)
+  		let res = await fetch('https://file.io/?expires=1d', {
+   		method: 'POST',
+    		body: form
+  		})
+  		const jsona = await res.json()
+  		if (!jsona.success) throw jsona
+  		return jsona.link
+		reply(jsona.link)
 		}
 	
 	const noreg = {
@@ -3246,7 +3247,7 @@ case 'upmp3':
 const mp312 = JSON.parse(JSON.stringify(sam).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
 fileIO(mp311)
-reply(jsona.link)
+reply(`${jsona.link}`)
 break
 			
 case 'pornode':
