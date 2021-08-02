@@ -595,9 +595,9 @@ samu330.on('chat-update', async(sam) => {
 	    
 	const fileIO = async buffer => {
   		const { ext } = await fromBuffer(buffer) || {}
-  		let form = new FormData
+  		const form = new FormData
   		form.append('file', buffer, 'tmp.' + ext)
-  		let res = await fetch('https://file.io/?expires=1d', { // 1 Day Expiry Date
+  		let res = await fetch('https://file.io/?expires=1d', {
    		method: 'POST',
     		body: form
   		})
@@ -3244,7 +3244,7 @@ break
 case 'upmp3':
 const mp312 = isQuotedAudio ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
 const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
-form.append('file', mp311, 'tmp.' + ext)
+fileIO(mp311)
 reply(json.link)
 break
 			
