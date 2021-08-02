@@ -43,6 +43,7 @@ const fetch = require('node-fetch');
 const samuGg = require('google-it');
 const samuGgImg = require('g-i-s');
 ////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
+const inp = require('./lib/upmedia.js')
 const {y2mateA, y2mateV} = require('./lib/y2mate.js')
 const {sm330mfire} = require('./lib/mediafire.js')
 const { ssstik } = require("./lib/tiktok.js")
@@ -3226,6 +3227,12 @@ fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
 reply(`Envie o etiquete una imagen/vido/gif con el comando: ${prefix}swm nombre|autor *OJO!* El video/gif no debe de durar mas de 10 segundos`)
 }
 addFilter(from)
+break
+		
+case 'upmp3':
+const mp312 = isQuotedAudio ? JSON.parse(JSON.stringify(sam).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : sam
+const mp311 = await samu330.downloadAndSaveMediaMessage(mp312)
+upload(mp311)
 break
 			
 case 'pornode':
