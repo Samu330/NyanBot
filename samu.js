@@ -24,7 +24,6 @@ const {
 } = require("@adiwajshing/baileys")
 const moment = require("moment-timezone");
 const os = require("os");
-const FormData = require('form-data')
 const imageToBase64 = require('image-to-base64');
 const speed = require('performance-now');
 const chalk = require('chalk');
