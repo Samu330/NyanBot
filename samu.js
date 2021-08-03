@@ -2516,27 +2516,27 @@ break
 case 'play':
 assistant = fs.readFileSync('./src/assistant.jpg')		
 if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-reply('Ocurrio un problema con el servidor *1*, Porfavor espera mientras pruebo en el servidor *2*')
+reply(`*Espere un momento, su audio ${q} se esta descargando...*`)
 teks = args.join(' ')
 if (!teks.endsWith("-doc")){
-res = await yts(q).catch(e => {
+res1 = await yts(q).catch(e => {
 reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
 })
-let thumbInfo = ` [ *${res.all[0].title}* ]
-*°Subido hace* ${res.all[0].ago}
-*°Vistas :* ${res.all[0].views}
-*°Duracion :* ${res.all[0].timestamp}
-*°Canal :* ${res.all[0].author.name}
-*°Link del Canal :* ${res.all[0].author.url}
+let thumbInfo = ` [ *${res1.all[0].title}* ]
+*°Subido hace* ${res1.all[0].ago}
+*°Vistas :* ${res1.all[0].views}
+*°Duracion :* ${res1.all[0].timestamp}
+*°Canal :* ${res1.all[0].author.name}
+*°Link del Canal :* ${res1.all[0].author.url}
 
 *_El archivo se esta enviando....._*
 `
-sendFileFromUrl(res.all[0].image, image, {quoted: sam, caption: thumbInfo})
-res = await y2mateA(res.all[0].url).catch(e => {
+sendFileFromUrl(res1.all[0].image, image, {quoted: sam, caption: thumbInfo})
+res1 = await y2mateA(res1.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res[0].output})
-sendFileFromUrl(res[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
+sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
+sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
