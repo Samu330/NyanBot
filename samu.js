@@ -3705,33 +3705,7 @@ members_id.push(mem.jid)
 }
 mentions('*〈 Mención grupal 〉*\n╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┝ ● '+teks+'┊┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┊────🪀 *Samu330* 🪀────\n╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈', members_id, true)
 addFilter(from)
-break
-		
-case 'playvid':
-addFilter(from)
-teks = args.join(' ')
-if (!teks.endsWith("-doc")){
-res = await ytv(q).catch(e => {
-reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
-})
-let thumbInfo = ` [ *${res.all[0].title}* ]
-*°Subido hace* ${res.all[0].ago}
-*°Vistas :* ${res.all[0].views}
-*°Duracion :* ${res.all[0].timestamp}
-*°Canal :* ${res.all[0].author.name}
-*°Link del Canal :* ${res.all[0].author.url}
-*_El archivo se esta enviando....._*
-`
-sendFileFromUrl(res.all[0].image, image, {quoted: sam, caption: thumbInfo})
-res = await y2mateV(res.all[0].url).catch(e => {
-reply('_[ ! ] Error del servidor_')
-})
-sendFileFromUrl(res[0].link, video, {quoted: faud, mimetype: 'video/mp4', duration :-99999999, filename: res[0].output})
-sendFileFromUrl(res[0].link, video, {quoted: faud, mimetype: 'video/mp4', ptt: true, duration: 99999999999999, filename: res[0].output})
-}}
-addLevelingLevel(sender, 5)	
-break
-	 
+break 
 		
 case 'notificar':
 
