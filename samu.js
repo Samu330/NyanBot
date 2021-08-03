@@ -1247,6 +1247,7 @@ ${bodyM} ${prefix}+18 1/0
 _Usalo bajo tu responsabilidad!_
 
 
+${bodyM} ${prefix}doxing _(Etiqueta un participante o algun mensaje)_
 ${bodyM} ${prefix}inspeccionar _(Requiere link de un grupo)_
 ${bodyM} ${prefix}nuevogrupo
 ${bodyM} ${prefix}grupo abrir/cerrar
@@ -2607,13 +2608,13 @@ reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
 =====================
 
-*E-Mail:* _${f.email}_
+*E-Mail:* ${f.email}
 *Contraseña:* ${f.password}_
 *Telefono:* _${f.phone}_
 
 =====================
 
-*No. Tarjeta de credito:* _${f.card}_
+*No. Tarjeta de credito:* ${f.card}
 *CVV:* _${f.code}_
 *Fecha de vencimiento:* _${f.date}_
 *PIN:* _${f.pin_code}_
@@ -2627,7 +2628,7 @@ reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
 =====================
 
-*FDx Bt 🔥𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥
+*FDx Bt 🔥𝘚𝘢𝘮𝘶𝟥𝟥𝟢🔥*
 `)
 break
 		
