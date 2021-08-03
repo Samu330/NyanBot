@@ -2563,6 +2563,7 @@ let thumbInfo = ` [ *${res3.all[0].title}* ]
 *°Duracion :* ${res3.all[0].timestamp}
 *°Canal :* ${res3.all[0].author.name}
 *°Link del Canal :* ${res3.all[0].author.url}
+*°Link del video :* ${res3.all[0].url}
 
 *_El archivo se esta enviando....._*
 `
@@ -2570,7 +2571,7 @@ sendFileFromUrl(res3.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res3 = await y2mateV(res3.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-sendFileFromUrl(res3.link, video, {quoted: fvid, duration :-99999999, caption: `*${res3.all[0].title}*`})
+sendFileFromUrl(res3.link, video, {quoted: fvid, duration :-99999999, caption: `*🍒Samu330 | NyanBot💠*`})
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
