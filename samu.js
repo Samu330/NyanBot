@@ -34,6 +34,7 @@ const fs = require('fs');
 const { wait, h2k, generateMessageID, getGroupAdmins, banner, start, info, success, close } = require('./lib/functions')
 const { addBanned, unBanned, BannedExpired, cekBannedUser } = require('./lib/banned.js')
 const { getLevelingXp, getLevelingId, addLevelingXp, addLevelingLevel, addLevelingId, getLevelingLevel, getUserRank, addCooldown, leveltab } = require('./lib/leveling.js')
+const Samu330Api = require('./lib/samuapi.js')
 const { removeBackgroundFromImageFile } = require('remove.bg');
 const { exec } = require('child_process');
 const ffmpeg = require('fluent-ffmpeg');
@@ -2544,12 +2545,27 @@ break
 		
 case 'playvid':		
 if (!q) return reply('*Porfavor escribe el nombre del video que quieres descargar.*')
-nopasword = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐 CONTRASEÑA REQUERIDA!!*", "description": `*\n\nEs nesesario una contraseña para usar este comando, puedes pedir la contraseña al creador del bot (Samu330), la contraseña se usa de la siguiente manera:*\n\n${prefix + command} *contraseña|nombre del video*`, "buttonText": "✍🏻 Click para comunicarte con Samu330", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `wa.link/0n48hl`, "singleSelectReply": { "selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
+nopasword = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐 CONTRASEÑA REQUERIDA!!*", "description": `\n\n*Es nesesario una contraseña para usar este comando, puedes pedir la contraseña al creador del bot (Samu330), la contraseña se usa de la siguiente manera:*\n\n${prefix + command} *contraseña|nombre del video*\n\n_🛎Si por algun motivo no puedes acceder al boton de abajo, desactiva la funcion de hacer el texto seleccionable, en las configuraciones de tu WhatsApp Mod_`, "buttonText": "✍🏻 Click para comunicarte con Samu330", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `✏ ${pushname} Obten la contraseña aqui:\n*wa.link/0n48hl*`, "singleSelectReply": { "selectedRowId": "*...*" }}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 if (!q.includes('|')) return samu330.relayWAMessage(nopasword)
 if (!texto1) return samu330.relayWAMessage(nopasword)
 if (!texto2) return samu330.relayWAMessage(nopasword)	
-if (!texto1 == 'SM330') return reply('*Contraseña incorrecta!*')
+if (!texto1.startsWith('SM330')) return reply('*Contraseña incorrecta!*')
+res2 = await yts(q)
+for (let i of res.all) {
+linkv = `${i.url}`	
+}	
+		
+const linkmp4 = linkv.replace('https://youtu.be/','').replace('https://www.youtube.com/watch?v=','')
+Samu330Api.ytmp4(`https://youtu.be/${linkmp4}`)
+.then(async(res) => {
+if (res.status == 'error') return reply('*Ocurrio un problema, intenta de nuevo...*')
+await sendFileFromUrl(`${res.thumb}`, image, {quoted: fvid, caption: `*${res.title}*\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
+await sendFileFromUrl(`${res.link}`, video, {quoted: fvid, caption: `*${res.title}*\n\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
+.catch(() => {
+reply(`*NO SE PUDO DESCARGAR SU VIDEO, ASEGURESE QUE EL VIDEO NO DURE MAS DE 60 MINUTOS, GRACIAS!*`)
+})
+})
 break
 		
 case 'twit':
@@ -3320,12 +3336,9 @@ if(isNaN(contra1)) return await reply('El codigo es un Numero')
 const linkx = q.substring(q.lastIndexOf('|') + 1)
 if (!contra1) return reply(`*Y la contraseña?*\n_Recuerda separar la contraseña del link con el simbolo_ *'|'*`)
 if (!linkx) return reply(`*Y el link?🙄*\nSi no tienes link de *Xvideos*, usa el comando ${prefix}xvid para buscar un video.`)
-xv = await getJson(`https://fxc7-api.herokuapp.com/api/download/xvideos?url=${linkx}&apikey=Fxc7`)
-v = xv.result
-infoxv = `*Espere un momento, su video se esta enviando*\n\n_Informacion del video:_\n*Link:* ${v.url}\n*Titulo:* ${v.title}\n*Largo del video:* ${v.length}\n*Vistas* ${v.views}\n\n*😋Tu video se esta enviando...*`
-reply(infoxv)
-videox = await getBuffer(v.streams.hq)
-samu330.sendMessage(from, videox, video)
+xv = await getJson(`https://mnazria.herokuapp.com/api/porndownloadxvideos?url=${linkx}`)
+reply(`*Espere un momento, su video se esta enviando...*`)
+sendFileFromUrl(xv.mp4, video, {quoted: fvid, caption: `*🍒Samu330 | NyanBot💠*`})
 addFilter(from)
 break
 
@@ -3370,13 +3383,18 @@ ${m}
 reply(`${u}`)
 break
 
-case 'eliminartodos':
-if (!itsMe) return reply('*Solo lo puedo usar yo!😚*')
-link = await samu330.groupInviteCode(from)
-let users = (await samu330.fetchGroupMetadataFromWA(from)).participants.map(u => u.jid)
-for (let user of users) if (user !== isAdmin && user !== itsMe)  await samu330.groupRemove(from, [user])
-await samu330.acceptInvite(link)
-reply('*😈Samu330 domina!🪀*')
+case 'eliminartodos': 
+if (!isGroup) return reply('Este comando solo se puede usar en grupos!')
+if (!botAdmin) return reply('Solo se puede usar cuando el bot es administrador!')
+const allMem = await samu330.getGroupMembers(from)
+for (let i = 0; i < allMem.length; i++) {
+if (groupAdmins.includes(allMem[i].id)) {
+
+} else {
+await samu330.removeParticipant(from, allMem[i].id)
+}
+}
+reply('✍🏻')
 break
 
 		
