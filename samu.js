@@ -2552,7 +2552,7 @@ if (!texto1) return samu330.relayWAMessage(nopasword)
 if (!texto2) return samu330.relayWAMessage(nopasword)	
 if (!texto1.startsWith('SM330')) return reply('*Contraseña incorrecta!*')
 res2 = await yts(q)
-for (let i of res.all) {
+for (let i of res2.all) {
 linkv = `${i.url}`	
 }	
 		
@@ -2593,7 +2593,7 @@ if (!isRegister) return reply(mess.only.usrReg)
 if (!isGroup) return reply(mess.only.group)
 if (!mentionUser) reply('*Etiqueta a un participante para poder doxearlo!!*')
 f = await getJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
-reply(`*Doxeo de @${mentionUser.split('@')[0]} echo por Samu330✅*
+reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
 *Nombre:* _${f.name}_
 *Genero:* _${f.gender}_
