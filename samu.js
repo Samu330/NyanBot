@@ -2558,10 +2558,10 @@ linkv = `${i.url}`
 		
 const linkmp4 = linkv.replace('https://youtu.be/','').replace('https://www.youtube.com/watch?v=','')
 Samu330Api.ytmp4(`https://youtu.be/${linkmp4}`)
-.then(async(res) => {
-if (res.status == 'error') return reply('*Ocurrio un problema, intenta de nuevo...*')
-await sendFileFromUrl(`${res.thumb}`, image, {quoted: fvid, caption: `*${res.title}*\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
-await sendFileFromUrl(`${res.link}`, video, {quoted: fvid, caption: `*${res.title}*\n\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
+.then(async(res4) => {
+if (res4.status == 'error') return reply('*Ocurrio un problema, intenta de nuevo...*')
+await sendFileFromUrl(`${res4.thumb}`, image, {quoted: fvid, caption: `*${res4.title}*\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
+await sendFileFromUrl(`${res4.link}`, video, {quoted: fvid, caption: `*${res4.title}*\n\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
 .catch(() => {
 reply(`*NO SE PUDO DESCARGAR SU VIDEO, ASEGURESE QUE EL VIDEO NO DURE MAS DE 60 MINUTOS, GRACIAS!*`)
 })
@@ -2586,6 +2586,51 @@ reply(`*Espere un momento porfavor, su video se esta enviando....*`)
 sendFileFromUrl(ig.result, video, {quoted: fvid, caption: '🍒Samu330 | NyanBot💠', duration: 999999999})
 addFilter(from)
 break
+		
+//Fake Doxing By Samu330
+case 'doxing':
+if (!isRegister) return reply(mess.only.usrReg)
+if (!isGroup) return reply(mess.only.group)
+if (!mentionUser) reply('*Etiqueta a un participante para poder doxearlo!!*')
+f = await getJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
+reply(`*Doxeo de @${mentionUser.split('@')[0]} echo por Samu330✅*
+
+*Nombre:* _${f.name}_
+*Genero:* _${f.gender}_
+*Edad:* _${f.age}_
+*Fecha de nacimiento:* _${f.birtday}_
+*Ocupacion:* _${f.occupation}_
+*Dirección:* _${f.address}_
+*Codigo postal:* _${f.zip_code}_
+*Estado:* _${f.state}_
+*Pais:* _${f.country}_
+
+=====================
+
+*E-Mail:* _${f.email}_
+*Contraseña:* ${f.password}_
+*Telefono:* _${f.phone}_
+
+=====================
+
+*No. Tarjeta de credito:* _${card}_
+*CVV:* _${f.code}_
+*Fecha de vencimiento:* _${f.date}_
+*PIN:* _${f.pin_code}_
+
+=====================
+
+*Peso:* _${f.weight}_
+*Estatura:* _${f.height}_
+*Tipo de sangre:* _${f.blood_type}_
+*Estado:* _${f.status}_
+
+=====================
+
+*FDx Bt 🔥𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥
+`)
+break
+		
 		//»»————-　★　————-««\\
 //˚ ༘✶ ⋆｡˚ ⁀➷  🔥 𝘓𝘰𝘨𝘰𝘴 𝘉𝘺 𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥
 		
