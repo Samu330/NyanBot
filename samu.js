@@ -3766,7 +3766,6 @@ sendFileFromUrl(res[0].link, video, {quoted: faud, mimetype: 'video/mp4', ptt: t
 }}
 addLevelingLevel(sender, 5)		
 break
-break
 case 'online':
 let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
 let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
