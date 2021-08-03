@@ -2570,7 +2570,7 @@ sendFileFromUrl(res3.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res3 = await y2mateV(res3.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-sendFileFromUrl(res3[0].link, video, {quoted: fvid, duration :-99999999, caption: `*${res3.all[0].title}*`})
+sendFileFromUrl(res3.link, video, {quoted: fvid, duration :-99999999, caption: `*${res3.all[0].title}*`})
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
