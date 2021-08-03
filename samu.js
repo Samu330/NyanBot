@@ -2592,7 +2592,8 @@ break
 case 'doxing':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!isGroup) return reply(mess.only.group)
-if (!mentionUser) reply('*Etiqueta a un participante para poder doxearlo!!*')
+if (!isQuotedMsg) reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
+if (!q) reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
 f = await getJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
 reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
