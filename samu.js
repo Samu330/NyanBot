@@ -2554,7 +2554,8 @@ if (!texto2) return samu330.relayWAMessage(nopasword)
 if (!texto1.startsWith('SM330')) return reply('*Contraseña incorrecta!*')
 res2 = await yts(q)
 for (let i of res2.all) {
-linkv = `${i.url}`	
+linkv = `${i.url}`
+reply(linkv)
 }	
 		
 const linkmp4 = linkv.replace('https://youtu.be/','').replace('https://www.youtube.com/watch?v=','')
@@ -2592,8 +2593,8 @@ break
 case 'doxing':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!isGroup) return reply(mess.only.group)
-if (!isQuotedMsg) reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
-if (!q) reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
+if (!isQuotedMsg) return reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
+if (!q) return reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
 f = await getJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
 reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
