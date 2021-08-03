@@ -986,7 +986,7 @@ ${prefix}crear
 
 ${opcion}
 
-======[ *Versión 3.33 ]======
+======[ *Versión 3.35* ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -2557,9 +2557,7 @@ for (let i of res2.all) {
 linkv = `${i.url}`
 reply(linkv)
 }	
-		
-const linkmp4 = linkv.replace('https://youtu.be/','').replace('https://www.youtube.com/watch?v=','')
-Samu330Api.ytmp4(`https://youtu.be/${linkmp4}`)
+Samu330Api.ytmp4(linkv)
 .then(async(res4) => {
 if (res4.status == 'error') return reply('*Ocurrio un problema, intenta de nuevo...*')
 await sendFileFromUrl(`${res4.thumb}`, image, {quoted: fvid, caption: `*${res4.title}*\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
@@ -2593,8 +2591,6 @@ break
 case 'doxing':
 if (!isRegister) return reply(mess.only.usrReg)
 if (!isGroup) return reply(mess.only.group)
-if (!isQuotedMsg) return reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
-if (!q) return reply('*Etiqueta a un participante o a su mensaje para poder doxearlo!!*')
 f = await getJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
 reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
