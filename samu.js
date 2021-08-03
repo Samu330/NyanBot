@@ -2613,7 +2613,7 @@ reply(`*Doxeo de ${mentionUser} echo por Samu330✅*
 
 =====================
 
-*No. Tarjeta de credito:* _${card}_
+*No. Tarjeta de credito:* _${f.card}_
 *CVV:* _${f.code}_
 *Fecha de vencimiento:* _${f.date}_
 *PIN:* _${f.pin_code}_
