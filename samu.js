@@ -2552,20 +2552,28 @@ if (!q.includes('|')) return samu330.relayWAMessage(nopasword)
 if (!texto1) return samu330.relayWAMessage(nopasword)
 if (!texto2) return samu330.relayWAMessage(nopasword)	
 if (!texto1.startsWith('SM330')) return reply('*Contraseña incorrecta!*')
-res2 = await yts(q)
-for (let i of res2.all) {
-linkv = `${i.url}`
-reply(linkv)
-}	
-Samu330Api.ytmp4(linkv)
-.then(async(res4) => {
-if (res4.status == 'error') return reply('*Ocurrio un problema, intenta de nuevo...*')
-await sendFileFromUrl(`${res4.thumb}`, image, {quoted: fvid, caption: `*${res4.title}*\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
-await sendFileFromUrl(`${res4.link}`, video, {quoted: fvid, caption: `*${res4.title}*\n\n\n\n🍒Samu330 | NyanBot💠`, sendEphemeral: true})
-.catch(() => {
-reply(`*NO SE PUDO DESCARGAR SU VIDEO, ASEGURESE QUE EL VIDEO NO DURE MAS DE 60 MINUTOS, GRACIAS!*`)
+teks = args.join(' ')
+if (!teks.endsWith("-doc")){
+res3 = await yts(q).catch(e => {
+reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
 })
+let thumbInfo = ` [ *${res3.all[0].title}* ]
+*°Subido hace* ${res3.all[0].ago}
+*°Vistas :* ${res3.all[0].views}
+*°Duracion :* ${res3.all[0].timestamp}
+*°Canal :* ${res3.all[0].author.name}
+*°Link del Canal :* ${res3.all[0].author.url}
+
+*_El archivo se esta enviando....._*
+`
+sendFileFromUrl(res3.all[0].image, image, {quoted: sam, caption: thumbInfo})
+res3 = await y2mateV(res3.all[0].url).catch(e => {
+reply('_[ ! ] Error del servidor_')
 })
+sendFileFromUrl(res3[0].link, video, {quoted: fvid, duration :-99999999, caption: `*${res3.all[0].title}*`})
+}
+addFilter(from)
+addLevelingLevel(sender, 5)		
 break
 		
 case 'twit':
