@@ -3743,8 +3743,8 @@ reply('*SE ENVIO EL ESTADO*')
 break
 case 'marcarsinleer':
 if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
-var chats1 = await samu330.chats.all()
-chats1.map( async ({ jid }) => {
+var chats11 = await samu330.chats.all()
+chats11.map( async ({ jid }) => {
 await samu330.chatRead(jid, 'unread')
 })
 var teks = `\`\`\`Se an marcado como NO LEIDOS ${chats.length} chats !\`\`\``
@@ -3753,8 +3753,8 @@ console.log(chats.length)
 break
 case 'leertodo':
 if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
-var chats = await samu330.chats.all()
-chats.map( async ({ jid }) => {
+var chats12 = await samu330.chats.all()
+chats12.map( async ({ jid }) => {
 await samu330.chatRead(jid)
 })
 var teks = `\`\`\`Se an leido ${chats.length} chats !\`\`\``
