@@ -308,9 +308,9 @@ samu330.on('chat-update', async(sam) => {
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
         const body = sam.message.conversation || sam.message[type].caption || sam.message[type].text || ""
-	budy = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : (type === 'listResponseMessage') ? sam.message.listResponseMessage.title : ''
         chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
         //budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
+	budy = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : (type === 'listResponseMessage') ? sam.message.listResponseMessage.title : ''
 	////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
         if (prefix != "") {
         if (!body.startsWith(prefix)) {
@@ -1883,25 +1883,18 @@ addFilter(from)
 break
 
 case 'p2':
-let pyb = samu330.prepareMessageFromContent(from,{
-  "listMessage": {
-            "title": "🚧Samu330",
-            "description": "This is a test",
-            "buttonText": "🌐Click here",
-            "listType": "SINGLE_SELECT",
-            "sections": [
-              {
-                "rows": [
-                  {
-                    "title": '.menu',
-                    "singleSelectReply": { "selectedRowId": "*Bien, ahora copia y pega*"}
-                  }
-                ]
-              }
-            ]
-          }
-}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
-samu330.relayWAMessage(pyb)
+p2p = samu330.prepareMessageFromContent(from,{ "listMessage": { 
+	"title": "*TEST*", 
+	"description": `Aver`, 
+	"buttonText": "Click aqui.", 
+	"listType": "SINGLE_SELECT", 
+	"sections": [{ 
+		"rows": [ { 
+			"title": `.menu`, 
+			"singleSelectReply": { 
+				"selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
+})
+samu330.relayWAMessage(p2p)
 break
 		
 case 'buggp':
