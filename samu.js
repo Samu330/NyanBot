@@ -1918,13 +1918,13 @@ let pyb = samu330.prepareMessageFromContent(from,{
             "title": "🚧Samu330",
             "description": "This is a test",
             "buttonText": "🌐Click here",
-            "listType": "SINGLE_TYPE",
+            "listType": "SINGLE_SELECT",
             "sections": [
               {
                 "rows": [
                   {
-                    "title": 'Hola bot',
-                    "reply": 'a'
+                    "title": '.menu',
+                    "singleSelectReply": { "selectedRowId": "*Bien, ahora copia y pega*"}
                   }
                 ]
               }
@@ -3743,8 +3743,8 @@ reply('*SE ENVIO EL ESTADO*')
 break
 case 'marcarsinleer':
 if (!itsMe) return reply('Este comando solo puede ser usado por *Samu330* ⚙')
-var chats = await samu330.chats.all()
-chats.map( async ({ jid }) => {
+var chats1 = await samu330.chats.all()
+chats1.map( async ({ jid }) => {
 await samu330.chatRead(jid, 'unread')
 })
 var teks = `\`\`\`Se an marcado como NO LEIDOS ${chats.length} chats !\`\`\``
