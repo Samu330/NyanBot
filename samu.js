@@ -2529,7 +2529,7 @@ let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Duracion :* ${res1.all[0].timestamp}
 *°Canal :* ${res1.all[0].author.name}
 *°Link del Canal :* ${res1.all[0].author.url}
-tamaño: ${prs2.data.size}
+tamaño: ${pr2.data.size}
 
 *_El archivo se esta enviando....._*
 `
