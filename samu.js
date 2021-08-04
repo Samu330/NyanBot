@@ -437,7 +437,7 @@ samu330.on('chat-update', async(sam) => {
 	
 	
 	//Respuesta a button_Message
-	if (type === 'listResponseMessage') body = Messagetype.selectedDisplayText, chats = body
+	if (type === 'listResponseMessage') body = MessageType.selectedDisplayText, chats = body
         if (prev.hasPrevCmd(idSender)) {
             body = `${prev.getPrevCmd(idSender)} ${chats}`
             prev.delPrevCmd(idSender)
@@ -2559,7 +2559,7 @@ let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Duracion :* ${res1.all[0].timestamp}
 *°Canal :* ${res1.all[0].author.name}
 *°Link del Canal :* ${res1.all[0].author.url}
-tamaño: ${pr2.result.size}
+*°tamaño:* ${pr2.result.size}
 
 *_El archivo se esta enviando....._*
 `
@@ -2567,8 +2567,13 @@ sendFileFromUrl(res1.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res1 = await y2mateA(res1.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
+try {
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
+} catch {
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
+}
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
@@ -2582,6 +2587,7 @@ if (!teks.endsWith("-doc")){
 res3 = await yts(q).catch(e => {
 reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
 })
+v2 = await getJson(`https://api.zeks.xyz/api/ytmp4?apikey=hamilton20&url=${res3.all[0].url}`)
 let thumbInfo = ` [ *${res3.all[0].title}* ]
 *°Subido hace* ${res3.all[0].ago}
 *°Vistas :* ${res3.all[0].views}
@@ -2589,6 +2595,7 @@ let thumbInfo = ` [ *${res3.all[0].title}* ]
 *°Canal :* ${res3.all[0].author.name}
 *°Link del Canal :* ${res3.all[0].author.url}
 *°Link del video :* ${res3.all[0].url}
+*°tamaño:* ${v2.result.size}
 
 *_El archivo se esta enviando....._*
 `
@@ -2596,7 +2603,11 @@ sendFileFromUrl(res3.all[0].image, image, {quoted: sam, caption: thumbInfo})
 anu = await y2mateV(res3.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
+try {
 sendFileFromUrl(anu[0].link, video, {mimetype: 'video/mp4', filename: `${anu[0].output}`, quoted: fvid, caption: `[ *${res3.all[0].title}* ]\n\n\n🍒Samu330 | NyanBot💠`})
+} catch {
+sendFileFromUrl(v2.result.url_video, video, {mimetype: 'video/mp4', filename: `${anu[0].output}`, quoted: fvid, caption: `[ *${res3.all[0].title}* ]\n\n\n🍒Samu330 | NyanBot💠`})
+}
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
