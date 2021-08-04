@@ -2550,9 +2550,11 @@ reply(`*Espere un momento, su audio ${q} se esta descargando...*`)
 teks = args.join(' ')
 if (!teks.endsWith("-doc")){
 res1 = await yts(q).catch(e => {
-reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
-})
 pr2 = await getJson(`https://api.zeks.xyz/api/ytmp3?apikey=hamilton20&url=${res1.all[0].url}`)
+reply(`_[ ! ] Lo siento, su busqueda no pudo ser completada_\n\n*Realizando busqueda en el servidor 2*`)
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
+})
 let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Subido hace* ${res1.all[0].ago}
 *°Vistas :* ${res1.all[0].views}
@@ -2567,13 +2569,8 @@ sendFileFromUrl(res1.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res1 = await y2mateA(res1.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
-try {
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
-} catch {
-sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
-sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
-}
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
@@ -2585,9 +2582,10 @@ var _0x242d=['pUTuN','ctReply','\x0a\x0a_🛎Si\x20por','UAUSt','^([^\x20]+(\x20
 teks = args.join(' ')
 if (!teks.endsWith("-doc")){
 res3 = await yts(q).catch(e => {
-reply('_[ ! ] Lo siento, su busqueda no pudo ser completada_')
+v2 = await getJson(`https://api.zeks.xyz/api/ytmp4?apikey=hamilton20&url=${res3.all[0].url}`)	
+reply(`_[ ! ] Lo siento, su busqueda no pudo ser completada_\n\n*Realizando busqueda en el servidor 2*`)
+sendFileFromUrl(v2.result.url_video, video, {mimetype: 'video/mp4', filename: `${anu[0].output}`, quoted: fvid, caption: `[ *${res3.all[0].title}* ]\n\n\n🍒Samu330 | NyanBot💠`})	
 })
-v2 = await getJson(`https://api.zeks.xyz/api/ytmp4?apikey=hamilton20&url=${res3.all[0].url}`)
 let thumbInfo = ` [ *${res3.all[0].title}* ]
 *°Subido hace* ${res3.all[0].ago}
 *°Vistas :* ${res3.all[0].views}
@@ -2605,9 +2603,6 @@ reply('_[ ! ] Error del servidor_')
 })
 try {
 sendFileFromUrl(anu[0].link, video, {mimetype: 'video/mp4', filename: `${anu[0].output}`, quoted: fvid, caption: `[ *${res3.all[0].title}* ]\n\n\n🍒Samu330 | NyanBot💠`})
-} catch {
-sendFileFromUrl(v2.result.url_video, video, {mimetype: 'video/mp4', filename: `${anu[0].output}`, quoted: fvid, caption: `[ *${res3.all[0].title}* ]\n\n\n🍒Samu330 | NyanBot💠`})
-}
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
