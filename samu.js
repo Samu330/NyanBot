@@ -391,7 +391,6 @@ samu330.on('chat-update', async(sam) => {
 	}
 	const jid = sender
 	samu330.chatRead(from)
-	const is = budy.slice(0).trim().split(/ +/).shift().toLowerCase()
 	const Smname = sam.key.fromMe ? samu330.user.jid : samu330.contacts[sender] || { notify: jid.replace(/@.+/, '') }
         const mentionByTag = type == "extendedTextMessage" && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.mentionedJid : []
         const mentionByReply = type == "extendedTextMessage" && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.participant || "" : ""
