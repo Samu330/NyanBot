@@ -308,7 +308,6 @@ samu330.on('chat-update', async(sam) => {
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
         const body = sam.message.conversation || sam.message[type].caption || sam.message[type].text || ""
-	let chats = ''
         chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
         budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 	////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -438,7 +437,7 @@ samu330.on('chat-update', async(sam) => {
 	
 	
 	//Respuesta a button_Message
-	if (type === 'buttons_response') body = message.selectedButtonId, chats = body
+	if (type === 'listResponseMessage') body = Messagetype.selectedDisplayText, chats = body
         if (prev.hasPrevCmd(idSender)) {
             body = `${prev.getPrevCmd(idSender)} ${chats}`
             prev.delPrevCmd(idSender)
@@ -2560,6 +2559,7 @@ let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Duracion :* ${res1.all[0].timestamp}
 *°Canal :* ${res1.all[0].author.name}
 *°Link del Canal :* ${res1.all[0].author.url}
+tamaño: ${pr2.result.size}
 
 *_El archivo se esta enviando....._*
 `
@@ -3828,7 +3828,7 @@ break
 		   
 case 'online':
 if (!isGroup) return reply(mess.only.group)
-let msg = `[ List Online ]\n${readMore}`
+let msg = `[ List Online ]\n`
 from.filter(chat.presence.chatstates, (n) => !!n?.type).forEach(item => {
 msg += `- @${item.id.replace(/@c\.us/g, '')}\n`
 })
