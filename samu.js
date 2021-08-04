@@ -308,6 +308,7 @@ samu330.on('chat-update', async(sam) => {
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
         const typeQuoted = Object.keys(quoted)[0]
         const body = sam.message.conversation || sam.message[type].caption || sam.message[type].text || ""
+	let chats = ''
         chats = (type === 'conversation') ? sam.message.conversation : (type === 'extendedTextMessage') ? sam.message.extendedTextMessage.text : ''
         budy = (type === 'conversation' && sam.message.conversation.startsWith(prefix)) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption.startsWith(prefix) ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption.startsWith(prefix) ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text.startsWith(prefix) ? sam.message.extendedTextMessage.text : ''
 	////////////▶ 𝐒𝐚𝐦𝐮𝟑𝟑𝟎 | 𝐒𝐚𝐦 𝐲 𝐏𝐞𝐫𝐫𝐲
@@ -412,6 +413,36 @@ samu330.on('chat-update', async(sam) => {
 	const sendMess = (hehe, teks) => {
 	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
   	}
+	
+	const idSender = sender.id
+	let previousCmds = []
+	const prev = {
+    	savePrevCmd: (inpSender, prevCmd) => {
+        if (!prev.hasPrevCmd(inpSender)) {
+        previousCmds.push({ sender: inpSender, prevCmd: prevCmd })
+	setTimeout(() => {
+	prev.delPrevCmd(inpSender)
+	}, 15000)
+        }
+    	},
+    	getPrevCmd: (inpSender) => {
+        return previousCmds.find(n => n.sender == inpSender).prevCmd
+    	},
+    	hasPrevCmd: (inpSender) => {
+        return !!previousCmds.find(n => n.sender == inpSender)
+    	},
+    	delPrevCmd: (inpSender) => {
+        previousCmds = previousCmds.filter(({ sender }) => sender !== inpSender)
+    	}
+	}
+	
+	
+	//Respuesta a button_Message
+	if (type === 'buttons_response') body = message.selectedButtonId, chats = body
+        if (prev.hasPrevCmd(idSender)) {
+            body = `${prev.getPrevCmd(idSender)} ${chats}`
+            prev.delPrevCmd(idSender)
+        }
 	
 	mess = {
 			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
@@ -2529,7 +2560,6 @@ let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Duracion :* ${res1.all[0].timestamp}
 *°Canal :* ${res1.all[0].author.name}
 *°Link del Canal :* ${res1.all[0].author.url}
-tamaño: ${pr2.size}
 
 *_El archivo se esta enviando....._*
 `
@@ -3797,11 +3827,13 @@ quoted: fimg
 break
 		   
 case 'online':
-let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
-let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
-samu330.sendMessage(from, 'Lista de usuarios en linea:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, MessageType.text, { quoted: fdoc,
-contextInfo: { mentionedJid: online }
+if (!isGroup) return reply(mess.only.group)
+let msg = `[ List Online ]\n${readMore}`
+from.filter(chat.presence.chatstates, (n) => !!n?.type).forEach(item => {
+msg += `- @${item.id.replace(/@c\.us/g, '')}\n`
 })
+msg += '[ NyanBot ]'
+await reply(msg)
 break
 case 'soyyo':
 if (!isRegister) return reply(mess.only.usrReg)
