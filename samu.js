@@ -414,36 +414,6 @@ samu330.on('chat-update', async(sam) => {
 	samu330.sendMessage(hehe, teks, MessageType.text, {quoted: ftoko})
   	}
 	
-	const idSender = sender.id
-	let previousCmds = []
-	const prev = {
-    	savePrevCmd: (inpSender, prevCmd) => {
-        if (!prev.hasPrevCmd(inpSender)) {
-        previousCmds.push({ sender: inpSender, prevCmd: prevCmd })
-	setTimeout(() => {
-	prev.delPrevCmd(inpSender)
-	}, 15000)
-        }
-    	},
-    	getPrevCmd: (inpSender) => {
-        return previousCmds.find(n => n.sender == inpSender).prevCmd
-    	},
-    	hasPrevCmd: (inpSender) => {
-        return !!previousCmds.find(n => n.sender == inpSender)
-    	},
-    	delPrevCmd: (inpSender) => {
-        previousCmds = previousCmds.filter(({ sender }) => sender !== inpSender)
-    	}
-	}
-	
-	
-	//Respuesta a button_Message
-	if (type === 'listResponseMessage') body = MessageType.selectedDisplayText, chats = body
-        if (prev.hasPrevCmd(idSender)) {
-            body = `${prev.getPrevCmd(idSender)} ${chats}`
-            prev.delPrevCmd(idSender)
-        }
-	
 	mess = {
 			wait: '⌛ 𝐄𝐍 𝐏𝐑𝐎𝐂𝐄𝐒𝐎 ⌛',
 			success: '✔️ 𝙎𝙐𝙎𝙎𝙀𝙎 ✔️',
