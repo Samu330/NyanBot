@@ -2549,12 +2549,8 @@ if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: no
 reply(`*Espere un momento, su audio ${q} se esta descargando...*`)
 teks = args.join(' ')
 if (!teks.endsWith("-doc")){
-res1 = await yts(q).catch(e => {
-pr2 = getJson(`https://api.zeks.xyz/api/ytmp3?apikey=hamilton20&url=${res1.all[0].url}`)
-reply(`_[ ! ] Lo siento, su busqueda no pudo ser completada_\n\n*Realizando busqueda en el servidor 2*`)
-sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
-sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
-})
+res1 = await yts(q)
+pr2 = await getJson(`https://api.zeks.xyz/api/ytmp3?apikey=hamilton20&url=${res1.all[0].url}`)
 let thumbInfo = ` [ *${res1.all[0].title}* ]
 *°Subido hace* ${res1.all[0].ago}
 *°Vistas :* ${res1.all[0].views}
@@ -2569,8 +2565,14 @@ sendFileFromUrl(res1.all[0].image, image, {quoted: sam, caption: thumbInfo})
 res1 = await y2mateA(res1.all[0].url).catch(e => {
 reply('_[ ! ] Error del servidor_')
 })
+try {
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
 sendFileFromUrl(res1[0].link, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
+} catch {
+reply(`_[ ! ] Lo siento, su busqueda no pudo ser completada_\n\n*Realizando busqueda en el servidor 2*`)
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', duration :-99999999, filename: res1[0].output})
+sendFileFromUrl(pr2.result.url_audio, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: 99999999999999, filename: res1[0].output})
+}
 }
 addFilter(from)
 addLevelingLevel(sender, 5)		
