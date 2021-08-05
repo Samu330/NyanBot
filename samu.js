@@ -4507,7 +4507,7 @@ reply(`Porfavor escriba bien el comando: ${prefix}banchat *0/1*`)
 }
 break
 case 'ban':
-if (!itsMe) return reply(mess.only.owner)
+if (!itsMe) return reply(mess.only.ownerB)
 mentioned = sam.message.extendedTextMessage.contextInfo.mentionedJid
 if (mentioned.length !== 0){
 for (let i = 0; i < mentioned.length; i++){
