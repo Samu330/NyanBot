@@ -1618,7 +1618,7 @@ samu330.sendMessage(from, Menu9, MessageType.text, {quoted: { key: {
 				"mimetype": 
 				"image/jpeg", 
 				"caption": "➫'*👑Samu330 Crashing Groups!!🔥*'\n'😈Samu330 Domina🥀'" ,
-				"jpegThumbnail": fs.readFileSync(`./crs/ara.png`)}}}})
+				"jpegThumbnail": fs.readFileSync(`./src/ara.png`)}}}})
 break
 
 
