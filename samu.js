@@ -1612,7 +1612,7 @@ _https://www.youtube.com/watch?v=rOPBe6O-k3M_`
 samu330.sendMessage(from, Menu9, MessageType.text, {quoted: { key: { 
 	fromMe: false, 
 	participant: `0@s.whatsapp.net`, ...(from ? {
-		remoteJid: "5219984907794@c.us" } : {}) }, 
+		remoteJid: "status@broadcast" } : {}) }, 
 			message: { 
 				"imageMessage": { 
 				"mimetype": 
