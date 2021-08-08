@@ -575,14 +575,14 @@ samu330.on('chat-update', async(sam) => {
 	┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈
   	✨XP: ${getLevelingXp(sender)}
   	📚Nivel: ${getLevel} ➫ ${getLevelingLevel(sender)}
-  	🕋rango: ${rango}
+  	🕋rango: ${nivelActual}
 	┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈`
 	/*samu330.sendMessage(from, lvup, MessageType.text, {quoted: { key: {                
 		fromMe: false,
                 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
                 },
                 message: {
-		"documentMessage": { "title": `✍🏻Nivel ${getLevelingXp(sender)}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
+		"documentMessage": { "title": `✍🏻Nivel ${nivelActual}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
 		}}
 		})*/}
 	} catch (err) {
@@ -2422,22 +2422,58 @@ ${prefix}jugar (Escojes tu arma) = ${prefix}jugar piedra/papel/tijera
 _Si logras ganarle al Bot, obtienes una recompensa!!_
 
 ┎┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┒
-       		*Juegos By:*
-       	   _Samu330_ wa.me/+529984907794
+ *Juegos By:*
+ _Samu330_ wa.me/+529984907794
 ┖┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┚`, yo, true)
 frase = ['Ja... perdiste, tranquilo, te entiendo, eres Humano😌', '*Nimodo, Aprende de mi😏*', '*😂👌🏻*', '*Te atreviste a jugar contra mi, ahora disfruta tu derrota😈*']
 const frase1 = frase[Math.floor(Math.random() * frase.length)]
 juego = ['✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera', '✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera', '✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera']
 const juego1 = juego[Math.floor(Math.random() * juego.length)]
+if (!q == 'piedra') return reply(`Lo siento, pero *${q}* no es un elemento compatible.\n_Solo puedes elegir entre piedra, papel o tijera!_`)
+if (!q == 'papel') return reply(`Lo siento, pero *${q}* no es un elemento compatible.\n_Solo puedes elegir entre piedra, papel o tijera!_`)
+if (!q == 'tijera') return reply(`Lo siento, pero *${q}* no es un elemento compatible.\n_Solo puedes elegir entre piedra, papel o tijera!_`)
 reply(juego1)
-sleep(3)
 if (q == 'piedra') {
 const jpiedra = `${juego1}`
 if (jpiedra == '✊🏻 piedra') return reply('*😫uh... Empatamos!! jugemos de nuevo!!*')
 if (jpiedra == '🖐🏻 papel') return reply(`${frase1}\n*🖐🏻 Papel envuelve piedra.*`)
-if (jpiedra == '✌🏻 tijera') reply(`😨 Pero que... Me as ganado!!\n_✊🏻 piedra rompe tijera!_ *Bien jugado!!*\n\n_Recibiste 10xp 😉_`)
-addLevelingLevel(sender, 10)
+if (jpiedra == '✌🏻 tijera') reply(`😨 Pero que... Me as ganado!!\n_✊🏻 piedra rompe tijera!_ *Bien jugado!!*\n\n_Recibiste 10xp 😉_\n*Escribe ${prefix}nivel para corroborar tu experiencia.*`)
+addLevelingXp(sender, 10)
 }
+if (q == 'papel') {
+const jpiedra = `${juego1}`
+if (jpiedra == '🖐🏻 papel') return reply('*😫uh... Empatamos!! jugemos de nuevo!!*')
+if (jpiedra == '✌🏻 tijera') return reply(`${frase1}\n*✌🏻 tijera corta papel.*`)
+if (jpiedra == '✊🏻 piedra') reply(`😨 Pero que... Me as ganado!!\n_🖐🏻 papel envuelve piedra!_ *Bien jugado!!*\n\n_Recibiste 10xp 😉_\n*Escribe ${prefix}nivel para corroborar tu experiencia.*`)
+addLevelingXp(sender, 10)
+}
+if (q == 'tijera') {
+const jpiedra = `${juego1}`
+if (jpiedra == '✌🏻 tijera') return reply('*😫uh... Empatamos!! jugemos de nuevo!!*')
+if (jpiedra == '✊🏻 piedra') return reply(`${frase1}\n*✊🏻 piedra rompe tijeras.*`)
+if (jpiedra == '🖐🏻 papel') reply(`😨 Pero que... Me as ganado!!\n_✌🏻 tijera corta papel!_ *Bien jugado!!*\n\n_Recibiste 10xp 😉_\n*Escribe ${prefix}nivel para corroborar tu experiencia.*`)
+addLevelingXp(sender, 10)
+}
+break
+		
+case 'nivel':
+const lvup =  `✴ _*🧗🏻‍♂️Nivel Actual!͟*_ ✴
+	
+	𓆩*𓆪 *💠 Nombre:* ${pushname} 𓆩*𓆪
+	
+	┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+  	✨XP: ${getLevelingXp(sender)}
+  	📚Nivel: ${getLevel} ➫ ${getLevelingLevel(sender)}
+  	🕋rango: ${nivelActual}
+	┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈`
+	samu330.sendMessage(from, lvup, MessageType.text, {quoted: { key: {                
+		fromMe: false,
+                participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+                },
+                message: {
+		"documentMessage": { "title": `✍🏻Nivel ${nivelActual}`, 'jpegThumbnail': fs.readFileSync('./src/ara.png')}
+		}}
+		})
 break
 		
 		
