@@ -2423,7 +2423,7 @@ _Si logras ganarle al Bot, obtienes una recompensa!!_
 ┎┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┒
  *Juegos By:*
   @${yo.jid.split('@')[0]}
-┖┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┚`, yo, true
+┖┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┚`, yo, true)
 break
 		
 		
