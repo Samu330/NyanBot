@@ -2427,15 +2427,15 @@ _Si logras ganarle al Bot, obtienes una recompensa!!_
 ┖┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┚`, yo, true)
 frase = ['Ja... perdiste, tranquilo, te entiendo, eres Humano😌', '*Nimodo, Aprende de mi😏*', '*😂👌🏻*', '*Te atreviste a jugar contra mi, ahora disfruta tu derrota😈*']
 const frase1 = frase[Math.floor(Math.random() * frase.length)]
-juego = ['✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera']
+juego = ['✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera'. '✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera', '✊🏻 piedra', '🖐🏻 papel', '✌🏻 tijera']
 const juego1 = juego[Math.floor(Math.random() * juego.length)]
 reply(juego1)
-sleep(200)
+sleep(3)
 if (q == 'piedra') {
 const jpiedra = `${juego1}`
-if (jpiedra == q) return reply('*😫uh... Empatamos!! jugemos de nuevo!!*')
+if (jpiedra == '✊🏻 piedra') return reply('*😫uh... Empatamos!! jugemos de nuevo!!*')
 if (jpiedra == '🖐🏻 papel') return reply(`${frase1}\n*🖐🏻 Papel envuelve piedra.*`)
-if (jpiedra == '✌🏻 tijera') reply(`😨 Pero que... Me as ganado!!\n_✊🏻 piedra rompe tijera!_ *Bien jugado!!\n\n_Recibite 10xp 😉_*`)
+if (jpiedra == '✌🏻 tijera') reply(`😨 Pero que... Me as ganado!!\n_✊🏻 piedra rompe tijera!_ *Bien jugado!!*\n\n_Recibiste 10xp 😉_`)
 addLevelingLevel(sender, 10)
 }
 break
