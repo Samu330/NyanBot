@@ -531,19 +531,23 @@ samu330.on('chat-update', async(sam) => {
 	})
 	})
 	}
-	
+		    
 	const nivelActual = getLevelingLevel(sender)
-            var rango = '*🥉Bronce*'
+            var rango =
             if (nivelActual === 10) {
-                rango = '*🥈Plata*'
+                rango = '*🥉Bronce*'
             } else if (nivelActual === 20) {
-                rango = '*🥇Oro*'
+                rango = '*🥈Plata*'
             } else if (nivelActual === 30) {
-                rango = '💎Diamante'
+                rango = '*🥇Oro*'
 	    } else if (nivelActual === 30) {
                 rango = '*🌬Diamante Rosa*'
             } else if (nivelActual >= 100) {
+                rango = '*🌬Diamante Rosa*'
+            } else if (nivelActual >= 150) {
                 rango = '*🔥Diamante rojo🔥*'
+            } else if (nivelActual >= 200) {
+                rango = '*🔮Nivel Maximo🗡*'
             }
 
 	
