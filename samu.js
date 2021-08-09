@@ -1600,7 +1600,7 @@ case 'menu9':
 if (!isRegister) return reply(mess.only.usrReg)
 reply('*Gathering information...*')
 smww = fs.readFileSync(`./media/SmWW.png`)
-const Menu9 = `*${pushname}*
+menu9 = `*${pushname}*
 
 _Estos comandos solo pueden ser utilizados en grupos, y solo los puede uzar ${botNumber}_
 
@@ -1623,7 +1623,7 @@ Si quieres tener este bot, y usar tu los comandos, ve como se instala aqui:
 
 _https://www.youtube.com/watch?v=rOPBe6O-k3M_`
 
-samu330.sendMessage(from, smww, image, {quoted: { key: { 
+samu330.sendMessage(from, smww, image, {caption: `${menu9}`, quoted: { key: { 
 	fromMe: false, 
 	participant: `0@s.whatsapp.net`, ...(from ? {
 		remoteJid: "status@broadcast" } : {}) }, 
@@ -1632,7 +1632,7 @@ samu330.sendMessage(from, smww, image, {quoted: { key: {
 				"mimetype": 
 				"image/jpeg", 
 				"caption": "➫'*👑Samu330 Crashing Groups!!🔥*'\n'😈Samu330 Domina🥀'" ,
-				"jpegThumbnail": fs.readFileSync(`./src/ara.png`)}}, caption: Menu9}})
+				"jpegThumbnail": fs.readFileSync(`./src/ara.png`)}}}})
 break
 
 
