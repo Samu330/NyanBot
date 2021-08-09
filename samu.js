@@ -1623,7 +1623,7 @@ Si quieres tener este bot, y usar tu los comandos, ve como se instala aqui:
 
 _https://www.youtube.com/watch?v=rOPBe6O-k3M_`
 
-samu330.sendMessage(from, smww, image, {caption: Menu9, quoted: { key: { 
+samu330.sendMessage(from, smww, image, {quoted: { key: { 
 	fromMe: false, 
 	participant: `0@s.whatsapp.net`, ...(from ? {
 		remoteJid: "status@broadcast" } : {}) }, 
@@ -1632,7 +1632,7 @@ samu330.sendMessage(from, smww, image, {caption: Menu9, quoted: { key: {
 				"mimetype": 
 				"image/jpeg", 
 				"caption": "➫'*👑Samu330 Crashing Groups!!🔥*'\n'😈Samu330 Domina🥀'" ,
-				"jpegThumbnail": fs.readFileSync(`./src/ara.png`)}}}})
+				"jpegThumbnail": fs.readFileSync(`./src/ara.png`)}}, caption: Menu9}})
 break
 
 
