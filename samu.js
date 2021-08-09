@@ -1600,8 +1600,7 @@ case 'menu9':
 if (!isRegister) return reply(mess.only.usrReg)
 reply('*Gathering information...*')
 smww = fs.readFileSync(`./media/SmWW.png`)
-const Menu9 = {
-text: `*${pushname}*
+const Menu9 = `*${pushname}*
 
 _Estos comandos solo pueden ser utilizados en grupos, y solo los puede uzar ${botNumber}_
 
@@ -1623,7 +1622,7 @@ https://www.mediafire.com/file/3srfb3tledxwg87/Inmune_Crash_Bot%25E2%259C%258F%2
 Si quieres tener este bot, y usar tu los comandos, ve como se instala aqui:
 
 _https://www.youtube.com/watch?v=rOPBe6O-k3M_`
-}
+
 samu330.sendMessage(from, smww, image, {caption: Menu9, quoted: { key: { 
 	fromMe: false, 
 	participant: `0@s.whatsapp.net`, ...(from ? {
