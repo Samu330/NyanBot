@@ -1928,30 +1928,25 @@ addFilter(from)
 break
 
 case 'p2':
-p2p = samu330.prepareMessageFromContent(from,{ "listMessage": { 
-	"title": "*TEST*", 
-	"description": `Aver`, 
-	"buttonText": "Click aqui.", 
+nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": {
+	"title": "*🔐Codigo requerido*", 
+	"description": `🗡`, 
+	"buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", 
 	"listType": "SINGLE_SELECT", 
-	"sections": [{ 
-		"rows": [ { 
-			"title": `.menu`, 
-			"singleSelectReply": { 
-				"selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
-})
-samu330.relayWAMessage(p2p)
+	"sections": [{ "rows": [ { "title": `a`, 
+				  "singleSelectReply": { 
+					  "selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
+}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 break
 		
 case 'b1':
 b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": {
  buttonText: 'Click Me!',
  description: "Hello it's list message",
- sections: [{title: "Section 1", rows: [
- 			{title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"},
- 			{title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
+ sections: [{title: "Section 1", rows: [{title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"}, {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
 ]}],
  listType: 1
-}})
+}}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 		samu330.relayWAMessage(b1)
 		break
 		
