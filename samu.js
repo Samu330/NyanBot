@@ -595,34 +595,7 @@ samu330.on('chat-update', async(sam) => {
 	}
 	}	
 	    
-	    
-	/**
- * Send 2 Buttons
- * @param {String} jid
- * @param {String} content
- * @param {String} footer
- * @param {String} button1
- * @param {String} row1
- * @param {String} button2
- * @param {String} row2
- * @param {Object} options
- */
-    const send2Button = async(jid, content1, footer, button1, row1, button2, row2, options = {}) {
-      const buttons = [
-        { buttonId: row1, buttonText: { displayText: button1 }, type: 1 },
-        { buttonId: row2, buttonText: { displayText: button2 }, type: 1 }
-      ]
 
-      const buttonMessage = {
-        contentText: content1,
-        footerText: footer,
-        buttons: buttons,
-        headerType: 1
-      }
-      await samu330.sendMessage(jid, buttonMessage, MessageType.buttonsMessage)
-    }
-	    
-	
 	const reply = async(teks) => {
                 await samu330.sendMessage(from, teks, MessageType.text, { quoted: { key: {                
 		fromMe: false,
@@ -2592,6 +2565,20 @@ reply(`*Estos son los idiomas soportados por la voz👇🏻*:
   'tr': 'Turkish',
   'vi': 'Vietnamese',
   'cy': 'Welsh'`)
+break
+		
+case 'b2':
+const buttons = [
+        { buttonId: '.menu', buttonText: { displayText: 'MENU' }, type: 1 },
+        { buttonId: '.ping', buttonText: { displayText: 'VELOCIDAD' }, type: 1 }
+      ]
+const buttonMessage = {
+        contentText: 'Esta es una prueba!!',
+        footerText: 'By samu330',
+        buttons: buttons,
+        headerType: 1
+      }
+      await samu330.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
 break
 		
 case 'timer':        
