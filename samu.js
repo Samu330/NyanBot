@@ -1937,16 +1937,12 @@ nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": {
 				  "singleSelectReply": { 
 					  "selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
+		samu330.relayWAMessage(nopsw)
 break
 		
 case 'b1':
-b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": {
- buttonText: 'Click Me!',
- description: "Hello it's list message",
- sections: [{title: "Section 1", rows: [{title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"}, {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
-]}],
- listType: 1
-}}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
+b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": {buttonText: 'Click Me!', description: "Hello it's list message", sections: [{title: "Section 1", rows: [{title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"}, {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}]}], listType: 1
+}})
 		samu330.relayWAMessage(b1)
 		break
 		
