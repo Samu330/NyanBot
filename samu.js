@@ -2569,16 +2569,36 @@ break
 		
 case 'b2':
 const buttons = [
-        { buttonId: '.menu', buttonText: { displayText: 'MENU' }, type: 1 },
-        { buttonId: '.ping', buttonText: { displayText: 'VELOCIDAD' }, type: 1 }
-      ]
+  {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
+  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
+]
+
 const buttonMessage = {
-        contentText: 'Esta es una prueba!!',
-        footerText: 'By samu330',
-        buttons: buttons,
-        headerType: 1
-      }
-      await samu330.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
+    contentText: "Hi it's button message",
+    footerText: 'Hello World',
+    buttons: buttons,
+    headerType: 1
+}
+
+await samu330.sendMessage(id, buttonMessage, MessageType.buttonsMessage)
+break
+		
+case 'b3':
+const rows = [
+ {title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"},
+ {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
+]
+
+const sections = [{title: "Section 1", rows: rows}]
+
+const button = {
+ buttonText: 'Click Me!',
+ description: "Hello it's list message",
+ sections: sections,
+ listType: 1
+}
+
+await samu330.sendMessage(from, button, MessageType.listMessage)
 break
 		
 case 'timer':        
