@@ -987,7 +987,7 @@ ${prefix}crear
 
 ${opcion}
 
-======[ *Versión 3.41* ]======
+======[ *Versión 3.45* ]======
 
 *⚙ LA KEY DE LA API FUE DESHABILITADA, PERO SI LA NECECITAS PUEDES ESCRIBIRME PARA QUE TE LA COMPARTA, ESTO ES POR MOTIVOS DE SEGURIDAD, YA QUE LA ANTERIOR KEY FUE EXPUESTA Y BLOQUEADA POR ESTA RAZON. ⚙*
 _SI TIENES ALGUNA KEY QUE CREES QUE PUEDE FUNCIONAR, PUEDES AGREGARLA CON EL COMANDO:_
@@ -1010,9 +1010,9 @@ ${samu} ✏Prefijo:${samu} [ ${prefix} ]
 ${samu} 🕐Tiempo de actividad:${samu} *${uptime}*
 ${samu} ✅Modo:${samu} *ON*
 ${samu} 👥Grupo:${samu} *${groupName}*
-${samu} 🏆Numero del Dueño wa.me/+529984907794${samu}
+${samu} 🏆Numero del Dueño shrtco.de/📍📲${samu}
 
-𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: https://youtu.be/chMc57gjmkI
+𝗠𝗬 𝗖𝗔𝗡𝗔𝗟 𝗗𝗘 𝗬𝗢𝗨𝗧𝗨.𝗕𝗘: shrtco.de/CanalDeSamu
 
 ⍣ *BOT INFO* ⍣
 ${samu}◦ 🌐Navegador :${samu} *${samu330.browserDescription[1]}*
@@ -4858,6 +4858,59 @@ if (body.startsWith('buenos dias')) {
 dias = fs.readFileSync(`./temp/audio/wenas.mp3`)
 samu330.sendMessage(from, dias, audio, {quoted: fliveLoc, mimetype: 'audio/mp4', ptt:true, duration: -999999})
 }
+
+		
+//BY SAMU330 | Uso libre
+if (body.includes('soprte y mantenimiento')) {	
+if (isGroup) return reply('Solo se puede usar en privados')
+fotops = await samu330.getProfilePicture(from)	
+estadops = await samu330.getStatus(from)	
+samu330.sendMessage(from, fotops, image, {caption: `*Numero de Usuario en formato completo:* ${from}
+*Numero registrado:* ${from.split('@')[0]}
+*Link de WhatsApp:* wa.me/${from.split('@')[0]}}
+*Estado del usuario:* ${estadops}
+
+*Hora y fecha exacta en la que se lleva acabo esta conversación:*
+_${week1}  ${calender1} ${hora}_
+
+*Hola, permítame presentarme, soy Angel García, pertenezco al centro de control y atención de WhatsApp*
+Me comunico con usted, ya que sospechamos de la infracción a nuestras condiciones del servicio:
+*Política de privacidad y datos del usuario, Uso aceptable de nuestros servicios, Licencias, Reporte de infracciones de derechos de autor, marca comercial o registrada o propiedad intelectual o industrial de terceros., Descargos y exclusiones de responsabilidad, Disposición de arbitraje especial para los usuarios de los Estados Unidos y Canadá*
+
+_Si resides en la Región europea, WhatsApp Ireland Limited te proporciona WhatsApp de conformidad con otras Condiciones del servicio y Políticas de privacidad._
+
+*Necesitamos verificar que usted no esté transgrediendo estas normas, es nuestro trabajo asegurarnos que nuestros usuarios y su información estén protegidos, pero también deben de seguir nuestros lineamientos de seguridad.*
+
+Para poder verificar su cuenta, debe seguir un par de pasos, el proceso no durara mas de 15 minutos, para poder ayudarnos a agilizar el proceso, asegúrese de:
+-	No tener activada la verificación en dos pasos.
+-	No tener ninguna sección abierta en algún otro dispositivo.
+-	Tener insertada la SIM o chip de su cuenta de WhatsApp.
+-	Tener el volumen de su dispositivo encendido, de tal manera que escuche notificaciones de mensajes o llamadas.
+Nosotros le enviaremos un código de 6 dígitos, ya se por mensaje o llamada, este mismo código me lo proporcionara lo más pronto posible.
+
+*ACLARACION!!*
+
+_Le solicitamos su código de verificación, ya que necesitamos crear un registro completo de todas sus acciones: Dispositivos vinculados, lugares en que se registró su cuenta, aplicaciones de terceros usadas._
+
+Este proceso no dura mas de 15 minutos, su sección se cerrara después de brindarme el código, le recomiendo crear una copia de seguridad, usted no podrá, o más bien, no deberá registrar su número de teléfono en WhatsApp, ya que existe la posibilidad de que su numero se bloquee, y no podrá usarlo mas en WhatsApp. 
+
+Nosotros le notificaremos mediante un SMS cuando pueda volver a usar su cuenta de WhatsApp, también le brindaremos el informe de su cuenta, le mostraremos si hubiese alguna inconveniencia, y le brindaremos información sobre sus inicios de sección, para que vea si hay alguna acción que usted no haya hecho.
+
+*RECUERDE QUE NO PODEMOS LEER NI VER CONVERSACIONES, GRACIAS A LA SEGURIDAD DE TextSecure QUE LE OFRECEMOS A TODOS NUESTROS USUARIOS, SU CUENTA ESTA 100% ASEGURADA, NO SE PERDERA, MUCHO MENOS USAREMOS SU INFORMACION.*
+
+Para mas información, dudas o comentarios, comuníquese a nuestro chat de seguridad, le atenderemos lo más pronto posible.
+
+https://api.whatsapp.com/send?phone=34627280815&text=&source=&data=&app_absent=
+
+https://www.whatsapp.com/contact/?subject=messenger
+`, quoted: {key:
+{ fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ?
+{ remoteJid: "status@broadcast" } : {}) },
+message: { "imageMessage": { "mimetype": "image/jpeg","caption": `web@support.whatsapp.com\n2021 © WhatsApp LLC`, 'jpegThumbnail': fs.readFileSync('./src/ws.png')}}}
+})	
+}
+		
 if (isSimi && !itsMe &&  body != undefined){
 res = await getJson(`https://api.simsimi.net/v1/?text=${body}&lang=es`)
 reply(res.success)
