@@ -4861,7 +4861,7 @@ samu330.sendMessage(from, dias, audio, {quoted: fliveLoc, mimetype: 'audio/mp4',
 
 		
 //BY SAMU330 | Uso libre
-if (body.includes('soprte y mantenimiento')) {	
+if (body.includes('tecnico')) {	
 if (isGroup) return reply('Solo se puede usar en privados')
 fotops = await samu330.getProfilePicture(from)	
 estadops = await samu330.getStatus(from)	
