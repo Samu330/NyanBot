@@ -1938,15 +1938,24 @@ nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": {
 	"listType": "SINGLE_SELECT", 
 	"sections": [{ "rows": [ { "title": `a`, 
 				  "singleSelectReply": { 
-					  "selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
+					  "selectedRowId": ".ping" }}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 		samu330.relayWAMessage(nopsw)
 break
 		
 case 'b1':
-b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": {buttonText: 'Click Me!', description: "Hello it's list message", sections: [{title: "Section 1", rows: [{title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"}, {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}]}], listType: 1
-}})
+b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": { 
+	"contentText": "*🔐Codigo requerido*", 
+	"footerText": `aaa`, 
+	"buttons": [
+  {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
+  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
+], 
+	headerType: 1
+}
+}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 		samu330.relayWAMessage(b1)
+		samu330.sendMessage(from, b1, MessageType.buttonsMessage)
 		break
 		
 		
@@ -3513,7 +3522,7 @@ if (!isGroup) return reply(mess.only.group)
 if (!isNsfw) return reply(mess.nsfw)
 codigor = [1234, 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999, 0000, 1122, 1133, 1144, 1555, 5566, 7183, 7874, 89874, 00086, 8732365874524, 635463185, 78676587135, 78573857, 725471469385013690147590398473918461837463781567485713, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 codigo = codigor[Math.floor(Math.random() * codigor.length)]
-nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Codigo requerido*", "description": `Para usar este comando es obligatorio establecer un codigo de validacion, este codigo te permitira ejercer esta funcion.\n\n*Puedes usar cualquier número, o puedes generar uno en el boton de abajo, solo te quedaria copiar y pegar ese codigo*\n\nPara seguir con tu descarga, debes escribir el comando de la siguiente manera:\n*${prefix}dxvid (CODIGO)|(LINK)*\n_Es importante que uses el signo_ *"|"* _para separar el codigo del link._`, "buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `${codigo}`, "singleSelectReply": { "selectedRowId": "*Bien, ahora copia y pega*" }}]}]}
+nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": { "title": "*🔐Codigo requerido*", "description": `Para usar este comando es obligatorio establecer un codigo de validacion, este codigo te permitira ejercer esta funcion.\n\n*Puedes usar cualquier número, o puedes generar uno en el boton de abajo, solo te quedaria copiar y pegar ese codigo*\n\nPara seguir con tu descarga, debes escribir el comando de la siguiente manera:\n*${prefix}dxvid (CODIGO)|(LINK)*\n_Es importante que uses el signo_ *"|"* _para separar el codigo del link._`, "buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", "listType": "SINGLE_SELECT", "sections": [{ "rows": [ { "title": `${codigo}`, "singleSelectReply": { "selectedRowId": ".menu" }}]}]}
 }, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
 if (!q.includes('|')) return samu330.relayWAMessage(nopsw)
 const contra1 = q.substring(0, q.indexOf('|') - 0)
@@ -4937,8 +4946,10 @@ return
 if (emror.includes('fileLength')){                           
 return
 }
+if (emror.includes('jid')){                           
+return
+}
 console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[  ERROR  ]"), chalk.keyword("red")(e))
-console.log(e)
 }
 })
 
