@@ -1985,19 +1985,26 @@ case 'menu2':
                 break
 		
 case 'b1':
-b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": { 
-	"contentText": "*🔐Codigo requerido*", 
-	"footerText": `aaa`, 
-	"buttons": [
-  {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
-  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
-], 
-	headerType: 1
+        
+        txtt =`Hola ${pushname}\nEscoje tu opcion... `
+
+               buttons = [{buttonId:`${prefix}menu`, 
+               buttonText:{displayText: 'Show Menu'},type:1},
+               {buttonId:`${prefix}owner`,buttonText:{displayText:'Owner'},type:1},
+               {buttonId:`${prefix}ytadmin`,buttonText:{displayText:'YouTube'},type:1}]
+
+               imageMsg = (await samu330.prepareMessageMedia(fs.readFileSync(`./src/fake.png`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/fake.png`)})).imageMessage
+
+               buttonsMessage = {
+               contentText: `${txtt}`,
+               footerText: '© Creator Sm330\nSupport Me By Donate Or Subscribe', imageMessage: imageMsg,
+               buttons: buttons,
+               headerType: 4
 }
-}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
-		samu330.relayWAMessage(b1)
-		samu330.sendMessage(from, b1, MessageType.buttonsMessage)
-		break
+
+               prep = await samu330.prepareMessageFromContent(from,{buttonsMessage},{quoted: ftoko})
+               samu330.relayWAMessage(prep)
+               break
 		
 		
 		
