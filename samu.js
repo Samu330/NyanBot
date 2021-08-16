@@ -304,6 +304,7 @@ samu330.on('chat-update', async(sam) => {
 	sam.message = (Object.keys(sam.message)[0] === 'ephemeralMessage') ? sam.message.ephemeralMessage.message : sam.message
         if (!sam.message) return
         const from = sam.key.remoteJid
+	const content = JSON.stringify(sam.message)
         const type = Object.keys(sam.message)[0]
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
@@ -1186,6 +1187,7 @@ ${samu}◦ 🪀version de${samu} *WhatsApp* : *${samu330.user.phone.wa_version}*
 
 ===============================
 || _Juega con el Bot:_ *${prefix}jugar*
+|| O ${prefix}ttt
 ===============================
 
 
