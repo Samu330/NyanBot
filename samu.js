@@ -1930,18 +1930,59 @@ reply(mess.ferr)
 addFilter(from)
 break
 
-case 'p2':
-nopsw = samu330.prepareMessageFromContent(from,{ "listMessage": {
-	"title": "*🔐Codigo requerido*", 
-	"description": `🗡`, 
-	"buttonText": "Quieres un codigo ya establecido por el Bot? Click aqui.", 
-	"listType": "SINGLE_SELECT", 
-	"sections": [{ "rows": [ { "title": `a`, 
-				  "singleSelectReply": { 
-					  "selectedRowId": ".ping" }}]}]}
-}, {quoted: sam, sendEphemeral: true, contextInfo:{ forwardingScore: 999999, isForwarded: true}})
-		samu330.relayWAMessage(nopsw)
-break
+case 'menu2': 
+                let pi = samu330.prepareMessageFromContent(from, {
+           "listMessage": {
+						"title": "⌜ test ⌟",
+						"description": `${pushname}`,
+						"buttonText": "Click Aqui",
+						"listType": "SINGLE_SELECT",
+						"sections": [
+							{
+								"title": "select",
+								"rows": [
+									{
+										"title": ".ping",
+										"rowId": "0"
+									},
+									{
+										"title": "hola bot",
+										"rowId": "0"
+									},
+									{
+										"title": "funmenu",
+										"rowId": "0"
+									},
+									{
+										"title": "makermenu",
+										"rowId": "0"
+									},
+									{
+										"title": "othermenu",
+										"rowId": "0"
+									},
+									{
+										"title": "ownermenu",
+										"rowId": "0"
+									},
+									{
+										"title": "storagemenu",
+										"rowId": "0"
+									},
+									{
+										"title": "tagmenu",
+										"rowId": "0"
+									},
+									{
+										"title": "upmenu",
+										"rowId": "0"
+									}
+								]
+							}
+						]
+					}}, {})
+ samu330.relayWAMessage(pi, {waitForAck: true})
+                break
 		
 case 'b1':
 b1 = samu330.prepareMessageFromContent(from,{ "buttonsMessage": { 
