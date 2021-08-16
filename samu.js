@@ -1993,7 +1993,7 @@ case 'b1':
                {buttonId:`${prefix}owner`,buttonText:{displayText:'Owner'},type:1},
                {buttonId:`${prefix}ytadmin`,buttonText:{displayText:'YouTube'},type:1}]
 
-               imageMsg = (await samu330.prepareMessageMedia(fs.readFileSync(`./src/fake.png`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/fake.png`)})).imageMessage
+               imageMsg = (await samu330.prepareMessageMedia(fs.readFileSync(`./src/fake.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/fake.jpg`)})).imageMessage
 
                buttonsMessage = {
                contentText: `${txtt}`,
