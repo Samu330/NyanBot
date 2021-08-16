@@ -1988,7 +1988,7 @@ case 'b1':
         
         txtt =`Hola ${pushname}\nEscoje tu opcion... `
 
-               buttons = [{buttonId:`${prefix}menu`, 
+               buttons1 = [{buttonId:`${prefix}menu`, 
                buttonText:{displayText: 'Show Menu'},type:1},
                {buttonId:`${prefix}owner`,buttonText:{displayText:'Owner'},type:1},
                {buttonId:`${prefix}ytadmin`,buttonText:{displayText:'YouTube'},type:1}]
@@ -1998,7 +1998,7 @@ case 'b1':
                buttonsMessage = {
                contentText: `${txtt}`,
                footerText: '© Creator Sm330\nSupport Me By Donate Or Subscribe', imageMessage: imageMsg,
-               buttons: buttons,
+               buttons: buttons1,
                headerType: 4
 }
 
