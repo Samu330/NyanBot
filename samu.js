@@ -307,7 +307,7 @@ samu330.on('chat-update', async(sam) => {
         const type = Object.keys(sam.message)[0]
 		const cmd = (type === 'conversation' && sam.message.conversation) ? sam.message.conversation : (type == 'imageMessage') && sam.message.imageMessage.caption ? sam.message.imageMessage.caption : (type == 'videoMessage') && sam.message.videoMessage.caption ? sam.message.videoMessage.caption : (type == 'extendedTextMessage') && sam.message.extendedTextMessage.text ? sam.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
 		button = (type == 'buttonsResponseMessage') ? sam.message.buttonsResponseMessage.selectedDisplayText : ''
-        isImage = (type === 'imageMessage')
+        //isImage = (type === 'imageMessage')
         listmes = (type == 'listResponseMessage') ? sam.message.listResponseMessage.title : ''
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
         const quoted = type == 'extendedTextMessage' && sam.message.extendedTextMessage.contextInfo != null ? sam.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
