@@ -2001,7 +2001,8 @@ scarcel: Stickers con efecto de carcel.
 - Otros comandos:
 
 _grupos_
-_enlinea_`
+_enlinea_
+_Adminlist_`
 reply(nuevo)
 break
 
@@ -2522,7 +2523,7 @@ break
 		
 case 'grupos':
 samu330.updatePresence(from, Presence.composing)
-samu330.sendMessage(from, `*CHATS TOTALES* : ${totalchat.length} Chat`, text, {quoted  : floc})
+samu330.sendMessage(from, `*CHATS TOTALES* : ${totalchat.length} Chat`, MessageType.text, {quoted  : floc})
 break
 		
 case 'zalgo':
@@ -4579,8 +4580,8 @@ case 'online':
 										  
 if (!isGroup) return reply(`Solo para grupos`)
 let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
-let online = [...Object.keys(Repor.chats.get(ido).presences), samu330.user.jid]
-samu330.sendMessage(from, '*Lista de usuarios en linea*:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, text, {
+let online = [...Object.keys(samu330.chats.get(ido).presences), samu330.user.jid]
+samu330.sendMessage(from, '*Lista de usuarios en linea*:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, MessageType.text, {
 quoted: ftoko,
 contextInfo: { mentionedJid: online }
 })
