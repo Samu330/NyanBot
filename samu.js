@@ -769,15 +769,15 @@ mentionedJid: [sender]}
 
 
 		/*--------------------[ Tictactoe Game Function ]--------------------*/
-const cmde = budy.toLowerCase().split(" ")[0] || "";
+const cmde = chats.toLowerCase().split(" ")[0] || "";
 let arrNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
      if (fs.existsSync(`./lib/tictactoe/db/${from}.json`)) {
           const boardnow = setGame(`${from}`);
-          if (budy == "Cex") return reply("por qué");
+          if (chats == "Cex") return reply("por qué");
           if (
-               budy.toLowerCase() == "y" ||
-               budy.toLowerCase() == "yes" ||
-               budy.toLowerCase() == "ya"
+               chats.toLowerCase() == "y" ||
+               chats.toLowerCase() == "yes" ||
+               chats.toLowerCase() == "s"
           ) {
                if (boardnow.O == sender.replace("@s.whatsapp.net", "")) {
                     if (boardnow.status)
@@ -793,7 +793,7 @@ let arrNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 ❌ : @${boardnow.X}
 ⭕ : @${boardnow.O}
                
-Girar : @${boardnow.turn == "X" ? boardnow.X : boardnow.O}
+Es el turno de : @${boardnow.turn == "X" ? boardnow.X : boardnow.O}
 
      ${matrix[0][0]}  ${matrix[0][1]}  ${matrix[0][2]}
      ${matrix[1][0]}  ${matrix[1][1]}  ${matrix[1][2]}
@@ -822,9 +822,9 @@ Girar : @${boardnow.turn == "X" ? boardnow.X : boardnow.O}
                     );
                }
           } else if (
-               budy.toLowerCase() == "n" ||
-               budy.toLowerCase() == "no" ||
-               budy.toLowerCase() == "tidak"
+               chats.toLowerCase() == "n" ||
+               chats.toLowerCase() == "no" ||
+               chats.toLowerCase() == "nopi"
           ) {
                if (boardnow.O == sender.replace("@s.whatsapp.net", "")) {
                     if (boardnow.status)
@@ -902,7 +902,7 @@ El ganador es @${winnerJID} 😎👑
 ❌ : @${moving.X}
 ⭕ : @${moving.O}
 
-Girar : @${moving.turn == "X" ? moving.X : moving.O}
+Es el turno de: @${moving.turn == "X" ? moving.X : moving.O}
 
 
    ${matrix[0][0]}  ${matrix[0][1]}  ${matrix[0][2]}
@@ -3863,6 +3863,7 @@ reply(`Sesión eliminada con éxito en este grupo!`);
 } else {
 reply(`No hay sesión en curso.`);
 }
+break
 
 case 'wa.me':
 case 'wame':
