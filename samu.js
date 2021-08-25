@@ -53,6 +53,7 @@ const {fbDown} = require('./lib/fb.js')
 const { isFiltered, addFilter } = require('./lib/antispam')
 const chatban = JSON.parse(fs.readFileSync('./src/ban.json'))
 const ban = JSON.parse(fs.readFileSync('./src/banned.json'))
+
 const zalgo = require('./lib/zalgo')
 const {convertSticker} = require("./lib/swm.js")
 const conn = require("./lib/connect")
