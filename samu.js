@@ -3467,21 +3467,15 @@ break
 case 'play2':
 	assistant = fs.readFileSync('./src/assistant.jpg')		
 	if (!isRegister) return samu330.sendMessage(from, assistant, image, { quoted: noreg, caption: `😊Hola, ${timeFt}.\n*Yo soy Sam330*, Asistente de *Samu330*!.\n\nAl parecer no estas registrado en _*NyanBot*_, Para registrarte usa el comando: *${prefix}reg*.`, thumbnail: assistant, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
-	teks = args.join(' ')
-if (!teks.endsWith("-doc")){
-res12 = await yts(q).catch(e => {	
-reply('_[ ! ] NO SE PUDO ENCONTRAR LO QUE BUSCABA_')
-})
-	reply(`*Espere un momento, su audio ${q} se esta descargando...*`)
-	sendFileFromUrl(res12.all[0].image, image, {quoted: sam, caption: `*Si por alguna razon no te llega o no ves la lista de mensajes, usa el comando ${prefix}play2*`})
+	
 	let play2v = samu330.prepareMessageFromContent(from,{
 		"listMessage": {
 				  "title": "🌬 *DESCARGAS DE AUDIO!!*",
-				  "description": `✍🏻Informacion de su Audio.\n\n*°Subido hace* ${res12.all[0].ago}\n*°Vistas :* ${res12.all[0].views}\n*°Duracion :* ${res12.all[0].timestamp}\n*°Canal :* ${res12.all[0].author.name}\n*°Link del Canal :* ${res12.all[0].author.url}`,
+				  "description": `Sm330`,
 				  "buttonText": "SELECCIONA UN FORMATO DE DESCARGA",
 				  "listType": "SINGLE_SELECT",
 				  "sections": [
-					{ "title": `[ ${res12.all[0].title} ]`,
+					{ "title": `[ a ]`,
 					  "rows": [
 						{
 						  "title": '🎧Descarga el Audio Original',
@@ -3499,14 +3493,13 @@ reply('_[ ! ] NO SE PUDO ENCONTRAR LO QUE BUSCABA_')
 				}
 	  }, {quoted: sam})
 	  samu330.relayWAMessage(play2v)
-	  res12 = await y2mateA(res12.all[0].url)
 	  if (sam.message.listResponseMessage){
 		play2 = sam.message.listResponseMessage.singleSelectReply.selectedRowId
 		if (play2.includes(`AudioOrg`)){
 			reply('*Perate tantito....*')
-	  sendFileFromUrl(res12[0].link, audio, audio, {quoted: faud, mimetype: 'audio/mp3', filename: res12[0].output})
+
 		}}
-	}
+	
 break
 
 		
