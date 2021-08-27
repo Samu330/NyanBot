@@ -6028,6 +6028,7 @@ if (emror.includes('jid')){
 return
 }
 console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[  ERROR  ]"), chalk.keyword("red")(e))
+console.log(e)
 }
 })
 
