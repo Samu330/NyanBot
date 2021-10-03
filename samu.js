@@ -240,7 +240,8 @@ ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.
 ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 try {
-samu330.sendMessage(mdata.id, `${ppimg}`, MessageType.image, {quoted: {key: {
+let fotoP = await getBuffer(ppimg)
+samu330.sendMessage(mdata.id, `${fotoP}`, MessageType.image, {quoted: {key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`          
 },                               
