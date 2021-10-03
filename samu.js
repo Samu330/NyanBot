@@ -237,7 +237,7 @@ pushnem = num.split('@')[0]
 try {
 ppimg = await samu330.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
 } catch {
-ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+ppimg = 'https://centromedicomontemar.cl/wp-content/uploads/2015/06/sin-perfil.png'
 }
 try {
 let fotoP = await getBuffer(ppimg)
